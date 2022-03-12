@@ -1,8 +1,5 @@
-# oceanview
-
-A new Flutter project.
-
-## Getting Started
+기본 폰트
+    pretendard
 
 포맷팅
 
