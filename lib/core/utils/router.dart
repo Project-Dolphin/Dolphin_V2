@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oceanview/main.dart';
-import 'package:oceanview/screens/dashboard/presentation/page/dashboard.dart';
+import 'package:oceanview/presentation/page/dashboard.dart';
 // ignore: unused_import
 import 'constants.dart';
 
@@ -9,10 +8,8 @@ class Router {
     switch (settings.name) {
       // case SETTING_ROUTE:
       //   return MaterialPageRoute(builder: (_) => HomePage());
-      // case DEVELOPER_INTRO_ROUTE:
-      //   return MaterialPageRoute(builder: (_) => ChangePasswordPage());
       default:
-        return MaterialPageRoute(builder: (_) => DashBoard());
+        return MaterialPageRoute(builder: (_) => const DashBoard());
     }
   }
 }

@@ -2,11 +2,12 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
-import 'package:oceanview/screens/dashboard/data/datasources/dashboard_local_datasource.dart';
-import 'package:oceanview/screens/dashboard/data/datasources/dashboard_remote_datasource.dart';
-import 'package:oceanview/screens/dashboard/data/repositories/dashabord_repository_impl.dart';
-import 'package:oceanview/screens/dashboard/domain/repositories/home_repository.dart';
-import 'package:oceanview/screens/dashboard/presentation/blocs/fetch_data/fetch_data_bloc.dart';
+import 'package:oceanview/data/datasources/bus_local_datasource.dart';
+import 'package:oceanview/data/datasources/bus_remote_datasource.dart';
+import 'package:oceanview/data/repositories/bus_repository_impl.dart';
+import 'package:oceanview/domain/repositories/bus_repository.dart';
+import 'package:oceanview/domain/usecases/get_city_bus_list.dart';
+import 'package:oceanview/presentation/blocs/dash_board/dash_board_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance; //sl is referred to as Service Locator
@@ -15,26 +16,26 @@ final sl = GetIt.instance; //sl is referred to as Service Locator
 Future<void> init() async {
   //Blocs
   sl.registerFactory(
-    () => DashboardBloc()..add(RefreshBusEvent()),
+    () => DashboardBloc(getCityBusList: sl())..add(PageInited()),
   );
 
   //Use cases
-  sl.registerLazySingleton(() => () {});
+  sl.registerLazySingleton(() => GetCityBusList(repository: sl()));
 
   //Repositories
-  sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(
+  sl.registerLazySingleton<BusRepository>(() => BusRepositoryImpl(
         localDataSource: sl(),
         remoteDataSource: sl(),
       ));
 
   //Data sources
-  sl.registerLazySingleton<HomeRemoteDataSource>(
-    () => HomeRemoteDataSourceImpl(
+  sl.registerLazySingleton<BusRemoteDataSource>(
+    () => BusRemoteDataSourceImpl(
       restClientService: sl(),
     ),
   );
-  sl.registerLazySingleton<HomeLocalDataSource>(
-    () => HomeLocalDataSourceImpl(
+  sl.registerLazySingleton<BusLocalDataSource>(
+    () => BusLocalDataSourceImpl(
       sharedPreferences: sl(),
     ),
   );
@@ -47,7 +48,8 @@ Future<void> init() async {
   //External
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
-  sl.registerLazySingleton(() => sharedPreferences);
   final dio = Dio();
-  final client = RestClient(dio);
+
+  sl.registerLazySingleton(() => sharedPreferences);
+  sl.registerLazySingleton(() => RestClient(dio));
 }

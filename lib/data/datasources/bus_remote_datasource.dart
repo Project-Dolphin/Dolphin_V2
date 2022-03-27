@@ -3,17 +3,17 @@ import 'dart:convert';
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
 
-abstract class HomeRemoteDataSource {
-  Future<bool> logoutUser(String token);
+abstract class BusRemoteDataSource {
+  Future<bool> getCityBusList();
 }
 
-class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
+class BusRemoteDataSourceImpl extends BusRemoteDataSource {
   final RestClient restClientService;
 
-  HomeRemoteDataSourceImpl({required this.restClientService});
+  BusRemoteDataSourceImpl({required this.restClientService});
 
   @override
-  Future<bool> logoutUser(String token) async {
+  Future<bool> getCityBusList() async {
     final response = await restClientService.getCityBusList();
     if (response.isEmpty) {
       throw ServerException();

@@ -1,17 +1,17 @@
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class HomeLocalDataSource {
-  Future<bool> clearToken();
+abstract class BusLocalDataSource {
+  Future<bool> busLocalDummy();
 }
 
-class HomeLocalDataSourceImpl extends HomeLocalDataSource {
+class BusLocalDataSourceImpl extends BusLocalDataSource {
   final SharedPreferences sharedPreferences;
 
-  HomeLocalDataSourceImpl({required this.sharedPreferences});
+  BusLocalDataSourceImpl({required this.sharedPreferences});
 
   @override
-  Future<bool> clearToken() async {
+  Future<bool> busLocalDummy() async {
     bool removed = true;
     if (!removed) {
       throw CacheException();

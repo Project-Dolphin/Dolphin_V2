@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:oceanview/screens/dashboard/presentation/page/widgets/floating_nav_bar_item.dart';
+import 'package:oceanview/presentation/page/widgets/floating_nav_bar_item.dart';
 
-typedef Widget ItemBuilder(BuildContext context, FloatingNavbarItem items);
+typedef ItemBuilder = Widget Function(
+    BuildContext context, FloatingNavbarItem items);
 
 class FloatingNavbar extends StatefulWidget {
   final List<FloatingNavbarItem>? items;
@@ -43,7 +44,7 @@ class FloatingNavbar extends StatefulWidget {
         assert(items!.length <= 5),
         assert(currentIndex! <= items!.length),
         assert(width > 50),
-        this.itemBuilder = itemBuilder ??
+        itemBuilder = itemBuilder ??
             _defaultItemBuilder(
               unselectedItemColor: unselectedItemColor,
               selectedItemColor: selectedItemColor,

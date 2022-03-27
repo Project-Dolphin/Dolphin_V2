@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:oceanview/core/utils/theme.dart';
-import 'package:oceanview/screens/dashboard/presentation/page/dashboard.dart';
+import 'package:oceanview/presentation/page/dashboard.dart';
 import 'injection_container.dart' as di;
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   runApp(MyApp());
 }
@@ -36,6 +37,6 @@ class MyApp extends StatelessWidget {
         ], //, 'KR')],
         theme: AppTheme.light,
         darkTheme: AppTheme.dark,
-        home: DashBoard());
+        home: const DashBoard());
   }
 }
