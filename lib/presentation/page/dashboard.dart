@@ -7,6 +7,8 @@ Stack 구조로 관리하여야 할 듯
 import 'package:oceanview/screens/dashboard/presentation/page/widgets/floating_nav_bar.dart';
 */
 class DashBoard extends StatelessWidget {
+  const DashBoard({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,9 +43,9 @@ class DashBoard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   /*
-                  TODO:
-                  Select 아이템 처리 해야함
-                  Indicator 보임 여부 및 애니메이션 사용 여부
+                    TODO:
+                    Select 아이템 처리 해야함
+                    Indicator 보임 여부 및 애니메이션 사용 여부
                   */
                   FloatingBottomItem(),
                   FloatingBottomItem(),
