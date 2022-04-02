@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/error/failures.dart';
+import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
 import 'package:oceanview/domain/usecases/get_city_bus_list.dart';
-import 'package:oceanview/domain/usecases/get_nearest_event.dart';
+import 'package:oceanview/domain/usecases/get_notice_list.dart';
 import 'package:oceanview/domain/usecases/get_weather_info.dart';
 
 part 'home_data_event.dart';
@@ -13,9 +15,9 @@ part 'home_data_state.dart';
 
 class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
   final GetWeatherInfo getWeatherInfo;
-  final GetNearestEvents getNearestEvents;
+  final GetNoticeList getNoticeList;
 
-  HomeDataBloc({required this.getWeatherInfo, required this.getNearestEvents})
+  HomeDataBloc({required this.getWeatherInfo, required this.getNoticeList})
       : super(LoadingState()) {
     on<HomeDataInited>(_onAppLaunched);
     on<RefreshBusEvent>(_onBusInfoRefreshRequested);
@@ -26,16 +28,16 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
     Emitter<HomeDataState> emit,
   ) async {
     final _weatherResponse = await getWeatherInfo.call();
-    final _noticesResponse = await getNearestEvents.call();
+    final _noticesResponse = await getNoticeList.call();
 
-    Weather _weather =
-        Weather(humidity: '', status: '', temparature: '', windSpeed: '');
-    List<Notice> _notices = [];
+    WeatherData _weather =
+        WeatherData(humidity: '', status: '', temparature: '', windSpeed: '');
+    List<NoticeData> _notices = [];
     _noticesResponse.fold((failure) async* {
       if (failure is CacheFailure) {
-        emit(ErrorState('SETTING_ERROR'));
+        emit(HomeDataError('SETTING_ERROR'));
       } else {
-        emit(ErrorState('NO_CONNECTION_ERROR'));
+        emit(HomeDataError('NO_CONNECTION_ERROR'));
       }
     }, (success) {
       _notices = success;
@@ -43,14 +45,14 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
 
     _weatherResponse.fold((failure) async* {
       if (failure is CacheFailure) {
-        emit(ErrorState('SETTING_ERROR'));
+        emit(HomeDataError('SETTING_ERROR'));
       } else {
-        emit(ErrorState('NO_CONNECTION_ERROR'));
+        emit(HomeDataError('NO_CONNECTION_ERROR'));
       }
     }, (success) {
       _weather = success;
     });
-    emit(LoadedState(weather: _weather, notice: _notices));
+    emit(HomeDataLoaded(weather: _weather, notice: _notices));
   }
 
   void _onBusInfoRefreshRequested(
