@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:oceanview/core/error/failures.dart';
-import 'package:oceanview/core/network/rest_client_service.dart';
+import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 
 abstract class HomeDataRepository {
-  Future<Either<Failure, Weather>> getTodayWheater();
-  Future<Either<Failure, List<Notice>>> getNotices();
+  Future<Either<Failure, WeatherData>> getTodayWheater();
+  Future<Either<Failure, List<NoticeData>>> getNotices();
 }

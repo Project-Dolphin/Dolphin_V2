@@ -15,13 +15,14 @@ import 'package:oceanview/domain/repositories/city_bus_repository.dart';
 import 'package:oceanview/domain/repositories/home_data_repository.dart';
 import 'package:oceanview/domain/repositories/shuttle_bus_repository.dart';
 import 'package:oceanview/domain/usecases/get_city_bus_list.dart';
-import 'package:oceanview/domain/usecases/get_nearest_event.dart';
+import 'package:oceanview/domain/usecases/get_notice_list.dart';
 import 'package:oceanview/domain/usecases/get_next_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_today_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_weather_info.dart';
-import 'package:oceanview/presentation/blocs/city_bus_bloc/city_bus_bloc.dart';
-import 'package:oceanview/presentation/blocs/home_data_bloc/home_data_bloc.dart';
-import 'package:oceanview/presentation/blocs/shuttle_bus_bloc/shuttle_bus_bloc.dart';
+import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/city_bus_bloc/city_bus_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/shuttle_bus_bloc/shuttle_bus_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance; //sl is referred to as Service Locator
@@ -30,6 +31,12 @@ final sl = GetIt.instance; //sl is referred to as Service Locator
 Future<void> init() async {
   print('init');
   //Blocs
+  sl.registerFactory(
+    () => DashBoardBloc()
+      ..add(
+        DashBoardInited(),
+      ),
+  );
   sl.registerFactory(
     () => ShuttleBusBloc(
       getTodayShuttleInfo: sl(),
@@ -40,7 +47,7 @@ Future<void> init() async {
     () => CityBusBloc(getCityBusList: sl())..add(CityBusInited()),
   );
   sl.registerFactory(
-    () => HomeDataBloc(getWeatherInfo: sl(), getNearestEvents: sl())
+    () => HomeDataBloc(getWeatherInfo: sl(), getNoticeList: sl())
       ..add(HomeDataInited()),
   );
 
@@ -48,7 +55,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetCityBusList(repository: sl()));
   sl.registerLazySingleton(() => GetNextShuttleInfo(repository: sl()));
   sl.registerLazySingleton(() => GetTodayShuttleInfo(repository: sl()));
-  sl.registerLazySingleton(() => GetNearestEvents(repository: sl()));
+  sl.registerLazySingleton(() => GetNoticeList(repository: sl()));
   sl.registerLazySingleton(() => GetWeatherInfo(repository: sl()));
 
   //Repositories

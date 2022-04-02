@@ -3,121 +3,6 @@
 part of 'rest_client_service.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-CityBusData _$CityBusDataFromJson(Map<String, dynamic> json) => CityBusData(
-      carNo: json['carNo'] as String?,
-      nodeId: json['nodeId'] as int?,
-      lat: (json['lat'] as num?)?.toDouble(),
-      lin: (json['lin'] as num?)?.toDouble(),
-      gpsym: json['gpsym'] as int?,
-      bstopnm: json['bstopnm'] as String?,
-    );
-
-Map<String, dynamic> _$CityBusDataToJson(CityBusData instance) =>
-    <String, dynamic>{
-      'carNo': instance.carNo,
-      'nodeId': instance.nodeId,
-      'lat': instance.lat,
-      'lin': instance.lin,
-      'gpsym': instance.gpsym,
-      'bstopnm': instance.bstopnm,
-    };
-
-Term _$TermFromJson(Map<String, dynamic> json) => Term(
-      startedAt: json['startedAt'] as String?,
-      endedAt: json['endedAt'] as String?,
-    );
-
-Map<String, dynamic> _$TermToJson(Term instance) => <String, dynamic>{
-      'startedAt': instance.startedAt,
-      'endedAt': instance.endedAt,
-    };
-
-CalendarData _$CalendarDataFromJson(Map<String, dynamic> json) => CalendarData(
-      term: json['term'] == null
-          ? null
-          : Term.fromJson(json['term'] as Map<String, dynamic>),
-      content: json['content'] as String?,
-      mainPlan: json['mainPlan'] as bool?,
-    );
-
-Map<String, dynamic> _$CalendarDataToJson(CalendarData instance) =>
-    <String, dynamic>{
-      'term': instance.term,
-      'content': instance.content,
-      'mainPlan': instance.mainPlan,
-    };
-
-CalendarHomeData _$CalendarHomeDataFromJson(Map<String, dynamic> json) =>
-    CalendarHomeData(
-      term: json['term'] == null
-          ? null
-          : Term.fromJson(json['term'] as Map<String, dynamic>),
-      content: json['content'] as String?,
-      mainPlan: json['mainPlan'] as bool?,
-      dDay: json['dDay'] as int?,
-    );
-
-Map<String, dynamic> _$CalendarHomeDataToJson(CalendarHomeData instance) =>
-    <String, dynamic>{
-      'term': instance.term,
-      'content': instance.content,
-      'mainPlan': instance.mainPlan,
-      'dDay': instance.dDay,
-    };
-
-HolidayData _$HolidayDataFromJson(Map<String, dynamic> json) => HolidayData(
-      term: json['term'] == null
-          ? null
-          : Term.fromJson(json['term'] as Map<String, dynamic>),
-      content: json['content'] as String?,
-    );
-
-Map<String, dynamic> _$HolidayDataToJson(HolidayData instance) =>
-    <String, dynamic>{
-      'term': instance.term,
-      'content': instance.content,
-    };
-
-Weather _$WeatherFromJson(Map<String, dynamic> json) => Weather(
-      status: json['status'] as String? ?? '',
-      temparature: json['temparature'] as String? ?? '',
-      windSpeed: json['windSpeed'] as String? ?? '',
-      humidity: json['humidity'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
-      'status': instance.status,
-      'temparature': instance.temparature,
-      'windSpeed': instance.windSpeed,
-      'humidity': instance.humidity,
-    };
-
-MealData _$MealDataFromJson(Map<String, dynamic> json) => MealData(
-      type: json['type'] ?? 99,
-      value: json['value'] as List<dynamic>? ?? const ['식단이 없어요'],
-    );
-
-Map<String, dynamic> _$MealDataToJson(MealData instance) => <String, dynamic>{
-      'type': instance.type,
-      'value': instance.value,
-    };
-
-Notice _$NoticeFromJson(Map<String, dynamic> json) => Notice(
-      title: json['title'] as String?,
-      link: json['link'] as String?,
-      date: json['date'] as String?,
-    );
-
-Map<String, dynamic> _$NoticeToJson(Notice instance) => <String, dynamic>{
-      'title': instance.title,
-      'link': instance.link,
-      'date': instance.date,
-    };
-
-// **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
 
@@ -134,181 +19,146 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<List<CalendarData>> fetchWeekdayCalendarData() async {
+  Future<CalendarWrapper> fetchWeekdayCalendarData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<CalendarData>>(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CalendarWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'calendar',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => CalendarData.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = CalendarWrapper.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<List<HolidayData>> fetchHolidayCalendarData() async {
+  Future<HolidayWrapper> fetchHolidayCalendarData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<HolidayData>>(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HolidayWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'holiday',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => HolidayData.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = HolidayWrapper.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<List<CalendarHomeData>> fetchHomeCalendarData() async {
+  Future<LatestWrapper> fetchHomeCalendarData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<CalendarHomeData>>(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<LatestWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'calendar/latest',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map(
-            (dynamic i) => CalendarHomeData.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = LatestWrapper.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<List<Notice>> getNotices() async {
+  Future<NoticeWrapper> getNotices() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<Notice>>(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<NoticeWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'notices',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => Notice.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = NoticeWrapper.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<Map<String, List<CityBusData>>> getCityBusList() async {
+  Future<BusInfoWrapper> getCityBusList() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Map<String, List<CityBusData>>>(
+        _setStreamType<BusInfoWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'businfo',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((k, dynamic v) => MapEntry(
-        k,
-        (v as List)
-            .map((i) => CityBusData.fromJson(i as Map<String, dynamic>))
-            .toList()));
+    final value = BusInfoWrapper.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<CityBusData> getCityBusInfo(id) async {
+  Future<SpecificBusInfoWrapper> getCityBusInfo(id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<CityBusData>(
+        _setStreamType<SpecificBusInfoWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'businfo/${id}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CityBusData.fromJson(_result.data!);
+    final value = SpecificBusInfoWrapper.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<Weather> getWeatherInfo() async {
+  Future<TimeTable190Wrapper> getTimeTable190() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Weather>(
+        _setStreamType<TimeTable190Wrapper>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/timetable/190',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = TimeTable190Wrapper.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<WeatherWrapper> getWeatherInfo() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<WeatherWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'weather/now',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Weather.fromJson(_result.data!);
+    final value = WeatherWrapper.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<List<MealData>> getTeriaDiet() async {
+  Future<DietDormWrapper> getDormDiet() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<MealData>>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'diet/v2/society/today',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => MealData.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
-  }
-
-  @override
-  Future<List<MealData>> getNavalDiet() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<MealData>>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'diet/naval/today',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => MealData.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
-  }
-
-  @override
-  Future<List<MealData>> getDormDiet() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<MealData>>(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<DietDormWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'diet/dorm/today',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => MealData.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = DietDormWrapper.fromJson(_result.data!);
     return value;
   }
 

@@ -7,19 +7,19 @@ class LoadingState extends HomeDataState {
   List<Object?> get props => [];
 }
 
-class LoadedState extends HomeDataState {
-  LoadedState({required this.weather, required this.notice});
-  final Weather weather;
-  final List<Notice> notice;
+class HomeDataLoaded extends HomeDataState {
+  HomeDataLoaded({required this.weather, required this.notice});
+  final WeatherData weather;
+  final List<NoticeData> notice;
 
   @override
   List<Object?> get props => [];
 }
 
-class ErrorState extends HomeDataState {
+class HomeDataError extends HomeDataState {
   final String message;
 
-  ErrorState(this.message);
+  HomeDataError(this.message);
 
   @override
   List<Object?> get props => [message];
