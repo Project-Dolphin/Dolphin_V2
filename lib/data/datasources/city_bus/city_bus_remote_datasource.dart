@@ -1,23 +1,21 @@
-import 'dart:convert';
-
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
 
-abstract class BusRemoteDataSource {
-  Future<bool> getCityBusList();
+abstract class CityBusRemoteDataSource {
+  Future<List<CityBusData>> getCityBusList();
 }
 
-class BusRemoteDataSourceImpl extends BusRemoteDataSource {
+class CityBusRemoteDataSourceImpl extends CityBusRemoteDataSource {
   final RestClient restClientService;
 
-  BusRemoteDataSourceImpl({required this.restClientService});
+  CityBusRemoteDataSourceImpl({required this.restClientService});
 
   @override
-  Future<bool> getCityBusList() async {
+  Future<List<CityBusData>> getCityBusList() async {
     final response = await restClientService.getCityBusList();
     if (response.isEmpty) {
       throw ServerException();
     }
-    return true;
+    return response['data'] ?? [];
   }
 }

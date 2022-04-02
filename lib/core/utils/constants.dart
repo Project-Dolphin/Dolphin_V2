@@ -5,7 +5,7 @@ class AppConstants {
   추후 flavor 도입 후 추출 예정
   */
   static const String API_BASE_URL =
-      '/x4hvqlt6g5.execute-api.ap-northeast-2.amazonaws.com'; // add the base url here
+      'https://x4hvqlt6g5.execute-api.ap-northeast-2.amazonaws.com/prod/'; // add the base url here
 
   // 에러메세지
   static const String NO_CONNECTION_ERROR =

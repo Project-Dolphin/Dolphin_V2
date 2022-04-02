@@ -1,14 +1,14 @@
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class BusLocalDataSource {
+abstract class HomeDataLocalDataSource {
   Future<bool> busLocalDummy();
 }
 
-class BusLocalDataSourceImpl extends BusLocalDataSource {
+class HomeDataLocalDataSourceImpl extends HomeDataLocalDataSource {
   final SharedPreferences sharedPreferences;
 
-  BusLocalDataSourceImpl({required this.sharedPreferences});
+  HomeDataLocalDataSourceImpl({required this.sharedPreferences});
 
   @override
   Future<bool> busLocalDummy() async {
