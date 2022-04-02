@@ -1,6 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/injection_container.dart';
+import 'package:oceanview/presentation/blocs/city_bus_bloc/city_bus_bloc.dart';
+import 'package:oceanview/presentation/blocs/shuttle_bus_bloc/shuttle_bus_bloc.dart';
 
 /*
 Stack 구조로 관리하여야 할 듯
@@ -11,52 +15,58 @@ class DashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.transparent,
-        elevation: 0,
-        title: const MainTitle(),
-      ),
-      extendBody: true,
-      body: Stack(
-        children: [
-          Positioned(
-            bottom: 20,
-            child: Container(
-              width: MediaQuery.of(context).size.width - 24,
-              margin: const EdgeInsets.symmetric(horizontal: 12),
-              padding:
-                  const EdgeInsets.only(bottom: 5, top: 2, left: 22, right: 22),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(22),
-                gradient: const LinearGradient(
-                  colors: [
-                    Color(0xFF1D85FF),
-                    Color(0xFF3598F9),
-                  ],
+    return BlocProvider(
+      create: (_) => sl<CityBusBloc>(),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.transparent,
+          elevation: 0,
+          title: const MainTitle(),
+        ),
+        extendBody: true,
+        body: Stack(
+          children: [
+            BlocBuilder<CityBusBloc, CityBusState>(builder: (context, state) {
+              return Text('${context.read<CityBusBloc>().getCityBusList}');
+            }),
+            Positioned(
+              bottom: 20,
+              child: Container(
+                width: MediaQuery.of(context).size.width - 24,
+                margin: const EdgeInsets.symmetric(horizontal: 12),
+                padding: const EdgeInsets.only(
+                    bottom: 5, top: 2, left: 22, right: 22),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(22),
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color(0xFF1D85FF),
+                      Color(0xFF3598F9),
+                    ],
+                  ),
                 ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  /*
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    /*
                     TODO:
                     Select 아이템 처리 해야함
                     Indicator 보임 여부 및 애니메이션 사용 여부
                   */
-                  FloatingBottomItem(),
-                  FloatingBottomItem(),
-                  FloatingBottomItem(),
-                  FloatingBottomItem(),
-                  FloatingBottomItem(),
-                ],
+                    FloatingBottomItem(),
+                    FloatingBottomItem(),
+                    FloatingBottomItem(),
+                    FloatingBottomItem(),
+                    FloatingBottomItem(),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

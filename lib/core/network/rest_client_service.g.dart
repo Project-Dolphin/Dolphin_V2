@@ -7,26 +7,22 @@ part of 'rest_client_service.dart';
 // **************************************************************************
 
 CityBusData _$CityBusDataFromJson(Map<String, dynamic> json) => CityBusData(
-      carNo1: json['carNo1'] as int?,
-      carNo2: json['carNo2'] as int?,
-      min1: json['min1'] as int?,
-      min2: json['min2'] as int?,
-      station1: json['station1'] as int?,
-      station2: json['station2'] as int?,
-      lowplate1: json['lowplate1'] as bool?,
-      lowplate2: json['lowplate2'] as bool?,
+      carNo: json['carNo'] as String?,
+      nodeId: json['nodeId'] as int?,
+      lat: (json['lat'] as num?)?.toDouble(),
+      lin: (json['lin'] as num?)?.toDouble(),
+      gpsym: json['gpsym'] as int?,
+      bstopnm: json['bstopnm'] as String?,
     );
 
 Map<String, dynamic> _$CityBusDataToJson(CityBusData instance) =>
     <String, dynamic>{
-      'carNo1': instance.carNo1,
-      'carNo2': instance.carNo2,
-      'min1': instance.min1,
-      'min2': instance.min2,
-      'station1': instance.station1,
-      'station2': instance.station2,
-      'lowplate1': instance.lowplate1,
-      'lowplate2': instance.lowplate2,
+      'carNo': instance.carNo,
+      'nodeId': instance.nodeId,
+      'lat': instance.lat,
+      'lin': instance.lin,
+      'gpsym': instance.gpsym,
+      'bstopnm': instance.bstopnm,
     };
 
 Term _$TermFromJson(Map<String, dynamic> json) => Term(
@@ -86,10 +82,10 @@ Map<String, dynamic> _$HolidayDataToJson(HolidayData instance) =>
     };
 
 Weather _$WeatherFromJson(Map<String, dynamic> json) => Weather(
-      status: json['status'] as String?,
-      temparature: json['temparature'] as String?,
-      windSpeed: json['windSpeed'] as String?,
-      humidity: json['humidity'] as String?,
+      status: json['status'] as String? ?? '',
+      temparature: json['temparature'] as String? ?? '',
+      windSpeed: json['windSpeed'] as String? ?? '',
+      humidity: json['humidity'] as String? ?? '',
     );
 
 Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
@@ -109,6 +105,18 @@ Map<String, dynamic> _$MealDataToJson(MealData instance) => <String, dynamic>{
       'value': instance.value,
     };
 
+Notice _$NoticeFromJson(Map<String, dynamic> json) => Notice(
+      title: json['title'] as String?,
+      link: json['link'] as String?,
+      date: json['date'] as String?,
+    );
+
+Map<String, dynamic> _$NoticeToJson(Notice instance) => <String, dynamic>{
+      'title': instance.title,
+      'link': instance.link,
+      'date': instance.date,
+    };
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -117,7 +125,8 @@ Map<String, dynamic> _$MealDataToJson(MealData instance) => <String, dynamic>{
 
 class _RestClient implements RestClient {
   _RestClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= '/x4hvqlt6g5.execute-api.ap-northeast-2.amazonaws.com';
+    baseUrl ??=
+        'https://x4hvqlt6g5.execute-api.ap-northeast-2.amazonaws.com/prod/';
   }
 
   final Dio _dio;
@@ -133,7 +142,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<List<CalendarData>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/calendar',
+                .compose(_dio.options, 'calendar',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -151,7 +160,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<List<HolidayData>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/holiday',
+                .compose(_dio.options, 'holiday',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -169,7 +178,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<List<CalendarHomeData>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/calendar/latest',
+                .compose(_dio.options, 'calendar/latest',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -180,20 +189,40 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<List<CityBusData>> getCityBusList() async {
+  Future<List<Notice>> getNotices() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<CityBusData>>(
+        _setStreamType<List<Notice>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/businfo',
+                .compose(_dio.options, 'notices',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
-        .map((dynamic i) => CityBusData.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => Notice.fromJson(i as Map<String, dynamic>))
         .toList();
+    return value;
+  }
+
+  @override
+  Future<Map<String, List<CityBusData>>> getCityBusList() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Map<String, List<CityBusData>>>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'businfo',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!.map((k, dynamic v) => MapEntry(
+        k,
+        (v as List)
+            .map((i) => CityBusData.fromJson(i as Map<String, dynamic>))
+            .toList()));
     return value;
   }
 
@@ -206,7 +235,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<CityBusData>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/businfo/${id}',
+                .compose(_dio.options, 'businfo/${id}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = CityBusData.fromJson(_result.data!);
@@ -222,7 +251,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Weather>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/weather/now',
+                .compose(_dio.options, 'weather/now',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Weather.fromJson(_result.data!);
@@ -238,7 +267,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<List<MealData>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/diet/v2/society/today',
+                .compose(_dio.options, 'diet/v2/society/today',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -256,7 +285,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<List<MealData>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/diet/naval/today',
+                .compose(_dio.options, 'diet/naval/today',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -274,7 +303,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<List<MealData>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/diet/dorm/today',
+                .compose(_dio.options, 'diet/dorm/today',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!

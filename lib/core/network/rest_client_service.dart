@@ -10,67 +10,64 @@ part 'rest_client_service.g.dart';
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
-  @GET('/calendar')
+  @GET('calendar')
   Future<List<CalendarData>> fetchWeekdayCalendarData();
 
-  @GET('/holiday')
+  @GET('holiday')
   Future<List<HolidayData>> fetchHolidayCalendarData();
 
-  @GET('/calendar/latest')
+  @GET('calendar/latest')
   Future<List<CalendarHomeData>> fetchHomeCalendarData();
 
-  //@GET('/notices')
+  @GET('notices')
   // 객체 찍어보고 다시 넣을 예정
-  //Future<List<T>> getTs();
+  Future<List<Notice>> getNotices();
 
-  @GET('/businfo')
-  Future<List<CityBusData>> getCityBusList();
+  @GET('businfo')
+  Future<Map<String, List<CityBusData>>> getCityBusList();
 
-  @GET('/businfo/{id}')
+  @GET('businfo/{id}')
   Future<CityBusData> getCityBusInfo(@Path() String id);
 
-  //@GET('/shuttle/next')
-  //Future<List<T>> getTs();
+  // @GET('/shuttle/next')
+  // Future<List<dynamic>> getNextShuttle();
 
-  //@GET('/shuttle/today')
-  //Future<List<T>> getTs();
+  // @GET('/shuttle/today')
+  // Future<List<dynamic>> getTodayShuttleInfo();
 
   // @GET('/timetable/190')
-  // Future<List<T>> getTs();
+  // Future<List<dynamic>> getTimeTable190();
 
-  @GET('/weather/now')
+  @GET('weather/now')
   Future<Weather> getWeatherInfo();
 
-  @GET('/diet/v2/society/today')
+  @GET('diet/v2/society/today')
   Future<List<MealData>> getTeriaDiet();
 
-  @GET('/diet/naval/today')
+  @GET('diet/naval/today')
   Future<List<MealData>> getNavalDiet();
 
-  @GET('/diet/dorm/today')
+  @GET('diet/dorm/today')
   Future<List<MealData>> getDormDiet();
 }
 
 @JsonSerializable()
 class CityBusData {
-  int? carNo1;
-  int? carNo2;
-  int? min1;
-  int? min2;
-  int? station1;
-  int? station2;
-  bool? lowplate1; // bool to int 에러 발생으로 타입 bool 로 변경
-  bool? lowplate2;
+  String? carNo;
+  int? nodeId;
+  double? lat;
+  double? lin;
+  int? gpsym;
+  String? bstopnm;
 
-  CityBusData(
-      {this.carNo1,
-      this.carNo2,
-      this.min1,
-      this.min2,
-      this.station1,
-      this.station2,
-      this.lowplate1,
-      this.lowplate2});
+  CityBusData({
+    this.carNo,
+    this.nodeId,
+    this.lat,
+    this.lin,
+    this.gpsym,
+    this.bstopnm,
+  });
 
   factory CityBusData.fromJson(Map<String, dynamic> json) =>
       _$CityBusDataFromJson(json);
@@ -129,12 +126,23 @@ class HolidayData {
 
 @JsonSerializable()
 class Weather {
-  String? status;
-  String? temparature;
-  String? windSpeed;
-  String? humidity;
+  @JsonKey(defaultValue: '')
+  String status;
 
-  Weather({this.status, this.temparature, this.windSpeed, this.humidity});
+  @JsonKey(defaultValue: '')
+  String temparature;
+
+  @JsonKey(defaultValue: '')
+  String windSpeed;
+
+  @JsonKey(defaultValue: '')
+  String humidity;
+
+  Weather(
+      {required this.status,
+      required this.temparature,
+      required this.windSpeed,
+      required this.humidity});
 
   factory Weather.fromJson(Map<String, dynamic> json) =>
       _$WeatherFromJson(json);
@@ -155,4 +163,17 @@ class MealData {
       _$MealDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$MealDataToJson(this);
+}
+
+@JsonSerializable()
+class Notice {
+  String? title;
+  String? link;
+  String? date;
+
+  Notice({this.title, this.link, this.date});
+
+  factory Notice.fromJson(Map<String, dynamic> json) => _$NoticeFromJson(json);
+
+  Map<String, dynamic> toJson() => _$NoticeToJson(this);
 }
