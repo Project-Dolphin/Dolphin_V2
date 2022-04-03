@@ -13,6 +13,7 @@ _$_LatestData _$$_LatestDataFromJson(Map<String, dynamic> json) =>
           : LatestTerm.fromJson(json['term'] as Map<String, dynamic>),
       mainPlan: json['mainPlan'] as bool?,
       content: json['content'] as String?,
+      dDay: json['dDay'] as int?,
     );
 
 Map<String, dynamic> _$$_LatestDataToJson(_$_LatestData instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$_LatestDataToJson(_$_LatestData instance) =>
       'term': instance.term,
       'mainPlan': instance.mainPlan,
       'content': instance.content,
+      'dDay': instance.dDay,
     };

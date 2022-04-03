@@ -22,11 +22,13 @@ LatestData _$LatestDataFromJson(Map<String, dynamic> json) {
 class _$LatestDataTearOff {
   const _$LatestDataTearOff();
 
-  _LatestData call({LatestTerm? term, bool? mainPlan, String? content}) {
+  _LatestData call(
+      {LatestTerm? term, bool? mainPlan, String? content, int? dDay}) {
     return _LatestData(
       term: term,
       mainPlan: mainPlan,
       content: content,
+      dDay: dDay,
     );
   }
 
@@ -43,6 +45,7 @@ mixin _$LatestData {
   LatestTerm? get term => throw _privateConstructorUsedError;
   bool? get mainPlan => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
+  int? get dDay => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +58,7 @@ abstract class $LatestDataCopyWith<$Res> {
   factory $LatestDataCopyWith(
           LatestData value, $Res Function(LatestData) then) =
       _$LatestDataCopyWithImpl<$Res>;
-  $Res call({LatestTerm? term, bool? mainPlan, String? content});
+  $Res call({LatestTerm? term, bool? mainPlan, String? content, int? dDay});
 
   $LatestTermCopyWith<$Res>? get term;
 }
@@ -73,6 +76,7 @@ class _$LatestDataCopyWithImpl<$Res> implements $LatestDataCopyWith<$Res> {
     Object? term = freezed,
     Object? mainPlan = freezed,
     Object? content = freezed,
+    Object? dDay = freezed,
   }) {
     return _then(_value.copyWith(
       term: term == freezed
@@ -87,6 +91,10 @@ class _$LatestDataCopyWithImpl<$Res> implements $LatestDataCopyWith<$Res> {
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String?,
+      dDay: dDay == freezed
+          ? _value.dDay
+          : dDay // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 
@@ -108,7 +116,7 @@ abstract class _$LatestDataCopyWith<$Res> implements $LatestDataCopyWith<$Res> {
           _LatestData value, $Res Function(_LatestData) then) =
       __$LatestDataCopyWithImpl<$Res>;
   @override
-  $Res call({LatestTerm? term, bool? mainPlan, String? content});
+  $Res call({LatestTerm? term, bool? mainPlan, String? content, int? dDay});
 
   @override
   $LatestTermCopyWith<$Res>? get term;
@@ -129,6 +137,7 @@ class __$LatestDataCopyWithImpl<$Res> extends _$LatestDataCopyWithImpl<$Res>
     Object? term = freezed,
     Object? mainPlan = freezed,
     Object? content = freezed,
+    Object? dDay = freezed,
   }) {
     return _then(_LatestData(
       term: term == freezed
@@ -143,6 +152,10 @@ class __$LatestDataCopyWithImpl<$Res> extends _$LatestDataCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String?,
+      dDay: dDay == freezed
+          ? _value.dDay
+          : dDay // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -150,7 +163,7 @@ class __$LatestDataCopyWithImpl<$Res> extends _$LatestDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LatestData implements _LatestData {
-  _$_LatestData({this.term, this.mainPlan, this.content});
+  _$_LatestData({this.term, this.mainPlan, this.content, this.dDay});
 
   factory _$_LatestData.fromJson(Map<String, dynamic> json) =>
       _$$_LatestDataFromJson(json);
@@ -161,10 +174,12 @@ class _$_LatestData implements _LatestData {
   final bool? mainPlan;
   @override
   final String? content;
+  @override
+  final int? dDay;
 
   @override
   String toString() {
-    return 'LatestData(term: $term, mainPlan: $mainPlan, content: $content)';
+    return 'LatestData(term: $term, mainPlan: $mainPlan, content: $content, dDay: $dDay)';
   }
 
   @override
@@ -174,7 +189,8 @@ class _$_LatestData implements _LatestData {
             other is _LatestData &&
             const DeepCollectionEquality().equals(other.term, term) &&
             const DeepCollectionEquality().equals(other.mainPlan, mainPlan) &&
-            const DeepCollectionEquality().equals(other.content, content));
+            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality().equals(other.dDay, dDay));
   }
 
   @override
@@ -182,7 +198,8 @@ class _$_LatestData implements _LatestData {
       runtimeType,
       const DeepCollectionEquality().hash(term),
       const DeepCollectionEquality().hash(mainPlan),
-      const DeepCollectionEquality().hash(content));
+      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(dDay));
 
   @JsonKey(ignore: true)
   @override
@@ -196,8 +213,11 @@ class _$_LatestData implements _LatestData {
 }
 
 abstract class _LatestData implements LatestData {
-  factory _LatestData({LatestTerm? term, bool? mainPlan, String? content}) =
-      _$_LatestData;
+  factory _LatestData(
+      {LatestTerm? term,
+      bool? mainPlan,
+      String? content,
+      int? dDay}) = _$_LatestData;
 
   factory _LatestData.fromJson(Map<String, dynamic> json) =
       _$_LatestData.fromJson;
@@ -208,6 +228,8 @@ abstract class _LatestData implements LatestData {
   bool? get mainPlan;
   @override
   String? get content;
+  @override
+  int? get dDay;
   @override
   @JsonKey(ignore: true)
   _$LatestDataCopyWith<_LatestData> get copyWith =>

@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/core/config/enum/root_tab_enum.dart';
 import 'package:oceanview/injection_container.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
+import 'package:oceanview/presentation/blocs/diet_page_bloc/diet_page_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/city_bus_bloc/city_bus_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 import 'package:oceanview/presentation/page/widgets/tab_view.dart';
 
-class DashBoard extends StatefulWidget {
+class DashBoard extends StatelessWidget {
   const DashBoard({Key? key}) : super(key: key);
-
-  @override
-  State<DashBoard> createState() => _DashBoardState();
-}
-
-class _DashBoardState extends State<DashBoard> {
-  PageController imagesController =
-      PageController(initialPage: 0, viewportFraction: 1.1);
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +20,17 @@ class _DashBoardState extends State<DashBoard> {
           create: (_) => sl<DashBoardBloc>(),
         ),
         BlocProvider(
+          create: (_) => sl<DietPageBloc>(),
+        ),
+        BlocProvider(
           create: (_) => sl<HomeDataBloc>(),
         ),
         BlocProvider(
           create: (_) => sl<CityBusBloc>(),
-        )
+        ),
+        BlocProvider(
+          create: (_) => sl<DietDataBloc>(),
+        ),
       ],
       child: Scaffold(
         appBar: AppBar(
@@ -47,9 +48,8 @@ class _DashBoardState extends State<DashBoard> {
                 state,
               ) {
                 //TODO : 대쉬보드 로딩 전에는 loadingState 보여줘도 됨
-                RootTab _selectedTab =
-                    state is DashBoardLoaded ? state.selectedTab : RootTab.home;
-                return TabView(_selectedTab);
+
+                return TabView(state.selectedTab);
                 /*
                 예시 : 
                 if(state is DashBoardLoaded){
@@ -85,15 +85,16 @@ class _DashBoardState extends State<DashBoard> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ...RootTab.values.map((tab) {
-            return FloatingBottomItem(tab: tab);
-          })
+          ...RootTab.values.map(
+            (tab) => FloatingBottomItem(tab: tab),
+          ),
         ],
       ),
     );
   }
 }
 
+// ignore: prefer-single-widget-per-file
 class FloatingBottomItem extends StatelessWidget {
   final RootTab tab;
 
@@ -107,8 +108,6 @@ class FloatingBottomItem extends StatelessWidget {
         context,
         state,
       ) {
-        RootTab temp =
-            state is DashBoardLoaded ? state.selectedTab : RootTab.home;
         return SizedBox(
           width: 36,
           height: 47,
@@ -120,14 +119,14 @@ class FloatingBottomItem extends StatelessWidget {
                 height: 3,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(31.82),
-                  color: temp == tab
+                  color: state.selectedTab == tab
                       ? Theme.of(context).primaryColor
                       : Colors.transparent,
                 ),
               ),
               Column(
                 children: [
-                  temp == tab ? tab.selectedIcon : tab.icon,
+                  state.selectedTab == tab ? tab.selectedIcon : tab.icon,
                   const SizedBox(height: 4),
                   Text(
                     tab.text,
@@ -137,7 +136,7 @@ class FloatingBottomItem extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         );
@@ -147,6 +146,8 @@ class FloatingBottomItem extends StatelessWidget {
 }
 
 // TODO : Bloc을 통해 선택 된 페이지의 인덱스를 관리할 것
+
+// ignore: prefer-single-widget-per-file
 class MainTitle extends StatelessWidget {
   const MainTitle({Key? key}) : super(key: key);
 
@@ -159,11 +160,13 @@ class MainTitle extends StatelessWidget {
               .createShader(
         Rect.fromLTWH(0, 0, bounds.width, bounds.height),
       ),
-      child: Text('OceanView',
-          style: Theme.of(context)
-              .textTheme
-              .headline5!
-              .copyWith(fontWeight: FontWeight.w700)),
+      child: Text(
+        'OceanView',
+        style: Theme.of(context)
+            .textTheme
+            .headline5!
+            .copyWith(fontWeight: FontWeight.w700),
+      ),
     );
   }
 }

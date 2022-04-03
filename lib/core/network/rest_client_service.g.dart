@@ -51,7 +51,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<LatestWrapper> fetchHomeCalendarData() async {
+  Future<LatestWrapper> getLatestEvents() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

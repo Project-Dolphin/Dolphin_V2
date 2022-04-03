@@ -1,24 +1,18 @@
 part of 'dashboard_bloc.dart';
 
-class DashBoardState {}
+class DashBoardState {
+  DashBoardState({required this.state, required this.selectedTab});
 
-class DashBoardLoading extends DashBoardState {
-  @override
-  List<Object?> get props => [];
-}
-
-class DashBoardLoaded extends DashBoardState {
-  DashBoardLoaded({required this.state, required this.selectedTab});
   final DateState state;
   final RootTab selectedTab;
   @override
   List<Object?> get props => [];
 
-  DashBoardLoaded copyWith({
+  DashBoardState copyWith({
     DateState? state,
     RootTab? selectedTab,
   }) {
-    return DashBoardLoaded(
+    return DashBoardState(
       state: state ?? this.state,
       selectedTab: selectedTab ?? this.selectedTab,
     );
