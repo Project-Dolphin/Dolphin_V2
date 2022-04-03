@@ -8,9 +8,14 @@ class LoadingState extends HomeDataState {
 }
 
 class HomeDataLoaded extends HomeDataState {
-  HomeDataLoaded({required this.weather, required this.notice});
+  HomeDataLoaded({
+    required this.weather,
+    required this.notice,
+    required this.event,
+  });
   final WeatherData weather;
   final List<NoticeData> notice;
+  final List<LatestData> event;
 
   @override
   List<Object?> get props => [];

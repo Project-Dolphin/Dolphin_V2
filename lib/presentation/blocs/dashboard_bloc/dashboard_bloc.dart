@@ -1,37 +1,37 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/core/config/enum/root_tab_enum.dart';
 import 'package:oceanview/core/config/r.dart';
-import 'package:oceanview/presentation/page/widgets/tab_view.dart';
 
 part 'dashboard_event.dart';
 part 'dashboard_state.dart';
 
 class DashBoardBloc extends Bloc<DashBoardEvent, DashBoardState> {
-  DashBoardBloc() : super(DashBoardLoading()) {
-    on<DashBoardInited>(_onAppLaunched);
+  DashBoardBloc()
+      : super(
+          DashBoardState(
+            state: DateStateExt.from(),
+            selectedTab: RootTab.home,
+          ),
+        ) {
     on<RootTabSelected>(_onPageChanged);
   }
 
-  void _onAppLaunched(
-    DashBoardInited event,
-    Emitter<DashBoardState> emit,
-  ) {
-    DateState temp = DateStateExt.from();
-
-    emit(DashBoardLoaded(state: temp, selectedTab: RootTab.home));
-  }
+  final PageController controller =
+      PageController(initialPage: 0, viewportFraction: 0.893);
 
   void _onPageChanged(
     RootTabSelected event,
     Emitter<DashBoardState> emit,
   ) {
     final state = this.state;
-    if (state is DashBoardLoaded) {
-      emit(state.copyWith(selectedTab: event.selectedTab));
-    } else {
-      DateState temp = DateStateExt.from();
-      emit(DashBoardLoaded(state: temp, selectedTab: RootTab.home));
-    }
+    controller.animateToPage(
+      event.selectedTab.index,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeOut,
+    );
+    emit(state.copyWith(selectedTab: event.selectedTab));
   }
 }
 

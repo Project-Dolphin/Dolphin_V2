@@ -26,7 +26,7 @@ abstract class RestClient {
   Future<HolidayWrapper> fetchHolidayCalendarData();
 
   @GET('calendar/latest')
-  Future<LatestWrapper> fetchHomeCalendarData();
+  Future<LatestWrapper> getLatestEvents();
 
   @GET('notices')
   // 객체 찍어보고 다시 넣을 예정

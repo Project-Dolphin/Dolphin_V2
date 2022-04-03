@@ -11,6 +11,7 @@ class LatestData with _$LatestData {
     LatestTerm? term,
     bool? mainPlan,
     String? content,
+    int? dDay,
   }) = _LatestData;
 
   factory LatestData.fromJson(Map<String, dynamic> json) =>
