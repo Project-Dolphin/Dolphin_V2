@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
+import 'package:oceanview/core/utils/constants.dart';
 import 'package:oceanview/data/datasources/city_bus/city_bus_local_datasource.dart';
 import 'package:oceanview/data/datasources/city_bus/city_bus_remote_datasource.dart';
 import 'package:oceanview/data/datasources/diet/diet_local_datasource.dart';
@@ -21,8 +22,8 @@ import 'package:oceanview/domain/repositories/shuttle_bus_repository.dart';
 import 'package:oceanview/domain/usecases/get_city_bus_list.dart';
 import 'package:oceanview/domain/usecases/get_dorm_diet.dart';
 import 'package:oceanview/domain/usecases/get_latest_event.dart';
-import 'package:oceanview/domain/usecases/get_notice_list.dart';
 import 'package:oceanview/domain/usecases/get_next_shuttle_info.dart';
+import 'package:oceanview/domain/usecases/get_notice_list.dart';
 import 'package:oceanview/domain/usecases/get_today_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_weather_info.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
@@ -149,5 +150,10 @@ Future<void> init() async {
   final dio = Dio();
 
   sl.registerLazySingleton(() => sharedPreferences);
-  sl.registerLazySingleton(() => RestClient(dio));
+  sl.registerLazySingleton(
+    () => RestClient(
+      dio,
+      baseUrl: AppConstants.API_BASE_URL,
+    ),
+  );
 }
