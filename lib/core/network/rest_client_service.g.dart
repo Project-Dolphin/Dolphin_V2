@@ -115,6 +115,38 @@ class _RestClient implements RestClient {
   }
 
   @override
+  Future<ShuttleNextWrapper> getNextShuttle() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ShuttleNextWrapper>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/shuttle/next',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ShuttleNextWrapper.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ShuttleTodayWrapper> getTodayShuttleInfo() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ShuttleTodayWrapper>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/shuttle/today',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ShuttleTodayWrapper.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<TimeTable190Wrapper> getTimeTable190() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

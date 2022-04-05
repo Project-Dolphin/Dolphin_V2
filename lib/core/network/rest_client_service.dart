@@ -1,15 +1,17 @@
+import 'package:dio/dio.dart';
 import 'package:oceanview/core/utils/constants.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:dio/dio.dart';
 
 import 'response/endpoint_businfo/response_businfo_dto.dart';
+import 'response/endpoint_businfo_specific/response_businfo_specific_dto.dart';
 import 'response/endpoint_calendar/response_calendar_dto.dart';
 import 'response/endpoint_calendar_latest/response_calendar_latest_dto.dart';
 import 'response/endpoint_diet_dorm_today/response_diet_dorm_dto.dart';
 import 'response/endpoint_holiday/response_holiday_dto.dart';
-import 'response/endpoint_timetable_190/response_timetable_190_dto.dart';
-import 'response/endpoint_businfo_specific/response_businfo_specific_dto.dart';
 import 'response/endpoint_notices/response_notice_dto.dart';
+import 'response/endpoint_shuttle/response_shuttle_next_dto.dart';
+import 'response/endpoint_shuttle/response_shuttle_today_dto.dart';
+import 'response/endpoint_timetable_190/response_timetable_190_dto.dart';
 import 'response/endpoint_weather_now/response_weather_now_dto.dart';
 
 part 'rest_client_service.g.dart';
@@ -38,11 +40,11 @@ abstract class RestClient {
   @GET('businfo/{id}')
   Future<SpecificBusInfoWrapper> getCityBusInfo(@Path() String id);
 
-  // @GET('/shuttle/next')
-  // Future<List<dynamic>> getNextShuttle();
+  @GET('/shuttle/next')
+  Future<ShuttleNextWrapper> getNextShuttle();
 
-  // @GET('/shuttle/today')
-  // Future<List<dynamic>> getTodayShuttleInfo();
+  @GET('/shuttle/today')
+  Future<ShuttleTodayWrapper> getTodayShuttleInfo();
 
   @GET('/timetable/190')
   Future<TimeTable190Wrapper> getTimeTable190();
