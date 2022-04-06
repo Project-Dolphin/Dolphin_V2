@@ -22,7 +22,7 @@ CalendarWrapper _$CalendarWrapperFromJson(Map<String, dynamic> json) {
 class _$CalendarWrapperTearOff {
   const _$CalendarWrapperTearOff();
 
-  _CalendarWrapper call({List<CalendarData>? data, String? path}) {
+  _CalendarWrapper call({List<WeekdayData>? data, String? path}) {
     return _CalendarWrapper(
       data: data,
       path: path,
@@ -39,7 +39,7 @@ const $CalendarWrapper = _$CalendarWrapperTearOff();
 
 /// @nodoc
 mixin _$CalendarWrapper {
-  List<CalendarData>? get data => throw _privateConstructorUsedError;
+  List<WeekdayData>? get data => throw _privateConstructorUsedError;
   String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $CalendarWrapperCopyWith<$Res> {
   factory $CalendarWrapperCopyWith(
           CalendarWrapper value, $Res Function(CalendarWrapper) then) =
       _$CalendarWrapperCopyWithImpl<$Res>;
-  $Res call({List<CalendarData>? data, String? path});
+  $Res call({List<WeekdayData>? data, String? path});
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$CalendarWrapperCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<CalendarData>?,
+              as List<WeekdayData>?,
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -90,7 +90,7 @@ abstract class _$CalendarWrapperCopyWith<$Res>
           _CalendarWrapper value, $Res Function(_CalendarWrapper) then) =
       __$CalendarWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<CalendarData>? data, String? path});
+  $Res call({List<WeekdayData>? data, String? path});
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$CalendarWrapperCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<CalendarData>?,
+              as List<WeekdayData>?,
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,7 @@ class _$_CalendarWrapper implements _CalendarWrapper {
       _$$_CalendarWrapperFromJson(json);
 
   @override
-  final List<CalendarData>? data;
+  final List<WeekdayData>? data;
   @override
   final String? path;
 
@@ -167,14 +167,14 @@ class _$_CalendarWrapper implements _CalendarWrapper {
 }
 
 abstract class _CalendarWrapper implements CalendarWrapper {
-  factory _CalendarWrapper({List<CalendarData>? data, String? path}) =
+  factory _CalendarWrapper({List<WeekdayData>? data, String? path}) =
       _$_CalendarWrapper;
 
   factory _CalendarWrapper.fromJson(Map<String, dynamic> json) =
       _$_CalendarWrapper.fromJson;
 
   @override
-  List<CalendarData>? get data;
+  List<WeekdayData>? get data;
   @override
   String? get path;
   @override

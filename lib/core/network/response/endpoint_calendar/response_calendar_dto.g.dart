@@ -9,7 +9,7 @@ part of 'response_calendar_dto.dart';
 _$_CalendarWrapper _$$_CalendarWrapperFromJson(Map<String, dynamic> json) =>
     _$_CalendarWrapper(
       data: (json['data'] as List<dynamic>?)
-          ?.map((e) => CalendarData.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => WeekdayData.fromJson(e as Map<String, dynamic>))
           .toList(),
       path: json['path'] as String?,
     );

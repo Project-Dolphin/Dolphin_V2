@@ -6,8 +6,8 @@ part of 'response_calendar_data_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CalendarData _$$_CalendarDataFromJson(Map<String, dynamic> json) =>
-    _$_CalendarData(
+_$_WeekdayData _$$_WeekdayDataFromJson(Map<String, dynamic> json) =>
+    _$_WeekdayData(
       term: json['term'] == null
           ? null
           : CalendarTerm.fromJson(json['term'] as Map<String, dynamic>),
@@ -15,7 +15,7 @@ _$_CalendarData _$$_CalendarDataFromJson(Map<String, dynamic> json) =>
       content: json['content'] as String?,
     );
 
-Map<String, dynamic> _$$_CalendarDataToJson(_$_CalendarData instance) =>
+Map<String, dynamic> _$$_WeekdayDataToJson(_$_WeekdayData instance) =>
     <String, dynamic>{
       'term': instance.term,
       'mainPlan': instance.mainPlan,

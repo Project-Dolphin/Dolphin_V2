@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'response_diet_society_data_dto.dart';
+part of 'response_diet_cafe_data_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DietData _$$_DietDataFromJson(Map<String, dynamic> json) => _$_DietData(
+_$_CafeData _$$_CafeDataFromJson(Map<String, dynamic> json) => _$_CafeData(
       student: (json['student'] as List<dynamic>?)
           ?.map((e) => DietDetail.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -18,7 +18,7 @@ _$_DietData _$$_DietDataFromJson(Map<String, dynamic> json) => _$_DietData(
           .toList(),
     );
 
-Map<String, dynamic> _$$_DietDataToJson(_$_DietData instance) =>
+Map<String, dynamic> _$$_CafeDataToJson(_$_CafeData instance) =>
     <String, dynamic>{
       'student': instance.student,
       'snack': instance.snack,

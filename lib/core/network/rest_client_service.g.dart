@@ -16,7 +16,7 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<CalendarWrapper> fetchWeekdayCalendarData() async {
+  Future<CalendarWrapper> getWeekdayCalendarData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -32,7 +32,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<HolidayWrapper> fetchHolidayCalendarData() async {
+  Future<HolidayWrapper> getHolidayCalendarData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -80,7 +80,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<BusInfoWrapper> getCityBusList() async {
+  Future<BusInfoWrapper> getOperationBusInfo() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -96,7 +96,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<SpecificBusInfoWrapper> getCityBusInfo(id) async {
+  Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -120,7 +120,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ShuttleNextWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/shuttle/next',
+                .compose(_dio.options, 'shuttle/next',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ShuttleNextWrapper.fromJson(_result.data!);
@@ -136,7 +136,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ShuttleTodayWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/shuttle/today',
+                .compose(_dio.options, 'shuttle/today',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ShuttleTodayWrapper.fromJson(_result.data!);
@@ -152,7 +152,7 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<TimeTable190Wrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/timetable/190',
+                .compose(_dio.options, 'timetable/190',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = TimeTable190Wrapper.fromJson(_result.data!);
@@ -176,7 +176,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<DietSocietyWrapper> getTeriaDiet() async {
+  Future<DietSocietyWrapper> getCafeDiet() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

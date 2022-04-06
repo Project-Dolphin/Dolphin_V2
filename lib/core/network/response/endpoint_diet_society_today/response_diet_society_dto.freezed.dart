@@ -22,7 +22,7 @@ DietSocietyWrapper _$DietSocietyWrapperFromJson(Map<String, dynamic> json) {
 class _$DietSocietyWrapperTearOff {
   const _$DietSocietyWrapperTearOff();
 
-  _DietSocietyWrapper call({DietData? data, String? path}) {
+  _DietSocietyWrapper call({CafeData? data, String? path}) {
     return _DietSocietyWrapper(
       data: data,
       path: path,
@@ -39,7 +39,7 @@ const $DietSocietyWrapper = _$DietSocietyWrapperTearOff();
 
 /// @nodoc
 mixin _$DietSocietyWrapper {
-  DietData? get data => throw _privateConstructorUsedError;
+  CafeData? get data => throw _privateConstructorUsedError;
   String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,9 +53,9 @@ abstract class $DietSocietyWrapperCopyWith<$Res> {
   factory $DietSocietyWrapperCopyWith(
           DietSocietyWrapper value, $Res Function(DietSocietyWrapper) then) =
       _$DietSocietyWrapperCopyWithImpl<$Res>;
-  $Res call({DietData? data, String? path});
+  $Res call({CafeData? data, String? path});
 
-  $DietDataCopyWith<$Res>? get data;
+  $CafeDataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -76,7 +76,7 @@ class _$DietSocietyWrapperCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as DietData?,
+              as CafeData?,
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -85,12 +85,12 @@ class _$DietSocietyWrapperCopyWithImpl<$Res>
   }
 
   @override
-  $DietDataCopyWith<$Res>? get data {
+  $CafeDataCopyWith<$Res>? get data {
     if (_value.data == null) {
       return null;
     }
 
-    return $DietDataCopyWith<$Res>(_value.data!, (value) {
+    return $CafeDataCopyWith<$Res>(_value.data!, (value) {
       return _then(_value.copyWith(data: value));
     });
   }
@@ -103,10 +103,10 @@ abstract class _$DietSocietyWrapperCopyWith<$Res>
           _DietSocietyWrapper value, $Res Function(_DietSocietyWrapper) then) =
       __$DietSocietyWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({DietData? data, String? path});
+  $Res call({CafeData? data, String? path});
 
   @override
-  $DietDataCopyWith<$Res>? get data;
+  $CafeDataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -129,7 +129,7 @@ class __$DietSocietyWrapperCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as DietData?,
+              as CafeData?,
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -147,7 +147,7 @@ class _$_DietSocietyWrapper implements _DietSocietyWrapper {
       _$$_DietSocietyWrapperFromJson(json);
 
   @override
-  final DietData? data;
+  final CafeData? data;
   @override
   final String? path;
 
@@ -183,14 +183,14 @@ class _$_DietSocietyWrapper implements _DietSocietyWrapper {
 }
 
 abstract class _DietSocietyWrapper implements DietSocietyWrapper {
-  factory _DietSocietyWrapper({DietData? data, String? path}) =
+  factory _DietSocietyWrapper({CafeData? data, String? path}) =
       _$_DietSocietyWrapper;
 
   factory _DietSocietyWrapper.fromJson(Map<String, dynamic> json) =
       _$_DietSocietyWrapper.fromJson;
 
   @override
-  DietData? get data;
+  CafeData? get data;
   @override
   String? get path;
   @override

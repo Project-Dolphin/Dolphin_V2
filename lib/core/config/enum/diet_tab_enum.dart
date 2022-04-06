@@ -1,4 +1,3 @@
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oceanview/core/config/r.dart';
 
 enum DietTab {
@@ -42,7 +41,6 @@ extension DietTabExt on DietTab {
 
   static DietTab from() {
     final DateTime now = DateTime.now();
-    print(now);
     // TODO : 더러워서 정리하고 싶음
     if ((now.hour == 11 && now.minute < 30) || now.hour < 11) {
       return DietTab.morning;

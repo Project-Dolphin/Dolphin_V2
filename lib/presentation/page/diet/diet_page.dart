@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/config/enum/diet_tab_enum.dart';
 import 'package:oceanview/presentation/blocs/diet_page_bloc/diet_page_bloc.dart';
-import 'package:oceanview/presentation/page/diet/diet_page_dinner.dart';
 import 'package:oceanview/presentation/page/diet/diet_page_dorm.dart';
-import 'package:oceanview/presentation/page/diet/diet_page_lunch.dart';
-import 'package:oceanview/presentation/page/diet/diet_page_morning.dart';
+import 'package:oceanview/presentation/page/diet/diet_page_fifth_floor.dart';
 import 'package:oceanview/presentation/page/diet/diet_page_navy.dart';
+import 'package:oceanview/presentation/page/diet/diet_page_second_floor.dart';
+import 'package:oceanview/presentation/page/diet/diet_page_third_floor.dart';
 
 import 'widgets/diet_kind_circle_button.dart';
 import 'widgets/diet_kind_circle_text.dart';
@@ -32,11 +32,11 @@ class DietPage extends StatelessWidget {
             builder: ((context, state) {
               switch (state.selectedDietTab) {
                 case DietTab.morning:
-                  return const MorningPage();
+                  return const SecondFloorPage();
                 case DietTab.lunch:
-                  return const LunchPage();
+                  return const ThridFloorPage();
                 case DietTab.dinner:
-                  return const DinnerPage();
+                  return const FifthFloorPage();
                 case DietTab.dorm:
                   return const DormPage();
                 case DietTab.navy:
