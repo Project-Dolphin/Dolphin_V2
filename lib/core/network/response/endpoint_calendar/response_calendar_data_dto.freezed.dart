@@ -14,59 +14,59 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CalendarData _$CalendarDataFromJson(Map<String, dynamic> json) {
-  return _CalendarData.fromJson(json);
+WeekdayData _$WeekdayDataFromJson(Map<String, dynamic> json) {
+  return _WeekdayData.fromJson(json);
 }
 
 /// @nodoc
-class _$CalendarDataTearOff {
-  const _$CalendarDataTearOff();
+class _$WeekdayDataTearOff {
+  const _$WeekdayDataTearOff();
 
-  _CalendarData call({CalendarTerm? term, bool? mainPlan, String? content}) {
-    return _CalendarData(
+  _WeekdayData call({CalendarTerm? term, bool? mainPlan, String? content}) {
+    return _WeekdayData(
       term: term,
       mainPlan: mainPlan,
       content: content,
     );
   }
 
-  CalendarData fromJson(Map<String, Object?> json) {
-    return CalendarData.fromJson(json);
+  WeekdayData fromJson(Map<String, Object?> json) {
+    return WeekdayData.fromJson(json);
   }
 }
 
 /// @nodoc
-const $CalendarData = _$CalendarDataTearOff();
+const $WeekdayData = _$WeekdayDataTearOff();
 
 /// @nodoc
-mixin _$CalendarData {
+mixin _$WeekdayData {
   CalendarTerm? get term => throw _privateConstructorUsedError;
   bool? get mainPlan => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CalendarDataCopyWith<CalendarData> get copyWith =>
+  $WeekdayDataCopyWith<WeekdayData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CalendarDataCopyWith<$Res> {
-  factory $CalendarDataCopyWith(
-          CalendarData value, $Res Function(CalendarData) then) =
-      _$CalendarDataCopyWithImpl<$Res>;
+abstract class $WeekdayDataCopyWith<$Res> {
+  factory $WeekdayDataCopyWith(
+          WeekdayData value, $Res Function(WeekdayData) then) =
+      _$WeekdayDataCopyWithImpl<$Res>;
   $Res call({CalendarTerm? term, bool? mainPlan, String? content});
 
   $CalendarTermCopyWith<$Res>? get term;
 }
 
 /// @nodoc
-class _$CalendarDataCopyWithImpl<$Res> implements $CalendarDataCopyWith<$Res> {
-  _$CalendarDataCopyWithImpl(this._value, this._then);
+class _$WeekdayDataCopyWithImpl<$Res> implements $WeekdayDataCopyWith<$Res> {
+  _$WeekdayDataCopyWithImpl(this._value, this._then);
 
-  final CalendarData _value;
+  final WeekdayData _value;
   // ignore: unused_field
-  final $Res Function(CalendarData) _then;
+  final $Res Function(WeekdayData) _then;
 
   @override
   $Res call({
@@ -103,11 +103,11 @@ class _$CalendarDataCopyWithImpl<$Res> implements $CalendarDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CalendarDataCopyWith<$Res>
-    implements $CalendarDataCopyWith<$Res> {
-  factory _$CalendarDataCopyWith(
-          _CalendarData value, $Res Function(_CalendarData) then) =
-      __$CalendarDataCopyWithImpl<$Res>;
+abstract class _$WeekdayDataCopyWith<$Res>
+    implements $WeekdayDataCopyWith<$Res> {
+  factory _$WeekdayDataCopyWith(
+          _WeekdayData value, $Res Function(_WeekdayData) then) =
+      __$WeekdayDataCopyWithImpl<$Res>;
   @override
   $Res call({CalendarTerm? term, bool? mainPlan, String? content});
 
@@ -116,14 +116,14 @@ abstract class _$CalendarDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CalendarDataCopyWithImpl<$Res> extends _$CalendarDataCopyWithImpl<$Res>
-    implements _$CalendarDataCopyWith<$Res> {
-  __$CalendarDataCopyWithImpl(
-      _CalendarData _value, $Res Function(_CalendarData) _then)
-      : super(_value, (v) => _then(v as _CalendarData));
+class __$WeekdayDataCopyWithImpl<$Res> extends _$WeekdayDataCopyWithImpl<$Res>
+    implements _$WeekdayDataCopyWith<$Res> {
+  __$WeekdayDataCopyWithImpl(
+      _WeekdayData _value, $Res Function(_WeekdayData) _then)
+      : super(_value, (v) => _then(v as _WeekdayData));
 
   @override
-  _CalendarData get _value => super._value as _CalendarData;
+  _WeekdayData get _value => super._value as _WeekdayData;
 
   @override
   $Res call({
@@ -131,7 +131,7 @@ class __$CalendarDataCopyWithImpl<$Res> extends _$CalendarDataCopyWithImpl<$Res>
     Object? mainPlan = freezed,
     Object? content = freezed,
   }) {
-    return _then(_CalendarData(
+    return _then(_WeekdayData(
       term: term == freezed
           ? _value.term
           : term // ignore: cast_nullable_to_non_nullable
@@ -150,11 +150,11 @@ class __$CalendarDataCopyWithImpl<$Res> extends _$CalendarDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CalendarData implements _CalendarData {
-  _$_CalendarData({this.term, this.mainPlan, this.content});
+class _$_WeekdayData implements _WeekdayData {
+  _$_WeekdayData({this.term, this.mainPlan, this.content});
 
-  factory _$_CalendarData.fromJson(Map<String, dynamic> json) =>
-      _$$_CalendarDataFromJson(json);
+  factory _$_WeekdayData.fromJson(Map<String, dynamic> json) =>
+      _$$_WeekdayDataFromJson(json);
 
   @override
   final CalendarTerm? term;
@@ -165,14 +165,14 @@ class _$_CalendarData implements _CalendarData {
 
   @override
   String toString() {
-    return 'CalendarData(term: $term, mainPlan: $mainPlan, content: $content)';
+    return 'WeekdayData(term: $term, mainPlan: $mainPlan, content: $content)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CalendarData &&
+            other is _WeekdayData &&
             const DeepCollectionEquality().equals(other.term, term) &&
             const DeepCollectionEquality().equals(other.mainPlan, mainPlan) &&
             const DeepCollectionEquality().equals(other.content, content));
@@ -187,21 +187,21 @@ class _$_CalendarData implements _CalendarData {
 
   @JsonKey(ignore: true)
   @override
-  _$CalendarDataCopyWith<_CalendarData> get copyWith =>
-      __$CalendarDataCopyWithImpl<_CalendarData>(this, _$identity);
+  _$WeekdayDataCopyWith<_WeekdayData> get copyWith =>
+      __$WeekdayDataCopyWithImpl<_WeekdayData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CalendarDataToJson(this);
+    return _$$_WeekdayDataToJson(this);
   }
 }
 
-abstract class _CalendarData implements CalendarData {
-  factory _CalendarData({CalendarTerm? term, bool? mainPlan, String? content}) =
-      _$_CalendarData;
+abstract class _WeekdayData implements WeekdayData {
+  factory _WeekdayData({CalendarTerm? term, bool? mainPlan, String? content}) =
+      _$_WeekdayData;
 
-  factory _CalendarData.fromJson(Map<String, dynamic> json) =
-      _$_CalendarData.fromJson;
+  factory _WeekdayData.fromJson(Map<String, dynamic> json) =
+      _$_WeekdayData.fromJson;
 
   @override
   CalendarTerm? get term;
@@ -211,6 +211,6 @@ abstract class _CalendarData implements CalendarData {
   String? get content;
   @override
   @JsonKey(ignore: true)
-  _$CalendarDataCopyWith<_CalendarData> get copyWith =>
+  _$WeekdayDataCopyWith<_WeekdayData> get copyWith =>
       throw _privateConstructorUsedError;
 }

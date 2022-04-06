@@ -1,22 +1,21 @@
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class DietLocalDataSource {
-  // Future<bool> getDormDiet();
+abstract class EventLocalDataSource {
+  Future<bool> busLocalDummy();
 }
 
-class DietLocalDataSourceImpl extends DietLocalDataSource {
+class EventLocalDataSourceImpl extends EventLocalDataSource {
   final SharedPreferences sharedPreferences;
 
-  DietLocalDataSourceImpl({required this.sharedPreferences});
+  EventLocalDataSourceImpl({required this.sharedPreferences});
 
   @override
-  Future<bool> getDormDiet() async {
+  Future<bool> busLocalDummy() async {
     bool removed = true;
     if (!removed) {
       throw CacheException();
     }
-
     return removed;
   }
 }

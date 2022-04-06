@@ -2,7 +2,7 @@ part of 'campus_event_bloc.dart';
 
 abstract class CampusEventEvent extends Equatable {}
 
-class PageInited extends CampusEventEvent {
+class CampusEventInited extends CampusEventEvent {
   @override
   List<Object?> get props => [];
 }

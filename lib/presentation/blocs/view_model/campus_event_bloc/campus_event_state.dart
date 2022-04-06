@@ -2,20 +2,23 @@ part of 'campus_event_bloc.dart';
 
 abstract class CampusEventState extends Equatable {}
 
-class LoadingState extends CampusEventState {
+class CampusEventLoading extends CampusEventState {
   @override
   List<Object?> get props => [];
 }
 
-class LoadedState extends CampusEventState {
+class CampusEventLoaded extends CampusEventState {
+  CampusEventLoaded({required this.weekDayEvent, required this.holidayEvent});
+  final List<WeekdayData> weekDayEvent;
+  final List<HolidayData> holidayEvent;
   @override
   List<Object?> get props => [];
 }
 
-class ErrorState extends CampusEventState {
+class CampusEventError extends CampusEventState {
   final String message;
 
-  ErrorState(this.message);
+  CampusEventError(this.message);
 
   @override
   List<Object?> get props => [message];

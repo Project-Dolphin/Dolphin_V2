@@ -8,7 +8,8 @@ class DietLoading extends DietDataState {
 }
 
 class DietLoaded extends DietDataState {
-  DietLoaded({required this.dormData});
+  DietLoaded({required this.cafeData, required this.dormData});
+  final CafeData cafeData;
   final DormData dormData;
   @override
   List<Object?> get props => [];

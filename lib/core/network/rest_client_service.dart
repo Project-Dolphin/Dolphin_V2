@@ -22,10 +22,10 @@ abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   @GET('calendar')
-  Future<CalendarWrapper> fetchWeekdayCalendarData();
+  Future<CalendarWrapper> getWeekdayCalendarData();
 
   @GET('holiday')
-  Future<HolidayWrapper> fetchHolidayCalendarData();
+  Future<HolidayWrapper> getHolidayCalendarData();
 
   @GET('calendar/latest')
   Future<LatestWrapper> getLatestEvents();
@@ -34,25 +34,25 @@ abstract class RestClient {
   Future<NoticeWrapper> getNotices();
 
   @GET('businfo')
-  Future<BusInfoWrapper> getCityBusList();
+  Future<BusInfoWrapper> getOperationBusInfo();
 
   @GET('businfo/{id}')
-  Future<SpecificBusInfoWrapper> getCityBusInfo(@Path() String id);
+  Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(@Path() String id);
 
-  @GET('/shuttle/next')
+  @GET('shuttle/next')
   Future<ShuttleNextWrapper> getNextShuttle();
 
-  @GET('/shuttle/today')
+  @GET('shuttle/today')
   Future<ShuttleTodayWrapper> getTodayShuttleInfo();
 
-  @GET('/timetable/190')
+  @GET('timetable/190')
   Future<TimeTable190Wrapper> getTimeTable190();
 
   @GET('weather/now')
   Future<WeatherWrapper> getWeatherInfo();
 
   @GET('diet/v2/society/today')
-  Future<DietSocietyWrapper> getTeriaDiet();
+  Future<DietSocietyWrapper> getCafeDiet();
 
   // @GET('diet/naval/today')
   // Future<List<MealData>> getNavalDiet();

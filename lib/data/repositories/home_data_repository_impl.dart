@@ -12,8 +12,10 @@ class HomeDataRepositoryImpl implements HomeDataRepository {
   final HomeDataRemoteDataSource remoteDataSource;
   final HomeDataLocalDataSource localDataSource;
 
-  HomeDataRepositoryImpl(
-      {required this.remoteDataSource, required this.localDataSource});
+  HomeDataRepositoryImpl({
+    required this.remoteDataSource,
+    required this.localDataSource,
+  });
 
   @override
   Future<Either<Failure, List<NoticeData>>> getNotices() async {

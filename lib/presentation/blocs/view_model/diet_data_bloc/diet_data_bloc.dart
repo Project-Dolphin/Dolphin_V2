@@ -4,6 +4,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/error/failures.dart';
 import 'package:oceanview/core/network/response/endpoint_diet_dorm_today/response_diet_dorm_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_diet_society_today/response_diet_cafe_data_dto.dart';
+import 'package:oceanview/domain/usecases/get_cafe_diet.dart';
 import 'package:oceanview/domain/usecases/get_dorm_diet.dart';
 
 part 'diet_data_event.dart';
@@ -11,8 +13,12 @@ part 'diet_data_state.dart';
 
 class DietDataBloc extends Bloc<DietDataEvent, DietDataState> {
   final GetDormDiet getDormDiet;
+  final GetCafeDiet getCafeDiet;
 
-  DietDataBloc({required this.getDormDiet}) : super(DietLoading()) {
+  DietDataBloc({
+    required this.getDormDiet,
+    required this.getCafeDiet,
+  }) : super(DietLoading()) {
     on<DormDataInited>(_onAppLaunched);
     on<RefreshDietDataEvent>(_onBusInfoRefreshRequested);
   }
@@ -22,7 +28,11 @@ class DietDataBloc extends Bloc<DietDataEvent, DietDataState> {
     Emitter<DietDataState> emit,
   ) async {
     final _dormDietResponse = await getDormDiet.call();
-    DormData _dormDietInfo = DormData();
+    final _cafeDietResponse = await getCafeDiet.call();
+
+    DormData? _dormDietInfo;
+    CafeData? _cafeDietInfo;
+
     // TODO: Use Extract
     _dormDietResponse.fold(
       (failure) async* {
@@ -36,9 +46,21 @@ class DietDataBloc extends Bloc<DietDataEvent, DietDataState> {
         _dormDietInfo = success;
       },
     );
+    _cafeDietResponse.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(DietError('SETTING_ERROR'));
+        } else {
+          emit(DietError('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        _cafeDietInfo = success;
+      },
+    );
 
     // TODO : init 초기 메서드 가져오기
-    emit(DietLoaded(dormData: _dormDietInfo));
+    emit(DietLoaded(cafeData: _cafeDietInfo!, dormData: _dormDietInfo!));
   }
 
   void _onBusInfoRefreshRequested(

@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oceanview/domain/usecases/get_city_bus_list.dart';
 import 'package:oceanview/domain/usecases/get_next_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_today_shuttle_info.dart';
 
@@ -13,9 +10,10 @@ class ShuttleBusBloc extends Bloc<ShuttleBusEvent, ShuttleBusState> {
   final GetTodayShuttleInfo getTodayShuttleInfo;
   final GetNextShuttleInfo getNextShuttleInfo;
 
-  ShuttleBusBloc(
-      {required this.getTodayShuttleInfo, required this.getNextShuttleInfo})
-      : super(LoadingState()) {
+  ShuttleBusBloc({
+    required this.getTodayShuttleInfo,
+    required this.getNextShuttleInfo,
+  }) : super(LoadingState()) {
     on<ShuttleBusInited>(_onAppLaunched);
     on<RefreshShuttleBusEvent>(_onBusInfoRefreshRequested);
   }

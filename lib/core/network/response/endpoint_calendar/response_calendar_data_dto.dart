@@ -2,17 +2,17 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'response_calendar_term_dto.dart';
 
-part 'response_calendar_data_dto.g.dart';
 part 'response_calendar_data_dto.freezed.dart';
+part 'response_calendar_data_dto.g.dart';
 
 @freezed
-class CalendarData with _$CalendarData {
-  factory CalendarData({
+class WeekdayData with _$WeekdayData {
+  factory WeekdayData({
     CalendarTerm? term,
     bool? mainPlan,
     String? content,
-  }) = _CalendarData;
+  }) = _WeekdayData;
 
-  factory CalendarData.fromJson(Map<String, dynamic> json) =>
-      _$CalendarDataFromJson(json);
+  factory WeekdayData.fromJson(Map<String, dynamic> json) =>
+      _$WeekdayDataFromJson(json);
 }

@@ -11,7 +11,7 @@ _$_DietSocietyWrapper _$$_DietSocietyWrapperFromJson(
     _$_DietSocietyWrapper(
       data: json['data'] == null
           ? null
-          : DietData.fromJson(json['data'] as Map<String, dynamic>),
+          : CafeData.fromJson(json['data'] as Map<String, dynamic>),
       path: json['path'] as String?,
     );
 

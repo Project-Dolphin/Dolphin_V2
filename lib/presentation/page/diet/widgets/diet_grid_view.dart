@@ -1,30 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 
-class DormPage extends StatelessWidget {
-  const DormPage({Key? key}) : super(key: key);
+class DietGridView extends StatelessWidget {
+  const DietGridView({required this.type, required this.dietData, Key? key})
+      : super(key: key);
+
+  final String type;
+  final List<String>? dietData;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DietDataBloc, DietDataState>(builder: (context, state) {
-      if (state is DietLoaded) {
-        return SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              _buildGridView('아침', state.dormData.morning),
-              _buildGridView('점심', state.dormData.lunch),
-              _buildGridView('저녁', state.dormData.dinner),
-            ],
-          ),
-        );
-      }
-      return const CircularProgressIndicator();
-    });
-  }
-
-  _buildGridView(String type, List<String>? dietData) {
     return Container(
       decoration: const BoxDecoration(color: Colors.green),
       padding: const EdgeInsets.symmetric(

@@ -4,9 +4,11 @@ import 'package:oceanview/core/config/enum/root_tab_enum.dart';
 import 'package:oceanview/injection_container.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 import 'package:oceanview/presentation/blocs/diet_page_bloc/diet_page_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/city_bus_bloc/city_bus_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/shuttle_bus_bloc/shuttle_bus_bloc.dart';
 import 'package:oceanview/presentation/page/widgets/tab_view.dart';
 
 class DashBoard extends StatelessWidget {
@@ -30,6 +32,12 @@ class DashBoard extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => sl<DietDataBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<CampusEventBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<ShuttleBusBloc>(),
         ),
       ],
       child: Scaffold(

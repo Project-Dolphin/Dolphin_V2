@@ -10,17 +10,20 @@ class CityBusRepositoryImpl implements CityBusRepository {
   final CityBusRemoteDataSource remoteDataSource;
   final CityBusLocalDataSource localDataSource;
 
-  CityBusRepositoryImpl(
-      {required this.remoteDataSource, required this.localDataSource});
+  CityBusRepositoryImpl({
+    required this.remoteDataSource,
+    required this.localDataSource,
+  });
 
   @override
-  Future<Either<Failure, List<BusInfoData>>> getCityBusList() async {
+  Future<Either<Failure, List<BusInfoData>>> getOperationBusInfo() async {
     try {
       final List<BusInfoData> _specificNodeBusInfo =
-          await remoteDataSource.getCityBusList();
+          await remoteDataSource.getOperationBusInfo();
       try {
         // TODO: 로컬에서 우리가 무엇을 할 수 있을지 확인해보기
         await localDataSource.busLocalDummy();
+
         return Right(_specificNodeBusInfo);
       } on CacheException {
         return Left(CacheFailure());

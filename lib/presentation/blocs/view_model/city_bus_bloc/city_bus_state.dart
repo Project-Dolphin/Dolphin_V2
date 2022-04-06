@@ -2,20 +2,20 @@ part of 'city_bus_bloc.dart';
 
 abstract class CityBusState extends Equatable {}
 
-class LoadingState extends CityBusState {
+class CityBusLoading extends CityBusState {
   @override
   List<Object?> get props => [];
 }
 
-class LoadedState extends CityBusState {
+class CityBusLoaded extends CityBusState {
   @override
   List<Object?> get props => [];
 }
 
-class ErrorState extends CityBusState {
+class CityBusError extends CityBusState {
   final String message;
 
-  ErrorState(this.message);
+  CityBusError(this.message);
 
   @override
   List<Object?> get props => [message];

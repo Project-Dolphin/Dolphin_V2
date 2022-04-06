@@ -1,10 +1,12 @@
 import 'package:oceanview/core/error/exceptions.dart';
+import 'package:oceanview/core/network/response/endpoint_shuttle/response_shuttle_next_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_shuttle/response_shuttle_today_dto.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
 
 abstract class ShuttleBusRemoteDataSource {
   //TODO : dynamic 말고 DTO를 정해야함
-  Future<List<dynamic>> getTodayShuttleInfo();
-  Future<List<dynamic>> getNextShuttle();
+  Future<ShuttleTodayWrapper> getTodayShuttleInfo();
+  Future<ShuttleNextWrapper> getNextShuttle();
 }
 
 class ShuttleBusRemoteDataSourceImpl extends ShuttleBusRemoteDataSource {
@@ -13,18 +15,18 @@ class ShuttleBusRemoteDataSourceImpl extends ShuttleBusRemoteDataSource {
   ShuttleBusRemoteDataSourceImpl({required this.restClientService});
 
   @override
-  Future<List<dynamic>> getTodayShuttleInfo() async {
-    final response = []; //await restClientService.getTodayShuttleInfo();
-    if (response.isEmpty) {
+  Future<ShuttleTodayWrapper> getTodayShuttleInfo() async {
+    final response = await restClientService.getTodayShuttleInfo();
+    if (response.data == null) {
       throw ServerException();
     }
     return response;
   }
 
   @override
-  Future<List<dynamic>> getNextShuttle() async {
-    final response = []; //await restClientService.getNextShuttle();
-    if (response.isEmpty) {
+  Future<ShuttleNextWrapper> getNextShuttle() async {
+    final response = await restClientService.getNextShuttle();
+    if (response.data == null) {
       throw ServerException();
     }
     return response;
