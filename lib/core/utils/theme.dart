@@ -190,8 +190,8 @@ class AppTheme {
       primaryColor: Colors.white, //const Color(0xFFfff5d7),
       primaryColorLight: Colors.grey[300],
       canvasColor: const Color(0xffF6F6F6),
-      backgroundColor: Colors.white,
-      primaryColorDark: Colors.black,
+      backgroundColor: Color(0xFFE5E5E5),
+      primaryColorDark: Colors.white,
       scaffoldBackgroundColor: Colors.white, //const Color(0xFFfff5d7),
       shadowColor: Colors.black.withOpacity(0.06),
       appBarTheme: const AppBarTheme(

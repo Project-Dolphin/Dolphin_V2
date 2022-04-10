@@ -39,11 +39,22 @@ import 'package:oceanview/presentation/blocs/view_model/city_bus_bloc/city_bus_b
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/shuttle_bus_bloc/shuttle_bus_bloc.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'presentation/blocs/diet_page_bloc/diet_page_bloc.dart';
 
 final sl = GetIt.instance; //sl is referred to as Service Locator
+
+final prettyDioLogger = PrettyDioLogger(
+  requestHeader: true,
+  requestBody: true,
+  responseBody: true,
+  responseHeader: false,
+  error: true,
+  compact: true,
+  maxWidth: 90,
+);
 
 //Dependency injection
 // ignore: long-method
@@ -182,6 +193,7 @@ Future<void> init() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
   final dio = Dio();
+  dio.interceptors.add(prettyDioLogger);
 
   sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(

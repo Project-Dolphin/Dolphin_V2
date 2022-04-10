@@ -1,0 +1,21 @@
+{
+    "data": [
+        {
+            "term": "20220301",
+            "content": "삼일절"
+        },
+        {
+            "term": "20220309",
+            "content": "대통령선거일"
+        },
+        {
+            "term": "20220314",
+            "content": "dummy1"
+        },
+        {
+            "term": "20220318",
+            "content": "dummy2"
+        }
+    ],
+    "path": "/calendar"
+}

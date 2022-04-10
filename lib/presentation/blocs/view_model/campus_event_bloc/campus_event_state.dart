@@ -8,9 +8,15 @@ class CampusEventLoading extends CampusEventState {
 }
 
 class CampusEventLoaded extends CampusEventState {
-  CampusEventLoaded({required this.weekDayEvent, required this.holidayEvent});
-  final List<WeekdayData> weekDayEvent;
-  final List<HolidayData> holidayEvent;
+  CampusEventLoaded({
+    required this.calendarData,
+    DateTime? today,
+    DateTime? selectedDay,
+  })  : today = today ?? DateTime.now(),
+        selectedDay = selectedDay ?? DateTime.now();
+  final List<CalendarSumamryWrapper> calendarData;
+  final DateTime selectedDay;
+  final DateTime today;
   @override
   List<Object?> get props => [];
 }

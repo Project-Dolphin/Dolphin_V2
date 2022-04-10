@@ -27,6 +27,8 @@ class AppImages {
       const AppImage(_iconPath + 'icon_home_selected.svg');
   AppImage get icon_menu_selected =>
       const AppImage(_iconPath + 'icon_menu_selected.svg');
+  AppImage get icon_event_dot =>
+      const AppImage(_iconPath + 'icon_event_dot.svg');
 
   // AppImage get splash_bg => const AppImage(_imagePath + 'splash_image_bg.jpeg');
 }
@@ -79,6 +81,7 @@ class AppImage {
   SvgPicture svgPictureSize({
     Key? key,
     double? size,
+    Color? color,
     BoxFit fit = BoxFit.fill,
   }) {
     return SvgPicture.asset(
@@ -87,6 +90,7 @@ class AppImage {
       width: size,
       height: size,
       fit: fit,
+      color: color,
     );
   }
 }
