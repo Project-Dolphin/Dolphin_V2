@@ -1,0 +1,65 @@
+{
+    "data": [
+        {
+            "term": "20220302",
+            "mainPlan": true,
+            "content": "제1학기 개강"
+        },
+        {
+            "term": "20220302",
+            "mainPlan": true,
+            "content": "제1학기 수강신청 변경"
+        },
+        {
+            "term": "20220302",
+            "mainPlan": true,
+            "content": "제1학기 대학원 수강신청 변경"
+        },
+        {
+            "term": "20220303",
+            "mainPlan": true,
+            "content": "제1학기 수강신청 변경"
+        },
+        {
+            "term": "20220303",
+            "mainPlan": true,
+            "content": "제1학기 대학원 수강신청 변경"
+        },
+        {
+            "term": "20220304",
+            "mainPlan": true,
+            "content": "제1학기 수강신청 변경"
+        },
+        {
+            "term": "20220304",
+            "mainPlan": true,
+            "content": "제1학기 대학원 수강신청 변경"
+        },
+        {
+            "term": "20220304",
+            "mainPlan": false,
+            "content": "대학원 외국어시험"
+        },
+        {
+            "term": "20220305",
+            "mainPlan": true,
+            "content": "제1학기 수강신청 변경"
+        },
+        {
+            "term": "20220305",
+            "mainPlan": true,
+            "content": "제1학기 대학원 수강신청 변경"
+        },
+        {
+            "term": "20220306",
+            "mainPlan": true,
+            "content": "제1학기 수강신청 변경"
+        },
+        {
+            "term": "20220325",
+            "mainPlan": true,
+            "content": "대학원 종합시험"
+        }
+    ],
+    "path": "/calendar"
+}
