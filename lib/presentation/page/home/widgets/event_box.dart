@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/common/decorated_container.dart';
+import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 
 class EventBox extends StatelessWidget {
@@ -7,29 +9,66 @@ class EventBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(
-        16,
-      ),
-      child: Column(
-        children: [
-          Text('가장 최근 학사 일정'),
-          BlocBuilder<HomeDataBloc, HomeDataState>(
-            builder: ((context, state) {
-              if (state is HomeDataLoaded) {
-                return Column(
-                  children: [
-                    Text(state.event.first.content ?? ''),
-                    Text('${state.event.first.dDay ?? 0}'),
-                    Text(state.event.first.term?.startedAt ?? ''),
-                  ],
-                );
-              }
+    final width = (MediaQuery.of(context).size.width * 0.893 - 14) / 2;
 
-              return const CircularProgressIndicator();
-            }),
-          ),
-        ],
+    return DecoratedContainer(
+      width: width,
+      height: width,
+      child: BlocBuilder<HomeDataBloc, HomeDataState>(
+        builder: ((context, state) {
+          if (state is HomeDataLoaded) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text.rich(
+                      TextSpan(
+                        text: state.event.first.content ?? '',
+                        style: textStyleBold(
+                          Theme.of(context).colorScheme.onPrimary,
+                          14,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: '까지',
+                            style: textStyleNormal(
+                              Theme.of(context).colorScheme.onPrimary,
+                              12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      '${state.event.first.dDay ?? 0}일',
+                      style: textStyleNormal(
+                        Theme.of(context).colorScheme.primary,
+                        30,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  state.event.first.term?.startedAt
+                          ?.split('-')
+                          .sublist(1)
+                          .join('.') ??
+                      '',
+                  style: textStyleNormal(
+                    Theme.of(context).colorScheme.onPrimary,
+                    16,
+                  ),
+                ),
+              ],
+            );
+          }
+
+          return const CircularProgressIndicator();
+        }),
       ),
     );
   }

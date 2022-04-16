@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:oceanview/core/utils/theme.dart';
 import 'package:oceanview/presentation/page/dashboard.dart';
+
 import 'injection_container.dart' as di;
 
 Future<void> main() async {
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         Locale('en', 'US'),
       ], //, 'KR')],
       theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
+      // darkTheme: AppTheme.dark,
       home: const DashBoard(),
     );
   }

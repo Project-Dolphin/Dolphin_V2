@@ -42,7 +42,7 @@ class DashBoard extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.transparent,
           foregroundColor: Colors.transparent,
           elevation: 0,
           title: const MainTitle(),
@@ -176,22 +176,5 @@ class MainTitle extends StatelessWidget {
             .copyWith(fontWeight: FontWeight.w700),
       ),
     );
-  }
-}
-
-class Title extends StatelessWidget {
-  const Title({required int index, Key? key})
-      : _selectedIndex = index,
-        super(key: key);
-
-  final int _selectedIndex;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-
-  _buildMainTitle(BuildContext context) {
-    return Text('OceanView', style: Theme.of(context).textTheme.headline5);
   }
 }

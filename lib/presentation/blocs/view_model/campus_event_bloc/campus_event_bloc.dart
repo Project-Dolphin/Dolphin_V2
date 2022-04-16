@@ -27,6 +27,7 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
     required this.getHolidayEvent,
   }) : super(CampusEventLoading()) {
     on<CampusEventInited>(_onAppLaunched);
+    on<DateChanged>(_onDateChanged);
   }
 
   Future<String> readCalendar() async {
@@ -80,6 +81,23 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
     emit(CampusEventLoaded(
       calendarData: weekDayEvent,
     ));
+  }
+
+  Future<void> _onDateChanged(
+    DateChanged event,
+    Emitter<CampusEventState> emit,
+  ) async {
+    final state = this.state;
+
+    logger.d(state);
+    logger.d(event.day);
+
+    if (state is CampusEventLoaded) {
+      final DateTime changedDate =
+          DateTime(state.today.year, state.today.month, event.day);
+      logger.d(changedDate);
+      emit(state.copyWith(selectedDay: changedDate));
+    }
   }
 
   int endDays(DateTime date) {

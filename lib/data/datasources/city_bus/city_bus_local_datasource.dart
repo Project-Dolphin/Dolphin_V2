@@ -16,6 +16,7 @@ class CityBusLocalDataSourceImpl extends CityBusLocalDataSource {
     if (!removed) {
       throw CacheException();
     }
+
     return removed;
   }
 }
