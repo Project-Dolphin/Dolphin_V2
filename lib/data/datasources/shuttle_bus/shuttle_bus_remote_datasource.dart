@@ -20,6 +20,7 @@ class ShuttleBusRemoteDataSourceImpl extends ShuttleBusRemoteDataSource {
     if (response.data == null) {
       throw ServerException();
     }
+
     return response;
   }
 
@@ -29,6 +30,7 @@ class ShuttleBusRemoteDataSourceImpl extends ShuttleBusRemoteDataSource {
     if (response.data == null) {
       throw ServerException();
     }
+
     return response;
   }
 }

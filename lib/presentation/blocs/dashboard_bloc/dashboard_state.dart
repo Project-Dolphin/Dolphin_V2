@@ -1,7 +1,7 @@
 part of 'dashboard_bloc.dart';
 
-class DashBoardState {
-  DashBoardState({required this.state, required this.selectedTab});
+class DashBoardState extends Equatable {
+  const DashBoardState({required this.state, required this.selectedTab});
 
   final DateState state;
   final RootTab selectedTab;

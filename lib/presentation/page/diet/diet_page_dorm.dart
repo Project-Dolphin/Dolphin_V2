@@ -20,6 +20,7 @@ class DormPage extends StatelessWidget {
           ),
         );
       }
+
       return const CircularProgressIndicator();
     });
   }

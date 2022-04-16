@@ -19,6 +19,8 @@ class AppImages {
   AppImage get icon_menu => const AppImage(_iconPath + 'icon_menu.svg');
   AppImage get icon_bus_selected =>
       const AppImage(_iconPath + 'icon_bus_selected.svg');
+  AppImage get icon_arrow_right =>
+      const AppImage(_iconPath + 'icon_arrow_right.svg');
   AppImage get icon_calendar_selected =>
       const AppImage(_iconPath + 'icon_calendar_selected.svg');
   AppImage get icon_diet_selected =>

@@ -7,7 +7,9 @@ class CampusEventInited extends CampusEventEvent {
   List<Object?> get props => [];
 }
 
-class RefreshBusEvent extends CampusEventEvent {
+class DateChanged extends CampusEventEvent {
+  DateChanged({required this.day});
+  final int day;
   @override
   List<Object?> get props => [];
 }

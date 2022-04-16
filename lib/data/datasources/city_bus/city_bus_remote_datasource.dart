@@ -18,6 +18,7 @@ class CityBusRemoteDataSourceImpl extends CityBusRemoteDataSource {
     if (response.data?.isEmpty ?? true) {
       throw ServerException();
     }
+
     return response.data ?? []; // ?? [];
   }
 }

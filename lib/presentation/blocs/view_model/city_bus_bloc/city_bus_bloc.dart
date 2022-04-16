@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/error/failures.dart';
 import 'package:oceanview/domain/usecases/get_operation_city_bus_list.dart';
 
@@ -22,15 +23,18 @@ class CityBusBloc extends Bloc<CityBusEvent, CityBusState> {
     Emitter<CityBusState> emit,
   ) async {
     final result = await getOperationCityBusList.call();
-    result.fold((failure) async* {
-      if (failure is CacheFailure) {
-        emit(CityBusError('SETTING_ERROR'));
-      } else {
-        emit(CityBusError('NO_CONNECTION_ERROR'));
-      }
-    }, (success) {
-      print(success);
-    });
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(CityBusError('SETTING_ERROR'));
+        } else {
+          emit(CityBusError('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        logger.d(success);
+      },
+    );
     // TODO : init 초기 메서드 가져오기
     emit(CityBusLoaded());
   }

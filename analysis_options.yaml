@@ -29,6 +29,9 @@ linter:
 analyzer:
   plugins:
     - dart_code_metrics
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
 
 dart_code_metrics:
   anti-patterns:
@@ -41,9 +44,9 @@ dart_code_metrics:
     source-lines-of-code: 100
   metrics-exclude:
     - test/**
-    - lib/**.freezed.dart
-    - lib/**.g.dart
     - lib/**constants.dart
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
   rules:
     - newline-before-return:
         severity: performance
@@ -67,8 +70,8 @@ dart_code_metrics:
         severity: performance
   rules-exclude:
     - test/**
-    - lib/**.freezed.dart
     - lib/**/constants.dart
-    - lib/**.g.dart
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

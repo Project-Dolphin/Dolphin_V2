@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
     return Column(
       children: [
         _buildWeatherAndLatestEvent(),
+        const SizedBox(height: 12),
         const NoticeBox(),
       ],
     );
@@ -20,10 +21,10 @@ class HomePage extends StatelessWidget {
   _buildWeatherAndLatestEvent() {
     return Row(
       mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: const [
-        Expanded(child: WeatherBox()),
-        SizedBox(width: 14),
-        Expanded(child: EventBox()),
+        WeatherBox(),
+        EventBox(),
       ],
     );
   }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:oceanview/presentation/page/widgets/floating_nav_bar_item.dart';
 
 typedef ItemBuilder = Widget Function(
-    BuildContext context, FloatingNavbarItem items);
+  BuildContext context,
+  FloatingNavbarItem items,
+);
 
 class FloatingNavbar extends StatefulWidget {
   final List<FloatingNavbarItem>? items;
@@ -76,24 +78,22 @@ class _FloatingNavbarState extends State<FloatingNavbar> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Padding(
-            padding: widget.margin!,
-            child: Container(
-              padding: widget.padding,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(widget.borderRadius!),
-                color: widget.backgroundColor,
-              ),
-              width: widget.width,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  mainAxisSize: MainAxisSize.max,
-                  children: items.map((f) {
-                    return widget.itemBuilder!(context, f);
-                  }).toList(),
-                ),
+          Container(
+            margin: widget.margin!,
+            padding: widget.padding,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(widget.borderRadius!),
+              color: widget.backgroundColor,
+            ),
+            width: widget.width,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisSize: MainAxisSize.max,
+                children: items.map((f) {
+                  return widget.itemBuilder!(context, f);
+                }).toList(),
               ),
             ),
           ),
@@ -103,6 +103,7 @@ class _FloatingNavbarState extends State<FloatingNavbar> {
   }
 }
 
+// ignore: long-parameter-list
 ItemBuilder _defaultItemBuilder({
   Function(int val)? onTap,
   List<FloatingNavbarItem>? items,
@@ -123,12 +124,13 @@ ItemBuilder _defaultItemBuilder({
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             AnimatedContainer(
-              duration: Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 300),
               decoration: BoxDecoration(
-                  color: currentIndex == items!.indexOf(item)
-                      ? selectedBackgroundColor
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(itemBorderRadius!)),
+                color: currentIndex == items!.indexOf(item)
+                    ? selectedBackgroundColor
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(itemBorderRadius!),
+              ),
               child: InkWell(
                 onTap: () {
                   onTap!(items.indexOf(item));
@@ -139,7 +141,9 @@ ItemBuilder _defaultItemBuilder({
                       ? (width / items.length - 8)
                       : MediaQuery.of(context).size.width / items.length - 24,
                   padding: EdgeInsets.symmetric(
-                      horizontal: 4, vertical: item.title != null ? 4 : 8),
+                    horizontal: 4,
+                    vertical: item.title != null ? 4 : 8,
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
