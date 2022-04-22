@@ -8,9 +8,10 @@ part of 'response_diet_society_detail_dto.dart';
 
 _$_DietDetail _$$_DietDetailFromJson(Map<String, dynamic> json) =>
     _$_DietDetail(
-      type: json['type'] as String?,
+      type: json['type'] as String? ?? '',
       menus:
-          (json['menus'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['menus'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const <String>[],
     );
 
 Map<String, dynamic> _$$_DietDetailToJson(_$_DietDetail instance) =>

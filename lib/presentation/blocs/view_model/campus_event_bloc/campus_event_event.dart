@@ -13,3 +13,10 @@ class DateChanged extends CampusEventEvent {
   @override
   List<Object?> get props => [];
 }
+
+class MonthChanged extends CampusEventEvent {
+  MonthChanged({required this.month});
+  final int month;
+  @override
+  List<Object?> get props => [];
+}

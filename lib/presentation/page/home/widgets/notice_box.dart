@@ -60,6 +60,7 @@ class NoticeBox extends StatelessWidget {
                           children: [
                             Container(
                               width: 3,
+                              height: 3,
                               decoration: BoxDecoration(
                                 color: Theme.of(context).colorScheme.primary,
                                 shape: BoxShape.circle,

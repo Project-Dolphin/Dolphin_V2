@@ -22,7 +22,7 @@ WeekdayData _$WeekdayDataFromJson(Map<String, dynamic> json) {
 class _$WeekdayDataTearOff {
   const _$WeekdayDataTearOff();
 
-  _WeekdayData call({CalendarTerm? term, bool? mainPlan, String? content}) {
+  _WeekdayData call({CalendarTerm? term, bool? mainPlan, String content = ''}) {
     return _WeekdayData(
       term: term,
       mainPlan: mainPlan,
@@ -42,7 +42,7 @@ const $WeekdayData = _$WeekdayDataTearOff();
 mixin _$WeekdayData {
   CalendarTerm? get term => throw _privateConstructorUsedError;
   bool? get mainPlan => throw _privateConstructorUsedError;
-  String? get content => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +55,7 @@ abstract class $WeekdayDataCopyWith<$Res> {
   factory $WeekdayDataCopyWith(
           WeekdayData value, $Res Function(WeekdayData) then) =
       _$WeekdayDataCopyWithImpl<$Res>;
-  $Res call({CalendarTerm? term, bool? mainPlan, String? content});
+  $Res call({CalendarTerm? term, bool? mainPlan, String content});
 
   $CalendarTermCopyWith<$Res>? get term;
 }
@@ -86,7 +86,7 @@ class _$WeekdayDataCopyWithImpl<$Res> implements $WeekdayDataCopyWith<$Res> {
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 
@@ -109,7 +109,7 @@ abstract class _$WeekdayDataCopyWith<$Res>
           _WeekdayData value, $Res Function(_WeekdayData) then) =
       __$WeekdayDataCopyWithImpl<$Res>;
   @override
-  $Res call({CalendarTerm? term, bool? mainPlan, String? content});
+  $Res call({CalendarTerm? term, bool? mainPlan, String content});
 
   @override
   $CalendarTermCopyWith<$Res>? get term;
@@ -143,7 +143,7 @@ class __$WeekdayDataCopyWithImpl<$Res> extends _$WeekdayDataCopyWithImpl<$Res>
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -151,7 +151,7 @@ class __$WeekdayDataCopyWithImpl<$Res> extends _$WeekdayDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_WeekdayData implements _WeekdayData {
-  _$_WeekdayData({this.term, this.mainPlan, this.content});
+  _$_WeekdayData({this.term, this.mainPlan, this.content = ''});
 
   factory _$_WeekdayData.fromJson(Map<String, dynamic> json) =>
       _$$_WeekdayDataFromJson(json);
@@ -160,8 +160,9 @@ class _$_WeekdayData implements _WeekdayData {
   final CalendarTerm? term;
   @override
   final bool? mainPlan;
+  @JsonKey()
   @override
-  final String? content;
+  final String content;
 
   @override
   String toString() {
@@ -197,7 +198,7 @@ class _$_WeekdayData implements _WeekdayData {
 }
 
 abstract class _WeekdayData implements WeekdayData {
-  factory _WeekdayData({CalendarTerm? term, bool? mainPlan, String? content}) =
+  factory _WeekdayData({CalendarTerm? term, bool? mainPlan, String content}) =
       _$_WeekdayData;
 
   factory _WeekdayData.fromJson(Map<String, dynamic> json) =
@@ -208,7 +209,7 @@ abstract class _WeekdayData implements WeekdayData {
   @override
   bool? get mainPlan;
   @override
-  String? get content;
+  String get content;
   @override
   @JsonKey(ignore: true)
   _$WeekdayDataCopyWith<_WeekdayData> get copyWith =>

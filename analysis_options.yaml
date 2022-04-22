@@ -47,6 +47,9 @@ dart_code_metrics:
     - lib/**constants.dart
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+  ignore:
+    - avoid-wrapping-in-padding:
+
   rules:
     - newline-before-return:
         severity: performance

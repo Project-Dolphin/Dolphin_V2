@@ -7,12 +7,17 @@ part of 'response_diet_dorm_data_dto.dart';
 // **************************************************************************
 
 _$_DormData _$$_DormDataFromJson(Map<String, dynamic> json) => _$_DormData(
-      morning:
-          (json['morning'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      morning: (json['morning'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
       lunch:
-          (json['lunch'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      dinner:
-          (json['dinner'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['lunch'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const <String>[],
+      dinner: (json['dinner'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
     );
 
 Map<String, dynamic> _$$_DormDataToJson(_$_DormData instance) =>

@@ -19,11 +19,11 @@ class AppTheme {
     primaryColor: const Color(0xFF0081FF),
     colorScheme: const ColorScheme(
       brightness: Brightness.light,
-      primary: Color(0xFF0081FF),
+      primary: Color(0xFF4BA7FF),
       // 폰트 컬러로 사용할까 생각 중 - 2022.04.16 김덕현
       onPrimary: Color(0xFF353B45),
       onPrimaryContainer: Colors.purple,
-      secondary: Color(0xFF4BA7FF),
+      secondary: Color(0xFFD9EDFF),
       onSecondary: Colors.red,
       error: Colors.red,
       onError: Colors.red,

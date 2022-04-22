@@ -9,10 +9,10 @@ part of 'response_shuttle_next_dto.dart';
 _$_ShuttleNextWrapper _$$_ShuttleNextWrapperFromJson(
         Map<String, dynamic> json) =>
     _$_ShuttleNextWrapper(
-      data: (json['data'] as List<dynamic>?)
-          ?.map((e) => ShuttleDataDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      path: json['path'] as String?,
+      data: json['data'] == null
+          ? null
+          : ShuttleDataDto.fromJson(json['data'] as Map<String, dynamic>),
+      path: json['path'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_ShuttleNextWrapperToJson(

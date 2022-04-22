@@ -9,7 +9,7 @@ class WeatherBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = (MediaQuery.of(context).size.width * 0.893 - 14) / 2;
+    final width = (MediaQuery.of(context).size.width * 0.893 - 34) / 2;
 
     return DecoratedContainer(
       width: width,
@@ -36,7 +36,7 @@ class WeatherBox extends StatelessWidget {
                     Text(
                       state.weather.temparature ?? '',
                       style: textStyleNormal(
-                        Theme.of(context).colorScheme.primary,
+                        Theme.of(context).primaryColor,
                         36,
                       ),
                     ),
@@ -57,9 +57,7 @@ class WeatherBox extends StatelessWidget {
                     Text(
                       state.weather.windSpeed ?? '0m/s',
                       style: textStyleBold(
-                        Theme.of(context).colorScheme.onPrimary,
-                        12,
-                      ),
+                          Theme.of(context).colorScheme.onPrimary, 12),
                     ),
                   ],
                 ),

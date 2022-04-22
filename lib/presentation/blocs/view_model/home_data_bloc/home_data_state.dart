@@ -19,6 +19,18 @@ class HomeDataLoaded extends HomeDataState {
 
   @override
   List<Object?> get props => [];
+
+  HomeDataLoaded copyWith({
+    WeatherData? weather,
+    List<NoticeData>? notice,
+    List<LatestData>? event,
+  }) {
+    return HomeDataLoaded(
+      weather: weather ?? this.weather,
+      notice: notice ?? this.notice,
+      event: event ?? this.event,
+    );
+  }
 }
 
 class HomeDataError extends HomeDataState {

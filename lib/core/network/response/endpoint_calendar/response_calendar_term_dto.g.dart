@@ -8,8 +8,8 @@ part of 'response_calendar_term_dto.dart';
 
 _$_CalendarTerm _$$_CalendarTermFromJson(Map<String, dynamic> json) =>
     _$_CalendarTerm(
-      startedAt: json['startedAt'] as String?,
-      endedAt: json['endedAt'] as String?,
+      startedAt: json['startedAt'] as String,
+      endedAt: json['endedAt'] as String,
     );
 
 Map<String, dynamic> _$$_CalendarTermToJson(_$_CalendarTerm instance) =>

@@ -9,7 +9,7 @@ part 'response_shuttle_data_dto.g.dart';
 class ShuttleDataDto with _$ShuttleDataDto {
   factory ShuttleDataDto({
     ShuttleDetailDto? previous,
-    ShuttleDetailDto? next,
+    @Default(<ShuttleDetailDto>[]) List<ShuttleDetailDto> next,
   }) = _ShuttleDataDto;
 
   factory ShuttleDataDto.fromJson(Map<String, dynamic> json) =>

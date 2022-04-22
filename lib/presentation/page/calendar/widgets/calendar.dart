@@ -16,7 +16,7 @@ class CalendarWidget extends StatelessWidget {
           const SizedBox(height: 12),
           Row(
             children: [
-              ...['월', '화', '수', '목', '금', '토', '일'].map((e) {
+              ...['일', '월', '화', '수', '목', '금', '토'].map((e) {
                 return Expanded(
                   child: Text(
                     e,
@@ -28,26 +28,24 @@ class CalendarWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 25),
-          SizedBox(
-            height: 400,
-            child: BlocBuilder<CampusEventBloc, CampusEventState>(
-              builder: (context, state) {
-                return GridView.count(
-                  primary: false,
-                  crossAxisCount: 7,
-                  children: List.generate(42, (index) {
-                    return _date(index);
-                  }),
-                );
-              },
-            ),
+          BlocBuilder<CampusEventBloc, CampusEventState>(
+            builder: (context, state) {
+              return GridView.count(
+                shrinkWrap: true,
+                primary: false,
+                crossAxisCount: 7,
+                children: List.generate(42, (index) {
+                  return date(index);
+                }),
+              );
+            },
           ),
         ],
       ),
     );
   }
 
-  Widget _availableDates(int index) {
+  Widget availableDates(int index) {
     return BlocBuilder<CampusEventBloc, CampusEventState>(
       builder: (context, state) {
         if (state is CampusEventLoaded) {
@@ -75,10 +73,11 @@ class CalendarWidget extends StatelessWidget {
                   child: Text(
                     '$index',
                     style: textStyleNormal(
-                        index == state.today.day
-                            ? Colors.white
-                            : const Color(0xFF353B45),
-                        16),
+                      index == state.today.day
+                          ? Colors.white
+                          : const Color(0xFF353B45),
+                      16,
+                    ),
                   ),
                 ),
               ),
@@ -90,6 +89,7 @@ class CalendarWidget extends StatelessWidget {
                     (event) => Container(
                       padding: const EdgeInsets.symmetric(horizontal: 1),
                       width: 3,
+                      height: 3,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xFFBBEBEC),
@@ -107,12 +107,13 @@ class CalendarWidget extends StatelessWidget {
     );
   }
 
-  Widget _disableDates(int index) {
+  Widget disableDates(int index) {
     return BlocBuilder<CampusEventBloc, CampusEventState>(
       builder: (context, state) {
         if (state is CampusEventLoaded) {
-          final firstDay = DateTime(state.today.year, state.today.month);
-          const weight = -1;
+          final firstDay =
+              DateTime(state.selectedDay.year, state.selectedDay.month);
+          int weight = index <= 0 ? -1 : 1;
 
           return Column(
             children: [
@@ -120,7 +121,8 @@ class CalendarWidget extends StatelessWidget {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(8),
                 child: Text(
-                  '${firstDay.add(Duration(days: index + weight)).day}',
+                  // '$index',
+                  '${firstDay.add(Duration(days: index - 1)).day}',
                   style: textStyleNormal(const Color(0xFFBEBEC0), 16),
                 ),
               ),
@@ -134,18 +136,21 @@ class CalendarWidget extends StatelessWidget {
     );
   }
 
-  Widget _date(int index) {
+  Widget date(int index) {
     return BlocBuilder<CampusEventBloc, CampusEventState>(
       builder: (context, state) {
-        final today = state is CampusEventLoaded ? state.today : DateTime.now();
+        final today =
+            state is CampusEventLoaded ? state.selectedDay : DateTime.now();
 
-        int _firstDay = today.weekday - (today.day % 7 - 1);
-        index -= _firstDay - 1;
+        final selectedFirstDay = DateTime(today.year, today.month);
+
+        // int _firstDay = today.weekday - (today.day % 7 - 1);
+        index -= selectedFirstDay.weekday - 1;
 
         return (index > 0 &&
                 index <= context.read<CampusEventBloc>().endDays(today))
-            ? _availableDates(index)
-            : _disableDates(index);
+            ? availableDates(index)
+            : disableDates(index);
       },
     );
   }

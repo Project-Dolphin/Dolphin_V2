@@ -8,9 +8,9 @@ part 'response_diet_cafe_data_dto.g.dart';
 @freezed
 class CafeData with _$CafeData {
   factory CafeData({
-    List<DietDetail>? student,
-    List<DietDetail>? snack,
-    List<DietDetail>? staff,
+    @Default(<DietDetail>[]) List<DietDetail> student,
+    @Default(<DietDetail>[]) List<DietDetail> snack,
+    @Default(<DietDetail>[]) List<DietDetail> staff,
   }) = _CafeData;
 
   factory CafeData.fromJson(Map<String, dynamic> json) =>

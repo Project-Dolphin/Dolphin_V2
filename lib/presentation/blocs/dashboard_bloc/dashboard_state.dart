@@ -6,7 +6,7 @@ class DashBoardState extends Equatable {
   final DateState state;
   final RootTab selectedTab;
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [selectedTab];
 
   DashBoardState copyWith({
     DateState? state,

@@ -22,7 +22,7 @@ CalendarTerm _$CalendarTermFromJson(Map<String, dynamic> json) {
 class _$CalendarTermTearOff {
   const _$CalendarTermTearOff();
 
-  _CalendarTerm call({String? startedAt, String? endedAt}) {
+  _CalendarTerm call({required String startedAt, required String endedAt}) {
     return _CalendarTerm(
       startedAt: startedAt,
       endedAt: endedAt,
@@ -39,8 +39,8 @@ const $CalendarTerm = _$CalendarTermTearOff();
 
 /// @nodoc
 mixin _$CalendarTerm {
-  String? get startedAt => throw _privateConstructorUsedError;
-  String? get endedAt => throw _privateConstructorUsedError;
+  String get startedAt => throw _privateConstructorUsedError;
+  String get endedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +53,7 @@ abstract class $CalendarTermCopyWith<$Res> {
   factory $CalendarTermCopyWith(
           CalendarTerm value, $Res Function(CalendarTerm) then) =
       _$CalendarTermCopyWithImpl<$Res>;
-  $Res call({String? startedAt, String? endedAt});
+  $Res call({String startedAt, String endedAt});
 }
 
 /// @nodoc
@@ -73,11 +73,11 @@ class _$CalendarTermCopyWithImpl<$Res> implements $CalendarTermCopyWith<$Res> {
       startedAt: startedAt == freezed
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       endedAt: endedAt == freezed
           ? _value.endedAt
           : endedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -89,7 +89,7 @@ abstract class _$CalendarTermCopyWith<$Res>
           _CalendarTerm value, $Res Function(_CalendarTerm) then) =
       __$CalendarTermCopyWithImpl<$Res>;
   @override
-  $Res call({String? startedAt, String? endedAt});
+  $Res call({String startedAt, String endedAt});
 }
 
 /// @nodoc
@@ -111,11 +111,11 @@ class __$CalendarTermCopyWithImpl<$Res> extends _$CalendarTermCopyWithImpl<$Res>
       startedAt: startedAt == freezed
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       endedAt: endedAt == freezed
           ? _value.endedAt
           : endedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -123,15 +123,15 @@ class __$CalendarTermCopyWithImpl<$Res> extends _$CalendarTermCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CalendarTerm implements _CalendarTerm {
-  _$_CalendarTerm({this.startedAt, this.endedAt});
+  _$_CalendarTerm({required this.startedAt, required this.endedAt});
 
   factory _$_CalendarTerm.fromJson(Map<String, dynamic> json) =>
       _$$_CalendarTermFromJson(json);
 
   @override
-  final String? startedAt;
+  final String startedAt;
   @override
-  final String? endedAt;
+  final String endedAt;
 
   @override
   String toString() {
@@ -165,15 +165,16 @@ class _$_CalendarTerm implements _CalendarTerm {
 }
 
 abstract class _CalendarTerm implements CalendarTerm {
-  factory _CalendarTerm({String? startedAt, String? endedAt}) = _$_CalendarTerm;
+  factory _CalendarTerm({required String startedAt, required String endedAt}) =
+      _$_CalendarTerm;
 
   factory _CalendarTerm.fromJson(Map<String, dynamic> json) =
       _$_CalendarTerm.fromJson;
 
   @override
-  String? get startedAt;
+  String get startedAt;
   @override
-  String? get endedAt;
+  String get endedAt;
   @override
   @JsonKey(ignore: true)
   _$CalendarTermCopyWith<_CalendarTerm> get copyWith =>
