@@ -4,7 +4,7 @@ class DietPageState extends Equatable {
   const DietPageState({required this.selectedDietTab});
   final DietTab selectedDietTab;
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [selectedDietTab];
 
   DietPageState copyWith({
     DietTab? selectedDietTab,

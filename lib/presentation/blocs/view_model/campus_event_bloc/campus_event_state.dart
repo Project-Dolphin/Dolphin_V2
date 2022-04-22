@@ -10,15 +10,17 @@ class CampusEventLoading extends CampusEventState {
 class CampusEventLoaded extends CampusEventState {
   CampusEventLoaded({
     required this.calendarData,
+    required this.eventList,
     DateTime? today,
     DateTime? selectedDay,
   })  : today = today ?? DateTime.now(),
         selectedDay = selectedDay ?? DateTime.now();
   final List<CalendarSumamryWrapper> calendarData;
+  final List<WeekdayData> eventList;
   final DateTime selectedDay;
   final DateTime today;
   @override
-  List<Object?> get props => [calendarData, selectedDay, today];
+  List<Object?> get props => [calendarData, eventList, selectedDay, today];
 
   @override
   String toString() {
@@ -27,11 +29,13 @@ class CampusEventLoaded extends CampusEventState {
 
   CampusEventLoaded copyWith({
     List<CalendarSumamryWrapper>? calendarData,
+    List<WeekdayData>? eventList,
     DateTime? today,
     DateTime? selectedDay,
   }) {
     return CampusEventLoaded(
       calendarData: calendarData ?? this.calendarData,
+      eventList: eventList ?? this.eventList,
       selectedDay: selectedDay ?? this.selectedDay,
       today: today ?? this.today,
     );

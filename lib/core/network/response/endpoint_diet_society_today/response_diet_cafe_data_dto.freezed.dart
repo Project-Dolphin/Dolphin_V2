@@ -23,9 +23,9 @@ class _$CafeDataTearOff {
   const _$CafeDataTearOff();
 
   _CafeData call(
-      {List<DietDetail>? student,
-      List<DietDetail>? snack,
-      List<DietDetail>? staff}) {
+      {List<DietDetail> student = const <DietDetail>[],
+      List<DietDetail> snack = const <DietDetail>[],
+      List<DietDetail> staff = const <DietDetail>[]}) {
     return _CafeData(
       student: student,
       snack: snack,
@@ -43,9 +43,9 @@ const $CafeData = _$CafeDataTearOff();
 
 /// @nodoc
 mixin _$CafeData {
-  List<DietDetail>? get student => throw _privateConstructorUsedError;
-  List<DietDetail>? get snack => throw _privateConstructorUsedError;
-  List<DietDetail>? get staff => throw _privateConstructorUsedError;
+  List<DietDetail> get student => throw _privateConstructorUsedError;
+  List<DietDetail> get snack => throw _privateConstructorUsedError;
+  List<DietDetail> get staff => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,9 +58,9 @@ abstract class $CafeDataCopyWith<$Res> {
   factory $CafeDataCopyWith(CafeData value, $Res Function(CafeData) then) =
       _$CafeDataCopyWithImpl<$Res>;
   $Res call(
-      {List<DietDetail>? student,
-      List<DietDetail>? snack,
-      List<DietDetail>? staff});
+      {List<DietDetail> student,
+      List<DietDetail> snack,
+      List<DietDetail> staff});
 }
 
 /// @nodoc
@@ -81,15 +81,15 @@ class _$CafeDataCopyWithImpl<$Res> implements $CafeDataCopyWith<$Res> {
       student: student == freezed
           ? _value.student
           : student // ignore: cast_nullable_to_non_nullable
-              as List<DietDetail>?,
+              as List<DietDetail>,
       snack: snack == freezed
           ? _value.snack
           : snack // ignore: cast_nullable_to_non_nullable
-              as List<DietDetail>?,
+              as List<DietDetail>,
       staff: staff == freezed
           ? _value.staff
           : staff // ignore: cast_nullable_to_non_nullable
-              as List<DietDetail>?,
+              as List<DietDetail>,
     ));
   }
 }
@@ -100,9 +100,9 @@ abstract class _$CafeDataCopyWith<$Res> implements $CafeDataCopyWith<$Res> {
       __$CafeDataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<DietDetail>? student,
-      List<DietDetail>? snack,
-      List<DietDetail>? staff});
+      {List<DietDetail> student,
+      List<DietDetail> snack,
+      List<DietDetail> staff});
 }
 
 /// @nodoc
@@ -124,15 +124,15 @@ class __$CafeDataCopyWithImpl<$Res> extends _$CafeDataCopyWithImpl<$Res>
       student: student == freezed
           ? _value.student
           : student // ignore: cast_nullable_to_non_nullable
-              as List<DietDetail>?,
+              as List<DietDetail>,
       snack: snack == freezed
           ? _value.snack
           : snack // ignore: cast_nullable_to_non_nullable
-              as List<DietDetail>?,
+              as List<DietDetail>,
       staff: staff == freezed
           ? _value.staff
           : staff // ignore: cast_nullable_to_non_nullable
-              as List<DietDetail>?,
+              as List<DietDetail>,
     ));
   }
 }
@@ -140,17 +140,23 @@ class __$CafeDataCopyWithImpl<$Res> extends _$CafeDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CafeData implements _CafeData {
-  _$_CafeData({this.student, this.snack, this.staff});
+  _$_CafeData(
+      {this.student = const <DietDetail>[],
+      this.snack = const <DietDetail>[],
+      this.staff = const <DietDetail>[]});
 
   factory _$_CafeData.fromJson(Map<String, dynamic> json) =>
       _$$_CafeDataFromJson(json);
 
+  @JsonKey()
   @override
-  final List<DietDetail>? student;
+  final List<DietDetail> student;
+  @JsonKey()
   @override
-  final List<DietDetail>? snack;
+  final List<DietDetail> snack;
+  @JsonKey()
   @override
-  final List<DietDetail>? staff;
+  final List<DietDetail> staff;
 
   @override
   String toString() {
@@ -187,18 +193,18 @@ class _$_CafeData implements _CafeData {
 
 abstract class _CafeData implements CafeData {
   factory _CafeData(
-      {List<DietDetail>? student,
-      List<DietDetail>? snack,
-      List<DietDetail>? staff}) = _$_CafeData;
+      {List<DietDetail> student,
+      List<DietDetail> snack,
+      List<DietDetail> staff}) = _$_CafeData;
 
   factory _CafeData.fromJson(Map<String, dynamic> json) = _$_CafeData.fromJson;
 
   @override
-  List<DietDetail>? get student;
+  List<DietDetail> get student;
   @override
-  List<DietDetail>? get snack;
+  List<DietDetail> get snack;
   @override
-  List<DietDetail>? get staff;
+  List<DietDetail> get staff;
   @override
   @JsonKey(ignore: true)
   _$CafeDataCopyWith<_CafeData> get copyWith =>

@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: const Locale('ko', 'KR'),
       navigatorKey: _navigatorKey,
       builder: (context, child) {
         return MediaQuery(

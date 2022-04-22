@@ -10,7 +10,7 @@ class WeekdayData with _$WeekdayData {
   factory WeekdayData({
     CalendarTerm? term,
     bool? mainPlan,
-    String? content,
+    @Default('') String content,
   }) = _WeekdayData;
 
   factory WeekdayData.fromJson(Map<String, dynamic> json) =>

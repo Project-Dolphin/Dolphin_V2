@@ -22,7 +22,7 @@ DietDetail _$DietDetailFromJson(Map<String, dynamic> json) {
 class _$DietDetailTearOff {
   const _$DietDetailTearOff();
 
-  _DietDetail call({String? type, List<String>? menus}) {
+  _DietDetail call({String type = '', List<String> menus = const <String>[]}) {
     return _DietDetail(
       type: type,
       menus: menus,
@@ -39,8 +39,8 @@ const $DietDetail = _$DietDetailTearOff();
 
 /// @nodoc
 mixin _$DietDetail {
-  String? get type => throw _privateConstructorUsedError;
-  List<String>? get menus => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+  List<String> get menus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +53,7 @@ abstract class $DietDetailCopyWith<$Res> {
   factory $DietDetailCopyWith(
           DietDetail value, $Res Function(DietDetail) then) =
       _$DietDetailCopyWithImpl<$Res>;
-  $Res call({String? type, List<String>? menus});
+  $Res call({String type, List<String> menus});
 }
 
 /// @nodoc
@@ -73,11 +73,11 @@ class _$DietDetailCopyWithImpl<$Res> implements $DietDetailCopyWith<$Res> {
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       menus: menus == freezed
           ? _value.menus
           : menus // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ));
   }
 }
@@ -88,7 +88,7 @@ abstract class _$DietDetailCopyWith<$Res> implements $DietDetailCopyWith<$Res> {
           _DietDetail value, $Res Function(_DietDetail) then) =
       __$DietDetailCopyWithImpl<$Res>;
   @override
-  $Res call({String? type, List<String>? menus});
+  $Res call({String type, List<String> menus});
 }
 
 /// @nodoc
@@ -110,11 +110,11 @@ class __$DietDetailCopyWithImpl<$Res> extends _$DietDetailCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       menus: menus == freezed
           ? _value.menus
           : menus // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ));
   }
 }
@@ -122,15 +122,17 @@ class __$DietDetailCopyWithImpl<$Res> extends _$DietDetailCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DietDetail implements _DietDetail {
-  _$_DietDetail({this.type, this.menus});
+  _$_DietDetail({this.type = '', this.menus = const <String>[]});
 
   factory _$_DietDetail.fromJson(Map<String, dynamic> json) =>
       _$$_DietDetailFromJson(json);
 
+  @JsonKey()
   @override
-  final String? type;
+  final String type;
+  @JsonKey()
   @override
-  final List<String>? menus;
+  final List<String> menus;
 
   @override
   String toString() {
@@ -164,15 +166,15 @@ class _$_DietDetail implements _DietDetail {
 }
 
 abstract class _DietDetail implements DietDetail {
-  factory _DietDetail({String? type, List<String>? menus}) = _$_DietDetail;
+  factory _DietDetail({String type, List<String> menus}) = _$_DietDetail;
 
   factory _DietDetail.fromJson(Map<String, dynamic> json) =
       _$_DietDetail.fromJson;
 
   @override
-  String? get type;
+  String get type;
   @override
-  List<String>? get menus;
+  List<String> get menus;
   @override
   @JsonKey(ignore: true)
   _$DietDetailCopyWith<_DietDetail> get copyWith =>

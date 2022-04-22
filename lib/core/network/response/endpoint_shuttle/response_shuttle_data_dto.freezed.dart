@@ -22,7 +22,9 @@ ShuttleDataDto _$ShuttleDataDtoFromJson(Map<String, dynamic> json) {
 class _$ShuttleDataDtoTearOff {
   const _$ShuttleDataDtoTearOff();
 
-  _ShuttleDataDto call({ShuttleDetailDto? previous, ShuttleDetailDto? next}) {
+  _ShuttleDataDto call(
+      {ShuttleDetailDto? previous,
+      List<ShuttleDetailDto> next = const <ShuttleDetailDto>[]}) {
     return _ShuttleDataDto(
       previous: previous,
       next: next,
@@ -40,7 +42,7 @@ const $ShuttleDataDto = _$ShuttleDataDtoTearOff();
 /// @nodoc
 mixin _$ShuttleDataDto {
   ShuttleDetailDto? get previous => throw _privateConstructorUsedError;
-  ShuttleDetailDto? get next => throw _privateConstructorUsedError;
+  List<ShuttleDetailDto> get next => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,10 +55,9 @@ abstract class $ShuttleDataDtoCopyWith<$Res> {
   factory $ShuttleDataDtoCopyWith(
           ShuttleDataDto value, $Res Function(ShuttleDataDto) then) =
       _$ShuttleDataDtoCopyWithImpl<$Res>;
-  $Res call({ShuttleDetailDto? previous, ShuttleDetailDto? next});
+  $Res call({ShuttleDetailDto? previous, List<ShuttleDetailDto> next});
 
   $ShuttleDetailDtoCopyWith<$Res>? get previous;
-  $ShuttleDetailDtoCopyWith<$Res>? get next;
 }
 
 /// @nodoc
@@ -81,7 +82,7 @@ class _$ShuttleDataDtoCopyWithImpl<$Res>
       next: next == freezed
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as ShuttleDetailDto?,
+              as List<ShuttleDetailDto>,
     ));
   }
 
@@ -95,17 +96,6 @@ class _$ShuttleDataDtoCopyWithImpl<$Res>
       return _then(_value.copyWith(previous: value));
     });
   }
-
-  @override
-  $ShuttleDetailDtoCopyWith<$Res>? get next {
-    if (_value.next == null) {
-      return null;
-    }
-
-    return $ShuttleDetailDtoCopyWith<$Res>(_value.next!, (value) {
-      return _then(_value.copyWith(next: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -115,12 +105,10 @@ abstract class _$ShuttleDataDtoCopyWith<$Res>
           _ShuttleDataDto value, $Res Function(_ShuttleDataDto) then) =
       __$ShuttleDataDtoCopyWithImpl<$Res>;
   @override
-  $Res call({ShuttleDetailDto? previous, ShuttleDetailDto? next});
+  $Res call({ShuttleDetailDto? previous, List<ShuttleDetailDto> next});
 
   @override
   $ShuttleDetailDtoCopyWith<$Res>? get previous;
-  @override
-  $ShuttleDetailDtoCopyWith<$Res>? get next;
 }
 
 /// @nodoc
@@ -147,7 +135,7 @@ class __$ShuttleDataDtoCopyWithImpl<$Res>
       next: next == freezed
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as ShuttleDetailDto?,
+              as List<ShuttleDetailDto>,
     ));
   }
 }
@@ -155,15 +143,16 @@ class __$ShuttleDataDtoCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ShuttleDataDto implements _ShuttleDataDto {
-  _$_ShuttleDataDto({this.previous, this.next});
+  _$_ShuttleDataDto({this.previous, this.next = const <ShuttleDetailDto>[]});
 
   factory _$_ShuttleDataDto.fromJson(Map<String, dynamic> json) =>
       _$$_ShuttleDataDtoFromJson(json);
 
   @override
   final ShuttleDetailDto? previous;
+  @JsonKey()
   @override
-  final ShuttleDetailDto? next;
+  final List<ShuttleDetailDto> next;
 
   @override
   String toString() {
@@ -198,7 +187,8 @@ class _$_ShuttleDataDto implements _ShuttleDataDto {
 
 abstract class _ShuttleDataDto implements ShuttleDataDto {
   factory _ShuttleDataDto(
-      {ShuttleDetailDto? previous, ShuttleDetailDto? next}) = _$_ShuttleDataDto;
+      {ShuttleDetailDto? previous,
+      List<ShuttleDetailDto> next}) = _$_ShuttleDataDto;
 
   factory _ShuttleDataDto.fromJson(Map<String, dynamic> json) =
       _$_ShuttleDataDto.fromJson;
@@ -206,7 +196,7 @@ abstract class _ShuttleDataDto implements ShuttleDataDto {
   @override
   ShuttleDetailDto? get previous;
   @override
-  ShuttleDetailDto? get next;
+  List<ShuttleDetailDto> get next;
   @override
   @JsonKey(ignore: true)
   _$ShuttleDataDtoCopyWith<_ShuttleDataDto> get copyWith =>

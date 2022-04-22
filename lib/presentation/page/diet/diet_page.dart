@@ -16,36 +16,50 @@ class DietPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: const [
-            DietKindCircleButton(dietTab: DietTab.morning),
-            DietKindCircleButton(dietTab: DietTab.lunch),
-            DietKindCircleButton(dietTab: DietTab.dinner),
-            DietKindCircleText(dietTab: DietTab.dorm),
-            DietKindCircleText(dietTab: DietTab.navy),
-          ],
-        ),
-        Expanded(
-          child: BlocBuilder<DietPageBloc, DietPageState>(
-            builder: ((context, state) {
-              switch (state.selectedDietTab) {
-                case DietTab.morning:
-                  return const SecondFloorPage();
-                case DietTab.lunch:
-                  return const ThridFloorPage();
-                case DietTab.dinner:
-                  return const FifthFloorPage();
-                case DietTab.dorm:
-                  return const DormPage();
-                case DietTab.navy:
-                  return const NavyPage();
-              }
-            }),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const DietKindCircleButton(dietTab: DietTab.morning),
+              const DietKindCircleButton(dietTab: DietTab.lunch),
+              const DietKindCircleButton(dietTab: DietTab.dinner),
+              Expanded(
+                child: Center(
+                  child: Container(
+                    width: 1,
+                    color: Theme.of(context).primaryColor,
+                    height: 20,
+                  ),
+                ),
+              ),
+              const DietKindCircleText(dietTab: DietTab.dorm),
+              const SizedBox(width: 20),
+              const DietKindCircleText(dietTab: DietTab.navy),
+            ],
           ),
-        ),
-      ],
+          const SizedBox(height: 16),
+          Expanded(
+            child: BlocBuilder<DietPageBloc, DietPageState>(
+              builder: ((context, state) {
+                switch (state.selectedDietTab) {
+                  case DietTab.morning:
+                    return const SecondFloorPage();
+                  case DietTab.lunch:
+                    return const ThridFloorPage();
+                  case DietTab.dinner:
+                    return const FifthFloorPage();
+                  case DietTab.dorm:
+                    return const DormPage();
+                  case DietTab.navy:
+                    return const NavyPage();
+                }
+              }),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

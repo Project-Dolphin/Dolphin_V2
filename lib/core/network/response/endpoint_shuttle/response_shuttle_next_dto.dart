@@ -8,8 +8,8 @@ part 'response_shuttle_next_dto.g.dart';
 @freezed
 class ShuttleNextWrapper with _$ShuttleNextWrapper {
   factory ShuttleNextWrapper({
-    List<ShuttleDataDto>? data,
-    String? path,
+    ShuttleDataDto? data,
+    @Default('') String path,
   }) = _ShuttleNextWrapper;
 
   factory ShuttleNextWrapper.fromJson(Map<String, dynamic> json) =>

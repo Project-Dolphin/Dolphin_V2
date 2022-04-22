@@ -9,7 +9,7 @@ import 'package:oceanview/presentation/blocs/view_model/city_bus_bloc/city_bus_b
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/shuttle_bus_bloc/shuttle_bus_bloc.dart';
-import 'package:oceanview/presentation/page/widgets/tab_view.dart';
+import 'package:oceanview/presentation/page/widgets/page_view.dart';
 
 class DashBoard extends StatelessWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class DashBoard extends StatelessWidget {
               ) {
                 //TODO : 대쉬보드 로딩 전에는 loadingState 보여줘도 됨
 
-                return TabView(state.selectedTab);
+                return BlocPageView(state.selectedTab);
                 /*
                 예시 : 
                 if(state is DashBoardLoaded){
@@ -89,12 +89,42 @@ class DashBoard extends StatelessWidget {
           ],
         ),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ...RootTab.values.map(
-            (tab) => FloatingBottomItem(tab: tab),
+          BlocBuilder<DashBoardBloc, DashBoardState>(builder: (
+            context,
+            state,
+          ) {
+            final int emptySpaceSize =
+                ((MediaQuery.of(context).size.width - 68 - 110) / 4).floor();
+            // 패딩 + 마진 = 68
+            // iconSize = 24, 24*5=120
+            // (MediaQuery-68-120)/4
+
+            return AnimatedContainer(
+              margin: EdgeInsets.only(
+                  left: state.selectedTab.index * (emptySpaceSize + 22) + 3),
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeInOut,
+              alignment: Alignment.center,
+              width: 16,
+              height: 3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(31.82),
+                color: Theme.of(context).canvasColor,
+              ),
+            );
+          }),
+          SizedBox(height: 6),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ...RootTab.values.map(
+                (tab) => FloatingBottomItem(tab: tab),
+              ),
+            ],
           ),
         ],
       ),
@@ -117,33 +147,18 @@ class FloatingBottomItem extends StatelessWidget {
         state,
       ) {
         return SizedBox(
-          width: 36,
-          height: 47,
+          width: 22,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                alignment: Alignment.center,
-                height: 3,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(31.82),
-                  color: state.selectedTab == tab
-                      ? Theme.of(context).primaryColor
-                      : Colors.transparent,
+              state.selectedTab == tab ? tab.selectedIcon : tab.icon,
+              const SizedBox(height: 4),
+              Text(
+                tab.text,
+                style: const TextStyle(
+                  fontSize: 8,
+                  color: Color(0xFFFFFFFF),
                 ),
-              ),
-              Column(
-                children: [
-                  state.selectedTab == tab ? tab.selectedIcon : tab.icon,
-                  const SizedBox(height: 4),
-                  Text(
-                    tab.text,
-                    style: const TextStyle(
-                      fontSize: 8,
-                      color: Color(0xFFFFFFFF),
-                    ),
-                  ),
-                ],
               ),
             ],
           ),

@@ -12,7 +12,7 @@ _$_WeekdayData _$$_WeekdayDataFromJson(Map<String, dynamic> json) =>
           ? null
           : CalendarTerm.fromJson(json['term'] as Map<String, dynamic>),
       mainPlan: json['mainPlan'] as bool?,
-      content: json['content'] as String?,
+      content: json['content'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_WeekdayDataToJson(_$_WeekdayData instance) =>

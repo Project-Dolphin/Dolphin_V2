@@ -9,7 +9,7 @@ class EventBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = (MediaQuery.of(context).size.width * 0.893 - 14) / 2;
+    final width = (MediaQuery.of(context).size.width * 0.893 - 34) / 2;
 
     return DecoratedContainer(
       width: width,
@@ -46,7 +46,7 @@ class EventBox extends StatelessWidget {
                     Text(
                       '${state.event.first.dDay ?? 0}일',
                       style: textStyleNormal(
-                        Theme.of(context).colorScheme.primary,
+                        Theme.of(context).primaryColor,
                         30,
                       ),
                     ),

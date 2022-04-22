@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/error/failures.dart';
 import 'package:oceanview/core/network/response/endpoint_diet_dorm_today/response_diet_dorm_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_diet_society_today/response_diet_cafe_data_dto.dart';
@@ -15,6 +17,17 @@ class DietDataBloc extends Bloc<DietDataEvent, DietDataState> {
   final GetDormDiet getDormDiet;
   final GetCafeDiet getCafeDiet;
 
+  DormData dormDietInfo = DormData();
+  CafeData cafeDietInfo = CafeData();
+
+  Future<Either<Failure, DormData>> async1() async {
+    return await getDormDiet.call();
+  }
+
+  Future<Either<Failure, CafeData>> async2() async {
+    return await getCafeDiet.call();
+  }
+
   DietDataBloc({
     required this.getDormDiet,
     required this.getCafeDiet,
@@ -27,40 +40,35 @@ class DietDataBloc extends Bloc<DietDataEvent, DietDataState> {
     DormDataInited event,
     Emitter<DietDataState> emit,
   ) async {
-    final _dormDietResponse = await getDormDiet.call();
-    final _cafeDietResponse = await getCafeDiet.call();
+    await Future.wait([async1(), async2()]).then((data) {
+      logger.d(data);
+      data[0].fold(
+        (failure) async* {
+          if (failure is CacheFailure) {
+            emit(DietError('SETTING_ERROR'));
+          } else {
+            emit(DietError('NO_CONNECTION_ERROR'));
+          }
+        },
+        (success) {
+          dormDietInfo = success as DormData;
+        },
+      );
+      data[1].fold(
+        (failure) async* {
+          if (failure is CacheFailure) {
+            emit(DietError('SETTING_ERROR'));
+          } else {
+            emit(DietError('NO_CONNECTION_ERROR'));
+          }
+        },
+        (success) {
+          cafeDietInfo = success as CafeData;
+        },
+      );
+    });
 
-    DormData? _dormDietInfo;
-    CafeData? _cafeDietInfo;
-
-    // TODO: Use Extract
-    _dormDietResponse.fold(
-      (failure) async* {
-        if (failure is CacheFailure) {
-          emit(DietError('SETTING_ERROR'));
-        } else {
-          emit(DietError('NO_CONNECTION_ERROR'));
-        }
-      },
-      (success) {
-        _dormDietInfo = success;
-      },
-    );
-    _cafeDietResponse.fold(
-      (failure) async* {
-        if (failure is CacheFailure) {
-          emit(DietError('SETTING_ERROR'));
-        } else {
-          emit(DietError('NO_CONNECTION_ERROR'));
-        }
-      },
-      (success) {
-        _cafeDietInfo = success;
-      },
-    );
-
-    // TODO : init 초기 메서드 가져오기
-    emit(DietLoaded(cafeData: _cafeDietInfo!, dormData: _dormDietInfo!));
+    emit(DietLoaded(cafeData: cafeDietInfo, dormData: dormDietInfo));
   }
 
   void _onBusInfoRefreshRequested(

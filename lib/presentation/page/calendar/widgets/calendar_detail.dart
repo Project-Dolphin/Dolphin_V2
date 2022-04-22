@@ -9,35 +9,47 @@ class CalendarDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedContainer(
-      // ignore: avoid-returning-widgets
-      child: _buildSelectedDate(),
-    );
-  }
-
-  Widget _buildSelectedDate() {
     return BlocBuilder<CampusEventBloc, CampusEventState>(
       builder: ((context, state) {
-        if (state is CampusEventLoaded) {
-          return Column(
-            children: [
-              ...state.calendarData[state.selectedDay.day].data.map((detail) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 9),
-                  child: Row(
-                    children: [
-                      Text(
-                        detail.content,
-                        style: textStyleBold(
-                          detail.holiday ? Colors.red : const Color(0xFF353B45),
-                          14,
+        if (state is CampusEventLoaded &&
+            state.calendarData[state.selectedDay.day].data.isNotEmpty) {
+          return DecoratedContainer(
+            // ignore: avoid-returning-widgets
+            child: Column(
+              children: [
+                ...state.calendarData[state.selectedDay.day].data.map((detail) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 9),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 1),
+                          width: 3,
+                          height: 3,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFBBEBEC),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              }),
-            ],
+                        const SizedBox(width: 11),
+                        Expanded(
+                          child: Text(
+                            detail.content,
+                            overflow: TextOverflow.ellipsis,
+                            style: textStyleBold(
+                              detail.holiday
+                                  ? Colors.red
+                                  : const Color(0xFF353B45),
+                              14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+              ],
+            ),
           );
           // return Padding(
           //   padding: const EdgeInsets.symmetric(vertical: 9),

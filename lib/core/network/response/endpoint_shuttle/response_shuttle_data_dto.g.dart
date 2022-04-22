@@ -11,9 +11,10 @@ _$_ShuttleDataDto _$$_ShuttleDataDtoFromJson(Map<String, dynamic> json) =>
       previous: json['previous'] == null
           ? null
           : ShuttleDetailDto.fromJson(json['previous'] as Map<String, dynamic>),
-      next: json['next'] == null
-          ? null
-          : ShuttleDetailDto.fromJson(json['next'] as Map<String, dynamic>),
+      next: (json['next'] as List<dynamic>?)
+              ?.map((e) => ShuttleDetailDto.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <ShuttleDetailDto>[],
     );
 
 Map<String, dynamic> _$$_ShuttleDataDtoToJson(_$_ShuttleDataDto instance) =>

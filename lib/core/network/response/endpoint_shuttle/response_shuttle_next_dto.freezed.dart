@@ -22,7 +22,7 @@ ShuttleNextWrapper _$ShuttleNextWrapperFromJson(Map<String, dynamic> json) {
 class _$ShuttleNextWrapperTearOff {
   const _$ShuttleNextWrapperTearOff();
 
-  _ShuttleNextWrapper call({List<ShuttleDataDto>? data, String? path}) {
+  _ShuttleNextWrapper call({ShuttleDataDto? data, String path = ''}) {
     return _ShuttleNextWrapper(
       data: data,
       path: path,
@@ -39,8 +39,8 @@ const $ShuttleNextWrapper = _$ShuttleNextWrapperTearOff();
 
 /// @nodoc
 mixin _$ShuttleNextWrapper {
-  List<ShuttleDataDto>? get data => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
+  ShuttleDataDto? get data => throw _privateConstructorUsedError;
+  String get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +53,9 @@ abstract class $ShuttleNextWrapperCopyWith<$Res> {
   factory $ShuttleNextWrapperCopyWith(
           ShuttleNextWrapper value, $Res Function(ShuttleNextWrapper) then) =
       _$ShuttleNextWrapperCopyWithImpl<$Res>;
-  $Res call({List<ShuttleDataDto>? data, String? path});
+  $Res call({ShuttleDataDto? data, String path});
+
+  $ShuttleDataDtoCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -74,12 +76,23 @@ class _$ShuttleNextWrapperCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<ShuttleDataDto>?,
+              as ShuttleDataDto?,
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
+  }
+
+  @override
+  $ShuttleDataDtoCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $ShuttleDataDtoCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value));
+    });
   }
 }
 
@@ -90,7 +103,10 @@ abstract class _$ShuttleNextWrapperCopyWith<$Res>
           _ShuttleNextWrapper value, $Res Function(_ShuttleNextWrapper) then) =
       __$ShuttleNextWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<ShuttleDataDto>? data, String? path});
+  $Res call({ShuttleDataDto? data, String path});
+
+  @override
+  $ShuttleDataDtoCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -113,11 +129,11 @@ class __$ShuttleNextWrapperCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<ShuttleDataDto>?,
+              as ShuttleDataDto?,
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -125,15 +141,16 @@ class __$ShuttleNextWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ShuttleNextWrapper implements _ShuttleNextWrapper {
-  _$_ShuttleNextWrapper({this.data, this.path});
+  _$_ShuttleNextWrapper({this.data, this.path = ''});
 
   factory _$_ShuttleNextWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_ShuttleNextWrapperFromJson(json);
 
   @override
-  final List<ShuttleDataDto>? data;
+  final ShuttleDataDto? data;
+  @JsonKey()
   @override
-  final String? path;
+  final String path;
 
   @override
   String toString() {
@@ -167,16 +184,16 @@ class _$_ShuttleNextWrapper implements _ShuttleNextWrapper {
 }
 
 abstract class _ShuttleNextWrapper implements ShuttleNextWrapper {
-  factory _ShuttleNextWrapper({List<ShuttleDataDto>? data, String? path}) =
+  factory _ShuttleNextWrapper({ShuttleDataDto? data, String path}) =
       _$_ShuttleNextWrapper;
 
   factory _ShuttleNextWrapper.fromJson(Map<String, dynamic> json) =
       _$_ShuttleNextWrapper.fromJson;
 
   @override
-  List<ShuttleDataDto>? get data;
+  ShuttleDataDto? get data;
   @override
-  String? get path;
+  String get path;
   @override
   @JsonKey(ignore: true)
   _$ShuttleNextWrapperCopyWith<_ShuttleNextWrapper> get copyWith =>

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/error/failures.dart';
@@ -18,6 +19,11 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
   final GetNoticeList getNoticeList;
   final GetLatestEvent getLatestEvent;
 
+  WeatherData _weather =
+      WeatherData(humidity: '', status: '', temparature: '', windSpeed: '');
+  List<NoticeData> _notices = [];
+  List<LatestData> _events = [];
+
   HomeDataBloc({
     required this.getWeatherInfo,
     required this.getNoticeList,
@@ -27,57 +33,63 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
     on<RefreshBusEvent>(_onBusInfoRefreshRequested);
   }
 
+  Future<Either<Failure, WeatherData>> async1() async {
+    return await getWeatherInfo.call();
+  }
+
+  Future<Either<Failure, List<NoticeData>>> async2() async {
+    return await getNoticeList.call();
+  }
+
+  Future<Either<Failure, List<LatestData>>> async3() async {
+    return await getLatestEvent.call();
+  }
+
   Future<void> _onAppLaunched(
     HomeDataInited event,
     Emitter<HomeDataState> emit,
   ) async {
-    final _weatherResponse = await getWeatherInfo.call();
-    final _noticesResponse = await getNoticeList.call();
-    final _latestResponse = await getLatestEvent.call();
+    await Future.wait([async1(), async2(), async3()]).then((data) {
+      data[0].fold(
+        (failure) async* {
+          if (failure is CacheFailure) {
+            emit(HomeDataError('SETTING_ERROR'));
+          } else {
+            emit(HomeDataError('NO_CONNECTION_ERROR'));
+          }
+        },
+        (success) {
+          _weather = success as WeatherData;
+        },
+      );
 
-    WeatherData _weather =
-        WeatherData(humidity: '', status: '', temparature: '', windSpeed: '');
-    List<NoticeData> _notices = [];
-    List<LatestData> _events = [];
-    // TODO: Use Extract
-    _noticesResponse.fold(
-      (failure) async* {
-        if (failure is CacheFailure) {
-          emit(HomeDataError('SETTING_ERROR'));
-        } else {
-          emit(HomeDataError('NO_CONNECTION_ERROR'));
-        }
-      },
-      (success) {
-        _notices = success;
-      },
-    );
+      data[1].fold(
+        (failure) async* {
+          if (failure is CacheFailure) {
+            emit(HomeDataError('SETTING_ERROR'));
+          } else {
+            emit(HomeDataError('NO_CONNECTION_ERROR'));
+          }
+        },
+        (success) {
+          _notices = success as List<NoticeData>;
+        },
+      );
 
-    _weatherResponse.fold(
-      (failure) async* {
-        if (failure is CacheFailure) {
-          emit(HomeDataError('SETTING_ERROR'));
-        } else {
-          emit(HomeDataError('NO_CONNECTION_ERROR'));
-        }
-      },
-      (success) {
-        _weather = success;
-      },
-    );
+      data[2].fold(
+        (failure) async* {
+          if (failure is CacheFailure) {
+            emit(HomeDataError('SETTING_ERROR'));
+          } else {
+            emit(HomeDataError('NO_CONNECTION_ERROR'));
+          }
+        },
+        (success) {
+          _events = success as List<LatestData>;
+        },
+      );
+    });
 
-    _latestResponse.fold(
-      (failure) async* {
-        if (failure is CacheFailure) {
-          emit(HomeDataError('SETTING_ERROR'));
-        } else {
-          emit(HomeDataError('NO_CONNECTION_ERROR'));
-        }
-      },
-      (success) {
-        _events = success;
-      },
-    );
     emit(HomeDataLoaded(weather: _weather, notice: _notices, event: _events));
   }
 
