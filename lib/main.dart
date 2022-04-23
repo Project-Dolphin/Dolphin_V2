@@ -24,9 +24,12 @@ class MyApp extends StatelessWidget {
       locale: const Locale('ko', 'KR'),
       navigatorKey: _navigatorKey,
       builder: (context, child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-          child: child!,
+        return ScrollConfiguration(
+          behavior: MyBehavior(),
+          child: MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+            child: child!,
+          ),
         );
       },
       localizationsDelegates: const [
@@ -38,9 +41,17 @@ class MyApp extends StatelessWidget {
         Locale('ko', 'KR'),
         Locale('en', 'US'),
       ], //, 'KR')],
-      theme: AppTheme.light,
+      theme: AppTheme.dark,
       // darkTheme: AppTheme.dark,
       home: const DashBoard(),
     );
+  }
+}
+
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildOverscrollIndicator(
+      BuildContext context, Widget child, ScrollableDetails details) {
+    return child;
   }
 }

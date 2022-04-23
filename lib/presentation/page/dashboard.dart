@@ -41,13 +41,6 @@ class DashBoard extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: AppBar(
-          // backgroundColor: Colors.transparent,
-          foregroundColor: Colors.transparent,
-          elevation: 0,
-          title: const MainTitle(),
-        ),
-        extendBody: true,
         body: Column(
           children: [
             Expanded(
@@ -112,7 +105,7 @@ class DashBoard extends StatelessWidget {
               height: 3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(31.82),
-                color: Theme.of(context).canvasColor,
+                color: Colors.white,
               ),
             );
           }),
@@ -171,25 +164,3 @@ class FloatingBottomItem extends StatelessWidget {
 // TODO : Bloc을 통해 선택 된 페이지의 인덱스를 관리할 것
 
 // ignore: prefer-single-widget-per-file
-class MainTitle extends StatelessWidget {
-  const MainTitle({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ShaderMask(
-      blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) =>
-          const LinearGradient(colors: [Color(0xFF1E7AFF), Color(0xFF009DF5)])
-              .createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
-      child: Text(
-        'OceanView',
-        style: Theme.of(context)
-            .textTheme
-            .headline5!
-            .copyWith(fontWeight: FontWeight.w700),
-      ),
-    );
-  }
-}

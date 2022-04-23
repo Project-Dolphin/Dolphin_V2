@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_term_dto.dart';
@@ -43,13 +42,10 @@ class CalendarDialogState extends State<CalendarDialog> {
 
     positions.sort();
     positions = positions.toSet().toList();
-
-    logger.d(positions);
   }
 
   void jumpToKeyword() {
     scrollController.jumpTo(positions[index++] - 100);
-    print(positions[index - 1]);
     if (index >= positions.length) index = 0;
   }
 
@@ -93,7 +89,8 @@ class CalendarDialogState extends State<CalendarDialog> {
                           ),
                           child: TextField(
                             textAlignVertical: TextAlignVertical.center,
-                            style: textStyleNormal(R.color.contents00, 14),
+                            style: textStyleNormal(
+                                Theme.of(context).colorScheme.onPrimary, 14),
                             onSubmitted: (value) {
                               selectedKey.clear();
                               positions.clear();
@@ -124,6 +121,7 @@ class CalendarDialogState extends State<CalendarDialog> {
               SliverList(
                 delegate: SliverChildListDelegate([
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         '$initMonth월',
