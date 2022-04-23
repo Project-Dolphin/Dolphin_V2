@@ -10,7 +10,8 @@ class CalendarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: Colors.white),
+          borderRadius: BorderRadius.circular(15),
+          color: Theme.of(context).canvasColor),
       child: Column(
         children: [
           const SizedBox(height: 12),
@@ -75,7 +76,7 @@ class CalendarWidget extends StatelessWidget {
                     style: textStyleNormal(
                       index == state.today.day
                           ? Colors.white
-                          : const Color(0xFF353B45),
+                          : Theme.of(context).colorScheme.onPrimary,
                       16,
                     ),
                   ),

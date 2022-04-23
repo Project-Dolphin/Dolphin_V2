@@ -20,4 +20,11 @@ class AppTexts {
   final String dinner = '저녁';
   final String dorm = '기숙사';
   final String navy = '해사대';
+
+  final String website = '학교 주요 홈페이지';
+  final String phone = '학교 사무실 전화번호';
+  final String library = '도서관 홈페이지';
+  final String setting = '앱 설정';
+  final String developer = '앱 및 개발자 정보';
+  final String errorSend = '오류 제보';
 }

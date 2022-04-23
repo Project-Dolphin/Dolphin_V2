@@ -39,7 +39,7 @@ class CalendarDetailWidget extends StatelessWidget {
                             style: textStyleBold(
                               detail.holiday
                                   ? Colors.red
-                                  : const Color(0xFF353B45),
+                                  : Theme.of(context).colorScheme.onPrimary,
                               14,
                             ),
                           ),

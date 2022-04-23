@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:oceanview/core/config/enum/menu_enum.dart';
 import 'package:oceanview/core/config/r.dart';
 
 import 'gradient_icon.dart';
@@ -10,182 +12,106 @@ class MenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Theme.of(context).canvasColor,
+      child: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 70,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '식단',
+                      style: textStyleBold(
+                          Theme.of(context).colorScheme.onPrimary, 24),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          DateFormat('M.d EEEE', 'ko_KR')
+                              .format(DateTime.now()),
+                          style: textStyleNormal(
+                              Theme.of(context).colorScheme.onPrimary, 12),
+                        ),
+                        const SizedBox(width: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 2,
+                            horizontal: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Theme.of(context).canvasColor,
+                          ),
+                          child: Text(
+                            '사라져야함',
+                            style: textStyleNormal(
+                                Theme.of(context).colorScheme.primary, 11),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    GradientSvg(
-                      svg:
-                          R.image.icon_school_web_fill.svgPictureSize(size: 28),
-                      size: 28,
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF1E7Aff), Color(0xFF009DF5)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                    ),
-                    const SizedBox(width: 26),
-                    Text(
-                      '학교 주요 홈페이지',
-                      style: textStyleNormal(
-                        Theme.of(context).colorScheme.onPrimary,
-                        15,
-                      ),
-                    ),
-                  ],
-                ),
-                buildDivider(),
-                Row(
-                  children: [
-                    GradientSvg(
-                      svg:
-                          R.image.icon_phone_book_fill.svgPictureSize(size: 28),
-                      size: 28,
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF29B805),
-                          Color(0xFF67E107),
-                          Color(0xFF6CF500),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                    ),
-                    const SizedBox(width: 26),
-                    Text(
-                      '학교 주요 홈페이지',
-                      style: textStyleNormal(
-                        Theme.of(context).colorScheme.onPrimary,
-                        15,
-                      ),
-                    ),
-                  ],
-                ),
-                buildDivider(),
-                Row(
-                  children: [
-                    GradientSvg(
-                      svg: R.image.icon_library_fill.svgPictureSize(size: 28),
-                      size: 28,
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFFFFCA42),
-                          Color(0xFFFFB13C),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                    ),
-                    const SizedBox(width: 26),
-                    Text(
-                      '학교 주요 홈페이지',
-                      style: textStyleNormal(
-                        Theme.of(context).colorScheme.onPrimary,
-                        15,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Theme.of(context).canvasColor,
+              ),
+              child: Column(
+                children: [
+                  buildRow(menu: Menu.website, context: context),
+                  buildDivider(),
+                  buildRow(menu: Menu.phone, context: context),
+                  buildDivider(),
+                  buildRow(menu: Menu.library, context: context),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 30),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Theme.of(context).canvasColor,
+            const SizedBox(height: 30),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Theme.of(context).canvasColor,
+              ),
+              child: Column(
+                children: [
+                  buildRow(menu: Menu.setting, context: context),
+                  buildDivider(),
+                  buildRow(menu: Menu.developer, context: context),
+                  buildDivider(),
+                  buildRow(menu: Menu.error, context: context),
+                ],
+              ),
             ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    GradientSvg(
-                      svg: R.image.icon_setting_fill.svgPictureSize(size: 28),
-                      size: 28,
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF585858),
-                          Color(0xFF8A8A8A),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                    ),
-                    const SizedBox(width: 26),
-                    Text(
-                      '학교 주요 홈페이지',
-                      style: textStyleNormal(
-                        Theme.of(context).colorScheme.onPrimary,
-                        15,
-                      ),
-                    ),
-                  ],
-                ),
-                buildDivider(),
-                Row(
-                  children: [
-                    GradientSvg(
-                      svg: R.image.icon_developer_fill.svgPictureSize(size: 28),
-                      size: 28,
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF9C1Eff),
-                          Color(0xFFAC85FF),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                    ),
-                    const SizedBox(width: 26),
-                    Text(
-                      '학교 주요 홈페이지',
-                      style: textStyleNormal(
-                        Theme.of(context).colorScheme.onPrimary,
-                        15,
-                      ),
-                    ),
-                  ],
-                ),
-                buildDivider(),
-                Row(
-                  children: [
-                    GradientSvg(
-                      svg:
-                          R.image.icon_error_send_fill.svgPictureSize(size: 28),
-                      size: 28,
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF1E7AFF),
-                          Color(0xFF009DF5),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                    ),
-                    const SizedBox(width: 26),
-                    Text(
-                      '학교 주요 홈페이지',
-                      style: textStyleNormal(
-                        Theme.of(context).colorScheme.onPrimary,
-                        15,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
+    );
+  }
+
+  buildRow({required Menu menu, required BuildContext context}) {
+    return Row(
+      children: [
+        GradientSvg(
+          svg: menu.image,
+          size: 28,
+          gradient: menu.gradient,
+        ),
+        const SizedBox(width: 26),
+        Text(
+          menu.text,
+          style: textStyleNormal(
+            Theme.of(context).colorScheme.onPrimary,
+            15,
+          ),
+        ),
+      ],
     );
   }
 
