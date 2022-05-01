@@ -42,6 +42,7 @@ import 'package:oceanview/presentation/blocs/view_model/shuttle_bus_bloc/shuttle
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/setting_bloc/setting_bloc.dart';
 import 'presentation/blocs/diet_page_bloc/diet_page_bloc.dart';
 
 final sl = GetIt.instance; //sl is referred to as Service Locator
@@ -59,7 +60,14 @@ final prettyDioLogger = PrettyDioLogger(
 //Dependency injection
 // ignore: long-method
 Future<void> init() async {
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
+  sl.registerSingleton<SharedPreferences>(sharedPreferences);
+
   //Blocs
+  sl.registerFactory(
+    () => SettingBloc(sharedPreferences),
+  );
   sl.registerFactory(
     () => DashBoardBloc(),
   );
@@ -190,12 +198,10 @@ Future<void> init() async {
   // );
 
   //External
-  final SharedPreferences sharedPreferences =
-      await SharedPreferences.getInstance();
+
   final dio = Dio();
   dio.interceptors.add(prettyDioLogger);
 
-  sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(
     () => RestClient(
       dio,

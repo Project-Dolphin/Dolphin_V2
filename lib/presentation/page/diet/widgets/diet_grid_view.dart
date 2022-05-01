@@ -24,25 +24,29 @@ class DietGridView extends StatelessWidget {
             children: [
               Text(
                 type,
-                style: textStyleNormal(Theme.of(context).primaryColor, 14),
+                style: textStyleMedium(Theme.of(context).primaryColor, 14),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               timeLimit != null
                   ? Container(
-                      padding: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 2,
+                        horizontal: 4,
+                      ),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Theme.of(context).colorScheme.secondary),
+                        borderRadius: BorderRadius.circular(5),
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
                       child: Text(
                         timeLimit!,
                         style:
                             textStyleNormal(Theme.of(context).primaryColor, 12),
                       ),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           ),
-          SizedBox(height: 14),
+          const SizedBox(height: 14),
           Wrap(
             runSpacing: 12,
             children: [
@@ -53,7 +57,7 @@ class DietGridView extends StatelessWidget {
                       style: textStyle600(
                           Theme.of(context).colorScheme.onPrimary, 14),
                     ),
-                  ))
+                  )),
             ],
           ),
           // GridView.builder(

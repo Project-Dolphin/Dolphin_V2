@@ -18,8 +18,12 @@ class CalendarDetailWidget extends StatelessWidget {
             child: Column(
               children: [
                 ...state.calendarData[state.selectedDay.day].data.map((detail) {
+                  bool isFirst = state.calendarData[state.selectedDay.day].data
+                          .indexOf(detail) ==
+                      0;
+
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 9),
+                    padding: EdgeInsets.only(top: isFirst ? 0 : 20),
                     child: Row(
                       children: [
                         Container(

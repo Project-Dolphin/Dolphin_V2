@@ -86,17 +86,20 @@ class CalendarWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ...state.calendarData[index].data.map(
-                    (event) => Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 1),
+                  ...state.calendarData[index].data.map((event) {
+                    int detailIndex =
+                        state.calendarData[index].data.indexOf(event);
+
+                    return Container(
+                      margin: EdgeInsets.only(left: detailIndex > 0 ? 2 : 0),
                       width: 3,
                       height: 3,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xFFBBEBEC),
                       ),
-                    ),
-                  ),
+                    );
+                  }),
                 ],
               ),
             ],
