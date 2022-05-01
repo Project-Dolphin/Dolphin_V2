@@ -18,7 +18,10 @@ class CalendarTabSliverDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => maxHeight;
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return SizedBox.expand(
       child: Container(
         color: Theme.of(context).scaffoldBackgroundColor,
@@ -64,7 +67,9 @@ class CalendarTabSliverDelegate extends SliverPersistentHeaderDelegate {
                           child: Text(
                             '${today.month}',
                             style: textStyleNormal(
-                                Theme.of(context).colorScheme.onSecondary, 20),
+                              Theme.of(context).colorScheme.onSecondary,
+                              20,
+                            ),
                           ),
                         ),
                         GestureDetector(

@@ -25,7 +25,9 @@ class MenuPage extends StatelessWidget {
                     Text(
                       '식단',
                       style: textStyleBold(
-                          Theme.of(context).colorScheme.onPrimary, 24),
+                        Theme.of(context).colorScheme.onPrimary,
+                        24,
+                      ),
                     ),
                     Row(
                       children: [
@@ -33,7 +35,9 @@ class MenuPage extends StatelessWidget {
                           DateFormat('M.d EEEE', 'ko_KR')
                               .format(DateTime.now()),
                           style: textStyleNormal(
-                              Theme.of(context).colorScheme.onPrimary, 12),
+                            Theme.of(context).colorScheme.onPrimary,
+                            12,
+                          ),
                         ),
                         const SizedBox(width: 6),
                         Container(
@@ -48,7 +52,9 @@ class MenuPage extends StatelessWidget {
                           child: Text(
                             '사라져야함',
                             style: textStyleNormal(
-                                Theme.of(context).colorScheme.primary, 11),
+                              Theme.of(context).colorScheme.primary,
+                              11,
+                            ),
                           ),
                         ),
                       ],

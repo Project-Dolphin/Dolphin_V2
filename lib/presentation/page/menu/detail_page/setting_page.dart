@@ -99,10 +99,11 @@ class SettingPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                      color: state.theme == theme
-                          ? Colors.transparent
-                          : const Color(0xFFCECECE),
-                      width: 1),
+                    color: state.theme == theme
+                        ? Colors.transparent
+                        : const Color(0xFFCECECE),
+                    width: 1,
+                  ),
                   color: state.theme == theme
                       ? Theme.of(context).primaryColor
                       : Colors.transparent,

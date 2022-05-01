@@ -17,7 +17,7 @@ class ShuttleBusRemoteDataSourceImpl extends ShuttleBusRemoteDataSource {
   @override
   Future<ShuttleTodayWrapper> getTodayShuttleInfo() async {
     final response = await restClientService.getTodayShuttleInfo();
-    if (response.data == null) {
+    if (response.data.isEmpty) {
       throw ServerException();
     }
 

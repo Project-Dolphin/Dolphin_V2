@@ -57,7 +57,9 @@ class WeatherBox extends StatelessWidget {
                     Text(
                       state.weather.windSpeed ?? '0m/s',
                       style: textStyleBold(
-                          Theme.of(context).colorScheme.onPrimary, 12),
+                        Theme.of(context).colorScheme.onPrimary,
+                        12,
+                      ),
                     ),
                   ],
                 ),

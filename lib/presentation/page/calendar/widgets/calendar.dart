@@ -10,8 +10,9 @@ class CalendarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Theme.of(context).canvasColor),
+        borderRadius: BorderRadius.circular(15),
+        color: Theme.of(context).canvasColor,
+      ),
       child: Column(
         children: [
           const SizedBox(height: 12),
@@ -36,6 +37,7 @@ class CalendarWidget extends StatelessWidget {
                 primary: false,
                 crossAxisCount: 7,
                 children: List.generate(42, (index) {
+                  // ignore: avoid-returning-widgets
                   return date(index);
                 }),
               );
@@ -117,7 +119,6 @@ class CalendarWidget extends StatelessWidget {
         if (state is CampusEventLoaded) {
           final firstDay =
               DateTime(state.selectedDay.year, state.selectedDay.month);
-          int weight = index <= 0 ? -1 : 1;
 
           return Column(
             children: [

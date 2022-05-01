@@ -106,7 +106,7 @@ class ShuttleBusBloc extends Bloc<ShuttleBusEvent, ShuttleBusState> {
           }
         },
         (success) {
-          nextShuttleInfo = (success as ShuttleNextWrapper).data?.next ?? [];
+          nextShuttleInfo = success.data?.next ?? [];
         },
       );
       emit(state.copyWith(nextShuttleInfo: nextShuttleInfo));

@@ -48,8 +48,7 @@ class DashBoard extends StatelessWidget {
                 context,
                 state,
               ) {
-                //TODO : 대쉬보드 로딩 전에는 loadingState 보여줘도 됨
-
+                // TODO : 대쉬보드 로딩 전에는 loadingState 보여줘도 됨
                 return BlocPageView(state.selectedTab);
                 /*
                 예시 : 
@@ -97,7 +96,8 @@ class DashBoard extends StatelessWidget {
 
             return AnimatedContainer(
               margin: EdgeInsets.only(
-                  left: state.selectedTab.index * (emptySpaceSize + 22) + 3),
+                left: state.selectedTab.index * (emptySpaceSize + 22) + 3,
+              ),
               duration: const Duration(milliseconds: 400),
               curve: Curves.easeInOut,
               alignment: Alignment.center,
@@ -109,7 +109,7 @@ class DashBoard extends StatelessWidget {
               ),
             );
           }),
-          SizedBox(height: 6),
+          const SizedBox(height: 6),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

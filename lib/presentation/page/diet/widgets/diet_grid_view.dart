@@ -3,9 +3,12 @@ import 'package:oceanview/common/decorated_container.dart';
 import 'package:oceanview/core/config/r.dart';
 
 class DietGridView extends StatelessWidget {
-  const DietGridView(
-      {required this.type, required this.dietData, this.timeLimit, Key? key})
-      : super(key: key);
+  const DietGridView({
+    required this.type,
+    required this.dietData,
+    this.timeLimit,
+    Key? key,
+  }) : super(key: key);
 
   final String type;
   final List<String> dietData;
@@ -55,7 +58,9 @@ class DietGridView extends StatelessWidget {
                     child: Text(
                       e,
                       style: textStyle600(
-                          Theme.of(context).colorScheme.onPrimary, 14),
+                        Theme.of(context).colorScheme.onPrimary,
+                        14,
+                      ),
                     ),
                   )),
             ],

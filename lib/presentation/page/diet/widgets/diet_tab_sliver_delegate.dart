@@ -15,7 +15,10 @@ class DietTabSliverDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => maxHeight;
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return SizedBox.expand(
       child: Container(
         color: Theme.of(context).scaffoldBackgroundColor,

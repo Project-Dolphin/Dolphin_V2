@@ -41,7 +41,9 @@ class ShuttleBusDetail extends StatelessWidget {
               Text(
                 '학교종점',
                 style: textStyleNormal(
-                    Theme.of(context).colorScheme.onPrimary, 14),
+                  Theme.of(context).colorScheme.onPrimary,
+                  14,
+                ),
               ),
               const SizedBox(height: 14),
               Builder(
