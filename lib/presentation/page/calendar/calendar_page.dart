@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'widgets/calendar.dart';
 import 'widgets/calendar_detail.dart';
 import 'widgets/calendar_header_sliver_delegate.dart';
-import 'widgets/calendar_tab_sliver_delegate.dart';
 
 class CampusEventPage extends StatelessWidget {
   const CampusEventPage({Key? key}) : super(key: key);
@@ -22,25 +21,28 @@ class CampusEventPage extends StatelessWidget {
               pinned: true,
               delegate: CalendarHeaderSliverDelegate(
                 minHeight: 40.0,
-                maxHeight: 70.0,
+                maxHeight: 120.0,
               ),
             ),
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: CalendarTabSliverDelegate(
-                minHeight: 90.0,
-                maxHeight: 90.0,
-              ),
-            ),
+            // SliverPersistentHeader(
+            //   pinned: true,
+            //   delegate: CalendarTabSliverDelegate(
+            //     minHeight: 90.0,
+            //     maxHeight: 90.0,
+            //   ),
+            // ),
             SliverList(
               delegate: SliverChildListDelegate([
-                Column(
-                  children: const [
-                    SizedBox(height: 13),
-                    CalendarWidget(),
-                    SizedBox(height: 12),
-                    CalendarDetailWidget(),
-                  ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.height - 40,
+                  child: Column(
+                    children: const [
+                      SizedBox(height: 13),
+                      CalendarWidget(),
+                      SizedBox(height: 12),
+                      CalendarDetailWidget(),
+                    ],
+                  ),
                 ),
               ]),
             ),

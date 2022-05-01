@@ -39,7 +39,10 @@ class NoticeBox extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 3),
-                  R.image.icon_arrow_right.svgPictureSize(size: 7),
+                  R.image.icon_arrow_right.svgPictureSize(
+                    size: 7,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
                 ],
               ),
             ],

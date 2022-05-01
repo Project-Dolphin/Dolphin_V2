@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:oceanview/core/config/enum/menu_enum.dart';
 import 'package:oceanview/core/config/r.dart';
+import 'package:oceanview/presentation/page/menu/detail_page/setting_page.dart';
 
 import 'gradient_icon.dart';
 
@@ -81,7 +82,15 @@ class MenuPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  buildRow(menu: Menu.setting, context: context),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SettingPage(),
+                      ),
+                    ),
+                    child: buildRow(menu: Menu.setting, context: context),
+                  ),
                   buildDivider(),
                   buildRow(menu: Menu.developer, context: context),
                   buildDivider(),
@@ -125,7 +134,7 @@ class MenuPage extends StatelessWidget {
           height: 0.5,
           color: const Color(0xFFCECECE),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 12),
       ],
     );
   }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:oceanview/core/utils/theme.dart';
+import 'package:oceanview/core/config/enum/theme_enum.dart';
+import 'package:oceanview/core/setting_bloc/setting_bloc.dart';
 import 'package:oceanview/presentation/page/dashboard.dart';
 
 import 'injection_container.dart' as di;
+import 'injection_container.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,30 +23,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      locale: const Locale('ko', 'KR'),
-      navigatorKey: _navigatorKey,
-      builder: (context, child) {
-        return ScrollConfiguration(
-          behavior: MyBehavior(),
-          child: MediaQuery(
-            data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-            child: child!,
-          ),
+    return BlocProvider(
+      create: (_) => sl<SettingBloc>(),
+      child: BlocBuilder<SettingBloc, SettingState>(builder: (context, state) {
+        return MaterialApp(
+          locale: const Locale('ko', 'KR'),
+          navigatorKey: _navigatorKey,
+          builder: (context, child) {
+            return ScrollConfiguration(
+              behavior: MyBehavior(),
+              child: MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+                child: child!,
+              ),
+            );
+          },
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            DefaultWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ko', 'KR'),
+            Locale('en', 'US'),
+          ], //, 'KR')],
+          theme: context.read<SettingBloc>().state.theme.theme,
+          home: const DashBoard(),
         );
-      },
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        DefaultWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('ko', 'KR'),
-        Locale('en', 'US'),
-      ], //, 'KR')],
-      theme: AppTheme.dark,
-      // darkTheme: AppTheme.dark,
-      home: const DashBoard(),
+      }),
     );
   }
 }
@@ -51,7 +58,10 @@ class MyApp extends StatelessWidget {
 class MyBehavior extends ScrollBehavior {
   @override
   Widget buildOverscrollIndicator(
-      BuildContext context, Widget child, ScrollableDetails details) {
+    BuildContext context,
+    Widget child,
+    ScrollableDetails details,
+  ) {
     return child;
   }
 }

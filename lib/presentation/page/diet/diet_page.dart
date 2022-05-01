@@ -9,9 +9,6 @@ import 'package:oceanview/presentation/page/diet/diet_page_second_floor.dart';
 import 'package:oceanview/presentation/page/diet/diet_page_third_floor.dart';
 
 import 'widgets/diet_header_sliver_delegate.dart';
-import 'widgets/diet_kind_circle_button.dart';
-import 'widgets/diet_kind_circle_text.dart';
-import 'widgets/diet_tab_sliver_delegate.dart';
 
 class DietPage extends StatelessWidget {
   const DietPage({Key? key}) : super(key: key);
@@ -30,52 +27,29 @@ class DietPage extends StatelessWidget {
               pinned: true,
               delegate: DietHeaderSliverDelegate(
                 minHeight: 40.0,
-                maxHeight: 70.0,
-              ),
-            ),
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: DietTabSliverDelegate(
-                minHeight: 80.0,
-                maxHeight: 80.0,
-                child: Row(
-                  children: [
-                    const DietKindCircleButton(dietTab: DietTab.morning),
-                    const DietKindCircleButton(dietTab: DietTab.lunch),
-                    const DietKindCircleButton(dietTab: DietTab.dinner),
-                    Expanded(
-                      child: Center(
-                        child: Container(
-                          width: 1,
-                          color: Theme.of(context).primaryColor,
-                          height: 20,
-                        ),
-                      ),
-                    ),
-                    const DietKindCircleText(dietTab: DietTab.dorm),
-                    const SizedBox(width: 20),
-                    const DietKindCircleText(dietTab: DietTab.navy),
-                  ],
-                ),
+                maxHeight: 150.0,
               ),
             ),
             SliverList(
               delegate: SliverChildListDelegate([
-                BlocBuilder<DietPageBloc, DietPageState>(
-                  builder: ((context, state) {
-                    switch (state.selectedDietTab) {
-                      case DietTab.morning:
-                        return const SecondFloorPage();
-                      case DietTab.lunch:
-                        return const ThridFloorPage();
-                      case DietTab.dinner:
-                        return const FifthFloorPage();
-                      case DietTab.dorm:
-                        return const DormPage();
-                      case DietTab.navy:
-                        return const NavyPage();
-                    }
-                  }),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height - 40,
+                  child: BlocBuilder<DietPageBloc, DietPageState>(
+                    builder: ((context, state) {
+                      switch (state.selectedDietTab) {
+                        case DietTab.morning:
+                          return const SecondFloorPage();
+                        case DietTab.lunch:
+                          return const ThridFloorPage();
+                        case DietTab.dinner:
+                          return const FifthFloorPage();
+                        case DietTab.dorm:
+                          return const DormPage();
+                        case DietTab.navy:
+                          return const NavyPage();
+                      }
+                    }),
+                  ),
                 ),
               ]),
             ),
