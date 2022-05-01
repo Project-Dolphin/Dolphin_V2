@@ -58,7 +58,7 @@ class CalendarDialogState extends State<CalendarDialog> {
       backgroundColor: Theme.of(context).canvasColor,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: CustomScrollView(
             shrinkWrap: true,
             controller: scrollController,
@@ -90,7 +90,9 @@ class CalendarDialogState extends State<CalendarDialog> {
                           child: TextField(
                             textAlignVertical: TextAlignVertical.center,
                             style: textStyleNormal(
-                                Theme.of(context).colorScheme.onPrimary, 14),
+                              Theme.of(context).colorScheme.onPrimary,
+                              14,
+                            ),
                             onSubmitted: (value) {
                               selectedKey.clear();
                               positions.clear();
@@ -112,7 +114,7 @@ class CalendarDialogState extends State<CalendarDialog> {
                       ),
                       MaterialButton(
                         onPressed: jumpToKeyword,
-                        child: Text('button'),
+                        child: const Text('button'),
                       ),
                     ],
                   ),
@@ -145,7 +147,9 @@ class CalendarDialogState extends State<CalendarDialog> {
                               Text(
                                 '$initMonth월',
                                 style: textStyle600(
-                                    Theme.of(context).primaryColor, 20),
+                                  Theme.of(context).primaryColor,
+                                  20,
+                                ),
                               ),
                               const SizedBox(height: 10),
                               _buildWeekDataRow(event),
@@ -198,7 +202,7 @@ class CalendarDialogState extends State<CalendarDialog> {
             ),
           ],
         ),
-        SizedBox(height: 13),
+        const SizedBox(height: 13),
       ],
     );
   }

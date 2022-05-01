@@ -22,7 +22,10 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     logger.d(shrinkOffset / maxExtent);
 
     return SizedBox.expand(
@@ -49,9 +52,13 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                       '일정',
                       style: TextStyle.lerp(
                         textStyleBold(
-                            Theme.of(context).colorScheme.onPrimary, 24),
+                          Theme.of(context).colorScheme.onPrimary,
+                          24,
+                        ),
                         textStyleBold(
-                            Theme.of(context).colorScheme.onPrimary, 16),
+                          Theme.of(context).colorScheme.onPrimary,
+                          16,
+                        ),
                         shrinkOffset / maxExtent,
                       ),
                     ),
@@ -68,7 +75,9 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                             DateFormat('M.d EEEE', 'ko_KR')
                                 .format(DateTime.now()),
                             style: textStyleNormal(
-                                Theme.of(context).colorScheme.onPrimary, 12),
+                              Theme.of(context).colorScheme.onPrimary,
+                              12,
+                            ),
                           ),
                           const SizedBox(width: 6),
                           Container(
@@ -83,7 +92,9 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                             child: Text(
                               '사라져야함',
                               style: textStyleNormal(
-                                  Theme.of(context).colorScheme.primary, 11),
+                                Theme.of(context).colorScheme.primary,
+                                11,
+                              ),
                             ),
                           ),
                         ],
@@ -142,10 +153,11 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                                     child: Text(
                                       '${today.month}',
                                       style: textStyleNormal(
-                                          Theme.of(context)
-                                              .colorScheme
-                                              .onSecondary,
-                                          20),
+                                        Theme.of(context)
+                                            .colorScheme
+                                            .onSecondary,
+                                        20,
+                                      ),
                                     ),
                                   ),
                                   GestureDetector(
@@ -203,7 +215,7 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                 );
               }
 
-              return SizedBox();
+              return const SizedBox();
             }),
           ],
         ),

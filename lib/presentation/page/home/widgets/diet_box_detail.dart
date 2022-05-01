@@ -3,9 +3,12 @@ import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/core/network/response/endpoint_diet_society_today/response_diet_society_detail_dto.dart';
 
 class DietBoxDetail extends StatelessWidget {
-  const DietBoxDetail(
-      {required this.type, required this.data, required this.width, Key? key})
-      : super(key: key);
+  const DietBoxDetail({
+    required this.type,
+    required this.data,
+    required this.width,
+    Key? key,
+  }) : super(key: key);
 
   final String type;
   final DietDetail data;

@@ -16,6 +16,7 @@ class ShuttleBusLocalDataSourceImpl extends ShuttleBusLocalDataSource {
     if (!removed) {
       throw CacheException();
     }
+
     return removed;
   }
 }

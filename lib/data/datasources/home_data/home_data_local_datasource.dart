@@ -16,6 +16,7 @@ class HomeDataLocalDataSourceImpl extends HomeDataLocalDataSource {
     if (!removed) {
       throw CacheException();
     }
+
     return removed;
   }
 }

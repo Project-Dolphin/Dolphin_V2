@@ -24,7 +24,7 @@ class DietBox extends StatelessWidget {
                   data: state.cafeData.snack[1],
                   width: width - 20,
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 DietBoxDetail(
                   type: '2층',
                   data: state.cafeData.student.first,

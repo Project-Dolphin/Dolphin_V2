@@ -16,6 +16,7 @@ class EventLocalDataSourceImpl extends EventLocalDataSource {
     if (!removed) {
       throw CacheException();
     }
+
     return removed;
   }
 }
