@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:oceanview/core/config/r.dart';
@@ -45,7 +47,23 @@ class CalendarDialogState extends State<CalendarDialog> {
   }
 
   void jumpToKeyword() {
-    scrollController.jumpTo(positions[index++] - 100);
+    if (positions.isEmpty) {
+      // TODO : 다이얼로그 혹은 스낵바 디자인 받기
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('검색 결과가 없어요'),
+        ),
+      );
+
+      return;
+    }
+
+    // 스크롤 포지션 Jump 시 최대 범위를 넘어가면 점프하는데 방어코드임
+    double position = min(
+      positions[index++] - 100,
+      scrollController.position.maxScrollExtent,
+    );
+    scrollController.jumpTo(position);
     if (index >= positions.length) index = 0;
   }
 

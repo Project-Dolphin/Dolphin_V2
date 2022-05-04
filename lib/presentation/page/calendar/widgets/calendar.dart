@@ -108,7 +108,21 @@ class CalendarWidget extends StatelessWidget {
           );
         }
 
-        return const CircularProgressIndicator();
+        return Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(8),
+          decoration: const BoxDecoration(
+            color: Colors.transparent,
+            shape: BoxShape.circle,
+          ),
+          child: Text(
+            '$index',
+            style: textStyleNormal(
+              Theme.of(context).colorScheme.onPrimary,
+              16,
+            ),
+          ),
+        );
       },
     );
   }
@@ -136,7 +150,7 @@ class CalendarWidget extends StatelessWidget {
           );
         }
 
-        return const CircularProgressIndicator();
+        return SizedBox();
       },
     );
   }

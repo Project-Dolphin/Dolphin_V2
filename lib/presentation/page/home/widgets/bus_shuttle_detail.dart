@@ -37,6 +37,7 @@ class ShuttleBusDetail extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 '학교종점',
@@ -45,7 +46,6 @@ class ShuttleBusDetail extends StatelessWidget {
                   14,
                 ),
               ),
-              const SizedBox(height: 14),
               Builder(
                 builder: (context) {
                   if (data.isEmpty) {
