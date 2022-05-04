@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/common/decorated_container.dart';
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 
+import '../shimmer/diet_box_detail_shimmer.dart';
 import 'diet_box_detail.dart';
 
 class DietBox extends StatelessWidget {
@@ -34,7 +35,18 @@ class DietBox extends StatelessWidget {
             );
           }
 
-          return const CircularProgressIndicator();
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              DietBoxDetailShimmer(
+                width: width - 20,
+              ),
+              const SizedBox(width: 12),
+              DietBoxDetailShimmer(
+                width: width - 20,
+              ),
+            ],
+          );
         }),
       ),
     );

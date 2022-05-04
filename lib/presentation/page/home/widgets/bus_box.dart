@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oceanview/common/decorated_container.dart';
+import 'package:oceanview/common/shaded_decorated_container.dart';
 import 'package:oceanview/presentation/blocs/view_model/shuttle_bus_bloc/shuttle_bus_bloc.dart';
 
+import '../shimmer/bus_shuttle_detail_shimmer.dart';
 import 'bus_shuttle_detail.dart';
 
 class BusBox extends StatelessWidget {
@@ -10,7 +11,7 @@ class BusBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedContainer(
+    return ShadedDecoratedContainer(
       child: BlocBuilder<ShuttleBusBloc, ShuttleBusState>(
         builder: ((context, state) {
           if (state is ShuttleDataLoaded) {
@@ -24,7 +25,7 @@ class BusBox extends StatelessWidget {
             );
           }
 
-          return const CircularProgressIndicator();
+          return const ShuttleBusDetailShimmer();
         }),
       ),
     );

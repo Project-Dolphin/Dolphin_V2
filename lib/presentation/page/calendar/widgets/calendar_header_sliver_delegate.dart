@@ -66,39 +66,35 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                 ),
                 Builder(builder: (context) {
                   if (shrinkOffset / maxExtent < 0.4) {
-                    return Positioned(
-                      // top: minExtent / 2,
-                      right: 0,
-                      child: Row(
-                        children: [
-                          Text(
-                            DateFormat('M.d EEEE', 'ko_KR')
-                                .format(DateTime.now()),
+                    return Row(
+                      children: [
+                        Text(
+                          DateFormat('M.d EEEE', 'ko_KR')
+                              .format(DateTime.now()),
+                          style: textStyleNormal(
+                            Theme.of(context).colorScheme.onPrimary,
+                            12,
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 2,
+                            horizontal: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Theme.of(context).canvasColor,
+                          ),
+                          child: Text(
+                            '사라져야함',
                             style: textStyleNormal(
-                              Theme.of(context).colorScheme.onPrimary,
-                              12,
+                              Theme.of(context).colorScheme.primary,
+                              11,
                             ),
                           ),
-                          const SizedBox(width: 6),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 2,
-                              horizontal: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: Theme.of(context).canvasColor,
-                            ),
-                            child: Text(
-                              '사라져야함',
-                              style: textStyleNormal(
-                                Theme.of(context).colorScheme.primary,
-                                11,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     );
                   }
 

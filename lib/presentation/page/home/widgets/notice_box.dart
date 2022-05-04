@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 
+import '../shimmer/notice_detail_shimmer.dart';
+import 'notice_detail.dart';
+
 class NoticeBox extends StatelessWidget {
   const NoticeBox({Key? key}) : super(key: key);
 
@@ -51,50 +54,10 @@ class NoticeBox extends StatelessWidget {
           BlocBuilder<HomeDataBloc, HomeDataState>(
             builder: ((context, state) {
               if (state is HomeDataLoaded) {
-                return Column(
-                  children: [
-                    ...state.notice.map((noticeDetail) {
-                      final bool first =
-                          state.notice.indexOf(noticeDetail) == 0;
-
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 3,
-                              height: 3,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.primary,
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            const SizedBox(width: 7),
-                            Expanded(
-                              child: Text(
-                                noticeDetail.title ?? '',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: first
-                                    ? textStyleBold(
-                                        Theme.of(context).colorScheme.onPrimary,
-                                        13,
-                                      )
-                                    : textStyleNormal(
-                                        Theme.of(context).colorScheme.onPrimary,
-                                        13,
-                                      ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }),
-                  ],
-                );
+                return NoticeDetail(noticeList: state.notice);
               }
 
-              return const CircularProgressIndicator();
+              return const NoticeDetailShimmer();
             }),
           ),
         ],
