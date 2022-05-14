@@ -34,6 +34,7 @@ import 'package:oceanview/domain/usecases/get_today_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_weather_info.dart';
 import 'package:oceanview/domain/usecases/get_weekday_event.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
+import 'package:oceanview/presentation/blocs/splash_page_bloc/splash_page_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/city_bus_bloc/city_bus_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
@@ -65,8 +66,12 @@ Future<void> init() async {
   sl.registerSingleton<SharedPreferences>(sharedPreferences);
 
   //Blocs
+
   sl.registerFactory(
     () => SettingBloc(sharedPreferences),
+  );
+  sl.registerFactory(
+    () => SplashPageBloc()..add(SplashPageInited()),
   );
   sl.registerFactory(
     () => DashBoardBloc(),
