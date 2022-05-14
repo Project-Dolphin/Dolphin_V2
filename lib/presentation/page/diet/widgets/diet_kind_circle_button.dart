@@ -24,7 +24,7 @@ class DietKindCircleButton extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: state.selectedDietTab == dietTab
-                  ? const Color(0xFF0081FF)
+                  ? Theme.of(context).primaryColor
                   : Colors.transparent,
               border: Border.all(
                 width: 1,

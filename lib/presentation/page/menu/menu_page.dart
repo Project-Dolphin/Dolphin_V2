@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:oceanview/core/config/enum/menu_enum.dart';
 import 'package:oceanview/core/config/r.dart';
-import 'package:oceanview/presentation/page/menu/detail_page/setting_page.dart';
+import 'package:oceanview/core/utils/constants.dart';
 
 import 'gradient_icon.dart';
 
@@ -89,16 +89,20 @@ class MenuPage extends StatelessWidget {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: () => Navigator.push(
+                    onTap: () => Navigator.pushNamed(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const SettingPage(),
-                      ),
+                      AppConstants.SETTING_ROUTE,
                     ),
                     child: buildRow(menu: Menu.setting, context: context),
                   ),
                   buildDivider(),
-                  buildRow(menu: Menu.developer, context: context),
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      AppConstants.INFO_ROUTE,
+                    ),
+                    child: buildRow(menu: Menu.developer, context: context),
+                  ),
                   buildDivider(),
                   buildRow(menu: Menu.error, context: context),
                 ],

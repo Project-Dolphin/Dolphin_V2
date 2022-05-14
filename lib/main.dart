@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:oceanview/core/config/enum/theme_enum.dart';
 import 'package:oceanview/core/setting_bloc/setting_bloc.dart';
-import 'package:oceanview/presentation/page/dashboard.dart';
+import 'package:oceanview/core/utils/router.dart';
 
 import 'injection_container.dart' as di;
 import 'injection_container.dart';
@@ -48,7 +48,8 @@ class MyApp extends StatelessWidget {
             Locale('en', 'US'),
           ], //, 'KR')],
           theme: context.read<SettingBloc>().state.theme.theme,
-          home: const DashBoard(),
+          onGenerateRoute: OceanViewRouter.generateRoute,
+          initialRoute: OceanViewRouter.initialRoute,
         );
       }),
     );

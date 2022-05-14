@@ -27,7 +27,7 @@ extension CustomThemeExt on CustomTheme {
       case CustomTheme.dark:
         return AppTheme.dark;
       case CustomTheme.system:
-        return SchedulerBinding.instance!.window.platformBrightness ==
+        return SchedulerBinding.instance.window.platformBrightness ==
                 Brightness.light
             ? AppTheme.light
             : AppTheme.dark;

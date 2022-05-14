@@ -22,7 +22,7 @@ class CalendarWidget extends StatelessWidget {
                 return Expanded(
                   child: Text(
                     e,
-                    style: textStyleNormal(const Color(0xFF0081FF), 12),
+                    style: textStyleNormal(Theme.of(context).primaryColor, 12),
                     textAlign: TextAlign.center,
                   ),
                 );
@@ -69,7 +69,7 @@ class CalendarWidget extends StatelessWidget {
                       width: 1,
                     ),
                     color: index == state.today.day
-                        ? const Color(0xFF0081FF)
+                        ? Theme.of(context).primaryColor
                         : Colors.transparent,
                     shape: BoxShape.circle,
                   ),

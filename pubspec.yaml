@@ -83,6 +83,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/icons/
+    - assets/images/logos/
     - assets/dummy_calendar.json
     - assets/dummy_holiday.json
 
