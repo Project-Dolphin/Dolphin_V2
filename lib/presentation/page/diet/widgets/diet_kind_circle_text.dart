@@ -22,11 +22,11 @@ class DietKindCircleText extends StatelessWidget {
           return Text(
             dietTab.text,
             style: state.selectedDietTab == dietTab
-                ? textStyleBold(
+                ? textStyleNormal(
                     Theme.of(context).primaryColor,
                     16,
                   )
-                : textStyleBold(
+                : textStyleNormal(
                     const Color(0xFF898989),
                     16,
                   ),

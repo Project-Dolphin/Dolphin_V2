@@ -22,6 +22,8 @@ part 'campus_event_state.dart';
 class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
   final GetWeekdayEvent getWeekdayEvent;
   final GetHolidayEvent getHolidayEvent;
+  late final DateTime firstDay;
+  late final DateTime lastDay;
 
   final CalendarUtils calendarBase = CalendarUtils();
 
@@ -57,6 +59,10 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
     Emitter<CampusEventState> emit,
   ) async {
     List<WeekdayData> eventList = <WeekdayData>[];
+    List<DateTime> limits = calendarBase.getCalendarLimit();
+    firstDay = limits.first;
+    lastDay = limits.last;
+
     final String dummyCalendarResponse = await readCalendar();
     final String dummyHolidayResponse = await readHoliday();
     final calendarData = await json.decode(dummyCalendarResponse);
@@ -114,13 +120,9 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
   ) async {
     final state = this.state;
 
-    logger.d(state);
-    logger.d(event.day);
-
     if (state is CampusEventLoaded) {
       final DateTime changedDate =
           DateTime(state.selectedDay.year, state.selectedDay.month, event.day);
-      logger.d(changedDate);
       emit(state.copyWith(selectedDay: changedDate));
     }
   }
@@ -139,75 +141,12 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
         state.selectedDay.month + event.month,
         1,
       );
-      emit(state.copyWith(selectedDay: changedDate));
+      logger.d(firstDay);
+      logger.d(lastDay);
+      logger.d(changedDate);
+      if (changedDate.isAfter(firstDay) && changedDate.isBefore(lastDay)) {
+        emit(state.copyWith(selectedDay: changedDate));
+      }
     }
   }
-
-  int endDays(DateTime date) {
-    switch (date.month) {
-      case 1:
-      case 3:
-      case 5:
-      case 7:
-      case 8:
-      case 10:
-      case 12:
-        return 31;
-      case 2:
-        if (date.year % 4 == 0) {
-          return 29;
-        }
-        return 28;
-      case 4:
-      case 6:
-      case 9:
-      case 11:
-        return 30;
-
-      default:
-        return 0;
-    }
-  }
-
-  // 기존 api 리스폰스
-  // Future<void> _onAppLaunched(
-  //   CampusEventInited event,
-  //   Emitter<CampusEventState> emit,
-  // ) async {
-  //   List<CalendarDataV2> weekDayEvent = [];
-  //   List<HolidayDataV2> holidayEvent = [];
-
-  //   final _weekDayEventResponse = await getWeekdayEvent.call();
-  //   final _holiDayEventResponse = await getHolidayEvent.call();
-
-  //   _weekDayEventResponse.fold(
-  //     (failure) async* {
-  //       if (failure is CacheFailure) {
-  //         emit(CampusEventError('SETTING_ERROR'));
-  //       } else {
-  //         emit(CampusEventError('NO_CONNECTION_ERROR'));
-  //       }
-  //     },
-  //     (success) {
-  //       weekDayEvent = success;
-  //     },
-  //   );
-
-  //   _holiDayEventResponse.fold(
-  //     (failure) async* {
-  //       if (failure is CacheFailure) {
-  //         emit(CampusEventError('SETTING_ERROR'));
-  //       } else {
-  //         emit(CampusEventError('NO_CONNECTION_ERROR'));
-  //       }
-  //     },
-  //     (success) {
-  //       holidayEvent = success;
-  //     },
-  //   );
-  //   emit(CampusEventLoaded(
-  //     weekDayEvent: weekDayEvent,
-  //     holidayEvent: holidayEvent,
-  //   ));
-  // }
 }

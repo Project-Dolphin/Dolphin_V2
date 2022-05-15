@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/config/enum/theme_enum.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/core/setting_bloc/setting_bloc.dart';
+import 'package:oceanview/presentation/page/menu/custom_divider.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class SettingPage extends StatelessWidget {
               child: Column(
                 children: [
                   buildRow(menu: '버스 알림', context: context),
-                  buildDivider(),
+                  const CustomDivider(),
                   buildRow(menu: '일정 알림', context: context),
                 ],
               ),
@@ -49,9 +50,9 @@ class SettingPage extends StatelessWidget {
               child: Column(
                 children: [
                   buildThemeRow(theme: CustomTheme.light, context: context),
-                  buildDivider(),
+                  const CustomDivider(),
                   buildThemeRow(theme: CustomTheme.dark, context: context),
-                  buildDivider(),
+                  const CustomDivider(),
                   buildThemeRow(theme: CustomTheme.system, context: context),
                 ],
               ),
@@ -112,21 +113,6 @@ class SettingPage extends StatelessWidget {
             }),
           ),
         ),
-      ],
-    );
-  }
-
-  buildDivider() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const SizedBox(height: 10),
-        Container(
-          width: double.infinity,
-          height: 0.5,
-          color: const Color(0xFFCECECE),
-        ),
-        const SizedBox(height: 12),
       ],
     );
   }

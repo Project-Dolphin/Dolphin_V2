@@ -32,8 +32,9 @@ class DietPage extends StatelessWidget {
             ),
             SliverList(
               delegate: SliverChildListDelegate([
-                SizedBox(
-                  height: MediaQuery.of(context).size.height - 40,
+                Container(
+                  constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height - 150),
                   child: BlocBuilder<DietPageBloc, DietPageState>(
                     builder: ((context, state) {
                       switch (state.selectedDietTab) {

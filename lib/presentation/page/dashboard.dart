@@ -76,8 +76,8 @@ class DashBoard extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         gradient: const LinearGradient(
           colors: [
-            Color(0xFF1D85FF),
-            Color(0xFF3598F9),
+            Color(0xFF0081FF),
+            Color(0xFF4BA7FF),
           ],
         ),
       ),

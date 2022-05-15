@@ -38,10 +38,10 @@ class DashBoardBloc extends Bloc<DashBoardEvent, DashBoardState> {
     final state = this.state;
     final int index = event.selectedTab.index;
     logger.d(index);
-    controllerInit();
+    controllerRefresh();
     controller.animateToPage(
       index,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 400),
       curve: Curves.easeOut,
     );
     emit(state.copyWith(selectedTab: event.selectedTab));
@@ -52,11 +52,11 @@ class DashBoardBloc extends Bloc<DashBoardEvent, DashBoardState> {
     Emitter<DashBoardState> emit,
   ) {
     final state = this.state;
-    controllerInit();
+    controllerRefresh();
     emit(state.copyWith(selectedTab: RootTabExt.from(event.selectedPage)));
   }
 
-  void controllerInit() {
+  void controllerRefresh() {
     campusEventScrollController.hasClients
         ? campusEventScrollController.jumpTo(0)
         : {};
