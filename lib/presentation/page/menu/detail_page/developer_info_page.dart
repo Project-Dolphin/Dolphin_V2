@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oceanview/core/config/r.dart';
+import 'package:oceanview/presentation/page/menu/custom_divider.dart';
 
 class InfoPage extends StatelessWidget {
   const InfoPage({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class InfoPage extends StatelessWidget {
                       15,
                     ),
                   ),
-                  buildDivider(),
+                  const CustomDivider(),
                   Text(
                     'OceanView 3.0.0',
                     style: textStyleNormal(
@@ -66,7 +67,7 @@ class InfoPage extends StatelessWidget {
                       14,
                     ),
                   ),
-                  buildDivider(),
+                  const CustomDivider(),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -101,7 +102,7 @@ class InfoPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               decoration: BoxDecoration(
@@ -118,7 +119,7 @@ class InfoPage extends StatelessWidget {
                       15,
                     ),
                   ),
-                  buildDivider(),
+                  const CustomDivider(),
                   Text(
                     'swch0516@naver.com',
                     style: textStyleNormal(
@@ -165,21 +166,6 @@ class InfoPage extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  buildDivider() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const SizedBox(height: 10),
-        Container(
-          width: double.infinity,
-          height: 0.5,
-          color: const Color(0xFFCECECE),
-        ),
-        const SizedBox(height: 12),
-      ],
     );
   }
 }

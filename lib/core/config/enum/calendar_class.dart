@@ -31,4 +31,18 @@ class CalendarUtils {
         return 0;
     }
   }
+
+  List<DateTime> getCalendarLimit() {
+    DateTime now = DateTime.now();
+    List<DateTime> limits = [];
+    if (DateTime.now().month < 3) {
+      limits
+          .add(DateTime(now.year - 1, 3, 1).subtract(const Duration(days: 1)));
+      limits.add(DateTime(now.year, 3, 1));
+    } else {
+      limits.add(DateTime(now.year, 3, 1).subtract(const Duration(days: 1)));
+      limits.add(DateTime(now.year + 1, 3, 1));
+    }
+    return limits;
+  }
 }

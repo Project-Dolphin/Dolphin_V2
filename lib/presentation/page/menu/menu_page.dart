@@ -4,6 +4,7 @@ import 'package:oceanview/core/config/enum/menu_enum.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/core/utils/constants.dart';
 
+import 'custom_divider.dart';
 import 'gradient_icon.dart';
 
 class MenuPage extends StatelessWidget {
@@ -72,9 +73,9 @@ class MenuPage extends StatelessWidget {
               child: Column(
                 children: [
                   buildRow(menu: Menu.website, context: context),
-                  buildDivider(),
+                  const CustomDivider(),
                   buildRow(menu: Menu.phone, context: context),
-                  buildDivider(),
+                  const CustomDivider(),
                   buildRow(menu: Menu.library, context: context),
                 ],
               ),
@@ -95,7 +96,7 @@ class MenuPage extends StatelessWidget {
                     ),
                     child: buildRow(menu: Menu.setting, context: context),
                   ),
-                  buildDivider(),
+                  const CustomDivider(),
                   GestureDetector(
                     onTap: () => Navigator.pushNamed(
                       context,
@@ -103,7 +104,7 @@ class MenuPage extends StatelessWidget {
                     ),
                     child: buildRow(menu: Menu.developer, context: context),
                   ),
-                  buildDivider(),
+                  const CustomDivider(),
                   buildRow(menu: Menu.error, context: context),
                 ],
               ),
@@ -130,21 +131,6 @@ class MenuPage extends StatelessWidget {
             15,
           ),
         ),
-      ],
-    );
-  }
-
-  buildDivider() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const SizedBox(height: 10),
-        Container(
-          width: double.infinity,
-          height: 0.5,
-          color: const Color(0xFFCECECE),
-        ),
-        const SizedBox(height: 12),
       ],
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/core/config/enum/calendar_class.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
 
@@ -59,8 +60,9 @@ class CalendarWidget extends StatelessWidget {
                     .read<CampusEventBloc>()
                     .add(DateChanged(day: index)),
                 child: Container(
+                  width: 34,
+                  height: 34,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: index == state.selectedDay.day
@@ -94,8 +96,8 @@ class CalendarWidget extends StatelessWidget {
 
                     return Container(
                       margin: EdgeInsets.only(left: detailIndex > 0 ? 2 : 0),
-                      width: 3,
-                      height: 3,
+                      width: 2,
+                      height: 2,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xFFBBEBEC),
@@ -138,7 +140,7 @@ class CalendarWidget extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(7),
                 child: Text(
                   // '$index',
                   '${firstDay.add(Duration(days: index - 1)).day}',
@@ -166,8 +168,7 @@ class CalendarWidget extends StatelessWidget {
         // int _firstDay = today.weekday - (today.day % 7 - 1);
         index -= selectedFirstDay.weekday - 1;
 
-        return (index > 0 &&
-                index <= context.read<CampusEventBloc>().endDays(today))
+        return (index > 0 && index <= CalendarUtils().endDays(today))
             ? availableDates(index)
             : disableDates(index);
       },

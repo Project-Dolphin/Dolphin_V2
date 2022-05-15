@@ -105,7 +105,9 @@ class DietHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                   child: Row(
                     children: [
                       const DietKindCircleButton(dietTab: DietTab.morning),
+                      const SizedBox(width: 10),
                       const DietKindCircleButton(dietTab: DietTab.lunch),
+                      const SizedBox(width: 10),
                       const DietKindCircleButton(dietTab: DietTab.dinner),
                       Expanded(
                         child: Center(
@@ -117,7 +119,7 @@ class DietHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                         ),
                       ),
                       const DietKindCircleText(dietTab: DietTab.dorm),
-                      const SizedBox(width: 20),
+                      const SizedBox(width: 10),
                       const DietKindCircleText(dietTab: DietTab.navy),
                     ],
                   ),

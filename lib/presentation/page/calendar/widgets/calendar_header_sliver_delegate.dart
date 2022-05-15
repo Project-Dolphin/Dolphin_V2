@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
 import 'package:oceanview/presentation/page/calendar/dialog/calendar_dialog.dart';
@@ -26,7 +25,7 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
-    logger.d(shrinkOffset / maxExtent);
+    final double maxScroll = shrinkOffset / maxExtent;
 
     return SizedBox.expand(
       child: Container(
@@ -41,12 +40,12 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                     padding: EdgeInsets.lerp(
                       const EdgeInsets.symmetric(horizontal: 6),
                       const EdgeInsets.all(1),
-                      shrinkOffset / maxExtent,
+                      maxScroll > 0.4 ? 1 : maxScroll,
                     ),
                     alignment: Alignment.lerp(
                       Alignment.centerLeft,
                       Alignment.center,
-                      shrinkOffset / maxExtent,
+                      maxScroll > 0.4 ? 1 : maxScroll,
                     ),
                     child: Text(
                       '일정',

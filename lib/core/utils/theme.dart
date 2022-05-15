@@ -27,9 +27,9 @@ class AppTheme {
       onSecondary: Color(0xFF353B45),
       error: Colors.red,
       onError: Colors.red,
-      background: Colors.red,
+      background: Color(0xFFEAF5FF),
       onBackground: Colors.red,
-      surface: Colors.red,
+      surface: Color(0xFFCECECE),
       onSurface: Colors.red,
     ),
   );
@@ -55,9 +55,9 @@ class AppTheme {
       onSecondary: Color(0xFFFFFFFF),
       error: Colors.red,
       onError: Colors.red,
-      background: Colors.red,
+      background: Color(0xFF5A5A5A),
       onBackground: Colors.red,
-      surface: Colors.red,
+      surface: Color(0xFF4E4E4E),
       onSurface: Colors.red,
     ),
   );

@@ -38,14 +38,11 @@ class NoticeBox extends StatelessWidget {
                     '학교 홈페이지',
                     style: textStyleNormal(
                       Theme.of(context).colorScheme.onPrimary,
-                      14,
+                      10,
                     ),
                   ),
                   const SizedBox(width: 3),
-                  R.image.icon_arrow_right.svgPictureSize(
-                    size: 7,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
+                  R.image.icon_arrow_right.svgPicture(width: 4, height: 7),
                 ],
               ),
             ],

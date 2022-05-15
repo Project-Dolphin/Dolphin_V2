@@ -36,17 +36,27 @@ class DietBoxDetail extends StatelessWidget {
                 data.type,
                 style: textStyleNormal(
                   Theme.of(context).primaryColor,
-                  12,
+                  14,
                 ),
               ),
             ],
           ),
-          Wrap(
-            children: [
-              ...(data.menus.length > 8 ? data.menus.sublist(0, 8) : data.menus)
-                  .map((e) => Text(e)),
-            ],
-          ),
+          data.menus.isNotEmpty
+              ? Wrap(
+                  children: [
+                    ...data.menus.map((e) => Text(
+                          e,
+                          style: textStyleNormal(
+                              Theme.of(context).colorScheme.onPrimary, 13),
+                        )),
+                  ],
+                )
+              : Text(
+                  // TODO : add Empty Menu String
+                  '식단이 없어요',
+                  style: textStyleNormal(
+                      Theme.of(context).colorScheme.onPrimary, 13),
+                ),
         ],
       ),
     );

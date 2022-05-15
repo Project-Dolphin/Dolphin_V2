@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:oceanview/core/network/response/endpoint_shuttle/response_shuttle_next_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_shuttle/response_shuttle_today_dto.dart';
@@ -16,17 +17,18 @@ class ShuttleBusRemoteDataSourceImpl extends ShuttleBusRemoteDataSource {
 
   @override
   Future<ShuttleTodayWrapper> getTodayShuttleInfo() async {
-    final response = await restClientService.getTodayShuttleInfo();
-    if (response.data.isEmpty) {
-      throw ServerException();
+    try {
+      final response = await restClientService.getTodayShuttleInfo();
+      return response;
+    } on DioError {
+      throw ServerException;
     }
-
-    return response;
   }
 
   @override
   Future<ShuttleNextWrapper> getNextShuttle() async {
     final response = await restClientService.getNextShuttle();
+
     if (response.data == null) {
       throw ServerException();
     }

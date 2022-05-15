@@ -22,13 +22,11 @@ class DormPage extends StatelessWidget {
                 dietData: state.dormData.morning,
                 timeLimit: '08:00 ~ 09:00',
               ),
-              const SizedBox(height: 12),
               DietGridView(
                 type: '기숙사 점심',
                 dietData: state.dormData.lunch,
                 timeLimit: '11:40 ~ 13:30',
               ),
-              const SizedBox(height: 12),
               DietGridView(
                 type: '기숙사 저녁',
                 dietData: state.dormData.dinner,

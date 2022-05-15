@@ -20,7 +20,8 @@ class DietKindCircleButton extends StatelessWidget {
       child: BlocBuilder<DietPageBloc, DietPageState>(
         builder: ((context, state) {
           return Container(
-            padding: const EdgeInsets.all(15),
+            width: 50, height: 50, alignment: Alignment.center,
+            // padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: state.selectedDietTab == dietTab
