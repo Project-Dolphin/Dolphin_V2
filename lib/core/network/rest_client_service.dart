@@ -34,7 +34,7 @@ abstract class RestClient {
   Future<NoticeWrapper> getNotices();
 
   @GET('businfo')
-  Future<BusInfoWrapper> getOperationBusInfo();
+  Future<BusInfoWrapper> getRunningBusInfo();
 
   @GET('businfo/{id}')
   Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(@Path() String id);

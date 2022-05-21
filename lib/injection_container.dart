@@ -29,7 +29,7 @@ import 'package:oceanview/domain/usecases/get_holiday_event.dart';
 import 'package:oceanview/domain/usecases/get_latest_event.dart';
 import 'package:oceanview/domain/usecases/get_next_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_notice_list.dart';
-import 'package:oceanview/domain/usecases/get_operation_city_bus_list.dart';
+import 'package:oceanview/domain/usecases/get_running_city_bus_list.dart';
 import 'package:oceanview/domain/usecases/get_today_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_weather_info.dart';
 import 'package:oceanview/domain/usecases/get_weekday_event.dart';
@@ -39,6 +39,7 @@ import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus
 import 'package:oceanview/presentation/blocs/view_model/city_bus_bloc/city_bus_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/running_bus_bloc/running_bus_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/shuttle_bus_bloc/shuttle_bus_bloc.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -87,6 +88,10 @@ Future<void> init() async {
   );
   sl.registerFactory(
     () => CityBusBloc(getOperationCityBusList: sl())..add(CityBusInited()),
+  );
+  sl.registerFactory(
+    () => RunningBusPageBloc(getOperationCityBusList: sl())
+      ..add(RunningBusPageInited()),
   );
   sl.registerFactory(
     () => HomeDataBloc(

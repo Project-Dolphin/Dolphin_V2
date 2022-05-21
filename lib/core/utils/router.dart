@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:oceanview/presentation/page/dashboard.dart';
 import 'package:oceanview/presentation/page/menu/detail_page/developer_info_page.dart';
 import 'package:oceanview/presentation/page/menu/detail_page/setting_page.dart';
+import 'package:oceanview/presentation/page/running_bus/running_bus_page.dart';
 import 'package:oceanview/presentation/page/splash/splash_page.dart';
 
 import 'constants.dart';
@@ -12,6 +13,8 @@ class OceanViewRouter {
     switch (settings.name) {
       case AppConstants.HOME_ROUTE:
         return MaterialPageRoute(builder: (_) => const DashBoard());
+      case AppConstants.RUNNING_BUS_ROUTE:
+        return MaterialPageRoute(builder: (_) => RunningBusPage());
       case AppConstants.SETTING_ROUTE:
         return PageRouteBuilder(
           pageBuilder: (BuildContext context, Animation<double> animation,

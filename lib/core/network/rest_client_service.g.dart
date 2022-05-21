@@ -80,7 +80,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<BusInfoWrapper> getOperationBusInfo() async {
+  Future<BusInfoWrapper> getRunningBusInfo() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
