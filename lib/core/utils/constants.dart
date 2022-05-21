@@ -18,6 +18,7 @@ class AppConstants {
   static const String ROOT_ROUTE = '/';
   static const String SPLASH_ROUTE = '/splash';
   static const String HOME_ROUTE = '/home';
+  static const String RUNNING_BUS_ROUTE = '/running_bus';
   static const String SETTING_ROUTE = '/setting';
   static const String INFO_ROUTE = '/info';
 

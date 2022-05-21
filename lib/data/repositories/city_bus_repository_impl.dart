@@ -16,10 +16,10 @@ class CityBusRepositoryImpl implements CityBusRepository {
   });
 
   @override
-  Future<Either<Failure, List<BusInfoData>>> getOperationBusInfo() async {
+  Future<Either<Failure, List<BusInfoData>>> getRunningBusInfo() async {
     try {
       final List<BusInfoData> _specificNodeBusInfo =
-          await remoteDataSource.getOperationBusInfo();
+          await remoteDataSource.getRunningBusInfo();
       try {
         // TODO: 로컬에서 우리가 무엇을 할 수 있을지 확인해보기
         await localDataSource.busLocalDummy();

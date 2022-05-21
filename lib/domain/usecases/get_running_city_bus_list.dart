@@ -11,6 +11,6 @@ class GetOperationCityBusList implements NoParamsUseCase<List<BusInfoData>> {
 
   @override
   Future<Either<Failure, List<BusInfoData>>> call() async {
-    return await repository.getOperationBusInfo();
+    return await repository.getRunningBusInfo();
   }
 }

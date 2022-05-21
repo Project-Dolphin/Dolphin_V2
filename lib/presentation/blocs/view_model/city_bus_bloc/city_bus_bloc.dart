@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/error/failures.dart';
-import 'package:oceanview/domain/usecases/get_operation_city_bus_list.dart';
+import 'package:oceanview/domain/usecases/get_running_city_bus_list.dart';
 
 part 'city_bus_event.dart';
 part 'city_bus_state.dart';

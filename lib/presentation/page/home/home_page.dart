@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/core/utils/constants.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 import 'package:oceanview/presentation/page/home/widgets/ocean_view_title.dart';
 
@@ -28,7 +29,12 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
-              const BusBox(),
+              GestureDetector(
+                  onTap: () => Navigator.pushNamed(
+                        context,
+                        AppConstants.RUNNING_BUS_ROUTE,
+                      ),
+                  child: const BusBox()),
               const SizedBox(height: 12),
               const DietBox(),
               const SizedBox(height: 12),
