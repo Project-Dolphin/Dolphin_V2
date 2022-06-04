@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oceanview/core/config/enum/root_tab_enum.dart';
+import 'package:oceanview/common/oceanview_navigation_bar.dart';
 import 'package:oceanview/injection_container.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 import 'package:oceanview/presentation/blocs/diet_page_bloc/diet_page_bloc.dart';
@@ -59,107 +59,15 @@ class DashBoard extends StatelessWidget {
                 */
               })),
             ),
-            _buildBodttomNavigation(context),
+            const OceanViewNavigationBar(),
           ],
         ),
-      ),
-    );
-  }
-
-  _buildBodttomNavigation(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width - 24,
-      margin: const EdgeInsets.fromLTRB(12, 0, 12, 20),
-      padding: const EdgeInsets.only(bottom: 5, top: 2, left: 22, right: 22),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        gradient: const LinearGradient(
-          colors: [
-            Color(0xFF0081FF),
-            Color(0xFF4BA7FF),
-          ],
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          BlocBuilder<DashBoardBloc, DashBoardState>(builder: (
-            context,
-            state,
-          ) {
-            final int emptySpaceSize =
-                ((MediaQuery.of(context).size.width - 68 - 110) / 4).floor();
-            // 패딩 + 마진 = 68
-            // iconSize = 24, 24*5=120
-            // (MediaQuery-68-120)/4
-
-            return AnimatedContainer(
-              margin: EdgeInsets.only(
-                left: state.selectedTab.index * (emptySpaceSize + 22) + 3,
-              ),
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.easeInOut,
-              alignment: Alignment.center,
-              width: 16,
-              height: 3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(31.82),
-                color: Colors.white,
-              ),
-            );
-          }),
-          const SizedBox(height: 6),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ...RootTab.values.map(
-                (tab) => FloatingBottomItem(tab: tab),
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
 }
 
 // ignore: prefer-single-widget-per-file
-class FloatingBottomItem extends StatelessWidget {
-  final RootTab tab;
-
-  const FloatingBottomItem({required this.tab, Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () =>
-          context.read<DashBoardBloc>().add(RootTabSelected(selectedTab: tab)),
-      child: BlocBuilder<DashBoardBloc, DashBoardState>(builder: (
-        context,
-        state,
-      ) {
-        return SizedBox(
-          width: 22,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              state.selectedTab == tab ? tab.selectedIcon : tab.icon,
-              const SizedBox(height: 4),
-              Text(
-                tab.text,
-                style: const TextStyle(
-                  fontSize: 8,
-                  color: Color(0xFFFFFFFF),
-                ),
-              ),
-            ],
-          ),
-        );
-      }),
-    );
-  }
-}
 
 // TODO : Bloc을 통해 선택 된 페이지의 인덱스를 관리할 것
 

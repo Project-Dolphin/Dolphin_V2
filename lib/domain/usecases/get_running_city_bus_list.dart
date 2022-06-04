@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:oceanview/core/error/failures.dart';
-import 'package:oceanview/core/network/response/endpoint_businfo/response_businfo_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
 import 'package:oceanview/core/usecases/usecase.dart';
 import 'package:oceanview/domain/repositories/city_bus_repository.dart';
 
-class GetOperationCityBusList implements NoParamsUseCase<List<BusInfoData>> {
+class GetOperationCityBusList implements UseCase<List<NodeInfoData>, int> {
   final CityBusRepository repository;
 
   GetOperationCityBusList({required this.repository});
 
   @override
-  Future<Either<Failure, List<BusInfoData>>> call() async {
-    return await repository.getRunningBusInfo();
+  Future<Either<Failure, List<NodeInfoData>>> call(int busNumber) async {
+    return await repository.getOperationBusInfo(busNumber);
   }
 }

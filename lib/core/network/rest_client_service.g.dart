@@ -80,31 +80,19 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<BusInfoWrapper> getRunningBusInfo() async {
+  Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(
+      busStopName, busNumber) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BusInfoWrapper>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'businfo',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BusInfoWrapper.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(id) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'busStopName': busStopName,
+      r'busNumber': busNumber
+    };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<SpecificBusInfoWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'businfo/${id}',
+                .compose(_dio.options, 'bus/bustime',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SpecificBusInfoWrapper.fromJson(_result.data!);
@@ -112,7 +100,39 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<ShuttleNextWrapper> getNextShuttle() async {
+  Future<SpecificBusInfoWrapper> getOperationBusInfo(busNumber) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'busNumber': busNumber};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SpecificBusInfoWrapper>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'bus/businfo',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SpecificBusInfoWrapper.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<NextDepart190Wrapper> getTimeTable190() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<NextDepart190Wrapper>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'bus/departbus',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = NextDepart190Wrapper.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ShuttleNextWrapper> getShuttleInfo() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -120,42 +140,10 @@ class _RestClient implements RestClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ShuttleNextWrapper>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'shuttle/next',
+                .compose(_dio.options, 'bus/nextshuttle',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ShuttleNextWrapper.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<ShuttleTodayWrapper> getTodayShuttleInfo() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ShuttleTodayWrapper>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'shuttle/today',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = ShuttleTodayWrapper.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<TimeTable190Wrapper> getTimeTable190() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<TimeTable190Wrapper>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'timetable/190',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = TimeTable190Wrapper.fromJson(_result.data!);
     return value;
   }
 

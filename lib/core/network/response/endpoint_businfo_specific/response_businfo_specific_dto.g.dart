@@ -10,8 +10,9 @@ _$_SpecificBusInfoWrapper _$$_SpecificBusInfoWrapperFromJson(
         Map<String, dynamic> json) =>
     _$_SpecificBusInfoWrapper(
       data: (json['data'] as List<dynamic>?)
-          ?.map((e) => NodeInfoData.fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) => NodeInfoData.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <NodeInfoData>[],
       path: json['path'] as String?,
     );
 
