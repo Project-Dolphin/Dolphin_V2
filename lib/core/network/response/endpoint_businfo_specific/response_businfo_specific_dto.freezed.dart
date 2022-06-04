@@ -23,7 +23,8 @@ SpecificBusInfoWrapper _$SpecificBusInfoWrapperFromJson(
 class _$SpecificBusInfoWrapperTearOff {
   const _$SpecificBusInfoWrapperTearOff();
 
-  _SpecificBusInfoWrapper call({List<NodeInfoData>? data, String? path}) {
+  _SpecificBusInfoWrapper call(
+      {List<NodeInfoData> data = const <NodeInfoData>[], String? path}) {
     return _SpecificBusInfoWrapper(
       data: data,
       path: path,
@@ -40,7 +41,7 @@ const $SpecificBusInfoWrapper = _$SpecificBusInfoWrapperTearOff();
 
 /// @nodoc
 mixin _$SpecificBusInfoWrapper {
-  List<NodeInfoData>? get data => throw _privateConstructorUsedError;
+  List<NodeInfoData> get data => throw _privateConstructorUsedError;
   String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +55,7 @@ abstract class $SpecificBusInfoWrapperCopyWith<$Res> {
   factory $SpecificBusInfoWrapperCopyWith(SpecificBusInfoWrapper value,
           $Res Function(SpecificBusInfoWrapper) then) =
       _$SpecificBusInfoWrapperCopyWithImpl<$Res>;
-  $Res call({List<NodeInfoData>? data, String? path});
+  $Res call({List<NodeInfoData> data, String? path});
 }
 
 /// @nodoc
@@ -75,7 +76,7 @@ class _$SpecificBusInfoWrapperCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<NodeInfoData>?,
+              as List<NodeInfoData>,
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -91,7 +92,7 @@ abstract class _$SpecificBusInfoWrapperCopyWith<$Res>
           $Res Function(_SpecificBusInfoWrapper) then) =
       __$SpecificBusInfoWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<NodeInfoData>? data, String? path});
+  $Res call({List<NodeInfoData> data, String? path});
 }
 
 /// @nodoc
@@ -114,7 +115,7 @@ class __$SpecificBusInfoWrapperCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<NodeInfoData>?,
+              as List<NodeInfoData>,
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -126,13 +127,14 @@ class __$SpecificBusInfoWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SpecificBusInfoWrapper implements _SpecificBusInfoWrapper {
-  _$_SpecificBusInfoWrapper({this.data, this.path});
+  _$_SpecificBusInfoWrapper({this.data = const <NodeInfoData>[], this.path});
 
   factory _$_SpecificBusInfoWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_SpecificBusInfoWrapperFromJson(json);
 
+  @JsonKey()
   @override
-  final List<NodeInfoData>? data;
+  final List<NodeInfoData> data;
   @override
   final String? path;
 
@@ -169,14 +171,14 @@ class _$_SpecificBusInfoWrapper implements _SpecificBusInfoWrapper {
 }
 
 abstract class _SpecificBusInfoWrapper implements SpecificBusInfoWrapper {
-  factory _SpecificBusInfoWrapper({List<NodeInfoData>? data, String? path}) =
+  factory _SpecificBusInfoWrapper({List<NodeInfoData> data, String? path}) =
       _$_SpecificBusInfoWrapper;
 
   factory _SpecificBusInfoWrapper.fromJson(Map<String, dynamic> json) =
       _$_SpecificBusInfoWrapper.fromJson;
 
   @override
-  List<NodeInfoData>? get data;
+  List<NodeInfoData> get data;
   @override
   String? get path;
   @override

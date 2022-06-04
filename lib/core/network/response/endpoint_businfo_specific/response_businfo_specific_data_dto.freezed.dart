@@ -22,24 +22,12 @@ NodeInfoData _$NodeInfoDataFromJson(Map<String, dynamic> json) {
 class _$NodeInfoDataTearOff {
   const _$NodeInfoDataTearOff();
 
-  _NodeInfoData call(
-      {String? carNo1,
-      String? carNo2,
-      int? min1,
-      int? min2,
-      int? station1,
-      int? station2,
-      bool? lowplate1,
-      bool? lowplate2}) {
+  _NodeInfoData call({String? busStopName, int? min1, int? min2, int? lineno}) {
     return _NodeInfoData(
-      carNo1: carNo1,
-      carNo2: carNo2,
+      busStopName: busStopName,
       min1: min1,
       min2: min2,
-      station1: station1,
-      station2: station2,
-      lowplate1: lowplate1,
-      lowplate2: lowplate2,
+      lineno: lineno,
     );
   }
 
@@ -53,14 +41,10 @@ const $NodeInfoData = _$NodeInfoDataTearOff();
 
 /// @nodoc
 mixin _$NodeInfoData {
-  String? get carNo1 => throw _privateConstructorUsedError;
-  String? get carNo2 => throw _privateConstructorUsedError;
+  String? get busStopName => throw _privateConstructorUsedError;
   int? get min1 => throw _privateConstructorUsedError;
   int? get min2 => throw _privateConstructorUsedError;
-  int? get station1 => throw _privateConstructorUsedError;
-  int? get station2 => throw _privateConstructorUsedError;
-  bool? get lowplate1 => throw _privateConstructorUsedError;
-  bool? get lowplate2 => throw _privateConstructorUsedError;
+  int? get lineno => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -73,15 +57,7 @@ abstract class $NodeInfoDataCopyWith<$Res> {
   factory $NodeInfoDataCopyWith(
           NodeInfoData value, $Res Function(NodeInfoData) then) =
       _$NodeInfoDataCopyWithImpl<$Res>;
-  $Res call(
-      {String? carNo1,
-      String? carNo2,
-      int? min1,
-      int? min2,
-      int? station1,
-      int? station2,
-      bool? lowplate1,
-      bool? lowplate2});
+  $Res call({String? busStopName, int? min1, int? min2, int? lineno});
 }
 
 /// @nodoc
@@ -94,23 +70,15 @@ class _$NodeInfoDataCopyWithImpl<$Res> implements $NodeInfoDataCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? carNo1 = freezed,
-    Object? carNo2 = freezed,
+    Object? busStopName = freezed,
     Object? min1 = freezed,
     Object? min2 = freezed,
-    Object? station1 = freezed,
-    Object? station2 = freezed,
-    Object? lowplate1 = freezed,
-    Object? lowplate2 = freezed,
+    Object? lineno = freezed,
   }) {
     return _then(_value.copyWith(
-      carNo1: carNo1 == freezed
-          ? _value.carNo1
-          : carNo1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      carNo2: carNo2 == freezed
-          ? _value.carNo2
-          : carNo2 // ignore: cast_nullable_to_non_nullable
+      busStopName: busStopName == freezed
+          ? _value.busStopName
+          : busStopName // ignore: cast_nullable_to_non_nullable
               as String?,
       min1: min1 == freezed
           ? _value.min1
@@ -120,22 +88,10 @@ class _$NodeInfoDataCopyWithImpl<$Res> implements $NodeInfoDataCopyWith<$Res> {
           ? _value.min2
           : min2 // ignore: cast_nullable_to_non_nullable
               as int?,
-      station1: station1 == freezed
-          ? _value.station1
-          : station1 // ignore: cast_nullable_to_non_nullable
+      lineno: lineno == freezed
+          ? _value.lineno
+          : lineno // ignore: cast_nullable_to_non_nullable
               as int?,
-      station2: station2 == freezed
-          ? _value.station2
-          : station2 // ignore: cast_nullable_to_non_nullable
-              as int?,
-      lowplate1: lowplate1 == freezed
-          ? _value.lowplate1
-          : lowplate1 // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      lowplate2: lowplate2 == freezed
-          ? _value.lowplate2
-          : lowplate2 // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ));
   }
 }
@@ -147,15 +103,7 @@ abstract class _$NodeInfoDataCopyWith<$Res>
           _NodeInfoData value, $Res Function(_NodeInfoData) then) =
       __$NodeInfoDataCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String? carNo1,
-      String? carNo2,
-      int? min1,
-      int? min2,
-      int? station1,
-      int? station2,
-      bool? lowplate1,
-      bool? lowplate2});
+  $Res call({String? busStopName, int? min1, int? min2, int? lineno});
 }
 
 /// @nodoc
@@ -170,23 +118,15 @@ class __$NodeInfoDataCopyWithImpl<$Res> extends _$NodeInfoDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? carNo1 = freezed,
-    Object? carNo2 = freezed,
+    Object? busStopName = freezed,
     Object? min1 = freezed,
     Object? min2 = freezed,
-    Object? station1 = freezed,
-    Object? station2 = freezed,
-    Object? lowplate1 = freezed,
-    Object? lowplate2 = freezed,
+    Object? lineno = freezed,
   }) {
     return _then(_NodeInfoData(
-      carNo1: carNo1 == freezed
-          ? _value.carNo1
-          : carNo1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      carNo2: carNo2 == freezed
-          ? _value.carNo2
-          : carNo2 // ignore: cast_nullable_to_non_nullable
+      busStopName: busStopName == freezed
+          ? _value.busStopName
+          : busStopName // ignore: cast_nullable_to_non_nullable
               as String?,
       min1: min1 == freezed
           ? _value.min1
@@ -196,22 +136,10 @@ class __$NodeInfoDataCopyWithImpl<$Res> extends _$NodeInfoDataCopyWithImpl<$Res>
           ? _value.min2
           : min2 // ignore: cast_nullable_to_non_nullable
               as int?,
-      station1: station1 == freezed
-          ? _value.station1
-          : station1 // ignore: cast_nullable_to_non_nullable
+      lineno: lineno == freezed
+          ? _value.lineno
+          : lineno // ignore: cast_nullable_to_non_nullable
               as int?,
-      station2: station2 == freezed
-          ? _value.station2
-          : station2 // ignore: cast_nullable_to_non_nullable
-              as int?,
-      lowplate1: lowplate1 == freezed
-          ? _value.lowplate1
-          : lowplate1 // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      lowplate2: lowplate2 == freezed
-          ? _value.lowplate2
-          : lowplate2 // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ));
   }
 }
@@ -219,39 +147,23 @@ class __$NodeInfoDataCopyWithImpl<$Res> extends _$NodeInfoDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_NodeInfoData implements _NodeInfoData {
-  _$_NodeInfoData(
-      {this.carNo1,
-      this.carNo2,
-      this.min1,
-      this.min2,
-      this.station1,
-      this.station2,
-      this.lowplate1,
-      this.lowplate2});
+  _$_NodeInfoData({this.busStopName, this.min1, this.min2, this.lineno});
 
   factory _$_NodeInfoData.fromJson(Map<String, dynamic> json) =>
       _$$_NodeInfoDataFromJson(json);
 
   @override
-  final String? carNo1;
-  @override
-  final String? carNo2;
+  final String? busStopName;
   @override
   final int? min1;
   @override
   final int? min2;
   @override
-  final int? station1;
-  @override
-  final int? station2;
-  @override
-  final bool? lowplate1;
-  @override
-  final bool? lowplate2;
+  final int? lineno;
 
   @override
   String toString() {
-    return 'NodeInfoData(carNo1: $carNo1, carNo2: $carNo2, min1: $min1, min2: $min2, station1: $station1, station2: $station2, lowplate1: $lowplate1, lowplate2: $lowplate2)';
+    return 'NodeInfoData(busStopName: $busStopName, min1: $min1, min2: $min2, lineno: $lineno)';
   }
 
   @override
@@ -259,27 +171,20 @@ class _$_NodeInfoData implements _NodeInfoData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _NodeInfoData &&
-            const DeepCollectionEquality().equals(other.carNo1, carNo1) &&
-            const DeepCollectionEquality().equals(other.carNo2, carNo2) &&
+            const DeepCollectionEquality()
+                .equals(other.busStopName, busStopName) &&
             const DeepCollectionEquality().equals(other.min1, min1) &&
             const DeepCollectionEquality().equals(other.min2, min2) &&
-            const DeepCollectionEquality().equals(other.station1, station1) &&
-            const DeepCollectionEquality().equals(other.station2, station2) &&
-            const DeepCollectionEquality().equals(other.lowplate1, lowplate1) &&
-            const DeepCollectionEquality().equals(other.lowplate2, lowplate2));
+            const DeepCollectionEquality().equals(other.lineno, lineno));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(carNo1),
-      const DeepCollectionEquality().hash(carNo2),
+      const DeepCollectionEquality().hash(busStopName),
       const DeepCollectionEquality().hash(min1),
       const DeepCollectionEquality().hash(min2),
-      const DeepCollectionEquality().hash(station1),
-      const DeepCollectionEquality().hash(station2),
-      const DeepCollectionEquality().hash(lowplate1),
-      const DeepCollectionEquality().hash(lowplate2));
+      const DeepCollectionEquality().hash(lineno));
 
   @JsonKey(ignore: true)
   @override
@@ -294,34 +199,22 @@ class _$_NodeInfoData implements _NodeInfoData {
 
 abstract class _NodeInfoData implements NodeInfoData {
   factory _NodeInfoData(
-      {String? carNo1,
-      String? carNo2,
+      {String? busStopName,
       int? min1,
       int? min2,
-      int? station1,
-      int? station2,
-      bool? lowplate1,
-      bool? lowplate2}) = _$_NodeInfoData;
+      int? lineno}) = _$_NodeInfoData;
 
   factory _NodeInfoData.fromJson(Map<String, dynamic> json) =
       _$_NodeInfoData.fromJson;
 
   @override
-  String? get carNo1;
-  @override
-  String? get carNo2;
+  String? get busStopName;
   @override
   int? get min1;
   @override
   int? get min2;
   @override
-  int? get station1;
-  @override
-  int? get station2;
-  @override
-  bool? get lowplate1;
-  @override
-  bool? get lowplate2;
+  int? get lineno;
   @override
   @JsonKey(ignore: true)
   _$NodeInfoDataCopyWith<_NodeInfoData> get copyWith =>

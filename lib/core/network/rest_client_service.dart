@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import 'response/endpoint_businfo/response_businfo_dto.dart';
 import 'response/endpoint_businfo_specific/response_businfo_specific_dto.dart';
 import 'response/endpoint_calendar/response_calendar_dto.dart';
 import 'response/endpoint_calendar_latest/response_calendar_latest_dto.dart';
@@ -10,8 +9,7 @@ import 'response/endpoint_diet_society_today/response_diet_society_dto.dart';
 import 'response/endpoint_holiday/response_holiday_dto.dart';
 import 'response/endpoint_notices/response_notice_dto.dart';
 import 'response/endpoint_shuttle/response_shuttle_next_dto.dart';
-import 'response/endpoint_shuttle/response_shuttle_today_dto.dart';
-import 'response/endpoint_timetable_190/response_timetable_190_dto.dart';
+import 'response/endpoint_timetable_190/response_next_depart_190_dto.dart';
 import 'response/endpoint_weather_now/response_weather_now_dto.dart';
 
 part 'rest_client_service.g.dart';
@@ -33,20 +31,26 @@ abstract class RestClient {
   @GET('notices')
   Future<NoticeWrapper> getNotices();
 
-  @GET('businfo')
-  Future<BusInfoWrapper> getRunningBusInfo();
+  @GET('bus/bustime')
+  Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(
+    @Query("busStopName") String busStopName,
+    @Query("busNumber") int busNumber,
+  );
 
-  @GET('businfo/{id}')
-  Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(@Path() String id);
+  @GET('bus/businfo')
+  Future<SpecificBusInfoWrapper> getOperationBusInfo(
+    @Query("busNumber") int busNumber,
+  );
 
-  @GET('shuttle/next')
-  Future<ShuttleNextWrapper> getNextShuttle();
+  @GET('bus/departbus')
+  Future<NextDepart190Wrapper> getTimeTable190();
 
-  @GET('shuttle/today')
-  Future<ShuttleTodayWrapper> getTodayShuttleInfo();
+  @GET('bus/nextshuttle')
+  Future<ShuttleNextWrapper> getShuttleInfo();
 
-  @GET('timetable/190')
-  Future<TimeTable190Wrapper> getTimeTable190();
+  // @Deprecated("통합되서 안쓸것 같음")
+  // @GET('shuttle/today')
+  // Future<ShuttleTodayWrapper> getTodayShuttleInfo();
 
   @GET('weather/now')
   Future<WeatherWrapper> getWeatherInfo();

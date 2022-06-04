@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/error/failures.dart';
-import 'package:oceanview/core/network/response/endpoint_businfo/response_businfo_data_dto.dart';
-import 'package:oceanview/core/utils/constants.dart';
+import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
 import 'package:oceanview/domain/usecases/get_running_city_bus_list.dart';
 
 part 'running_bus_event.dart';
@@ -21,7 +20,7 @@ class RunningBusPageBloc
     RunningBusPageInited event,
     Emitter<RunningBusPageState> emit,
   ) async {
-    final result = await getOperationCityBusList.call();
+    final result = await getOperationCityBusList.call(event.busNumber);
     result.fold(
       (failure) async* {
         if (failure is CacheFailure) {
@@ -31,17 +30,18 @@ class RunningBusPageBloc
         }
       },
       (success) {
-        emit(RunningBusLoaded(busInfo: busFilter(success)));
+        emit(RunningBusLoaded(busInfo: success)); // busFilter(success)));
       },
     );
   }
 
-  List<BusInfoData> busFilter(List<BusInfoData> apiResult) {
+  // 기존 로직인데 검증할 필요가 없을 듯함
+  List<NodeInfoData> busFilter(List<NodeInfoData> apiResult) {
     return apiResult
-        .where((result) =>
-            AppConstants.station_190
-                .indexWhere((busInfo) => busInfo['nodeId'] == result.nodeid) >
-            -1)
+        // .where((result) =>
+        //     AppConstants.station_190
+        //         .indexWhere((busInfo) => busInfo['nodeId'] == result.) >
+        //     -1)
         .toList();
   }
 }

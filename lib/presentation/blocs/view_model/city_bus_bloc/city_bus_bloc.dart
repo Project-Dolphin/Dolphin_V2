@@ -22,7 +22,7 @@ class CityBusBloc extends Bloc<CityBusEvent, CityBusState> {
     CityBusInited event,
     Emitter<CityBusState> emit,
   ) async {
-    final result = await getOperationCityBusList.call();
+    final result = await getOperationCityBusList.call(event.busNumber);
     result.fold(
       (failure) async* {
         if (failure is CacheFailure) {

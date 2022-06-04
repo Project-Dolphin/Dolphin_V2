@@ -98,6 +98,7 @@ class AppImage {
     Key? key,
     double? width,
     double? height,
+    Color? color,
     BoxFit fit = BoxFit.fill,
   }) {
     return SvgPicture.asset(
@@ -106,6 +107,7 @@ class AppImage {
       width: width,
       height: height,
       fit: fit,
+      color: color,
     );
   }
 

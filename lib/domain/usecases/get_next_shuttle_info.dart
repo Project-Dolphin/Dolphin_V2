@@ -11,6 +11,6 @@ class GetNextShuttleInfo implements NoParamsUseCase<ShuttleNextWrapper> {
 
   @override
   Future<Either<Failure, ShuttleNextWrapper>> call() async {
-    return await repository.getNextShuttle();
+    return await repository.getShuttleInfo();
   }
 }

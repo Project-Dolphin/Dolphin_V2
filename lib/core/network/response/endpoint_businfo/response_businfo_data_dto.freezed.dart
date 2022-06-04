@@ -23,19 +23,12 @@ class _$BusInfoDataTearOff {
   const _$BusInfoDataTearOff();
 
   _BusInfoData call(
-      {String? carno,
-      int? nodeid,
-      double? lat,
-      double? lin,
-      int? gpsym,
-      String? bstopnm}) {
+      {String? bstopnm, int? roint, String? carno, int? lowplate}) {
     return _BusInfoData(
-      carno: carno,
-      nodeid: nodeid,
-      lat: lat,
-      lin: lin,
-      gpsym: gpsym,
       bstopnm: bstopnm,
+      roint: roint,
+      carno: carno,
+      lowplate: lowplate,
     );
   }
 
@@ -49,12 +42,11 @@ const $BusInfoData = _$BusInfoDataTearOff();
 
 /// @nodoc
 mixin _$BusInfoData {
-  String? get carno => throw _privateConstructorUsedError;
-  int? get nodeid => throw _privateConstructorUsedError;
-  double? get lat => throw _privateConstructorUsedError;
-  double? get lin => throw _privateConstructorUsedError;
-  int? get gpsym => throw _privateConstructorUsedError;
-  String? get bstopnm => throw _privateConstructorUsedError;
+  String? get bstopnm => throw _privateConstructorUsedError; // 정류장명
+  int? get roint =>
+      throw _privateConstructorUsedError; // 회차 정보(0: 일반, 1: 회차 정류장) // null 이 아닐것 같긴 함
+  String? get carno => throw _privateConstructorUsedError; // 버스 차량 번호
+  int? get lowplate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -67,13 +59,7 @@ abstract class $BusInfoDataCopyWith<$Res> {
   factory $BusInfoDataCopyWith(
           BusInfoData value, $Res Function(BusInfoData) then) =
       _$BusInfoDataCopyWithImpl<$Res>;
-  $Res call(
-      {String? carno,
-      int? nodeid,
-      double? lat,
-      double? lin,
-      int? gpsym,
-      String? bstopnm});
+  $Res call({String? bstopnm, int? roint, String? carno, int? lowplate});
 }
 
 /// @nodoc
@@ -86,38 +72,28 @@ class _$BusInfoDataCopyWithImpl<$Res> implements $BusInfoDataCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? carno = freezed,
-    Object? nodeid = freezed,
-    Object? lat = freezed,
-    Object? lin = freezed,
-    Object? gpsym = freezed,
     Object? bstopnm = freezed,
+    Object? roint = freezed,
+    Object? carno = freezed,
+    Object? lowplate = freezed,
   }) {
     return _then(_value.copyWith(
-      carno: carno == freezed
-          ? _value.carno
-          : carno // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nodeid: nodeid == freezed
-          ? _value.nodeid
-          : nodeid // ignore: cast_nullable_to_non_nullable
-              as int?,
-      lat: lat == freezed
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lin: lin == freezed
-          ? _value.lin
-          : lin // ignore: cast_nullable_to_non_nullable
-              as double?,
-      gpsym: gpsym == freezed
-          ? _value.gpsym
-          : gpsym // ignore: cast_nullable_to_non_nullable
-              as int?,
       bstopnm: bstopnm == freezed
           ? _value.bstopnm
           : bstopnm // ignore: cast_nullable_to_non_nullable
               as String?,
+      roint: roint == freezed
+          ? _value.roint
+          : roint // ignore: cast_nullable_to_non_nullable
+              as int?,
+      carno: carno == freezed
+          ? _value.carno
+          : carno // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lowplate: lowplate == freezed
+          ? _value.lowplate
+          : lowplate // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -129,13 +105,7 @@ abstract class _$BusInfoDataCopyWith<$Res>
           _BusInfoData value, $Res Function(_BusInfoData) then) =
       __$BusInfoDataCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String? carno,
-      int? nodeid,
-      double? lat,
-      double? lin,
-      int? gpsym,
-      String? bstopnm});
+  $Res call({String? bstopnm, int? roint, String? carno, int? lowplate});
 }
 
 /// @nodoc
@@ -150,38 +120,28 @@ class __$BusInfoDataCopyWithImpl<$Res> extends _$BusInfoDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? carno = freezed,
-    Object? nodeid = freezed,
-    Object? lat = freezed,
-    Object? lin = freezed,
-    Object? gpsym = freezed,
     Object? bstopnm = freezed,
+    Object? roint = freezed,
+    Object? carno = freezed,
+    Object? lowplate = freezed,
   }) {
     return _then(_BusInfoData(
-      carno: carno == freezed
-          ? _value.carno
-          : carno // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nodeid: nodeid == freezed
-          ? _value.nodeid
-          : nodeid // ignore: cast_nullable_to_non_nullable
-              as int?,
-      lat: lat == freezed
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lin: lin == freezed
-          ? _value.lin
-          : lin // ignore: cast_nullable_to_non_nullable
-              as double?,
-      gpsym: gpsym == freezed
-          ? _value.gpsym
-          : gpsym // ignore: cast_nullable_to_non_nullable
-              as int?,
       bstopnm: bstopnm == freezed
           ? _value.bstopnm
           : bstopnm // ignore: cast_nullable_to_non_nullable
               as String?,
+      roint: roint == freezed
+          ? _value.roint
+          : roint // ignore: cast_nullable_to_non_nullable
+              as int?,
+      carno: carno == freezed
+          ? _value.carno
+          : carno // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lowplate: lowplate == freezed
+          ? _value.lowplate
+          : lowplate // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -189,28 +149,23 @@ class __$BusInfoDataCopyWithImpl<$Res> extends _$BusInfoDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_BusInfoData implements _BusInfoData {
-  _$_BusInfoData(
-      {this.carno, this.nodeid, this.lat, this.lin, this.gpsym, this.bstopnm});
+  _$_BusInfoData({this.bstopnm, this.roint, this.carno, this.lowplate});
 
   factory _$_BusInfoData.fromJson(Map<String, dynamic> json) =>
       _$$_BusInfoDataFromJson(json);
 
   @override
-  final String? carno;
-  @override
-  final int? nodeid;
-  @override
-  final double? lat;
-  @override
-  final double? lin;
-  @override
-  final int? gpsym;
-  @override
   final String? bstopnm;
+  @override // 정류장명
+  final int? roint;
+  @override // 회차 정보(0: 일반, 1: 회차 정류장) // null 이 아닐것 같긴 함
+  final String? carno;
+  @override // 버스 차량 번호
+  final int? lowplate;
 
   @override
   String toString() {
-    return 'BusInfoData(carno: $carno, nodeid: $nodeid, lat: $lat, lin: $lin, gpsym: $gpsym, bstopnm: $bstopnm)';
+    return 'BusInfoData(bstopnm: $bstopnm, roint: $roint, carno: $carno, lowplate: $lowplate)';
   }
 
   @override
@@ -218,23 +173,19 @@ class _$_BusInfoData implements _BusInfoData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BusInfoData &&
+            const DeepCollectionEquality().equals(other.bstopnm, bstopnm) &&
+            const DeepCollectionEquality().equals(other.roint, roint) &&
             const DeepCollectionEquality().equals(other.carno, carno) &&
-            const DeepCollectionEquality().equals(other.nodeid, nodeid) &&
-            const DeepCollectionEquality().equals(other.lat, lat) &&
-            const DeepCollectionEquality().equals(other.lin, lin) &&
-            const DeepCollectionEquality().equals(other.gpsym, gpsym) &&
-            const DeepCollectionEquality().equals(other.bstopnm, bstopnm));
+            const DeepCollectionEquality().equals(other.lowplate, lowplate));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(bstopnm),
+      const DeepCollectionEquality().hash(roint),
       const DeepCollectionEquality().hash(carno),
-      const DeepCollectionEquality().hash(nodeid),
-      const DeepCollectionEquality().hash(lat),
-      const DeepCollectionEquality().hash(lin),
-      const DeepCollectionEquality().hash(gpsym),
-      const DeepCollectionEquality().hash(bstopnm));
+      const DeepCollectionEquality().hash(lowplate));
 
   @JsonKey(ignore: true)
   @override
@@ -249,28 +200,22 @@ class _$_BusInfoData implements _BusInfoData {
 
 abstract class _BusInfoData implements BusInfoData {
   factory _BusInfoData(
-      {String? carno,
-      int? nodeid,
-      double? lat,
-      double? lin,
-      int? gpsym,
-      String? bstopnm}) = _$_BusInfoData;
+      {String? bstopnm,
+      int? roint,
+      String? carno,
+      int? lowplate}) = _$_BusInfoData;
 
   factory _BusInfoData.fromJson(Map<String, dynamic> json) =
       _$_BusInfoData.fromJson;
 
   @override
-  String? get carno;
-  @override
-  int? get nodeid;
-  @override
-  double? get lat;
-  @override
-  double? get lin;
-  @override
-  int? get gpsym;
-  @override
   String? get bstopnm;
+  @override // 정류장명
+  int? get roint;
+  @override // 회차 정보(0: 일반, 1: 회차 정류장) // null 이 아닐것 같긴 함
+  String? get carno;
+  @override // 버스 차량 번호
+  int? get lowplate;
   @override
   @JsonKey(ignore: true)
   _$BusInfoDataCopyWith<_BusInfoData> get copyWith =>

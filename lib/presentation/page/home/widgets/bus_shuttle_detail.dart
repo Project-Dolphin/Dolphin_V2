@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/config/r.dart';
-import 'package:oceanview/core/network/response/endpoint_shuttle/response_shuttle_detail_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_shuttle/response_shuttle_data_dto.dart';
 
 class ShuttleBusDetail extends StatelessWidget {
   const ShuttleBusDetail({required this.data, Key? key}) : super(key: key);
 
-  final List<ShuttleDetailDto> data;
+  final List<ShuttleDataDto> data;
 
   @override
   Widget build(BuildContext context) {
-    ShuttleDetailDto firstBus = data.isEmpty ? ShuttleDetailDto() : data[0];
+    ShuttleDataDto firstBus = data.isEmpty ? ShuttleDataDto() : data[0];
     // TODO : 막차여서 데이터가 없을 경우도 생각해야함
-    ShuttleDetailDto secondBus = data.length < 2 ? ShuttleDetailDto() : data[1];
+    ShuttleDataDto secondBus = data.length < 2 ? ShuttleDataDto() : data[1];
 
     return Row(
       children: [
@@ -98,7 +98,7 @@ class ShuttleBusDetail extends StatelessWidget {
     );
   }
 
-  int remainTime(ShuttleDetailDto busInfo) {
+  int remainTime(ShuttleDataDto busInfo) {
     if (busInfo.time == null) {
       return 999;
     }

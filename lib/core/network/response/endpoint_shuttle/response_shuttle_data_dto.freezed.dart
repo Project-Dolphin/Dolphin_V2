@@ -23,11 +23,11 @@ class _$ShuttleDataDtoTearOff {
   const _$ShuttleDataDtoTearOff();
 
   _ShuttleDataDto call(
-      {ShuttleDetailDto? previous,
-      List<ShuttleDetailDto> next = const <ShuttleDetailDto>[]}) {
+      {String? destination, String? time, int? remainMinutes}) {
     return _ShuttleDataDto(
-      previous: previous,
-      next: next,
+      destination: destination,
+      time: time,
+      remainMinutes: remainMinutes,
     );
   }
 
@@ -41,8 +41,10 @@ const $ShuttleDataDto = _$ShuttleDataDtoTearOff();
 
 /// @nodoc
 mixin _$ShuttleDataDto {
-  ShuttleDetailDto? get previous => throw _privateConstructorUsedError;
-  List<ShuttleDetailDto> get next => throw _privateConstructorUsedError;
+  String? get destination =>
+      throw _privateConstructorUsedError; // 목적지 ("하리" | "동삼시장")
+  String? get time => throw _privateConstructorUsedError; // 셔틀 출발 시간
+  int? get remainMinutes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,9 +57,7 @@ abstract class $ShuttleDataDtoCopyWith<$Res> {
   factory $ShuttleDataDtoCopyWith(
           ShuttleDataDto value, $Res Function(ShuttleDataDto) then) =
       _$ShuttleDataDtoCopyWithImpl<$Res>;
-  $Res call({ShuttleDetailDto? previous, List<ShuttleDetailDto> next});
-
-  $ShuttleDetailDtoCopyWith<$Res>? get previous;
+  $Res call({String? destination, String? time, int? remainMinutes});
 }
 
 /// @nodoc
@@ -71,30 +71,24 @@ class _$ShuttleDataDtoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? previous = freezed,
-    Object? next = freezed,
+    Object? destination = freezed,
+    Object? time = freezed,
+    Object? remainMinutes = freezed,
   }) {
     return _then(_value.copyWith(
-      previous: previous == freezed
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as ShuttleDetailDto?,
-      next: next == freezed
-          ? _value.next
-          : next // ignore: cast_nullable_to_non_nullable
-              as List<ShuttleDetailDto>,
+      destination: destination == freezed
+          ? _value.destination
+          : destination // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: time == freezed
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      remainMinutes: remainMinutes == freezed
+          ? _value.remainMinutes
+          : remainMinutes // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
-  }
-
-  @override
-  $ShuttleDetailDtoCopyWith<$Res>? get previous {
-    if (_value.previous == null) {
-      return null;
-    }
-
-    return $ShuttleDetailDtoCopyWith<$Res>(_value.previous!, (value) {
-      return _then(_value.copyWith(previous: value));
-    });
   }
 }
 
@@ -105,10 +99,7 @@ abstract class _$ShuttleDataDtoCopyWith<$Res>
           _ShuttleDataDto value, $Res Function(_ShuttleDataDto) then) =
       __$ShuttleDataDtoCopyWithImpl<$Res>;
   @override
-  $Res call({ShuttleDetailDto? previous, List<ShuttleDetailDto> next});
-
-  @override
-  $ShuttleDetailDtoCopyWith<$Res>? get previous;
+  $Res call({String? destination, String? time, int? remainMinutes});
 }
 
 /// @nodoc
@@ -124,18 +115,23 @@ class __$ShuttleDataDtoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? previous = freezed,
-    Object? next = freezed,
+    Object? destination = freezed,
+    Object? time = freezed,
+    Object? remainMinutes = freezed,
   }) {
     return _then(_ShuttleDataDto(
-      previous: previous == freezed
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as ShuttleDetailDto?,
-      next: next == freezed
-          ? _value.next
-          : next // ignore: cast_nullable_to_non_nullable
-              as List<ShuttleDetailDto>,
+      destination: destination == freezed
+          ? _value.destination
+          : destination // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: time == freezed
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      remainMinutes: remainMinutes == freezed
+          ? _value.remainMinutes
+          : remainMinutes // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -143,20 +139,21 @@ class __$ShuttleDataDtoCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ShuttleDataDto implements _ShuttleDataDto {
-  _$_ShuttleDataDto({this.previous, this.next = const <ShuttleDetailDto>[]});
+  _$_ShuttleDataDto({this.destination, this.time, this.remainMinutes});
 
   factory _$_ShuttleDataDto.fromJson(Map<String, dynamic> json) =>
       _$$_ShuttleDataDtoFromJson(json);
 
   @override
-  final ShuttleDetailDto? previous;
-  @JsonKey()
-  @override
-  final List<ShuttleDetailDto> next;
+  final String? destination;
+  @override // 목적지 ("하리" | "동삼시장")
+  final String? time;
+  @override // 셔틀 출발 시간
+  final int? remainMinutes;
 
   @override
   String toString() {
-    return 'ShuttleDataDto(previous: $previous, next: $next)';
+    return 'ShuttleDataDto(destination: $destination, time: $time, remainMinutes: $remainMinutes)';
   }
 
   @override
@@ -164,15 +161,19 @@ class _$_ShuttleDataDto implements _ShuttleDataDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ShuttleDataDto &&
-            const DeepCollectionEquality().equals(other.previous, previous) &&
-            const DeepCollectionEquality().equals(other.next, next));
+            const DeepCollectionEquality()
+                .equals(other.destination, destination) &&
+            const DeepCollectionEquality().equals(other.time, time) &&
+            const DeepCollectionEquality()
+                .equals(other.remainMinutes, remainMinutes));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(previous),
-      const DeepCollectionEquality().hash(next));
+      const DeepCollectionEquality().hash(destination),
+      const DeepCollectionEquality().hash(time),
+      const DeepCollectionEquality().hash(remainMinutes));
 
   @JsonKey(ignore: true)
   @override
@@ -187,16 +188,19 @@ class _$_ShuttleDataDto implements _ShuttleDataDto {
 
 abstract class _ShuttleDataDto implements ShuttleDataDto {
   factory _ShuttleDataDto(
-      {ShuttleDetailDto? previous,
-      List<ShuttleDetailDto> next}) = _$_ShuttleDataDto;
+      {String? destination,
+      String? time,
+      int? remainMinutes}) = _$_ShuttleDataDto;
 
   factory _ShuttleDataDto.fromJson(Map<String, dynamic> json) =
       _$_ShuttleDataDto.fromJson;
 
   @override
-  ShuttleDetailDto? get previous;
-  @override
-  List<ShuttleDetailDto> get next;
+  String? get destination;
+  @override // 목적지 ("하리" | "동삼시장")
+  String? get time;
+  @override // 셔틀 출발 시간
+  int? get remainMinutes;
   @override
   @JsonKey(ignore: true)
   _$ShuttleDataDtoCopyWith<_ShuttleDataDto> get copyWith =>

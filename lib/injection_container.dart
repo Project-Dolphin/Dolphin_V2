@@ -30,7 +30,6 @@ import 'package:oceanview/domain/usecases/get_latest_event.dart';
 import 'package:oceanview/domain/usecases/get_next_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_notice_list.dart';
 import 'package:oceanview/domain/usecases/get_running_city_bus_list.dart';
-import 'package:oceanview/domain/usecases/get_today_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_weather_info.dart';
 import 'package:oceanview/domain/usecases/get_weekday_event.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
@@ -82,7 +81,6 @@ Future<void> init() async {
   );
   sl.registerFactory(
     () => ShuttleBusBloc(
-      getTodayShuttleInfo: sl(),
       getNextShuttleInfo: sl(),
     )..add(ShuttleBusInited()),
   );
@@ -116,7 +114,6 @@ Future<void> init() async {
   //Use cases
   sl.registerLazySingleton(() => GetOperationCityBusList(repository: sl()));
   sl.registerLazySingleton(() => GetNextShuttleInfo(repository: sl()));
-  sl.registerLazySingleton(() => GetTodayShuttleInfo(repository: sl()));
   sl.registerLazySingleton(() => GetNoticeList(repository: sl()));
   sl.registerLazySingleton(() => GetLatestEvent(repository: sl()));
   sl.registerLazySingleton(() => GetWeatherInfo(repository: sl()));

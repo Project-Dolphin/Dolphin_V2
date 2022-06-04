@@ -32,6 +32,7 @@ class AppTheme {
       surface: Color(0xFFCECECE),
       onSurface: Colors.red,
     ),
+    bottomAppBarColor: const Color(0xFFFFFFFF),
   );
 
   // ignore: todo
@@ -60,6 +61,7 @@ class AppTheme {
       surface: Color(0xFF4E4E4E),
       onSurface: Colors.red,
     ),
+    bottomAppBarColor: const Color(0xFF17171B),
   );
 }
 
