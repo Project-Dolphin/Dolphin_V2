@@ -12,30 +12,11 @@ part of 'response_depart_bus_info_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 DepartBusInfo _$DepartBusInfoFromJson(Map<String, dynamic> json) {
   return _DepartBusInfo.fromJson(json);
 }
-
-/// @nodoc
-class _$DepartBusInfoTearOff {
-  const _$DepartBusInfoTearOff();
-
-  _DepartBusInfo call({String? bus, int? remainMinutes}) {
-    return _DepartBusInfo(
-      bus: bus,
-      remainMinutes: remainMinutes,
-    );
-  }
-
-  DepartBusInfo fromJson(Map<String, Object?> json) {
-    return DepartBusInfo.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DepartBusInfo = _$DepartBusInfoTearOff();
 
 /// @nodoc
 mixin _$DepartBusInfo {
@@ -84,32 +65,32 @@ class _$DepartBusInfoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DepartBusInfoCopyWith<$Res>
+abstract class _$$_DepartBusInfoCopyWith<$Res>
     implements $DepartBusInfoCopyWith<$Res> {
-  factory _$DepartBusInfoCopyWith(
-          _DepartBusInfo value, $Res Function(_DepartBusInfo) then) =
-      __$DepartBusInfoCopyWithImpl<$Res>;
+  factory _$$_DepartBusInfoCopyWith(
+          _$_DepartBusInfo value, $Res Function(_$_DepartBusInfo) then) =
+      __$$_DepartBusInfoCopyWithImpl<$Res>;
   @override
   $Res call({String? bus, int? remainMinutes});
 }
 
 /// @nodoc
-class __$DepartBusInfoCopyWithImpl<$Res>
+class __$$_DepartBusInfoCopyWithImpl<$Res>
     extends _$DepartBusInfoCopyWithImpl<$Res>
-    implements _$DepartBusInfoCopyWith<$Res> {
-  __$DepartBusInfoCopyWithImpl(
-      _DepartBusInfo _value, $Res Function(_DepartBusInfo) _then)
-      : super(_value, (v) => _then(v as _DepartBusInfo));
+    implements _$$_DepartBusInfoCopyWith<$Res> {
+  __$$_DepartBusInfoCopyWithImpl(
+      _$_DepartBusInfo _value, $Res Function(_$_DepartBusInfo) _then)
+      : super(_value, (v) => _then(v as _$_DepartBusInfo));
 
   @override
-  _DepartBusInfo get _value => super._value as _DepartBusInfo;
+  _$_DepartBusInfo get _value => super._value as _$_DepartBusInfo;
 
   @override
   $Res call({
     Object? bus = freezed,
     Object? remainMinutes = freezed,
   }) {
-    return _then(_DepartBusInfo(
+    return _then(_$_DepartBusInfo(
       bus: bus == freezed
           ? _value.bus
           : bus // ignore: cast_nullable_to_non_nullable
@@ -132,7 +113,8 @@ class _$_DepartBusInfo implements _DepartBusInfo {
 
   @override
   final String? bus;
-  @override // 190 출발 시간
+// 190 출발 시간
+  @override
   final int? remainMinutes;
 
   @override
@@ -144,12 +126,13 @@ class _$_DepartBusInfo implements _DepartBusInfo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DepartBusInfo &&
+            other is _$_DepartBusInfo &&
             const DeepCollectionEquality().equals(other.bus, bus) &&
             const DeepCollectionEquality()
                 .equals(other.remainMinutes, remainMinutes));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -158,8 +141,8 @@ class _$_DepartBusInfo implements _DepartBusInfo {
 
   @JsonKey(ignore: true)
   @override
-  _$DepartBusInfoCopyWith<_DepartBusInfo> get copyWith =>
-      __$DepartBusInfoCopyWithImpl<_DepartBusInfo>(this, _$identity);
+  _$$_DepartBusInfoCopyWith<_$_DepartBusInfo> get copyWith =>
+      __$$_DepartBusInfoCopyWithImpl<_$_DepartBusInfo>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -168,17 +151,18 @@ class _$_DepartBusInfo implements _DepartBusInfo {
 }
 
 abstract class _DepartBusInfo implements DepartBusInfo {
-  factory _DepartBusInfo({String? bus, int? remainMinutes}) = _$_DepartBusInfo;
+  factory _DepartBusInfo({final String? bus, final int? remainMinutes}) =
+      _$_DepartBusInfo;
 
   factory _DepartBusInfo.fromJson(Map<String, dynamic> json) =
       _$_DepartBusInfo.fromJson;
 
   @override
-  String? get bus;
+  String? get bus => throw _privateConstructorUsedError;
   @override // 190 출발 시간
-  int? get remainMinutes;
+  int? get remainMinutes => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DepartBusInfoCopyWith<_DepartBusInfo> get copyWith =>
+  _$$_DepartBusInfoCopyWith<_$_DepartBusInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

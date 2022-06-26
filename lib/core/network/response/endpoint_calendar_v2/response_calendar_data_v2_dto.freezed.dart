@@ -12,31 +12,11 @@ part of 'response_calendar_data_v2_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CalendarDataV2 _$CalendarDataV2FromJson(Map<String, dynamic> json) {
   return _CalendarDataV2.fromJson(json);
 }
-
-/// @nodoc
-class _$CalendarDataV2TearOff {
-  const _$CalendarDataV2TearOff();
-
-  _CalendarDataV2 call({String? term, bool? mainPlan, String? content}) {
-    return _CalendarDataV2(
-      term: term,
-      mainPlan: mainPlan,
-      content: content,
-    );
-  }
-
-  CalendarDataV2 fromJson(Map<String, Object?> json) {
-    return CalendarDataV2.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CalendarDataV2 = _$CalendarDataV2TearOff();
 
 /// @nodoc
 mixin _$CalendarDataV2 {
@@ -91,25 +71,25 @@ class _$CalendarDataV2CopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CalendarDataV2CopyWith<$Res>
+abstract class _$$_CalendarDataV2CopyWith<$Res>
     implements $CalendarDataV2CopyWith<$Res> {
-  factory _$CalendarDataV2CopyWith(
-          _CalendarDataV2 value, $Res Function(_CalendarDataV2) then) =
-      __$CalendarDataV2CopyWithImpl<$Res>;
+  factory _$$_CalendarDataV2CopyWith(
+          _$_CalendarDataV2 value, $Res Function(_$_CalendarDataV2) then) =
+      __$$_CalendarDataV2CopyWithImpl<$Res>;
   @override
   $Res call({String? term, bool? mainPlan, String? content});
 }
 
 /// @nodoc
-class __$CalendarDataV2CopyWithImpl<$Res>
+class __$$_CalendarDataV2CopyWithImpl<$Res>
     extends _$CalendarDataV2CopyWithImpl<$Res>
-    implements _$CalendarDataV2CopyWith<$Res> {
-  __$CalendarDataV2CopyWithImpl(
-      _CalendarDataV2 _value, $Res Function(_CalendarDataV2) _then)
-      : super(_value, (v) => _then(v as _CalendarDataV2));
+    implements _$$_CalendarDataV2CopyWith<$Res> {
+  __$$_CalendarDataV2CopyWithImpl(
+      _$_CalendarDataV2 _value, $Res Function(_$_CalendarDataV2) _then)
+      : super(_value, (v) => _then(v as _$_CalendarDataV2));
 
   @override
-  _CalendarDataV2 get _value => super._value as _CalendarDataV2;
+  _$_CalendarDataV2 get _value => super._value as _$_CalendarDataV2;
 
   @override
   $Res call({
@@ -117,7 +97,7 @@ class __$CalendarDataV2CopyWithImpl<$Res>
     Object? mainPlan = freezed,
     Object? content = freezed,
   }) {
-    return _then(_CalendarDataV2(
+    return _then(_$_CalendarDataV2(
       term: term == freezed
           ? _value.term
           : term // ignore: cast_nullable_to_non_nullable
@@ -158,12 +138,13 @@ class _$_CalendarDataV2 implements _CalendarDataV2 {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CalendarDataV2 &&
+            other is _$_CalendarDataV2 &&
             const DeepCollectionEquality().equals(other.term, term) &&
             const DeepCollectionEquality().equals(other.mainPlan, mainPlan) &&
             const DeepCollectionEquality().equals(other.content, content));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -173,8 +154,8 @@ class _$_CalendarDataV2 implements _CalendarDataV2 {
 
   @JsonKey(ignore: true)
   @override
-  _$CalendarDataV2CopyWith<_CalendarDataV2> get copyWith =>
-      __$CalendarDataV2CopyWithImpl<_CalendarDataV2>(this, _$identity);
+  _$$_CalendarDataV2CopyWith<_$_CalendarDataV2> get copyWith =>
+      __$$_CalendarDataV2CopyWithImpl<_$_CalendarDataV2>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -183,20 +164,22 @@ class _$_CalendarDataV2 implements _CalendarDataV2 {
 }
 
 abstract class _CalendarDataV2 implements CalendarDataV2 {
-  factory _CalendarDataV2({String? term, bool? mainPlan, String? content}) =
-      _$_CalendarDataV2;
+  factory _CalendarDataV2(
+      {final String? term,
+      final bool? mainPlan,
+      final String? content}) = _$_CalendarDataV2;
 
   factory _CalendarDataV2.fromJson(Map<String, dynamic> json) =
       _$_CalendarDataV2.fromJson;
 
   @override
-  String? get term;
+  String? get term => throw _privateConstructorUsedError;
   @override
-  bool? get mainPlan;
+  bool? get mainPlan => throw _privateConstructorUsedError;
   @override
-  String? get content;
+  String? get content => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CalendarDataV2CopyWith<_CalendarDataV2> get copyWith =>
+  _$$_CalendarDataV2CopyWith<_$_CalendarDataV2> get copyWith =>
       throw _privateConstructorUsedError;
 }

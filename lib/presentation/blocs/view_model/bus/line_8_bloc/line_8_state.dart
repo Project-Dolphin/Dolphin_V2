@@ -7,7 +7,18 @@ class Line8Loading extends Line8State {
   List<Object?> get props => [];
 }
 
-class Line8Loaded extends Line8State {
+class Line8LoadedWithBusInfo extends Line8State {
+  Line8LoadedWithBusInfo({required this.busInfo});
+
+  final NodeInfoData busInfo;
+
+  @override
+  List<Object?> get props => [busInfo];
+}
+
+class Line8LoadedWithEmptyList extends Line8State {
+  Line8LoadedWithEmptyList();
+
   @override
   List<Object?> get props => [];
 }

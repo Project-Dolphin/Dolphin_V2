@@ -12,33 +12,16 @@ part of 'response_calendar_latest_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LatestWrapper _$LatestWrapperFromJson(Map<String, dynamic> json) {
   return _LatestWrapper.fromJson(json);
 }
 
 /// @nodoc
-class _$LatestWrapperTearOff {
-  const _$LatestWrapperTearOff();
-
-  _LatestWrapper call({List<LatestData>? data}) {
-    return _LatestWrapper(
-      data: data,
-    );
-  }
-
-  LatestWrapper fromJson(Map<String, Object?> json) {
-    return LatestWrapper.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LatestWrapper = _$LatestWrapperTearOff();
-
-/// @nodoc
 mixin _$LatestWrapper {
-  List<LatestData>? get data => throw _privateConstructorUsedError;
+  String? get today => throw _privateConstructorUsedError;
+  List<LatestData> get calendar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +34,7 @@ abstract class $LatestWrapperCopyWith<$Res> {
   factory $LatestWrapperCopyWith(
           LatestWrapper value, $Res Function(LatestWrapper) then) =
       _$LatestWrapperCopyWithImpl<$Res>;
-  $Res call({List<LatestData>? data});
+  $Res call({String? today, List<LatestData> calendar});
 }
 
 /// @nodoc
@@ -65,47 +48,57 @@ class _$LatestWrapperCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? data = freezed,
+    Object? today = freezed,
+    Object? calendar = freezed,
   }) {
     return _then(_value.copyWith(
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<LatestData>?,
+      today: today == freezed
+          ? _value.today
+          : today // ignore: cast_nullable_to_non_nullable
+              as String?,
+      calendar: calendar == freezed
+          ? _value.calendar
+          : calendar // ignore: cast_nullable_to_non_nullable
+              as List<LatestData>,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$LatestWrapperCopyWith<$Res>
+abstract class _$$_LatestWrapperCopyWith<$Res>
     implements $LatestWrapperCopyWith<$Res> {
-  factory _$LatestWrapperCopyWith(
-          _LatestWrapper value, $Res Function(_LatestWrapper) then) =
-      __$LatestWrapperCopyWithImpl<$Res>;
+  factory _$$_LatestWrapperCopyWith(
+          _$_LatestWrapper value, $Res Function(_$_LatestWrapper) then) =
+      __$$_LatestWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<LatestData>? data});
+  $Res call({String? today, List<LatestData> calendar});
 }
 
 /// @nodoc
-class __$LatestWrapperCopyWithImpl<$Res>
+class __$$_LatestWrapperCopyWithImpl<$Res>
     extends _$LatestWrapperCopyWithImpl<$Res>
-    implements _$LatestWrapperCopyWith<$Res> {
-  __$LatestWrapperCopyWithImpl(
-      _LatestWrapper _value, $Res Function(_LatestWrapper) _then)
-      : super(_value, (v) => _then(v as _LatestWrapper));
+    implements _$$_LatestWrapperCopyWith<$Res> {
+  __$$_LatestWrapperCopyWithImpl(
+      _$_LatestWrapper _value, $Res Function(_$_LatestWrapper) _then)
+      : super(_value, (v) => _then(v as _$_LatestWrapper));
 
   @override
-  _LatestWrapper get _value => super._value as _LatestWrapper;
+  _$_LatestWrapper get _value => super._value as _$_LatestWrapper;
 
   @override
   $Res call({
-    Object? data = freezed,
+    Object? today = freezed,
+    Object? calendar = freezed,
   }) {
-    return _then(_LatestWrapper(
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<LatestData>?,
+    return _then(_$_LatestWrapper(
+      today: today == freezed
+          ? _value.today
+          : today // ignore: cast_nullable_to_non_nullable
+              as String?,
+      calendar: calendar == freezed
+          ? _value._calendar
+          : calendar // ignore: cast_nullable_to_non_nullable
+              as List<LatestData>,
     ));
   }
 }
@@ -113,35 +106,48 @@ class __$LatestWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LatestWrapper implements _LatestWrapper {
-  _$_LatestWrapper({this.data});
+  _$_LatestWrapper(
+      {this.today, final List<LatestData> calendar = const <LatestData>[]})
+      : _calendar = calendar;
 
   factory _$_LatestWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_LatestWrapperFromJson(json);
 
   @override
-  final List<LatestData>? data;
+  final String? today;
+  final List<LatestData> _calendar;
+  @override
+  @JsonKey()
+  List<LatestData> get calendar {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_calendar);
+  }
 
   @override
   String toString() {
-    return 'LatestWrapper(data: $data)';
+    return 'LatestWrapper(today: $today, calendar: $calendar)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LatestWrapper &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_LatestWrapper &&
+            const DeepCollectionEquality().equals(other.today, today) &&
+            const DeepCollectionEquality().equals(other._calendar, _calendar));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  _$LatestWrapperCopyWith<_LatestWrapper> get copyWith =>
-      __$LatestWrapperCopyWithImpl<_LatestWrapper>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(today),
+      const DeepCollectionEquality().hash(_calendar));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_LatestWrapperCopyWith<_$_LatestWrapper> get copyWith =>
+      __$$_LatestWrapperCopyWithImpl<_$_LatestWrapper>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -150,15 +156,19 @@ class _$_LatestWrapper implements _LatestWrapper {
 }
 
 abstract class _LatestWrapper implements LatestWrapper {
-  factory _LatestWrapper({List<LatestData>? data}) = _$_LatestWrapper;
+  factory _LatestWrapper(
+      {final String? today,
+      final List<LatestData> calendar}) = _$_LatestWrapper;
 
   factory _LatestWrapper.fromJson(Map<String, dynamic> json) =
       _$_LatestWrapper.fromJson;
 
   @override
-  List<LatestData>? get data;
+  String? get today => throw _privateConstructorUsedError;
+  @override
+  List<LatestData> get calendar => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LatestWrapperCopyWith<_LatestWrapper> get copyWith =>
+  _$$_LatestWrapperCopyWith<_$_LatestWrapper> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,29 +12,11 @@ part of 'response_weather_now_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 WeatherWrapper _$WeatherWrapperFromJson(Map<String, dynamic> json) {
   return _WeatherWrapper.fromJson(json);
 }
-
-/// @nodoc
-class _$WeatherWrapperTearOff {
-  const _$WeatherWrapperTearOff();
-
-  _WeatherWrapper call({WeatherData? data}) {
-    return _WeatherWrapper(
-      data: data,
-    );
-  }
-
-  WeatherWrapper fromJson(Map<String, Object?> json) {
-    return WeatherWrapper.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $WeatherWrapper = _$WeatherWrapperTearOff();
 
 /// @nodoc
 mixin _$WeatherWrapper {
@@ -90,11 +72,11 @@ class _$WeatherWrapperCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$WeatherWrapperCopyWith<$Res>
+abstract class _$$_WeatherWrapperCopyWith<$Res>
     implements $WeatherWrapperCopyWith<$Res> {
-  factory _$WeatherWrapperCopyWith(
-          _WeatherWrapper value, $Res Function(_WeatherWrapper) then) =
-      __$WeatherWrapperCopyWithImpl<$Res>;
+  factory _$$_WeatherWrapperCopyWith(
+          _$_WeatherWrapper value, $Res Function(_$_WeatherWrapper) then) =
+      __$$_WeatherWrapperCopyWithImpl<$Res>;
   @override
   $Res call({WeatherData? data});
 
@@ -103,21 +85,21 @@ abstract class _$WeatherWrapperCopyWith<$Res>
 }
 
 /// @nodoc
-class __$WeatherWrapperCopyWithImpl<$Res>
+class __$$_WeatherWrapperCopyWithImpl<$Res>
     extends _$WeatherWrapperCopyWithImpl<$Res>
-    implements _$WeatherWrapperCopyWith<$Res> {
-  __$WeatherWrapperCopyWithImpl(
-      _WeatherWrapper _value, $Res Function(_WeatherWrapper) _then)
-      : super(_value, (v) => _then(v as _WeatherWrapper));
+    implements _$$_WeatherWrapperCopyWith<$Res> {
+  __$$_WeatherWrapperCopyWithImpl(
+      _$_WeatherWrapper _value, $Res Function(_$_WeatherWrapper) _then)
+      : super(_value, (v) => _then(v as _$_WeatherWrapper));
 
   @override
-  _WeatherWrapper get _value => super._value as _WeatherWrapper;
+  _$_WeatherWrapper get _value => super._value as _$_WeatherWrapper;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_WeatherWrapper(
+    return _then(_$_WeatherWrapper(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -146,18 +128,19 @@ class _$_WeatherWrapper implements _WeatherWrapper {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WeatherWrapper &&
+            other is _$_WeatherWrapper &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  _$WeatherWrapperCopyWith<_WeatherWrapper> get copyWith =>
-      __$WeatherWrapperCopyWithImpl<_WeatherWrapper>(this, _$identity);
+  _$$_WeatherWrapperCopyWith<_$_WeatherWrapper> get copyWith =>
+      __$$_WeatherWrapperCopyWithImpl<_$_WeatherWrapper>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -166,15 +149,15 @@ class _$_WeatherWrapper implements _WeatherWrapper {
 }
 
 abstract class _WeatherWrapper implements WeatherWrapper {
-  factory _WeatherWrapper({WeatherData? data}) = _$_WeatherWrapper;
+  factory _WeatherWrapper({final WeatherData? data}) = _$_WeatherWrapper;
 
   factory _WeatherWrapper.fromJson(Map<String, dynamic> json) =
       _$_WeatherWrapper.fromJson;
 
   @override
-  WeatherData? get data;
+  WeatherData? get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$WeatherWrapperCopyWith<_WeatherWrapper> get copyWith =>
+  _$$_WeatherWrapperCopyWith<_$_WeatherWrapper> get copyWith =>
       throw _privateConstructorUsedError;
 }

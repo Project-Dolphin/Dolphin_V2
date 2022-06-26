@@ -12,33 +12,15 @@ part of 'response_notice_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 NoticeWrapper _$NoticeWrapperFromJson(Map<String, dynamic> json) {
   return _NoticeWrapper.fromJson(json);
 }
 
 /// @nodoc
-class _$NoticeWrapperTearOff {
-  const _$NoticeWrapperTearOff();
-
-  _NoticeWrapper call({List<NoticeData>? data}) {
-    return _NoticeWrapper(
-      data: data,
-    );
-  }
-
-  NoticeWrapper fromJson(Map<String, Object?> json) {
-    return NoticeWrapper.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $NoticeWrapper = _$NoticeWrapperTearOff();
-
-/// @nodoc
 mixin _$NoticeWrapper {
-  List<NoticeData>? get data => throw _privateConstructorUsedError;
+  List<NoticeData> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +33,7 @@ abstract class $NoticeWrapperCopyWith<$Res> {
   factory $NoticeWrapperCopyWith(
           NoticeWrapper value, $Res Function(NoticeWrapper) then) =
       _$NoticeWrapperCopyWithImpl<$Res>;
-  $Res call({List<NoticeData>? data});
+  $Res call({List<NoticeData> data});
 }
 
 /// @nodoc
@@ -71,41 +53,41 @@ class _$NoticeWrapperCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<NoticeData>?,
+              as List<NoticeData>,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$NoticeWrapperCopyWith<$Res>
+abstract class _$$_NoticeWrapperCopyWith<$Res>
     implements $NoticeWrapperCopyWith<$Res> {
-  factory _$NoticeWrapperCopyWith(
-          _NoticeWrapper value, $Res Function(_NoticeWrapper) then) =
-      __$NoticeWrapperCopyWithImpl<$Res>;
+  factory _$$_NoticeWrapperCopyWith(
+          _$_NoticeWrapper value, $Res Function(_$_NoticeWrapper) then) =
+      __$$_NoticeWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<NoticeData>? data});
+  $Res call({List<NoticeData> data});
 }
 
 /// @nodoc
-class __$NoticeWrapperCopyWithImpl<$Res>
+class __$$_NoticeWrapperCopyWithImpl<$Res>
     extends _$NoticeWrapperCopyWithImpl<$Res>
-    implements _$NoticeWrapperCopyWith<$Res> {
-  __$NoticeWrapperCopyWithImpl(
-      _NoticeWrapper _value, $Res Function(_NoticeWrapper) _then)
-      : super(_value, (v) => _then(v as _NoticeWrapper));
+    implements _$$_NoticeWrapperCopyWith<$Res> {
+  __$$_NoticeWrapperCopyWithImpl(
+      _$_NoticeWrapper _value, $Res Function(_$_NoticeWrapper) _then)
+      : super(_value, (v) => _then(v as _$_NoticeWrapper));
 
   @override
-  _NoticeWrapper get _value => super._value as _NoticeWrapper;
+  _$_NoticeWrapper get _value => super._value as _$_NoticeWrapper;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_NoticeWrapper(
+    return _then(_$_NoticeWrapper(
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<NoticeData>?,
+              as List<NoticeData>,
     ));
   }
 }
@@ -113,13 +95,19 @@ class __$NoticeWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_NoticeWrapper implements _NoticeWrapper {
-  _$_NoticeWrapper({this.data});
+  _$_NoticeWrapper({final List<NoticeData> data = const <NoticeData>[]})
+      : _data = data;
 
   factory _$_NoticeWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_NoticeWrapperFromJson(json);
 
+  final List<NoticeData> _data;
   @override
-  final List<NoticeData>? data;
+  @JsonKey()
+  List<NoticeData> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -130,18 +118,19 @@ class _$_NoticeWrapper implements _NoticeWrapper {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NoticeWrapper &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_NoticeWrapper &&
+            const DeepCollectionEquality().equals(other._data, _data));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  _$NoticeWrapperCopyWith<_NoticeWrapper> get copyWith =>
-      __$NoticeWrapperCopyWithImpl<_NoticeWrapper>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_NoticeWrapperCopyWith<_$_NoticeWrapper> get copyWith =>
+      __$$_NoticeWrapperCopyWithImpl<_$_NoticeWrapper>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -150,15 +139,15 @@ class _$_NoticeWrapper implements _NoticeWrapper {
 }
 
 abstract class _NoticeWrapper implements NoticeWrapper {
-  factory _NoticeWrapper({List<NoticeData>? data}) = _$_NoticeWrapper;
+  factory _NoticeWrapper({final List<NoticeData> data}) = _$_NoticeWrapper;
 
   factory _NoticeWrapper.fromJson(Map<String, dynamic> json) =
       _$_NoticeWrapper.fromJson;
 
   @override
-  List<NoticeData>? get data;
+  List<NoticeData> get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NoticeWrapperCopyWith<_NoticeWrapper> get copyWith =>
+  _$$_NoticeWrapperCopyWith<_$_NoticeWrapper> get copyWith =>
       throw _privateConstructorUsedError;
 }

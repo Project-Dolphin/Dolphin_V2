@@ -7,7 +7,7 @@ abstract class CityBusRepository {
     int busNumber,
   );
 
-  Future<Either<Failure, List<NodeInfoData>>> getSpecificNodeBusInfo(
+  Future<Either<Failure, NodeInfoData>> getSpecificNodeBusInfo(
     String busStopName,
     int busNumber,
   );

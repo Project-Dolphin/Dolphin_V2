@@ -12,30 +12,11 @@ part of 'response_calendar_term_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CalendarTerm _$CalendarTermFromJson(Map<String, dynamic> json) {
   return _CalendarTerm.fromJson(json);
 }
-
-/// @nodoc
-class _$CalendarTermTearOff {
-  const _$CalendarTermTearOff();
-
-  _CalendarTerm call({required String startedAt, required String endedAt}) {
-    return _CalendarTerm(
-      startedAt: startedAt,
-      endedAt: endedAt,
-    );
-  }
-
-  CalendarTerm fromJson(Map<String, Object?> json) {
-    return CalendarTerm.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CalendarTerm = _$CalendarTermTearOff();
 
 /// @nodoc
 mixin _$CalendarTerm {
@@ -83,31 +64,32 @@ class _$CalendarTermCopyWithImpl<$Res> implements $CalendarTermCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CalendarTermCopyWith<$Res>
+abstract class _$$_CalendarTermCopyWith<$Res>
     implements $CalendarTermCopyWith<$Res> {
-  factory _$CalendarTermCopyWith(
-          _CalendarTerm value, $Res Function(_CalendarTerm) then) =
-      __$CalendarTermCopyWithImpl<$Res>;
+  factory _$$_CalendarTermCopyWith(
+          _$_CalendarTerm value, $Res Function(_$_CalendarTerm) then) =
+      __$$_CalendarTermCopyWithImpl<$Res>;
   @override
   $Res call({String startedAt, String endedAt});
 }
 
 /// @nodoc
-class __$CalendarTermCopyWithImpl<$Res> extends _$CalendarTermCopyWithImpl<$Res>
-    implements _$CalendarTermCopyWith<$Res> {
-  __$CalendarTermCopyWithImpl(
-      _CalendarTerm _value, $Res Function(_CalendarTerm) _then)
-      : super(_value, (v) => _then(v as _CalendarTerm));
+class __$$_CalendarTermCopyWithImpl<$Res>
+    extends _$CalendarTermCopyWithImpl<$Res>
+    implements _$$_CalendarTermCopyWith<$Res> {
+  __$$_CalendarTermCopyWithImpl(
+      _$_CalendarTerm _value, $Res Function(_$_CalendarTerm) _then)
+      : super(_value, (v) => _then(v as _$_CalendarTerm));
 
   @override
-  _CalendarTerm get _value => super._value as _CalendarTerm;
+  _$_CalendarTerm get _value => super._value as _$_CalendarTerm;
 
   @override
   $Res call({
     Object? startedAt = freezed,
     Object? endedAt = freezed,
   }) {
-    return _then(_CalendarTerm(
+    return _then(_$_CalendarTerm(
       startedAt: startedAt == freezed
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
@@ -142,11 +124,12 @@ class _$_CalendarTerm implements _CalendarTerm {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CalendarTerm &&
+            other is _$_CalendarTerm &&
             const DeepCollectionEquality().equals(other.startedAt, startedAt) &&
             const DeepCollectionEquality().equals(other.endedAt, endedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -155,8 +138,8 @@ class _$_CalendarTerm implements _CalendarTerm {
 
   @JsonKey(ignore: true)
   @override
-  _$CalendarTermCopyWith<_CalendarTerm> get copyWith =>
-      __$CalendarTermCopyWithImpl<_CalendarTerm>(this, _$identity);
+  _$$_CalendarTermCopyWith<_$_CalendarTerm> get copyWith =>
+      __$$_CalendarTermCopyWithImpl<_$_CalendarTerm>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -165,18 +148,19 @@ class _$_CalendarTerm implements _CalendarTerm {
 }
 
 abstract class _CalendarTerm implements CalendarTerm {
-  factory _CalendarTerm({required String startedAt, required String endedAt}) =
-      _$_CalendarTerm;
+  factory _CalendarTerm(
+      {required final String startedAt,
+      required final String endedAt}) = _$_CalendarTerm;
 
   factory _CalendarTerm.fromJson(Map<String, dynamic> json) =
       _$_CalendarTerm.fromJson;
 
   @override
-  String get startedAt;
+  String get startedAt => throw _privateConstructorUsedError;
   @override
-  String get endedAt;
+  String get endedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CalendarTermCopyWith<_CalendarTerm> get copyWith =>
+  _$$_CalendarTermCopyWith<_$_CalendarTerm> get copyWith =>
       throw _privateConstructorUsedError;
 }

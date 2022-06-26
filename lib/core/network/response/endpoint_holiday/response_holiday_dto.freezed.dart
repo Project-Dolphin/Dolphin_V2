@@ -12,29 +12,11 @@ part of 'response_holiday_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 HolidayWrapper _$HolidayWrapperFromJson(Map<String, dynamic> json) {
   return _HolidayWrapper.fromJson(json);
 }
-
-/// @nodoc
-class _$HolidayWrapperTearOff {
-  const _$HolidayWrapperTearOff();
-
-  _HolidayWrapper call({List<HolidayData>? data}) {
-    return _HolidayWrapper(
-      data: data,
-    );
-  }
-
-  HolidayWrapper fromJson(Map<String, Object?> json) {
-    return HolidayWrapper.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $HolidayWrapper = _$HolidayWrapperTearOff();
 
 /// @nodoc
 mixin _$HolidayWrapper {
@@ -77,33 +59,33 @@ class _$HolidayWrapperCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$HolidayWrapperCopyWith<$Res>
+abstract class _$$_HolidayWrapperCopyWith<$Res>
     implements $HolidayWrapperCopyWith<$Res> {
-  factory _$HolidayWrapperCopyWith(
-          _HolidayWrapper value, $Res Function(_HolidayWrapper) then) =
-      __$HolidayWrapperCopyWithImpl<$Res>;
+  factory _$$_HolidayWrapperCopyWith(
+          _$_HolidayWrapper value, $Res Function(_$_HolidayWrapper) then) =
+      __$$_HolidayWrapperCopyWithImpl<$Res>;
   @override
   $Res call({List<HolidayData>? data});
 }
 
 /// @nodoc
-class __$HolidayWrapperCopyWithImpl<$Res>
+class __$$_HolidayWrapperCopyWithImpl<$Res>
     extends _$HolidayWrapperCopyWithImpl<$Res>
-    implements _$HolidayWrapperCopyWith<$Res> {
-  __$HolidayWrapperCopyWithImpl(
-      _HolidayWrapper _value, $Res Function(_HolidayWrapper) _then)
-      : super(_value, (v) => _then(v as _HolidayWrapper));
+    implements _$$_HolidayWrapperCopyWith<$Res> {
+  __$$_HolidayWrapperCopyWithImpl(
+      _$_HolidayWrapper _value, $Res Function(_$_HolidayWrapper) _then)
+      : super(_value, (v) => _then(v as _$_HolidayWrapper));
 
   @override
-  _HolidayWrapper get _value => super._value as _HolidayWrapper;
+  _$_HolidayWrapper get _value => super._value as _$_HolidayWrapper;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_HolidayWrapper(
+    return _then(_$_HolidayWrapper(
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<HolidayData>?,
     ));
@@ -113,13 +95,19 @@ class __$HolidayWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_HolidayWrapper implements _HolidayWrapper {
-  _$_HolidayWrapper({this.data});
+  _$_HolidayWrapper({final List<HolidayData>? data}) : _data = data;
 
   factory _$_HolidayWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_HolidayWrapperFromJson(json);
 
+  final List<HolidayData>? _data;
   @override
-  final List<HolidayData>? data;
+  List<HolidayData>? get data {
+    final value = _data;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -130,18 +118,19 @@ class _$_HolidayWrapper implements _HolidayWrapper {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HolidayWrapper &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_HolidayWrapper &&
+            const DeepCollectionEquality().equals(other._data, _data));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  _$HolidayWrapperCopyWith<_HolidayWrapper> get copyWith =>
-      __$HolidayWrapperCopyWithImpl<_HolidayWrapper>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_HolidayWrapperCopyWith<_$_HolidayWrapper> get copyWith =>
+      __$$_HolidayWrapperCopyWithImpl<_$_HolidayWrapper>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -150,15 +139,15 @@ class _$_HolidayWrapper implements _HolidayWrapper {
 }
 
 abstract class _HolidayWrapper implements HolidayWrapper {
-  factory _HolidayWrapper({List<HolidayData>? data}) = _$_HolidayWrapper;
+  factory _HolidayWrapper({final List<HolidayData>? data}) = _$_HolidayWrapper;
 
   factory _HolidayWrapper.fromJson(Map<String, dynamic> json) =
       _$_HolidayWrapper.fromJson;
 
   @override
-  List<HolidayData>? get data;
+  List<HolidayData>? get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$HolidayWrapperCopyWith<_HolidayWrapper> get copyWith =>
+  _$$_HolidayWrapperCopyWith<_$_HolidayWrapper> get copyWith =>
       throw _privateConstructorUsedError;
 }

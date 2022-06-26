@@ -12,30 +12,11 @@ part of 'response_holiday_term_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 HolidayTerm _$HolidayTermFromJson(Map<String, dynamic> json) {
   return _HolidayTerm.fromJson(json);
 }
-
-/// @nodoc
-class _$HolidayTermTearOff {
-  const _$HolidayTermTearOff();
-
-  _HolidayTerm call({String? startedAt, String? endedAt}) {
-    return _HolidayTerm(
-      startedAt: startedAt,
-      endedAt: endedAt,
-    );
-  }
-
-  HolidayTerm fromJson(Map<String, Object?> json) {
-    return HolidayTerm.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $HolidayTerm = _$HolidayTermTearOff();
 
 /// @nodoc
 mixin _$HolidayTerm {
@@ -83,31 +64,31 @@ class _$HolidayTermCopyWithImpl<$Res> implements $HolidayTermCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$HolidayTermCopyWith<$Res>
+abstract class _$$_HolidayTermCopyWith<$Res>
     implements $HolidayTermCopyWith<$Res> {
-  factory _$HolidayTermCopyWith(
-          _HolidayTerm value, $Res Function(_HolidayTerm) then) =
-      __$HolidayTermCopyWithImpl<$Res>;
+  factory _$$_HolidayTermCopyWith(
+          _$_HolidayTerm value, $Res Function(_$_HolidayTerm) then) =
+      __$$_HolidayTermCopyWithImpl<$Res>;
   @override
   $Res call({String? startedAt, String? endedAt});
 }
 
 /// @nodoc
-class __$HolidayTermCopyWithImpl<$Res> extends _$HolidayTermCopyWithImpl<$Res>
-    implements _$HolidayTermCopyWith<$Res> {
-  __$HolidayTermCopyWithImpl(
-      _HolidayTerm _value, $Res Function(_HolidayTerm) _then)
-      : super(_value, (v) => _then(v as _HolidayTerm));
+class __$$_HolidayTermCopyWithImpl<$Res> extends _$HolidayTermCopyWithImpl<$Res>
+    implements _$$_HolidayTermCopyWith<$Res> {
+  __$$_HolidayTermCopyWithImpl(
+      _$_HolidayTerm _value, $Res Function(_$_HolidayTerm) _then)
+      : super(_value, (v) => _then(v as _$_HolidayTerm));
 
   @override
-  _HolidayTerm get _value => super._value as _HolidayTerm;
+  _$_HolidayTerm get _value => super._value as _$_HolidayTerm;
 
   @override
   $Res call({
     Object? startedAt = freezed,
     Object? endedAt = freezed,
   }) {
-    return _then(_HolidayTerm(
+    return _then(_$_HolidayTerm(
       startedAt: startedAt == freezed
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
@@ -142,11 +123,12 @@ class _$_HolidayTerm implements _HolidayTerm {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HolidayTerm &&
+            other is _$_HolidayTerm &&
             const DeepCollectionEquality().equals(other.startedAt, startedAt) &&
             const DeepCollectionEquality().equals(other.endedAt, endedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -155,8 +137,8 @@ class _$_HolidayTerm implements _HolidayTerm {
 
   @JsonKey(ignore: true)
   @override
-  _$HolidayTermCopyWith<_HolidayTerm> get copyWith =>
-      __$HolidayTermCopyWithImpl<_HolidayTerm>(this, _$identity);
+  _$$_HolidayTermCopyWith<_$_HolidayTerm> get copyWith =>
+      __$$_HolidayTermCopyWithImpl<_$_HolidayTerm>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -165,17 +147,18 @@ class _$_HolidayTerm implements _HolidayTerm {
 }
 
 abstract class _HolidayTerm implements HolidayTerm {
-  factory _HolidayTerm({String? startedAt, String? endedAt}) = _$_HolidayTerm;
+  factory _HolidayTerm({final String? startedAt, final String? endedAt}) =
+      _$_HolidayTerm;
 
   factory _HolidayTerm.fromJson(Map<String, dynamic> json) =
       _$_HolidayTerm.fromJson;
 
   @override
-  String? get startedAt;
+  String? get startedAt => throw _privateConstructorUsedError;
   @override
-  String? get endedAt;
+  String? get endedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$HolidayTermCopyWith<_HolidayTerm> get copyWith =>
+  _$$_HolidayTermCopyWith<_$_HolidayTerm> get copyWith =>
       throw _privateConstructorUsedError;
 }

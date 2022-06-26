@@ -9,8 +9,9 @@ part of 'response_notice_dto.dart';
 _$_NoticeWrapper _$$_NoticeWrapperFromJson(Map<String, dynamic> json) =>
     _$_NoticeWrapper(
       data: (json['data'] as List<dynamic>?)
-          ?.map((e) => NoticeData.fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) => NoticeData.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <NoticeData>[],
     );
 
 Map<String, dynamic> _$$_NoticeWrapperToJson(_$_NoticeWrapper instance) =>

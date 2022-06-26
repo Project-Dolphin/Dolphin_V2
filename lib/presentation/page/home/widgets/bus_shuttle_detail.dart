@@ -99,6 +99,7 @@ class ShuttleBusDetail extends StatelessWidget {
   }
 
   int remainTime(ShuttleDataDto busInfo) {
+    logger.d(busInfo);
     if (busInfo.time == null) {
       return 999;
     }
@@ -108,7 +109,7 @@ class ShuttleBusDetail extends StatelessWidget {
       now.month,
       now.day,
       int.parse(busInfo.time?.substring(0, 2) ?? '0'),
-      int.parse(busInfo.time?.substring(2, 4) ?? '0'),
+      int.parse(busInfo.time?.substring(3, 5) ?? '0'),
     );
 
     logger.d(now);

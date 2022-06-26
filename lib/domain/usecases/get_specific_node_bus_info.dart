@@ -9,13 +9,13 @@ import 'package:oceanview/core/usecases/usecase.dart';
 import 'package:oceanview/domain/repositories/city_bus_repository.dart';
 
 class GetSpecificNodeBusInfo
-    implements UseCase<List<NodeInfoData>, SpecificNodeParam> {
+    implements UseCase<NodeInfoData, SpecificNodeParam> {
   final CityBusRepository repository;
 
   GetSpecificNodeBusInfo({required this.repository});
 
   @override
-  Future<Either<Failure, List<NodeInfoData>>> call(
+  Future<Either<Failure, NodeInfoData>> call(
     SpecificNodeParam params,
   ) async {
     return await repository.getSpecificNodeBusInfo(

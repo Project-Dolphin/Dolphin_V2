@@ -12,33 +12,17 @@ part of 'response_diet_dorm_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 DietDormWrapper _$DietDormWrapperFromJson(Map<String, dynamic> json) {
   return _DietDormWrapper.fromJson(json);
 }
 
 /// @nodoc
-class _$DietDormWrapperTearOff {
-  const _$DietDormWrapperTearOff();
-
-  _DietDormWrapper call({DormData? data}) {
-    return _DietDormWrapper(
-      data: data,
-    );
-  }
-
-  DietDormWrapper fromJson(Map<String, Object?> json) {
-    return DietDormWrapper.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DietDormWrapper = _$DietDormWrapperTearOff();
-
-/// @nodoc
 mixin _$DietDormWrapper {
-  DormData? get data => throw _privateConstructorUsedError;
+  List<String> get morning => throw _privateConstructorUsedError;
+  List<String> get lunch => throw _privateConstructorUsedError;
+  List<String> get dinner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,9 +35,7 @@ abstract class $DietDormWrapperCopyWith<$Res> {
   factory $DietDormWrapperCopyWith(
           DietDormWrapper value, $Res Function(DietDormWrapper) then) =
       _$DietDormWrapperCopyWithImpl<$Res>;
-  $Res call({DormData? data});
-
-  $DormDataCopyWith<$Res>? get data;
+  $Res call({List<String> morning, List<String> lunch, List<String> dinner});
 }
 
 /// @nodoc
@@ -67,61 +49,67 @@ class _$DietDormWrapperCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? data = freezed,
+    Object? morning = freezed,
+    Object? lunch = freezed,
+    Object? dinner = freezed,
   }) {
     return _then(_value.copyWith(
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as DormData?,
+      morning: morning == freezed
+          ? _value.morning
+          : morning // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      lunch: lunch == freezed
+          ? _value.lunch
+          : lunch // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      dinner: dinner == freezed
+          ? _value.dinner
+          : dinner // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
-
-  @override
-  $DormDataCopyWith<$Res>? get data {
-    if (_value.data == null) {
-      return null;
-    }
-
-    return $DormDataCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$DietDormWrapperCopyWith<$Res>
+abstract class _$$_DietDormWrapperCopyWith<$Res>
     implements $DietDormWrapperCopyWith<$Res> {
-  factory _$DietDormWrapperCopyWith(
-          _DietDormWrapper value, $Res Function(_DietDormWrapper) then) =
-      __$DietDormWrapperCopyWithImpl<$Res>;
+  factory _$$_DietDormWrapperCopyWith(
+          _$_DietDormWrapper value, $Res Function(_$_DietDormWrapper) then) =
+      __$$_DietDormWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({DormData? data});
-
-  @override
-  $DormDataCopyWith<$Res>? get data;
+  $Res call({List<String> morning, List<String> lunch, List<String> dinner});
 }
 
 /// @nodoc
-class __$DietDormWrapperCopyWithImpl<$Res>
+class __$$_DietDormWrapperCopyWithImpl<$Res>
     extends _$DietDormWrapperCopyWithImpl<$Res>
-    implements _$DietDormWrapperCopyWith<$Res> {
-  __$DietDormWrapperCopyWithImpl(
-      _DietDormWrapper _value, $Res Function(_DietDormWrapper) _then)
-      : super(_value, (v) => _then(v as _DietDormWrapper));
+    implements _$$_DietDormWrapperCopyWith<$Res> {
+  __$$_DietDormWrapperCopyWithImpl(
+      _$_DietDormWrapper _value, $Res Function(_$_DietDormWrapper) _then)
+      : super(_value, (v) => _then(v as _$_DietDormWrapper));
 
   @override
-  _DietDormWrapper get _value => super._value as _DietDormWrapper;
+  _$_DietDormWrapper get _value => super._value as _$_DietDormWrapper;
 
   @override
   $Res call({
-    Object? data = freezed,
+    Object? morning = freezed,
+    Object? lunch = freezed,
+    Object? dinner = freezed,
   }) {
-    return _then(_DietDormWrapper(
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as DormData?,
+    return _then(_$_DietDormWrapper(
+      morning: morning == freezed
+          ? _value._morning
+          : morning // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      lunch: lunch == freezed
+          ? _value._lunch
+          : lunch // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      dinner: dinner == freezed
+          ? _value._dinner
+          : dinner // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -129,35 +117,68 @@ class __$DietDormWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DietDormWrapper implements _DietDormWrapper {
-  _$_DietDormWrapper({this.data});
+  _$_DietDormWrapper(
+      {final List<String> morning = const <String>[],
+      final List<String> lunch = const <String>[],
+      final List<String> dinner = const <String>[]})
+      : _morning = morning,
+        _lunch = lunch,
+        _dinner = dinner;
 
   factory _$_DietDormWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_DietDormWrapperFromJson(json);
 
+  final List<String> _morning;
   @override
-  final DormData? data;
+  @JsonKey()
+  List<String> get morning {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_morning);
+  }
+
+  final List<String> _lunch;
+  @override
+  @JsonKey()
+  List<String> get lunch {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lunch);
+  }
+
+  final List<String> _dinner;
+  @override
+  @JsonKey()
+  List<String> get dinner {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dinner);
+  }
 
   @override
   String toString() {
-    return 'DietDormWrapper(data: $data)';
+    return 'DietDormWrapper(morning: $morning, lunch: $lunch, dinner: $dinner)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DietDormWrapper &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_DietDormWrapper &&
+            const DeepCollectionEquality().equals(other._morning, _morning) &&
+            const DeepCollectionEquality().equals(other._lunch, _lunch) &&
+            const DeepCollectionEquality().equals(other._dinner, _dinner));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  _$DietDormWrapperCopyWith<_DietDormWrapper> get copyWith =>
-      __$DietDormWrapperCopyWithImpl<_DietDormWrapper>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_morning),
+      const DeepCollectionEquality().hash(_lunch),
+      const DeepCollectionEquality().hash(_dinner));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DietDormWrapperCopyWith<_$_DietDormWrapper> get copyWith =>
+      __$$_DietDormWrapperCopyWithImpl<_$_DietDormWrapper>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -166,15 +187,22 @@ class _$_DietDormWrapper implements _DietDormWrapper {
 }
 
 abstract class _DietDormWrapper implements DietDormWrapper {
-  factory _DietDormWrapper({DormData? data}) = _$_DietDormWrapper;
+  factory _DietDormWrapper(
+      {final List<String> morning,
+      final List<String> lunch,
+      final List<String> dinner}) = _$_DietDormWrapper;
 
   factory _DietDormWrapper.fromJson(Map<String, dynamic> json) =
       _$_DietDormWrapper.fromJson;
 
   @override
-  DormData? get data;
+  List<String> get morning => throw _privateConstructorUsedError;
+  @override
+  List<String> get lunch => throw _privateConstructorUsedError;
+  @override
+  List<String> get dinner => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DietDormWrapperCopyWith<_DietDormWrapper> get copyWith =>
+  _$$_DietDormWrapperCopyWith<_$_DietDormWrapper> get copyWith =>
       throw _privateConstructorUsedError;
 }

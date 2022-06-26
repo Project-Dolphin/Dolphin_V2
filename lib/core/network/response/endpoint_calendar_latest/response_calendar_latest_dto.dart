@@ -8,7 +8,8 @@ part 'response_calendar_latest_dto.g.dart';
 @freezed
 class LatestWrapper with _$LatestWrapper {
   factory LatestWrapper({
-    List<LatestData>? data,
+    String? today,
+    @Default(<LatestData>[]) List<LatestData> calendar,
   }) = _LatestWrapper;
 
   factory LatestWrapper.fromJson(Map<String, dynamic> json) =>

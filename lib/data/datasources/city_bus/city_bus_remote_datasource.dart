@@ -5,7 +5,7 @@ import 'package:oceanview/core/network/rest_client_service.dart';
 abstract class CityBusRemoteDataSource {
   // TODO : Add Specific Node Api
   Future<List<NodeInfoData>> getOperationBusInfo(int busNumber);
-  Future<List<NodeInfoData>> getSpecificNodeBusInfo(
+  Future<NodeInfoData> getSpecificNodeBusInfo(
     String busStopName,
     int busNumber,
   );
@@ -27,16 +27,16 @@ class CityBusRemoteDataSourceImpl extends CityBusRemoteDataSource {
   }
 
   @override
-  Future<List<NodeInfoData>> getSpecificNodeBusInfo(
+  Future<NodeInfoData> getSpecificNodeBusInfo(
     String busStopName,
     int busNumber,
   ) async {
     final response =
         await restClientService.getSpecificNodeBusInfo(busStopName, busNumber);
-    if (response.data.isEmpty) {
-      throw ServerException();
-    }
+    // if (response.data.isEmpty) {
+    //   throw ServerException();
+    // }
 
-    return response.data; // ?? [];
+    return response; // ?? [];
   }
 }

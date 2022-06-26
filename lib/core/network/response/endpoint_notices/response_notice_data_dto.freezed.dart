@@ -12,31 +12,11 @@ part of 'response_notice_data_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 NoticeData _$NoticeDataFromJson(Map<String, dynamic> json) {
   return _NoticeData.fromJson(json);
 }
-
-/// @nodoc
-class _$NoticeDataTearOff {
-  const _$NoticeDataTearOff();
-
-  _NoticeData call({String? title, String? link, String? date}) {
-    return _NoticeData(
-      title: title,
-      link: link,
-      date: date,
-    );
-  }
-
-  NoticeData fromJson(Map<String, Object?> json) {
-    return NoticeData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $NoticeData = _$NoticeDataTearOff();
 
 /// @nodoc
 mixin _$NoticeData {
@@ -90,23 +70,24 @@ class _$NoticeDataCopyWithImpl<$Res> implements $NoticeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$NoticeDataCopyWith<$Res> implements $NoticeDataCopyWith<$Res> {
-  factory _$NoticeDataCopyWith(
-          _NoticeData value, $Res Function(_NoticeData) then) =
-      __$NoticeDataCopyWithImpl<$Res>;
+abstract class _$$_NoticeDataCopyWith<$Res>
+    implements $NoticeDataCopyWith<$Res> {
+  factory _$$_NoticeDataCopyWith(
+          _$_NoticeData value, $Res Function(_$_NoticeData) then) =
+      __$$_NoticeDataCopyWithImpl<$Res>;
   @override
   $Res call({String? title, String? link, String? date});
 }
 
 /// @nodoc
-class __$NoticeDataCopyWithImpl<$Res> extends _$NoticeDataCopyWithImpl<$Res>
-    implements _$NoticeDataCopyWith<$Res> {
-  __$NoticeDataCopyWithImpl(
-      _NoticeData _value, $Res Function(_NoticeData) _then)
-      : super(_value, (v) => _then(v as _NoticeData));
+class __$$_NoticeDataCopyWithImpl<$Res> extends _$NoticeDataCopyWithImpl<$Res>
+    implements _$$_NoticeDataCopyWith<$Res> {
+  __$$_NoticeDataCopyWithImpl(
+      _$_NoticeData _value, $Res Function(_$_NoticeData) _then)
+      : super(_value, (v) => _then(v as _$_NoticeData));
 
   @override
-  _NoticeData get _value => super._value as _NoticeData;
+  _$_NoticeData get _value => super._value as _$_NoticeData;
 
   @override
   $Res call({
@@ -114,7 +95,7 @@ class __$NoticeDataCopyWithImpl<$Res> extends _$NoticeDataCopyWithImpl<$Res>
     Object? link = freezed,
     Object? date = freezed,
   }) {
-    return _then(_NoticeData(
+    return _then(_$_NoticeData(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -155,12 +136,13 @@ class _$_NoticeData implements _NoticeData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NoticeData &&
+            other is _$_NoticeData &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.link, link) &&
             const DeepCollectionEquality().equals(other.date, date));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -170,8 +152,8 @@ class _$_NoticeData implements _NoticeData {
 
   @JsonKey(ignore: true)
   @override
-  _$NoticeDataCopyWith<_NoticeData> get copyWith =>
-      __$NoticeDataCopyWithImpl<_NoticeData>(this, _$identity);
+  _$$_NoticeDataCopyWith<_$_NoticeData> get copyWith =>
+      __$$_NoticeDataCopyWithImpl<_$_NoticeData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -180,20 +162,22 @@ class _$_NoticeData implements _NoticeData {
 }
 
 abstract class _NoticeData implements NoticeData {
-  factory _NoticeData({String? title, String? link, String? date}) =
-      _$_NoticeData;
+  factory _NoticeData(
+      {final String? title,
+      final String? link,
+      final String? date}) = _$_NoticeData;
 
   factory _NoticeData.fromJson(Map<String, dynamic> json) =
       _$_NoticeData.fromJson;
 
   @override
-  String? get title;
+  String? get title => throw _privateConstructorUsedError;
   @override
-  String? get link;
+  String? get link => throw _privateConstructorUsedError;
   @override
-  String? get date;
+  String? get date => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NoticeDataCopyWith<_NoticeData> get copyWith =>
+  _$$_NoticeDataCopyWith<_$_NoticeData> get copyWith =>
       throw _privateConstructorUsedError;
 }

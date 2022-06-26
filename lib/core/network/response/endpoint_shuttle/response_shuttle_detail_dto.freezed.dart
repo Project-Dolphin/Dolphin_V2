@@ -12,30 +12,11 @@ part of 'response_shuttle_detail_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ShuttleDetailDto _$ShuttleDetailDtoFromJson(Map<String, dynamic> json) {
   return _ShuttleDetailDto.fromJson(json);
 }
-
-/// @nodoc
-class _$ShuttleDetailDtoTearOff {
-  const _$ShuttleDetailDtoTearOff();
-
-  _ShuttleDetailDto call({String? type, String? time}) {
-    return _ShuttleDetailDto(
-      type: type,
-      time: time,
-    );
-  }
-
-  ShuttleDetailDto fromJson(Map<String, Object?> json) {
-    return ShuttleDetailDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ShuttleDetailDto = _$ShuttleDetailDtoTearOff();
 
 /// @nodoc
 mixin _$ShuttleDetailDto {
@@ -84,32 +65,32 @@ class _$ShuttleDetailDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ShuttleDetailDtoCopyWith<$Res>
+abstract class _$$_ShuttleDetailDtoCopyWith<$Res>
     implements $ShuttleDetailDtoCopyWith<$Res> {
-  factory _$ShuttleDetailDtoCopyWith(
-          _ShuttleDetailDto value, $Res Function(_ShuttleDetailDto) then) =
-      __$ShuttleDetailDtoCopyWithImpl<$Res>;
+  factory _$$_ShuttleDetailDtoCopyWith(
+          _$_ShuttleDetailDto value, $Res Function(_$_ShuttleDetailDto) then) =
+      __$$_ShuttleDetailDtoCopyWithImpl<$Res>;
   @override
   $Res call({String? type, String? time});
 }
 
 /// @nodoc
-class __$ShuttleDetailDtoCopyWithImpl<$Res>
+class __$$_ShuttleDetailDtoCopyWithImpl<$Res>
     extends _$ShuttleDetailDtoCopyWithImpl<$Res>
-    implements _$ShuttleDetailDtoCopyWith<$Res> {
-  __$ShuttleDetailDtoCopyWithImpl(
-      _ShuttleDetailDto _value, $Res Function(_ShuttleDetailDto) _then)
-      : super(_value, (v) => _then(v as _ShuttleDetailDto));
+    implements _$$_ShuttleDetailDtoCopyWith<$Res> {
+  __$$_ShuttleDetailDtoCopyWithImpl(
+      _$_ShuttleDetailDto _value, $Res Function(_$_ShuttleDetailDto) _then)
+      : super(_value, (v) => _then(v as _$_ShuttleDetailDto));
 
   @override
-  _ShuttleDetailDto get _value => super._value as _ShuttleDetailDto;
+  _$_ShuttleDetailDto get _value => super._value as _$_ShuttleDetailDto;
 
   @override
   $Res call({
     Object? type = freezed,
     Object? time = freezed,
   }) {
-    return _then(_ShuttleDetailDto(
+    return _then(_$_ShuttleDetailDto(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -144,11 +125,12 @@ class _$_ShuttleDetailDto implements _ShuttleDetailDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ShuttleDetailDto &&
+            other is _$_ShuttleDetailDto &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.time, time));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -157,8 +139,8 @@ class _$_ShuttleDetailDto implements _ShuttleDetailDto {
 
   @JsonKey(ignore: true)
   @override
-  _$ShuttleDetailDtoCopyWith<_ShuttleDetailDto> get copyWith =>
-      __$ShuttleDetailDtoCopyWithImpl<_ShuttleDetailDto>(this, _$identity);
+  _$$_ShuttleDetailDtoCopyWith<_$_ShuttleDetailDto> get copyWith =>
+      __$$_ShuttleDetailDtoCopyWithImpl<_$_ShuttleDetailDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -167,17 +149,18 @@ class _$_ShuttleDetailDto implements _ShuttleDetailDto {
 }
 
 abstract class _ShuttleDetailDto implements ShuttleDetailDto {
-  factory _ShuttleDetailDto({String? type, String? time}) = _$_ShuttleDetailDto;
+  factory _ShuttleDetailDto({final String? type, final String? time}) =
+      _$_ShuttleDetailDto;
 
   factory _ShuttleDetailDto.fromJson(Map<String, dynamic> json) =
       _$_ShuttleDetailDto.fromJson;
 
   @override
-  String? get type;
+  String? get type => throw _privateConstructorUsedError;
   @override
-  String? get time;
+  String? get time => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ShuttleDetailDtoCopyWith<_ShuttleDetailDto> get copyWith =>
+  _$$_ShuttleDetailDtoCopyWith<_$_ShuttleDetailDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

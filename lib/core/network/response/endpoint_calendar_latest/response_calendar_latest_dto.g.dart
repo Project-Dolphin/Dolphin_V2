@@ -8,12 +8,15 @@ part of 'response_calendar_latest_dto.dart';
 
 _$_LatestWrapper _$$_LatestWrapperFromJson(Map<String, dynamic> json) =>
     _$_LatestWrapper(
-      data: (json['data'] as List<dynamic>?)
-          ?.map((e) => LatestData.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      today: json['today'] as String?,
+      calendar: (json['calendar'] as List<dynamic>?)
+              ?.map((e) => LatestData.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <LatestData>[],
     );
 
 Map<String, dynamic> _$$_LatestWrapperToJson(_$_LatestWrapper instance) =>
     <String, dynamic>{
-      'data': instance.data,
+      'today': instance.today,
+      'calendar': instance.calendar,
     };

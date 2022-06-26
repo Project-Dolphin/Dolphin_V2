@@ -48,4 +48,24 @@ class EventRepositoryImpl implements EventRepository {
       return Left(ServerFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, List<WeekdayData>>> getWeekDayEventWithMonth(
+    int year,
+    int month,
+  ) async {
+    try {
+      final List<WeekdayData> holidayDataList =
+          await remoteDataSource.getWeekdayCalendarDataWithMonth(year, month);
+      try {
+        await localDataSource.busLocalDummy();
+
+        return Right(holidayDataList);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
 }

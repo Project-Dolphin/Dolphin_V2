@@ -12,29 +12,11 @@ part of 'response_calendar_v2_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CalendarV2Wrapper _$CalendarV2WrapperFromJson(Map<String, dynamic> json) {
   return _CalendarV2Wrapper.fromJson(json);
 }
-
-/// @nodoc
-class _$CalendarV2WrapperTearOff {
-  const _$CalendarV2WrapperTearOff();
-
-  _CalendarV2Wrapper call({List<CalendarDataV2>? data}) {
-    return _CalendarV2Wrapper(
-      data: data,
-    );
-  }
-
-  CalendarV2Wrapper fromJson(Map<String, Object?> json) {
-    return CalendarV2Wrapper.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CalendarV2Wrapper = _$CalendarV2WrapperTearOff();
 
 /// @nodoc
 mixin _$CalendarV2Wrapper {
@@ -77,33 +59,33 @@ class _$CalendarV2WrapperCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CalendarV2WrapperCopyWith<$Res>
+abstract class _$$_CalendarV2WrapperCopyWith<$Res>
     implements $CalendarV2WrapperCopyWith<$Res> {
-  factory _$CalendarV2WrapperCopyWith(
-          _CalendarV2Wrapper value, $Res Function(_CalendarV2Wrapper) then) =
-      __$CalendarV2WrapperCopyWithImpl<$Res>;
+  factory _$$_CalendarV2WrapperCopyWith(_$_CalendarV2Wrapper value,
+          $Res Function(_$_CalendarV2Wrapper) then) =
+      __$$_CalendarV2WrapperCopyWithImpl<$Res>;
   @override
   $Res call({List<CalendarDataV2>? data});
 }
 
 /// @nodoc
-class __$CalendarV2WrapperCopyWithImpl<$Res>
+class __$$_CalendarV2WrapperCopyWithImpl<$Res>
     extends _$CalendarV2WrapperCopyWithImpl<$Res>
-    implements _$CalendarV2WrapperCopyWith<$Res> {
-  __$CalendarV2WrapperCopyWithImpl(
-      _CalendarV2Wrapper _value, $Res Function(_CalendarV2Wrapper) _then)
-      : super(_value, (v) => _then(v as _CalendarV2Wrapper));
+    implements _$$_CalendarV2WrapperCopyWith<$Res> {
+  __$$_CalendarV2WrapperCopyWithImpl(
+      _$_CalendarV2Wrapper _value, $Res Function(_$_CalendarV2Wrapper) _then)
+      : super(_value, (v) => _then(v as _$_CalendarV2Wrapper));
 
   @override
-  _CalendarV2Wrapper get _value => super._value as _CalendarV2Wrapper;
+  _$_CalendarV2Wrapper get _value => super._value as _$_CalendarV2Wrapper;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_CalendarV2Wrapper(
+    return _then(_$_CalendarV2Wrapper(
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<CalendarDataV2>?,
     ));
@@ -113,13 +95,19 @@ class __$CalendarV2WrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CalendarV2Wrapper implements _CalendarV2Wrapper {
-  _$_CalendarV2Wrapper({this.data});
+  _$_CalendarV2Wrapper({final List<CalendarDataV2>? data}) : _data = data;
 
   factory _$_CalendarV2Wrapper.fromJson(Map<String, dynamic> json) =>
       _$$_CalendarV2WrapperFromJson(json);
 
+  final List<CalendarDataV2>? _data;
   @override
-  final List<CalendarDataV2>? data;
+  List<CalendarDataV2>? get data {
+    final value = _data;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -130,18 +118,20 @@ class _$_CalendarV2Wrapper implements _CalendarV2Wrapper {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CalendarV2Wrapper &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_CalendarV2Wrapper &&
+            const DeepCollectionEquality().equals(other._data, _data));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  _$CalendarV2WrapperCopyWith<_CalendarV2Wrapper> get copyWith =>
-      __$CalendarV2WrapperCopyWithImpl<_CalendarV2Wrapper>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CalendarV2WrapperCopyWith<_$_CalendarV2Wrapper> get copyWith =>
+      __$$_CalendarV2WrapperCopyWithImpl<_$_CalendarV2Wrapper>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -150,16 +140,16 @@ class _$_CalendarV2Wrapper implements _CalendarV2Wrapper {
 }
 
 abstract class _CalendarV2Wrapper implements CalendarV2Wrapper {
-  factory _CalendarV2Wrapper({List<CalendarDataV2>? data}) =
+  factory _CalendarV2Wrapper({final List<CalendarDataV2>? data}) =
       _$_CalendarV2Wrapper;
 
   factory _CalendarV2Wrapper.fromJson(Map<String, dynamic> json) =
       _$_CalendarV2Wrapper.fromJson;
 
   @override
-  List<CalendarDataV2>? get data;
+  List<CalendarDataV2>? get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CalendarV2WrapperCopyWith<_CalendarV2Wrapper> get copyWith =>
+  _$$_CalendarV2WrapperCopyWith<_$_CalendarV2Wrapper> get copyWith =>
       throw _privateConstructorUsedError;
 }

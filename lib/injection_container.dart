@@ -34,8 +34,15 @@ import 'package:oceanview/domain/usecases/get_running_city_bus_list.dart';
 import 'package:oceanview/domain/usecases/get_specific_node_bus_info.dart';
 import 'package:oceanview/domain/usecases/get_weather_info.dart';
 import 'package:oceanview/domain/usecases/get_weekday_event.dart';
+import 'package:oceanview/domain/usecases/get_weekday_event_with_month.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 import 'package:oceanview/presentation/blocs/splash_page_bloc/splash_page_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_101_bloc/line_101_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_186_bloc/line_186_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_190_bloc/line_190_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_30_bloc/line_30_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_66_bloc/line_66_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_88_bloc/line_88_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/bus/line_8_bloc/line_8_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
@@ -87,7 +94,46 @@ Future<void> init() async {
     )..add(ShuttleBusInited()),
   );
   sl.registerFactory(
-    () => Line8Bloc(getSpecificNodeBusInfo: sl())..add(FetchLine8Info()),
+    () => Line8Bloc(getSpecificNodeBusInfo: sl())
+      ..add(
+        FetchLine8Info(),
+      ),
+  );
+  sl.registerFactory(
+    () => Line30Bloc(getSpecificNodeBusInfo: sl())
+      ..add(
+        FetchLine30Info(),
+      ),
+  );
+  sl.registerFactory(
+    () => Line66Bloc(getSpecificNodeBusInfo: sl())
+      ..add(
+        FetchLine66Info(),
+      ),
+  );
+  sl.registerFactory(
+    () => Line88Bloc(getSpecificNodeBusInfo: sl())
+      ..add(
+        FetchLine88Info(),
+      ),
+  );
+  sl.registerFactory(
+    () => Line101Bloc(getSpecificNodeBusInfo: sl())
+      ..add(
+        FetchLine101Info(),
+      ),
+  );
+  sl.registerFactory(
+    () => Line186Bloc(getSpecificNodeBusInfo: sl())
+      ..add(
+        FetchLine186Info(),
+      ),
+  );
+  sl.registerFactory(
+    () => Line190Bloc(getSpecificNodeBusInfo: sl())
+      ..add(
+        FetchLine190Info(),
+      ),
   );
   sl.registerFactory(
     () => RunningBusPageBloc(getOperationCityBusList: sl())
@@ -123,6 +169,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetCafeDiet(repository: sl()));
   sl.registerLazySingleton(() => GetHolidayEvent(repository: sl()));
   sl.registerLazySingleton(() => GetWeekdayEvent(repository: sl()));
+  sl.registerLazySingleton(() => GetWeekdayEventWithMonth(repository: sl()));
   sl.registerLazySingleton(() => GetSpecificNodeBusInfo(repository: sl()));
 
   //Repositories

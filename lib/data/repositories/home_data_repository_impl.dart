@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:oceanview/core/error/failures.dart';
-import 'package:oceanview/core/network/response/endpoint_calendar_latest/response_calendar_latest_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_calendar_latest/response_calendar_latest_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:oceanview/data/datasources/home_data/home_data_local_datasource.dart';
@@ -47,9 +47,9 @@ class HomeDataRepositoryImpl implements HomeDataRepository {
   }
 
   @override
-  Future<Either<Failure, List<LatestData>>> getLatestEvents() async {
+  Future<Either<Failure, LatestWrapper>> getLatestEvents() async {
     try {
-      final List<LatestData> latestEventsInfo =
+      final LatestWrapper latestEventsInfo =
           await remoteDataSource.getLatestEvents();
       try {
         return Right(latestEventsInfo);

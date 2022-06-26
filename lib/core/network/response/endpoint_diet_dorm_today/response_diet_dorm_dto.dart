@@ -8,7 +8,9 @@ part 'response_diet_dorm_dto.g.dart';
 @freezed
 class DietDormWrapper with _$DietDormWrapper {
   factory DietDormWrapper({
-    DormData? data,
+    @Default(<String>[]) List<String> morning,
+    @Default(<String>[]) List<String> lunch,
+    @Default(<String>[]) List<String> dinner,
   }) = _DietDormWrapper;
 
   factory DietDormWrapper.fromJson(Map<String, dynamic> json) =>
