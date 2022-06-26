@@ -1,6 +1,7 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:oceanview/core/network/interceptor.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
 import 'package:oceanview/core/utils/constants.dart';
 import 'package:oceanview/data/datasources/city_bus/city_bus_local_datasource.dart';
@@ -30,12 +31,13 @@ import 'package:oceanview/domain/usecases/get_latest_event.dart';
 import 'package:oceanview/domain/usecases/get_next_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_notice_list.dart';
 import 'package:oceanview/domain/usecases/get_running_city_bus_list.dart';
+import 'package:oceanview/domain/usecases/get_specific_node_bus_info.dart';
 import 'package:oceanview/domain/usecases/get_weather_info.dart';
 import 'package:oceanview/domain/usecases/get_weekday_event.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 import 'package:oceanview/presentation/blocs/splash_page_bloc/splash_page_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_8_bloc/line_8_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
-import 'package:oceanview/presentation/blocs/view_model/city_bus_bloc/city_bus_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/running_bus_bloc/running_bus_bloc.dart';
@@ -85,7 +87,7 @@ Future<void> init() async {
     )..add(ShuttleBusInited()),
   );
   sl.registerFactory(
-    () => CityBusBloc(getOperationCityBusList: sl())..add(CityBusInited()),
+    () => Line8Bloc(getSpecificNodeBusInfo: sl())..add(FetchLine8Info()),
   );
   sl.registerFactory(
     () => RunningBusPageBloc(getOperationCityBusList: sl())
@@ -121,6 +123,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetCafeDiet(repository: sl()));
   sl.registerLazySingleton(() => GetHolidayEvent(repository: sl()));
   sl.registerLazySingleton(() => GetWeekdayEvent(repository: sl()));
+  sl.registerLazySingleton(() => GetSpecificNodeBusInfo(repository: sl()));
 
   //Repositories
   sl.registerLazySingleton<CityBusRepository>(() => CityBusRepositoryImpl(
@@ -206,8 +209,16 @@ Future<void> init() async {
 
   //External
 
-  final dio = Dio();
+  final dio = Dio(
+    BaseOptions(
+      receiveDataWhenStatusError: true,
+      followRedirects: true,
+      connectTimeout: 60 * 1000,
+      receiveTimeout: 60 * 1000,
+    ),
+  );
   dio.interceptors.add(prettyDioLogger);
+  dio.interceptors.add(RetryOnConnectionChangeInterceptor(dio: dio));
 
   sl.registerLazySingleton(
     () => RestClient(

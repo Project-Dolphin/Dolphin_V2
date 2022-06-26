@@ -12,12 +12,10 @@ _$_NextDepart190Wrapper _$$_NextDepart190WrapperFromJson(
       nextDepartBus: (json['nextDepartBus'] as List<dynamic>?)
           ?.map((e) => DepartBusInfo.fromJson(e as Map<String, dynamic>))
           .toList(),
-      path: json['path'] as String?,
     );
 
 Map<String, dynamic> _$$_NextDepart190WrapperToJson(
         _$_NextDepart190Wrapper instance) =>
     <String, dynamic>{
       'nextDepartBus': instance.nextDepartBus,
-      'path': instance.path,
     };

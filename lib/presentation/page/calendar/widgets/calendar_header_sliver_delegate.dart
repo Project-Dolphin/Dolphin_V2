@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
 import 'package:oceanview/presentation/page/calendar/dialog/calendar_dialog.dart';
@@ -103,6 +104,8 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
             ),
             Builder(builder: (context) {
               if (shrinkOffset / maxExtent < 0.17) {
+                logger.d(context.read<CampusEventBloc>().state);
+
                 return Expanded(
                   child: BlocBuilder<CampusEventBloc, CampusEventState>(
                     builder: (context, state) {

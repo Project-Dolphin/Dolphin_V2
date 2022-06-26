@@ -22,11 +22,9 @@ NextDepart190Wrapper _$NextDepart190WrapperFromJson(Map<String, dynamic> json) {
 class _$NextDepart190WrapperTearOff {
   const _$NextDepart190WrapperTearOff();
 
-  _NextDepart190Wrapper call(
-      {List<DepartBusInfo>? nextDepartBus, String? path}) {
+  _NextDepart190Wrapper call({List<DepartBusInfo>? nextDepartBus}) {
     return _NextDepart190Wrapper(
       nextDepartBus: nextDepartBus,
-      path: path,
     );
   }
 
@@ -41,7 +39,6 @@ const $NextDepart190Wrapper = _$NextDepart190WrapperTearOff();
 /// @nodoc
 mixin _$NextDepart190Wrapper {
   List<DepartBusInfo>? get nextDepartBus => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +51,7 @@ abstract class $NextDepart190WrapperCopyWith<$Res> {
   factory $NextDepart190WrapperCopyWith(NextDepart190Wrapper value,
           $Res Function(NextDepart190Wrapper) then) =
       _$NextDepart190WrapperCopyWithImpl<$Res>;
-  $Res call({List<DepartBusInfo>? nextDepartBus, String? path});
+  $Res call({List<DepartBusInfo>? nextDepartBus});
 }
 
 /// @nodoc
@@ -69,17 +66,12 @@ class _$NextDepart190WrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? nextDepartBus = freezed,
-    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       nextDepartBus: nextDepartBus == freezed
           ? _value.nextDepartBus
           : nextDepartBus // ignore: cast_nullable_to_non_nullable
               as List<DepartBusInfo>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -91,7 +83,7 @@ abstract class _$NextDepart190WrapperCopyWith<$Res>
           $Res Function(_NextDepart190Wrapper) then) =
       __$NextDepart190WrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<DepartBusInfo>? nextDepartBus, String? path});
+  $Res call({List<DepartBusInfo>? nextDepartBus});
 }
 
 /// @nodoc
@@ -108,17 +100,12 @@ class __$NextDepart190WrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? nextDepartBus = freezed,
-    Object? path = freezed,
   }) {
     return _then(_NextDepart190Wrapper(
       nextDepartBus: nextDepartBus == freezed
           ? _value.nextDepartBus
           : nextDepartBus // ignore: cast_nullable_to_non_nullable
               as List<DepartBusInfo>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -126,19 +113,17 @@ class __$NextDepart190WrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_NextDepart190Wrapper implements _NextDepart190Wrapper {
-  _$_NextDepart190Wrapper({this.nextDepartBus, this.path});
+  _$_NextDepart190Wrapper({this.nextDepartBus});
 
   factory _$_NextDepart190Wrapper.fromJson(Map<String, dynamic> json) =>
       _$$_NextDepart190WrapperFromJson(json);
 
   @override
   final List<DepartBusInfo>? nextDepartBus;
-  @override
-  final String? path;
 
   @override
   String toString() {
-    return 'NextDepart190Wrapper(nextDepartBus: $nextDepartBus, path: $path)';
+    return 'NextDepart190Wrapper(nextDepartBus: $nextDepartBus)';
   }
 
   @override
@@ -147,15 +132,12 @@ class _$_NextDepart190Wrapper implements _NextDepart190Wrapper {
         (other.runtimeType == runtimeType &&
             other is _NextDepart190Wrapper &&
             const DeepCollectionEquality()
-                .equals(other.nextDepartBus, nextDepartBus) &&
-            const DeepCollectionEquality().equals(other.path, path));
+                .equals(other.nextDepartBus, nextDepartBus));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(nextDepartBus),
-      const DeepCollectionEquality().hash(path));
+      runtimeType, const DeepCollectionEquality().hash(nextDepartBus));
 
   @JsonKey(ignore: true)
   @override
@@ -170,17 +152,14 @@ class _$_NextDepart190Wrapper implements _NextDepart190Wrapper {
 }
 
 abstract class _NextDepart190Wrapper implements NextDepart190Wrapper {
-  factory _NextDepart190Wrapper(
-      {List<DepartBusInfo>? nextDepartBus,
-      String? path}) = _$_NextDepart190Wrapper;
+  factory _NextDepart190Wrapper({List<DepartBusInfo>? nextDepartBus}) =
+      _$_NextDepart190Wrapper;
 
   factory _NextDepart190Wrapper.fromJson(Map<String, dynamic> json) =
       _$_NextDepart190Wrapper.fromJson;
 
   @override
   List<DepartBusInfo>? get nextDepartBus;
-  @override
-  String? get path;
   @override
   @JsonKey(ignore: true)
   _$NextDepart190WrapperCopyWith<_NextDepart190Wrapper> get copyWith =>

@@ -22,10 +22,9 @@ DietDormWrapper _$DietDormWrapperFromJson(Map<String, dynamic> json) {
 class _$DietDormWrapperTearOff {
   const _$DietDormWrapperTearOff();
 
-  _DietDormWrapper call({DormData? data, String? path}) {
+  _DietDormWrapper call({DormData? data}) {
     return _DietDormWrapper(
       data: data,
-      path: path,
     );
   }
 
@@ -40,7 +39,6 @@ const $DietDormWrapper = _$DietDormWrapperTearOff();
 /// @nodoc
 mixin _$DietDormWrapper {
   DormData? get data => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +51,7 @@ abstract class $DietDormWrapperCopyWith<$Res> {
   factory $DietDormWrapperCopyWith(
           DietDormWrapper value, $Res Function(DietDormWrapper) then) =
       _$DietDormWrapperCopyWithImpl<$Res>;
-  $Res call({DormData? data, String? path});
+  $Res call({DormData? data});
 
   $DormDataCopyWith<$Res>? get data;
 }
@@ -70,17 +68,12 @@ class _$DietDormWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as DormData?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 
@@ -103,7 +96,7 @@ abstract class _$DietDormWrapperCopyWith<$Res>
           _DietDormWrapper value, $Res Function(_DietDormWrapper) then) =
       __$DietDormWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({DormData? data, String? path});
+  $Res call({DormData? data});
 
   @override
   $DormDataCopyWith<$Res>? get data;
@@ -123,17 +116,12 @@ class __$DietDormWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_DietDormWrapper(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as DormData?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -141,19 +129,17 @@ class __$DietDormWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DietDormWrapper implements _DietDormWrapper {
-  _$_DietDormWrapper({this.data, this.path});
+  _$_DietDormWrapper({this.data});
 
   factory _$_DietDormWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_DietDormWrapperFromJson(json);
 
   @override
   final DormData? data;
-  @override
-  final String? path;
 
   @override
   String toString() {
-    return 'DietDormWrapper(data: $data, path: $path)';
+    return 'DietDormWrapper(data: $data)';
   }
 
   @override
@@ -161,15 +147,12 @@ class _$_DietDormWrapper implements _DietDormWrapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DietDormWrapper &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.path, path));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(path));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -183,15 +166,13 @@ class _$_DietDormWrapper implements _DietDormWrapper {
 }
 
 abstract class _DietDormWrapper implements DietDormWrapper {
-  factory _DietDormWrapper({DormData? data, String? path}) = _$_DietDormWrapper;
+  factory _DietDormWrapper({DormData? data}) = _$_DietDormWrapper;
 
   factory _DietDormWrapper.fromJson(Map<String, dynamic> json) =
       _$_DietDormWrapper.fromJson;
 
   @override
   DormData? get data;
-  @override
-  String? get path;
   @override
   @JsonKey(ignore: true)
   _$DietDormWrapperCopyWith<_DietDormWrapper> get copyWith =>

@@ -43,6 +43,7 @@ class CalendarUtils {
       limits.add(DateTime(now.year, 3, 1).subtract(const Duration(days: 1)));
       limits.add(DateTime(now.year + 1, 3, 1));
     }
+
     return limits;
   }
 }

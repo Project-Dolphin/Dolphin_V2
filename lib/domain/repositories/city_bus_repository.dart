@@ -4,5 +4,11 @@ import 'package:oceanview/core/network/response/endpoint_businfo_specific/respon
 
 abstract class CityBusRepository {
   Future<Either<Failure, List<NodeInfoData>>> getOperationBusInfo(
-      int busNumber);
+    int busNumber,
+  );
+
+  Future<Either<Failure, List<NodeInfoData>>> getSpecificNodeBusInfo(
+    String busStopName,
+    int busNumber,
+  );
 }

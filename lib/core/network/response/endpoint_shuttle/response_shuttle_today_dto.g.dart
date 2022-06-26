@@ -13,12 +13,10 @@ _$_ShuttleTodayWrapper _$$_ShuttleTodayWrapperFromJson(
               ?.map((e) => ShuttleDetailDto.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const <ShuttleDetailDto>[],
-      path: json['path'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_ShuttleTodayWrapperToJson(
         _$_ShuttleTodayWrapper instance) =>
     <String, dynamic>{
       'data': instance.data,
-      'path': instance.path,
     };

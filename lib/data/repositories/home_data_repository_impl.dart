@@ -20,9 +20,9 @@ class HomeDataRepositoryImpl implements HomeDataRepository {
   @override
   Future<Either<Failure, List<NoticeData>>> getNotices() async {
     try {
-      final List<NoticeData> _noticeList = await remoteDataSource.getNotices();
+      final List<NoticeData> noticeList = await remoteDataSource.getNotices();
       try {
-        return Right(_noticeList);
+        return Right(noticeList);
       } on CacheException {
         return Left(CacheFailure());
       }
@@ -34,10 +34,10 @@ class HomeDataRepositoryImpl implements HomeDataRepository {
   @override
   Future<Either<Failure, WeatherData>> getTodayWheater() async {
     try {
-      final WeatherData _todayWeatherInfo =
+      final WeatherData todayWeatherInfo =
           await remoteDataSource.getWeatherInfo();
       try {
-        return Right(_todayWeatherInfo);
+        return Right(todayWeatherInfo);
       } on CacheException {
         return Left(CacheFailure());
       }
@@ -49,10 +49,10 @@ class HomeDataRepositoryImpl implements HomeDataRepository {
   @override
   Future<Either<Failure, List<LatestData>>> getLatestEvents() async {
     try {
-      final List<LatestData> _latestEventsInfo =
+      final List<LatestData> latestEventsInfo =
           await remoteDataSource.getLatestEvents();
       try {
-        return Right(_latestEventsInfo);
+        return Right(latestEventsInfo);
       } on CacheException {
         return Left(CacheFailure());
       }

@@ -22,10 +22,9 @@ CalendarWrapper _$CalendarWrapperFromJson(Map<String, dynamic> json) {
 class _$CalendarWrapperTearOff {
   const _$CalendarWrapperTearOff();
 
-  _CalendarWrapper call({List<WeekdayData>? data, String? path}) {
+  _CalendarWrapper call({List<WeekdayData>? data}) {
     return _CalendarWrapper(
       data: data,
-      path: path,
     );
   }
 
@@ -40,7 +39,6 @@ const $CalendarWrapper = _$CalendarWrapperTearOff();
 /// @nodoc
 mixin _$CalendarWrapper {
   List<WeekdayData>? get data => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +51,7 @@ abstract class $CalendarWrapperCopyWith<$Res> {
   factory $CalendarWrapperCopyWith(
           CalendarWrapper value, $Res Function(CalendarWrapper) then) =
       _$CalendarWrapperCopyWithImpl<$Res>;
-  $Res call({List<WeekdayData>? data, String? path});
+  $Res call({List<WeekdayData>? data});
 }
 
 /// @nodoc
@@ -68,17 +66,12 @@ class _$CalendarWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<WeekdayData>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -90,7 +83,7 @@ abstract class _$CalendarWrapperCopyWith<$Res>
           _CalendarWrapper value, $Res Function(_CalendarWrapper) then) =
       __$CalendarWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<WeekdayData>? data, String? path});
+  $Res call({List<WeekdayData>? data});
 }
 
 /// @nodoc
@@ -107,17 +100,12 @@ class __$CalendarWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_CalendarWrapper(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<WeekdayData>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -125,19 +113,17 @@ class __$CalendarWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CalendarWrapper implements _CalendarWrapper {
-  _$_CalendarWrapper({this.data, this.path});
+  _$_CalendarWrapper({this.data});
 
   factory _$_CalendarWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_CalendarWrapperFromJson(json);
 
   @override
   final List<WeekdayData>? data;
-  @override
-  final String? path;
 
   @override
   String toString() {
-    return 'CalendarWrapper(data: $data, path: $path)';
+    return 'CalendarWrapper(data: $data)';
   }
 
   @override
@@ -145,15 +131,12 @@ class _$_CalendarWrapper implements _CalendarWrapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CalendarWrapper &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.path, path));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(path));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -167,16 +150,13 @@ class _$_CalendarWrapper implements _CalendarWrapper {
 }
 
 abstract class _CalendarWrapper implements CalendarWrapper {
-  factory _CalendarWrapper({List<WeekdayData>? data, String? path}) =
-      _$_CalendarWrapper;
+  factory _CalendarWrapper({List<WeekdayData>? data}) = _$_CalendarWrapper;
 
   factory _CalendarWrapper.fromJson(Map<String, dynamic> json) =
       _$_CalendarWrapper.fromJson;
 
   @override
   List<WeekdayData>? get data;
-  @override
-  String? get path;
   @override
   @JsonKey(ignore: true)
   _$CalendarWrapperCopyWith<_CalendarWrapper> get copyWith =>

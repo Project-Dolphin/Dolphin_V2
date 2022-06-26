@@ -11,11 +11,9 @@ _$_WeatherWrapper _$$_WeatherWrapperFromJson(Map<String, dynamic> json) =>
       data: json['data'] == null
           ? null
           : WeatherData.fromJson(json['data'] as Map<String, dynamic>),
-      path: json['path'] as String?,
     );
 
 Map<String, dynamic> _$$_WeatherWrapperToJson(_$_WeatherWrapper instance) =>
     <String, dynamic>{
       'data': instance.data,
-      'path': instance.path,
     };

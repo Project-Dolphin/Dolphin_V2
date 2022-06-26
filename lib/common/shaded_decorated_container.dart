@@ -14,7 +14,7 @@ class ShadedDecoratedContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 5),
+      margin: const EdgeInsets.only(top: 5),
       padding: const EdgeInsets.symmetric(
         vertical: 16,
         horizontal: 20,

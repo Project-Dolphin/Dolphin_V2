@@ -22,10 +22,9 @@ NoticeWrapper _$NoticeWrapperFromJson(Map<String, dynamic> json) {
 class _$NoticeWrapperTearOff {
   const _$NoticeWrapperTearOff();
 
-  _NoticeWrapper call({List<NoticeData>? data, String? path}) {
+  _NoticeWrapper call({List<NoticeData>? data}) {
     return _NoticeWrapper(
       data: data,
-      path: path,
     );
   }
 
@@ -40,7 +39,6 @@ const $NoticeWrapper = _$NoticeWrapperTearOff();
 /// @nodoc
 mixin _$NoticeWrapper {
   List<NoticeData>? get data => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +51,7 @@ abstract class $NoticeWrapperCopyWith<$Res> {
   factory $NoticeWrapperCopyWith(
           NoticeWrapper value, $Res Function(NoticeWrapper) then) =
       _$NoticeWrapperCopyWithImpl<$Res>;
-  $Res call({List<NoticeData>? data, String? path});
+  $Res call({List<NoticeData>? data});
 }
 
 /// @nodoc
@@ -68,17 +66,12 @@ class _$NoticeWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<NoticeData>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -90,7 +83,7 @@ abstract class _$NoticeWrapperCopyWith<$Res>
           _NoticeWrapper value, $Res Function(_NoticeWrapper) then) =
       __$NoticeWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<NoticeData>? data, String? path});
+  $Res call({List<NoticeData>? data});
 }
 
 /// @nodoc
@@ -107,17 +100,12 @@ class __$NoticeWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_NoticeWrapper(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<NoticeData>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -125,19 +113,17 @@ class __$NoticeWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_NoticeWrapper implements _NoticeWrapper {
-  _$_NoticeWrapper({this.data, this.path});
+  _$_NoticeWrapper({this.data});
 
   factory _$_NoticeWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_NoticeWrapperFromJson(json);
 
   @override
   final List<NoticeData>? data;
-  @override
-  final String? path;
 
   @override
   String toString() {
-    return 'NoticeWrapper(data: $data, path: $path)';
+    return 'NoticeWrapper(data: $data)';
   }
 
   @override
@@ -145,15 +131,12 @@ class _$_NoticeWrapper implements _NoticeWrapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _NoticeWrapper &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.path, path));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(path));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -167,16 +150,13 @@ class _$_NoticeWrapper implements _NoticeWrapper {
 }
 
 abstract class _NoticeWrapper implements NoticeWrapper {
-  factory _NoticeWrapper({List<NoticeData>? data, String? path}) =
-      _$_NoticeWrapper;
+  factory _NoticeWrapper({List<NoticeData>? data}) = _$_NoticeWrapper;
 
   factory _NoticeWrapper.fromJson(Map<String, dynamic> json) =
       _$_NoticeWrapper.fromJson;
 
   @override
   List<NoticeData>? get data;
-  @override
-  String? get path;
   @override
   @JsonKey(ignore: true)
   _$NoticeWrapperCopyWith<_NoticeWrapper> get copyWith =>

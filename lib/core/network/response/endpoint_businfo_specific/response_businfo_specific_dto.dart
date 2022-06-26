@@ -9,7 +9,6 @@ part 'response_businfo_specific_dto.g.dart';
 class SpecificBusInfoWrapper with _$SpecificBusInfoWrapper {
   factory SpecificBusInfoWrapper({
     @Default(<NodeInfoData>[]) List<NodeInfoData> data,
-    String? path,
   }) = _SpecificBusInfoWrapper;
 
   factory SpecificBusInfoWrapper.fromJson(Map<String, dynamic> json) =>

@@ -18,12 +18,12 @@ class EventRepositoryImpl implements EventRepository {
   @override
   Future<Either<Failure, List<WeekdayData>>> getWeekDayEvent() async {
     try {
-      final List<WeekdayData> _weekdayDataList =
+      final List<WeekdayData> weekdayDataList =
           await remoteDataSource.getWeekdayCalendarData();
       try {
         await localDataSource.busLocalDummy();
 
-        return Right(_weekdayDataList);
+        return Right(weekdayDataList);
       } on CacheException {
         return Left(CacheFailure());
       }
@@ -35,12 +35,12 @@ class EventRepositoryImpl implements EventRepository {
   @override
   Future<Either<Failure, List<HolidayData>>> getHolidayEvent() async {
     try {
-      final List<HolidayData> _holidayDataList =
+      final List<HolidayData> holidayDataList =
           await remoteDataSource.getHolidayCalendarData();
       try {
         await localDataSource.busLocalDummy();
 
-        return Right(_holidayDataList);
+        return Right(holidayDataList);
       } on CacheException {
         return Left(CacheFailure());
       }

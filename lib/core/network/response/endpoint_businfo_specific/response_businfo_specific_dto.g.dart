@@ -13,12 +13,10 @@ _$_SpecificBusInfoWrapper _$$_SpecificBusInfoWrapperFromJson(
               ?.map((e) => NodeInfoData.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const <NodeInfoData>[],
-      path: json['path'] as String?,
     );
 
 Map<String, dynamic> _$$_SpecificBusInfoWrapperToJson(
         _$_SpecificBusInfoWrapper instance) =>
     <String, dynamic>{
       'data': instance.data,
-      'path': instance.path,
     };

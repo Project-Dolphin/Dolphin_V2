@@ -55,32 +55,32 @@ extension RootTabExt on RootTab {
         return R.image.icon_home_selected.svgPicture(
           width: 20,
           height: 21.61,
-          color: Color(0xFF0081FF),
+          color: const Color(0xFF0081FF),
         );
       case RootTab.bus:
         return R.image.icon_bus_selected.svgPicture(
           width: 20.31,
           height: 21.13,
-          color: Color(0xFF0081FF),
+          color: const Color(0xFF0081FF),
         );
       case RootTab.diet:
         return R.image.icon_diet_selected.svgPicture(
           width: 12.44,
           height: 20.74,
-          color: Color(0xFF0081FF),
+          color: const Color(0xFF0081FF),
         );
 
       case RootTab.calendar:
         return R.image.icon_calendar_selected.svgPicture(
           width: 20.37,
           height: 18.7,
-          color: Color(0xFF0081FF),
+          color: const Color(0xFF0081FF),
         );
       case RootTab.menu:
         return R.image.icon_menu_selected.svgPicture(
           width: 18.03,
           height: 14.02,
-          color: Color(0xFF0081FF),
+          color: const Color(0xFF0081FF),
         );
     }
   }
@@ -116,9 +116,9 @@ extension RootTabExt on RootTab {
   }
 
   static RootTab from(int index) {
-    for (final _value in RootTab.values) {
-      if (_value.index == index) {
-        return _value;
+    for (final value in RootTab.values) {
+      if (value.index == index) {
+        return value;
       }
     }
 

@@ -22,10 +22,9 @@ HolidayWrapper _$HolidayWrapperFromJson(Map<String, dynamic> json) {
 class _$HolidayWrapperTearOff {
   const _$HolidayWrapperTearOff();
 
-  _HolidayWrapper call({List<HolidayData>? data, String? path}) {
+  _HolidayWrapper call({List<HolidayData>? data}) {
     return _HolidayWrapper(
       data: data,
-      path: path,
     );
   }
 
@@ -40,7 +39,6 @@ const $HolidayWrapper = _$HolidayWrapperTearOff();
 /// @nodoc
 mixin _$HolidayWrapper {
   List<HolidayData>? get data => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +51,7 @@ abstract class $HolidayWrapperCopyWith<$Res> {
   factory $HolidayWrapperCopyWith(
           HolidayWrapper value, $Res Function(HolidayWrapper) then) =
       _$HolidayWrapperCopyWithImpl<$Res>;
-  $Res call({List<HolidayData>? data, String? path});
+  $Res call({List<HolidayData>? data});
 }
 
 /// @nodoc
@@ -68,17 +66,12 @@ class _$HolidayWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<HolidayData>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -90,7 +83,7 @@ abstract class _$HolidayWrapperCopyWith<$Res>
           _HolidayWrapper value, $Res Function(_HolidayWrapper) then) =
       __$HolidayWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<HolidayData>? data, String? path});
+  $Res call({List<HolidayData>? data});
 }
 
 /// @nodoc
@@ -107,17 +100,12 @@ class __$HolidayWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_HolidayWrapper(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<HolidayData>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -125,19 +113,17 @@ class __$HolidayWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_HolidayWrapper implements _HolidayWrapper {
-  _$_HolidayWrapper({this.data, this.path});
+  _$_HolidayWrapper({this.data});
 
   factory _$_HolidayWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_HolidayWrapperFromJson(json);
 
   @override
   final List<HolidayData>? data;
-  @override
-  final String? path;
 
   @override
   String toString() {
-    return 'HolidayWrapper(data: $data, path: $path)';
+    return 'HolidayWrapper(data: $data)';
   }
 
   @override
@@ -145,15 +131,12 @@ class _$_HolidayWrapper implements _HolidayWrapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _HolidayWrapper &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.path, path));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(path));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -167,16 +150,13 @@ class _$_HolidayWrapper implements _HolidayWrapper {
 }
 
 abstract class _HolidayWrapper implements HolidayWrapper {
-  factory _HolidayWrapper({List<HolidayData>? data, String? path}) =
-      _$_HolidayWrapper;
+  factory _HolidayWrapper({List<HolidayData>? data}) = _$_HolidayWrapper;
 
   factory _HolidayWrapper.fromJson(Map<String, dynamic> json) =
       _$_HolidayWrapper.fromJson;
 
   @override
   List<HolidayData>? get data;
-  @override
-  String? get path;
   @override
   @JsonKey(ignore: true)
   _$HolidayWrapperCopyWith<_HolidayWrapper> get copyWith =>
