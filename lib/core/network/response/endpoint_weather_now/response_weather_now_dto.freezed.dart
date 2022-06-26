@@ -22,10 +22,9 @@ WeatherWrapper _$WeatherWrapperFromJson(Map<String, dynamic> json) {
 class _$WeatherWrapperTearOff {
   const _$WeatherWrapperTearOff();
 
-  _WeatherWrapper call({WeatherData? data, String? path}) {
+  _WeatherWrapper call({WeatherData? data}) {
     return _WeatherWrapper(
       data: data,
-      path: path,
     );
   }
 
@@ -40,7 +39,6 @@ const $WeatherWrapper = _$WeatherWrapperTearOff();
 /// @nodoc
 mixin _$WeatherWrapper {
   WeatherData? get data => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +51,7 @@ abstract class $WeatherWrapperCopyWith<$Res> {
   factory $WeatherWrapperCopyWith(
           WeatherWrapper value, $Res Function(WeatherWrapper) then) =
       _$WeatherWrapperCopyWithImpl<$Res>;
-  $Res call({WeatherData? data, String? path});
+  $Res call({WeatherData? data});
 
   $WeatherDataCopyWith<$Res>? get data;
 }
@@ -70,17 +68,12 @@ class _$WeatherWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as WeatherData?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 
@@ -103,7 +96,7 @@ abstract class _$WeatherWrapperCopyWith<$Res>
           _WeatherWrapper value, $Res Function(_WeatherWrapper) then) =
       __$WeatherWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({WeatherData? data, String? path});
+  $Res call({WeatherData? data});
 
   @override
   $WeatherDataCopyWith<$Res>? get data;
@@ -123,17 +116,12 @@ class __$WeatherWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_WeatherWrapper(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as WeatherData?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -141,19 +129,17 @@ class __$WeatherWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_WeatherWrapper implements _WeatherWrapper {
-  _$_WeatherWrapper({this.data, this.path});
+  _$_WeatherWrapper({this.data});
 
   factory _$_WeatherWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_WeatherWrapperFromJson(json);
 
   @override
   final WeatherData? data;
-  @override
-  final String? path;
 
   @override
   String toString() {
-    return 'WeatherWrapper(data: $data, path: $path)';
+    return 'WeatherWrapper(data: $data)';
   }
 
   @override
@@ -161,15 +147,12 @@ class _$_WeatherWrapper implements _WeatherWrapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _WeatherWrapper &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.path, path));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(path));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -183,16 +166,13 @@ class _$_WeatherWrapper implements _WeatherWrapper {
 }
 
 abstract class _WeatherWrapper implements WeatherWrapper {
-  factory _WeatherWrapper({WeatherData? data, String? path}) =
-      _$_WeatherWrapper;
+  factory _WeatherWrapper({WeatherData? data}) = _$_WeatherWrapper;
 
   factory _WeatherWrapper.fromJson(Map<String, dynamic> json) =
       _$_WeatherWrapper.fromJson;
 
   @override
   WeatherData? get data;
-  @override
-  String? get path;
   @override
   @JsonKey(ignore: true)
   _$WeatherWrapperCopyWith<_WeatherWrapper> get copyWith =>

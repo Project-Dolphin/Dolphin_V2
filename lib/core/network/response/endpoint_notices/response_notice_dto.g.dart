@@ -11,11 +11,9 @@ _$_NoticeWrapper _$$_NoticeWrapperFromJson(Map<String, dynamic> json) =>
       data: (json['data'] as List<dynamic>?)
           ?.map((e) => NoticeData.fromJson(e as Map<String, dynamic>))
           .toList(),
-      path: json['path'] as String?,
     );
 
 Map<String, dynamic> _$$_NoticeWrapperToJson(_$_NoticeWrapper instance) =>
     <String, dynamic>{
       'data': instance.data,
-      'path': instance.path,
     };

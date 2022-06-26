@@ -22,10 +22,9 @@ DietSocietyWrapper _$DietSocietyWrapperFromJson(Map<String, dynamic> json) {
 class _$DietSocietyWrapperTearOff {
   const _$DietSocietyWrapperTearOff();
 
-  _DietSocietyWrapper call({CafeData? data, String? path}) {
+  _DietSocietyWrapper call({CafeData? data}) {
     return _DietSocietyWrapper(
       data: data,
-      path: path,
     );
   }
 
@@ -40,7 +39,6 @@ const $DietSocietyWrapper = _$DietSocietyWrapperTearOff();
 /// @nodoc
 mixin _$DietSocietyWrapper {
   CafeData? get data => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +51,7 @@ abstract class $DietSocietyWrapperCopyWith<$Res> {
   factory $DietSocietyWrapperCopyWith(
           DietSocietyWrapper value, $Res Function(DietSocietyWrapper) then) =
       _$DietSocietyWrapperCopyWithImpl<$Res>;
-  $Res call({CafeData? data, String? path});
+  $Res call({CafeData? data});
 
   $CafeDataCopyWith<$Res>? get data;
 }
@@ -70,17 +68,12 @@ class _$DietSocietyWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as CafeData?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 
@@ -103,7 +96,7 @@ abstract class _$DietSocietyWrapperCopyWith<$Res>
           _DietSocietyWrapper value, $Res Function(_DietSocietyWrapper) then) =
       __$DietSocietyWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({CafeData? data, String? path});
+  $Res call({CafeData? data});
 
   @override
   $CafeDataCopyWith<$Res>? get data;
@@ -123,17 +116,12 @@ class __$DietSocietyWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_DietSocietyWrapper(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as CafeData?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -141,19 +129,17 @@ class __$DietSocietyWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DietSocietyWrapper implements _DietSocietyWrapper {
-  _$_DietSocietyWrapper({this.data, this.path});
+  _$_DietSocietyWrapper({this.data});
 
   factory _$_DietSocietyWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_DietSocietyWrapperFromJson(json);
 
   @override
   final CafeData? data;
-  @override
-  final String? path;
 
   @override
   String toString() {
-    return 'DietSocietyWrapper(data: $data, path: $path)';
+    return 'DietSocietyWrapper(data: $data)';
   }
 
   @override
@@ -161,15 +147,12 @@ class _$_DietSocietyWrapper implements _DietSocietyWrapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DietSocietyWrapper &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.path, path));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(path));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -183,16 +166,13 @@ class _$_DietSocietyWrapper implements _DietSocietyWrapper {
 }
 
 abstract class _DietSocietyWrapper implements DietSocietyWrapper {
-  factory _DietSocietyWrapper({CafeData? data, String? path}) =
-      _$_DietSocietyWrapper;
+  factory _DietSocietyWrapper({CafeData? data}) = _$_DietSocietyWrapper;
 
   factory _DietSocietyWrapper.fromJson(Map<String, dynamic> json) =
       _$_DietSocietyWrapper.fromJson;
 
   @override
   CafeData? get data;
-  @override
-  String? get path;
   @override
   @JsonKey(ignore: true)
   _$DietSocietyWrapperCopyWith<_DietSocietyWrapper> get copyWith =>

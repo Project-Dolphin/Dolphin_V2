@@ -9,7 +9,6 @@ part 'response_shuttle_today_dto.g.dart';
 class ShuttleTodayWrapper with _$ShuttleTodayWrapper {
   factory ShuttleTodayWrapper({
     @Default(<ShuttleDetailDto>[]) List<ShuttleDetailDto> data,
-    @Default('') String path,
   }) = _ShuttleTodayWrapper;
 
   factory ShuttleTodayWrapper.fromJson(Map<String, dynamic> json) =>

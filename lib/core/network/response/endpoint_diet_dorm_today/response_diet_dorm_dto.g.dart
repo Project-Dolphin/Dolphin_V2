@@ -11,11 +11,9 @@ _$_DietDormWrapper _$$_DietDormWrapperFromJson(Map<String, dynamic> json) =>
       data: json['data'] == null
           ? null
           : DormData.fromJson(json['data'] as Map<String, dynamic>),
-      path: json['path'] as String?,
     );
 
 Map<String, dynamic> _$$_DietDormWrapperToJson(_$_DietDormWrapper instance) =>
     <String, dynamic>{
       'data': instance.data,
-      'path': instance.path,
     };

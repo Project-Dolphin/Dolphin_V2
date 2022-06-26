@@ -20,19 +20,20 @@ class LocationUtils {
     StationInfo nearStaion = StationInfo();
     double stationDistance = 100;
 
-    Position _currentLocation = await determinePosition();
+    Position currentLocation = await determinePosition();
     for (var element in AppConstants.station_190) {
       // 개인으로 var를 지양하고 싶음,,
-      double _distance =
-          (pow(((element['gpsX'] as double) - _currentLocation.longitude), 2)
+      double distance =
+          (pow(((element['gpsX'] as double) - currentLocation.longitude), 2)
                   as double) +
-              (pow(((element['gpsY'] as double) - _currentLocation.latitude), 2)
+              (pow(((element['gpsY'] as double) - currentLocation.latitude), 2)
                   as double);
-      if (_distance < stationDistance) {
-        stationDistance = _distance;
+      if (distance < stationDistance) {
+        stationDistance = distance;
         nearStaion = StationInfo(
-            nearStation: element['nodeName'],
-            nodeId: element['nodeId'].toString());
+          nearStation: element['nodeName'],
+          nodeId: element['nodeId'].toString(),
+        );
       }
     }
 

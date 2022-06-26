@@ -11,11 +11,9 @@ _$_HolidayWrapper _$$_HolidayWrapperFromJson(Map<String, dynamic> json) =>
       data: (json['data'] as List<dynamic>?)
           ?.map((e) => HolidayData.fromJson(e as Map<String, dynamic>))
           .toList(),
-      path: json['path'] as String?,
     );
 
 Map<String, dynamic> _$$_HolidayWrapperToJson(_$_HolidayWrapper instance) =>
     <String, dynamic>{
       'data': instance.data,
-      'path': instance.path,
     };

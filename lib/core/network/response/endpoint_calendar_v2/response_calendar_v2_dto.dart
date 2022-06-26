@@ -9,7 +9,6 @@ part 'response_calendar_v2_dto.g.dart';
 class CalendarV2Wrapper with _$CalendarV2Wrapper {
   factory CalendarV2Wrapper({
     List<CalendarDataV2>? data,
-    String? path,
   }) = _CalendarV2Wrapper;
 
   factory CalendarV2Wrapper.fromJson(Map<String, dynamic> json) =>

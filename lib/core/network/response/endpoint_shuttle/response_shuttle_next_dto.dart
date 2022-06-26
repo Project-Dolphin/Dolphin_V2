@@ -9,7 +9,6 @@ part 'response_shuttle_next_dto.g.dart';
 class ShuttleNextWrapper with _$ShuttleNextWrapper {
   factory ShuttleNextWrapper({
     @Default(<ShuttleDataDto>[]) List<ShuttleDataDto> nextShuttle,
-    @Default('') String path,
   }) = _ShuttleNextWrapper;
 
   factory ShuttleNextWrapper.fromJson(Map<String, dynamic> json) =>

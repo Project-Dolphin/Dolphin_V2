@@ -17,6 +17,7 @@ class FloatingBottomItem extends StatelessWidget {
         state,
       ) {
         final bool selected = state.selectedTab == tab;
+
         return SizedBox(
           width: 22,
           child: Column(

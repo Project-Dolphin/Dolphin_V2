@@ -31,7 +31,7 @@ abstract class RestClient {
   @GET('notices')
   Future<NoticeWrapper> getNotices();
 
-  @GET('bus/bustime')
+  @GET('bus/time')
   Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(
     @Query("busStopName") String busStopName,
     @Query("busNumber") int busNumber,

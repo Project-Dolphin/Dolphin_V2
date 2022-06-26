@@ -22,10 +22,9 @@ LatestWrapper _$LatestWrapperFromJson(Map<String, dynamic> json) {
 class _$LatestWrapperTearOff {
   const _$LatestWrapperTearOff();
 
-  _LatestWrapper call({List<LatestData>? data, String? path}) {
+  _LatestWrapper call({List<LatestData>? data}) {
     return _LatestWrapper(
       data: data,
-      path: path,
     );
   }
 
@@ -40,7 +39,6 @@ const $LatestWrapper = _$LatestWrapperTearOff();
 /// @nodoc
 mixin _$LatestWrapper {
   List<LatestData>? get data => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +51,7 @@ abstract class $LatestWrapperCopyWith<$Res> {
   factory $LatestWrapperCopyWith(
           LatestWrapper value, $Res Function(LatestWrapper) then) =
       _$LatestWrapperCopyWithImpl<$Res>;
-  $Res call({List<LatestData>? data, String? path});
+  $Res call({List<LatestData>? data});
 }
 
 /// @nodoc
@@ -68,17 +66,12 @@ class _$LatestWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<LatestData>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -90,7 +83,7 @@ abstract class _$LatestWrapperCopyWith<$Res>
           _LatestWrapper value, $Res Function(_LatestWrapper) then) =
       __$LatestWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<LatestData>? data, String? path});
+  $Res call({List<LatestData>? data});
 }
 
 /// @nodoc
@@ -107,17 +100,12 @@ class __$LatestWrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_LatestWrapper(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<LatestData>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -125,19 +113,17 @@ class __$LatestWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LatestWrapper implements _LatestWrapper {
-  _$_LatestWrapper({this.data, this.path});
+  _$_LatestWrapper({this.data});
 
   factory _$_LatestWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_LatestWrapperFromJson(json);
 
   @override
   final List<LatestData>? data;
-  @override
-  final String? path;
 
   @override
   String toString() {
-    return 'LatestWrapper(data: $data, path: $path)';
+    return 'LatestWrapper(data: $data)';
   }
 
   @override
@@ -145,15 +131,12 @@ class _$_LatestWrapper implements _LatestWrapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _LatestWrapper &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.path, path));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(path));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -167,16 +150,13 @@ class _$_LatestWrapper implements _LatestWrapper {
 }
 
 abstract class _LatestWrapper implements LatestWrapper {
-  factory _LatestWrapper({List<LatestData>? data, String? path}) =
-      _$_LatestWrapper;
+  factory _LatestWrapper({List<LatestData>? data}) = _$_LatestWrapper;
 
   factory _LatestWrapper.fromJson(Map<String, dynamic> json) =
       _$_LatestWrapper.fromJson;
 
   @override
   List<LatestData>? get data;
-  @override
-  String? get path;
   @override
   @JsonKey(ignore: true)
   _$LatestWrapperCopyWith<_LatestWrapper> get copyWith =>

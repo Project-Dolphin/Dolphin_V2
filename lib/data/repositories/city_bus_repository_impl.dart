@@ -19,8 +19,29 @@ class CityBusRepositoryImpl implements CityBusRepository {
   Future<Either<Failure, List<NodeInfoData>>> getOperationBusInfo(
       int busNumber) async {
     try {
-      final List<NodeInfoData> _specificNodeBusInfo =
+      final List<NodeInfoData> _operationBusInfo =
           await remoteDataSource.getOperationBusInfo(busNumber);
+      try {
+        // TODO: 로컬에서 우리가 무엇을 할 수 있을지 확인해보기
+        await localDataSource.busLocalDummy();
+
+        return Right(_operationBusInfo);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<NodeInfoData>>> getSpecificNodeBusInfo(
+    String busStopName,
+    int busNumber,
+  ) async {
+    try {
+      final List<NodeInfoData> _specificNodeBusInfo =
+          await remoteDataSource.getSpecificNodeBusInfo(busStopName, busNumber);
       try {
         // TODO: 로컬에서 우리가 무엇을 할 수 있을지 확인해보기
         await localDataSource.busLocalDummy();

@@ -9,7 +9,6 @@ part 'response_diet_society_dto.g.dart';
 class DietSocietyWrapper with _$DietSocietyWrapper {
   factory DietSocietyWrapper({
     CafeData? data,
-    String? path,
   }) = _DietSocietyWrapper;
 
   factory DietSocietyWrapper.fromJson(Map<String, dynamic> json) =>

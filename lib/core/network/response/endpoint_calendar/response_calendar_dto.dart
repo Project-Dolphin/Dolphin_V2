@@ -9,7 +9,6 @@ part 'response_calendar_dto.g.dart';
 class CalendarWrapper with _$CalendarWrapper {
   factory CalendarWrapper({
     List<WeekdayData>? data,
-    String? path,
   }) = _CalendarWrapper;
 
   factory CalendarWrapper.fromJson(Map<String, dynamic> json) =>

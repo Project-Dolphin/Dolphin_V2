@@ -22,10 +22,9 @@ CalendarV2Wrapper _$CalendarV2WrapperFromJson(Map<String, dynamic> json) {
 class _$CalendarV2WrapperTearOff {
   const _$CalendarV2WrapperTearOff();
 
-  _CalendarV2Wrapper call({List<CalendarDataV2>? data, String? path}) {
+  _CalendarV2Wrapper call({List<CalendarDataV2>? data}) {
     return _CalendarV2Wrapper(
       data: data,
-      path: path,
     );
   }
 
@@ -40,7 +39,6 @@ const $CalendarV2Wrapper = _$CalendarV2WrapperTearOff();
 /// @nodoc
 mixin _$CalendarV2Wrapper {
   List<CalendarDataV2>? get data => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +51,7 @@ abstract class $CalendarV2WrapperCopyWith<$Res> {
   factory $CalendarV2WrapperCopyWith(
           CalendarV2Wrapper value, $Res Function(CalendarV2Wrapper) then) =
       _$CalendarV2WrapperCopyWithImpl<$Res>;
-  $Res call({List<CalendarDataV2>? data, String? path});
+  $Res call({List<CalendarDataV2>? data});
 }
 
 /// @nodoc
@@ -68,17 +66,12 @@ class _$CalendarV2WrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<CalendarDataV2>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -90,7 +83,7 @@ abstract class _$CalendarV2WrapperCopyWith<$Res>
           _CalendarV2Wrapper value, $Res Function(_CalendarV2Wrapper) then) =
       __$CalendarV2WrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<CalendarDataV2>? data, String? path});
+  $Res call({List<CalendarDataV2>? data});
 }
 
 /// @nodoc
@@ -107,17 +100,12 @@ class __$CalendarV2WrapperCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? path = freezed,
   }) {
     return _then(_CalendarV2Wrapper(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<CalendarDataV2>?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -125,19 +113,17 @@ class __$CalendarV2WrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CalendarV2Wrapper implements _CalendarV2Wrapper {
-  _$_CalendarV2Wrapper({this.data, this.path});
+  _$_CalendarV2Wrapper({this.data});
 
   factory _$_CalendarV2Wrapper.fromJson(Map<String, dynamic> json) =>
       _$$_CalendarV2WrapperFromJson(json);
 
   @override
   final List<CalendarDataV2>? data;
-  @override
-  final String? path;
 
   @override
   String toString() {
-    return 'CalendarV2Wrapper(data: $data, path: $path)';
+    return 'CalendarV2Wrapper(data: $data)';
   }
 
   @override
@@ -145,15 +131,12 @@ class _$_CalendarV2Wrapper implements _CalendarV2Wrapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CalendarV2Wrapper &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.path, path));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(path));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -167,7 +150,7 @@ class _$_CalendarV2Wrapper implements _CalendarV2Wrapper {
 }
 
 abstract class _CalendarV2Wrapper implements CalendarV2Wrapper {
-  factory _CalendarV2Wrapper({List<CalendarDataV2>? data, String? path}) =
+  factory _CalendarV2Wrapper({List<CalendarDataV2>? data}) =
       _$_CalendarV2Wrapper;
 
   factory _CalendarV2Wrapper.fromJson(Map<String, dynamic> json) =
@@ -175,8 +158,6 @@ abstract class _CalendarV2Wrapper implements CalendarV2Wrapper {
 
   @override
   List<CalendarDataV2>? get data;
-  @override
-  String? get path;
   @override
   @JsonKey(ignore: true)
   _$CalendarV2WrapperCopyWith<_CalendarV2Wrapper> get copyWith =>

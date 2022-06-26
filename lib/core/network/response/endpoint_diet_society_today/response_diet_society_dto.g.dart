@@ -12,12 +12,10 @@ _$_DietSocietyWrapper _$$_DietSocietyWrapperFromJson(
       data: json['data'] == null
           ? null
           : CafeData.fromJson(json['data'] as Map<String, dynamic>),
-      path: json['path'] as String?,
     );
 
 Map<String, dynamic> _$$_DietSocietyWrapperToJson(
         _$_DietSocietyWrapper instance) =>
     <String, dynamic>{
       'data': instance.data,
-      'path': instance.path,
     };
