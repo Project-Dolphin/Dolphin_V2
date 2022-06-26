@@ -9,7 +9,7 @@ class NodeInfoData with _$NodeInfoData {
     String? busStopName,
     int? min1,
     int? min2,
-    int? lineno,
+    String? lineno,
   }) = _NodeInfoData;
 
   factory NodeInfoData.fromJson(Map<String, dynamic> json) =>

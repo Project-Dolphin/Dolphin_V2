@@ -1,4 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:retrofit/retrofit.dart';
 
 import 'response/endpoint_businfo_specific/response_businfo_specific_dto.dart';
@@ -7,7 +10,6 @@ import 'response/endpoint_calendar_latest/response_calendar_latest_dto.dart';
 import 'response/endpoint_diet_dorm_today/response_diet_dorm_dto.dart';
 import 'response/endpoint_diet_society_today/response_diet_society_dto.dart';
 import 'response/endpoint_holiday/response_holiday_dto.dart';
-import 'response/endpoint_notices/response_notice_dto.dart';
 import 'response/endpoint_shuttle/response_shuttle_next_dto.dart';
 import 'response/endpoint_timetable_190/response_next_depart_190_dto.dart';
 import 'response/endpoint_weather_now/response_weather_now_dto.dart';
@@ -22,6 +24,12 @@ abstract class RestClient {
   @GET('calendar')
   Future<CalendarWrapper> getWeekdayCalendarData();
 
+  @GET('calendar')
+  Future<CalendarWrapper> getWeekdayCalendarDataWithMonth(
+    @Query("year") int year,
+    @Query("month") int month,
+  );
+
   @GET('holiday')
   Future<HolidayWrapper> getHolidayCalendarData();
 
@@ -29,10 +37,10 @@ abstract class RestClient {
   Future<LatestWrapper> getLatestEvents();
 
   @GET('notices')
-  Future<NoticeWrapper> getNotices();
+  Future<List<NoticeData>> getNotices();
 
   @GET('bus/time')
-  Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(
+  Future<NodeInfoData> getSpecificNodeBusInfo(
     @Query("busStopName") String busStopName,
     @Query("busNumber") int busNumber,
   );
@@ -53,7 +61,7 @@ abstract class RestClient {
   // Future<ShuttleTodayWrapper> getTodayShuttleInfo();
 
   @GET('weather/now')
-  Future<WeatherWrapper> getWeatherInfo();
+  Future<WeatherData> getWeatherInfo();
 
   @GET('diet/v2/society/today')
   Future<DietSocietyWrapper> getCafeDiet();

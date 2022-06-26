@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/error/failures.dart';
 import 'package:oceanview/core/network/response/endpoint_diet_dorm_today/response_diet_dorm_data_dto.dart';
-import 'package:oceanview/core/network/response/endpoint_diet_society_today/response_diet_cafe_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_diet_society_today/response_diet_society_dto.dart';
 import 'package:oceanview/domain/usecases/get_cafe_diet.dart';
 import 'package:oceanview/domain/usecases/get_dorm_diet.dart';
 
@@ -18,13 +18,13 @@ class DietDataBloc extends Bloc<DietDataEvent, DietDataState> {
   final GetCafeDiet getCafeDiet;
 
   DormData dormDietInfo = DormData();
-  CafeData cafeDietInfo = CafeData();
+  DietSocietyWrapper cafeDietInfo = DietSocietyWrapper();
 
-  Future<Either<Failure, DormData>> async1() async {
+  Future<Either<Failure, dynamic>> async1() async {
     return await getDormDiet.call();
   }
 
-  Future<Either<Failure, CafeData>> async2() async {
+  Future<Either<Failure, DietSocietyWrapper>> async2() async {
     return await getCafeDiet.call();
   }
 
@@ -51,7 +51,8 @@ class DietDataBloc extends Bloc<DietDataEvent, DietDataState> {
           }
         },
         (success) {
-          dormDietInfo = success as DormData;
+          logger.d(success);
+          // dormDietInfo = DormData(success.) success as DormData;
         },
       );
       data[1].fold(
@@ -63,7 +64,7 @@ class DietDataBloc extends Bloc<DietDataEvent, DietDataState> {
           }
         },
         (success) {
-          cafeDietInfo = success as CafeData;
+          cafeDietInfo = success as DietSocietyWrapper;
         },
       );
     });

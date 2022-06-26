@@ -4,6 +4,12 @@ import 'package:oceanview/common/oceanview_navigation_bar.dart';
 import 'package:oceanview/injection_container.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 import 'package:oceanview/presentation/blocs/diet_page_bloc/diet_page_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_101_bloc/line_101_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_186_bloc/line_186_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_190_bloc/line_190_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_30_bloc/line_30_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_66_bloc/line_66_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/bus/line_88_bloc/line_88_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/bus/line_8_bloc/line_8_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
@@ -26,6 +32,27 @@ class DashBoard extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => sl<HomeDataBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<Line8Bloc>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<Line30Bloc>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<Line66Bloc>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<Line88Bloc>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<Line101Bloc>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<Line186Bloc>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<Line190Bloc>(),
         ),
         BlocProvider(
           create: (_) => sl<Line8Bloc>(),

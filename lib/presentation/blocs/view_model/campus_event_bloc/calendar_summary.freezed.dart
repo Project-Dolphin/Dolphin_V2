@@ -12,32 +12,11 @@ part of 'calendar_summary.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CalendarSumamry _$CalendarSumamryFromJson(Map<String, dynamic> json) {
   return _CalendarSumamry.fromJson(json);
 }
-
-/// @nodoc
-class _$CalendarSumamryTearOff {
-  const _$CalendarSumamryTearOff();
-
-  _CalendarSumamry call(
-      {required String content, bool holiday = false, bool mainPlan = false}) {
-    return _CalendarSumamry(
-      content: content,
-      holiday: holiday,
-      mainPlan: mainPlan,
-    );
-  }
-
-  CalendarSumamry fromJson(Map<String, Object?> json) {
-    return CalendarSumamry.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CalendarSumamry = _$CalendarSumamryTearOff();
 
 /// @nodoc
 mixin _$CalendarSumamry {
@@ -92,25 +71,25 @@ class _$CalendarSumamryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CalendarSumamryCopyWith<$Res>
+abstract class _$$_CalendarSumamryCopyWith<$Res>
     implements $CalendarSumamryCopyWith<$Res> {
-  factory _$CalendarSumamryCopyWith(
-          _CalendarSumamry value, $Res Function(_CalendarSumamry) then) =
-      __$CalendarSumamryCopyWithImpl<$Res>;
+  factory _$$_CalendarSumamryCopyWith(
+          _$_CalendarSumamry value, $Res Function(_$_CalendarSumamry) then) =
+      __$$_CalendarSumamryCopyWithImpl<$Res>;
   @override
   $Res call({String content, bool holiday, bool mainPlan});
 }
 
 /// @nodoc
-class __$CalendarSumamryCopyWithImpl<$Res>
+class __$$_CalendarSumamryCopyWithImpl<$Res>
     extends _$CalendarSumamryCopyWithImpl<$Res>
-    implements _$CalendarSumamryCopyWith<$Res> {
-  __$CalendarSumamryCopyWithImpl(
-      _CalendarSumamry _value, $Res Function(_CalendarSumamry) _then)
-      : super(_value, (v) => _then(v as _CalendarSumamry));
+    implements _$$_CalendarSumamryCopyWith<$Res> {
+  __$$_CalendarSumamryCopyWithImpl(
+      _$_CalendarSumamry _value, $Res Function(_$_CalendarSumamry) _then)
+      : super(_value, (v) => _then(v as _$_CalendarSumamry));
 
   @override
-  _CalendarSumamry get _value => super._value as _CalendarSumamry;
+  _$_CalendarSumamry get _value => super._value as _$_CalendarSumamry;
 
   @override
   $Res call({
@@ -118,7 +97,7 @@ class __$CalendarSumamryCopyWithImpl<$Res>
     Object? holiday = freezed,
     Object? mainPlan = freezed,
   }) {
-    return _then(_CalendarSumamry(
+    return _then(_$_CalendarSumamry(
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -146,11 +125,11 @@ class _$_CalendarSumamry implements _CalendarSumamry {
 
   @override
   final String content;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool holiday;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool mainPlan;
 
   @override
@@ -162,12 +141,13 @@ class _$_CalendarSumamry implements _CalendarSumamry {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CalendarSumamry &&
+            other is _$_CalendarSumamry &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.holiday, holiday) &&
             const DeepCollectionEquality().equals(other.mainPlan, mainPlan));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -177,8 +157,8 @@ class _$_CalendarSumamry implements _CalendarSumamry {
 
   @JsonKey(ignore: true)
   @override
-  _$CalendarSumamryCopyWith<_CalendarSumamry> get copyWith =>
-      __$CalendarSumamryCopyWithImpl<_CalendarSumamry>(this, _$identity);
+  _$$_CalendarSumamryCopyWith<_$_CalendarSumamry> get copyWith =>
+      __$$_CalendarSumamryCopyWithImpl<_$_CalendarSumamry>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -188,21 +168,21 @@ class _$_CalendarSumamry implements _CalendarSumamry {
 
 abstract class _CalendarSumamry implements CalendarSumamry {
   factory _CalendarSumamry(
-      {required String content,
-      bool holiday,
-      bool mainPlan}) = _$_CalendarSumamry;
+      {required final String content,
+      final bool holiday,
+      final bool mainPlan}) = _$_CalendarSumamry;
 
   factory _CalendarSumamry.fromJson(Map<String, dynamic> json) =
       _$_CalendarSumamry.fromJson;
 
   @override
-  String get content;
+  String get content => throw _privateConstructorUsedError;
   @override
-  bool get holiday;
+  bool get holiday => throw _privateConstructorUsedError;
   @override
-  bool get mainPlan;
+  bool get mainPlan => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CalendarSumamryCopyWith<_CalendarSumamry> get copyWith =>
+  _$$_CalendarSumamryCopyWith<_$_CalendarSumamry> get copyWith =>
       throw _privateConstructorUsedError;
 }

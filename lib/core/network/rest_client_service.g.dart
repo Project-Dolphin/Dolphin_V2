@@ -32,6 +32,22 @@ class _RestClient implements RestClient {
   }
 
   @override
+  Future<CalendarWrapper> getWeekdayCalendarDataWithMonth(year, month) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'year': year, r'month': month};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CalendarWrapper>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'calendar',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CalendarWrapper.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<HolidayWrapper> getHolidayCalendarData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -64,24 +80,25 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<NoticeWrapper> getNotices() async {
+  Future<List<NoticeData>> getNotices() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<NoticeWrapper>(
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<NoticeData>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'notices',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = NoticeWrapper.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => NoticeData.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
   @override
-  Future<SpecificBusInfoWrapper> getSpecificNodeBusInfo(
-      busStopName, busNumber) async {
+  Future<NodeInfoData> getSpecificNodeBusInfo(busStopName, busNumber) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'busStopName': busStopName,
@@ -90,12 +107,12 @@ class _RestClient implements RestClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<SpecificBusInfoWrapper>(
+        _setStreamType<NodeInfoData>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'bus/time',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = SpecificBusInfoWrapper.fromJson(_result.data!);
+    final value = NodeInfoData.fromJson(_result.data!);
     return value;
   }
 
@@ -148,18 +165,18 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<WeatherWrapper> getWeatherInfo() async {
+  Future<WeatherData> getWeatherInfo() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<WeatherWrapper>(
+        _setStreamType<WeatherData>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, 'weather/now',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = WeatherWrapper.fromJson(_result.data!);
+    final value = WeatherData.fromJson(_result.data!);
     return value;
   }
 

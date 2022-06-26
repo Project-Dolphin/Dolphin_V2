@@ -5,5 +5,9 @@ import 'package:oceanview/core/network/response/endpoint_holiday/response_holida
 
 abstract class EventRepository {
   Future<Either<Failure, List<WeekdayData>>> getWeekDayEvent();
+  Future<Either<Failure, List<WeekdayData>>> getWeekDayEventWithMonth(
+    int year,
+    int month,
+  );
   Future<Either<Failure, List<HolidayData>>> getHolidayEvent();
 }

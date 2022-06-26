@@ -8,7 +8,7 @@ part 'response_notice_dto.g.dart';
 @freezed
 class NoticeWrapper with _$NoticeWrapper {
   factory NoticeWrapper({
-    List<NoticeData>? data,
+    @Default(<NoticeData>[]) List<NoticeData> data,
   }) = _NoticeWrapper;
 
   factory NoticeWrapper.fromJson(Map<String, dynamic> json) =>

@@ -1,8 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:oceanview/core/error/failures.dart';
-import 'package:oceanview/core/network/response/endpoint_diet_dorm_today/response_diet_dorm_data_dto.dart';
-import 'package:oceanview/core/network/response/endpoint_diet_society_today/response_diet_cafe_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_diet_society_today/response_diet_society_dto.dart';
 import 'package:oceanview/data/datasources/diet/diet_local_datasource.dart';
 import 'package:oceanview/data/datasources/diet/diet_remote_datasource.dart';
 import 'package:oceanview/domain/repositories/diet_repository.dart';
@@ -17,9 +16,9 @@ class DietRepositoryImpl implements DietRepository {
   });
 
   @override
-  Future<Either<Failure, DormData>> getDormDiet() async {
+  Future<Either<Failure, dynamic>> getDormDiet() async {
     try {
-      final DormData _dormDietData = await remoteDataSource.getDormDiet();
+      final _dormDietData = await remoteDataSource.getDormDiet();
       try {
         /*
         TODO:
@@ -37,9 +36,10 @@ class DietRepositoryImpl implements DietRepository {
   }
 
   @override
-  Future<Either<Failure, CafeData>> getCafeDiet() async {
+  Future<Either<Failure, DietSocietyWrapper>> getCafeDiet() async {
     try {
-      final CafeData _cafeDietData = await remoteDataSource.getCafeDiet();
+      final DietSocietyWrapper _cafeDietData =
+          await remoteDataSource.getCafeDiet();
       try {
         /*
         TODO:

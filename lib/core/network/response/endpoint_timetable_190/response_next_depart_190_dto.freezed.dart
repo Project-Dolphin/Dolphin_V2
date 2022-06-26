@@ -12,29 +12,11 @@ part of 'response_next_depart_190_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 NextDepart190Wrapper _$NextDepart190WrapperFromJson(Map<String, dynamic> json) {
   return _NextDepart190Wrapper.fromJson(json);
 }
-
-/// @nodoc
-class _$NextDepart190WrapperTearOff {
-  const _$NextDepart190WrapperTearOff();
-
-  _NextDepart190Wrapper call({List<DepartBusInfo>? nextDepartBus}) {
-    return _NextDepart190Wrapper(
-      nextDepartBus: nextDepartBus,
-    );
-  }
-
-  NextDepart190Wrapper fromJson(Map<String, Object?> json) {
-    return NextDepart190Wrapper.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $NextDepart190Wrapper = _$NextDepart190WrapperTearOff();
 
 /// @nodoc
 mixin _$NextDepart190Wrapper {
@@ -77,33 +59,33 @@ class _$NextDepart190WrapperCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$NextDepart190WrapperCopyWith<$Res>
+abstract class _$$_NextDepart190WrapperCopyWith<$Res>
     implements $NextDepart190WrapperCopyWith<$Res> {
-  factory _$NextDepart190WrapperCopyWith(_NextDepart190Wrapper value,
-          $Res Function(_NextDepart190Wrapper) then) =
-      __$NextDepart190WrapperCopyWithImpl<$Res>;
+  factory _$$_NextDepart190WrapperCopyWith(_$_NextDepart190Wrapper value,
+          $Res Function(_$_NextDepart190Wrapper) then) =
+      __$$_NextDepart190WrapperCopyWithImpl<$Res>;
   @override
   $Res call({List<DepartBusInfo>? nextDepartBus});
 }
 
 /// @nodoc
-class __$NextDepart190WrapperCopyWithImpl<$Res>
+class __$$_NextDepart190WrapperCopyWithImpl<$Res>
     extends _$NextDepart190WrapperCopyWithImpl<$Res>
-    implements _$NextDepart190WrapperCopyWith<$Res> {
-  __$NextDepart190WrapperCopyWithImpl(
-      _NextDepart190Wrapper _value, $Res Function(_NextDepart190Wrapper) _then)
-      : super(_value, (v) => _then(v as _NextDepart190Wrapper));
+    implements _$$_NextDepart190WrapperCopyWith<$Res> {
+  __$$_NextDepart190WrapperCopyWithImpl(_$_NextDepart190Wrapper _value,
+      $Res Function(_$_NextDepart190Wrapper) _then)
+      : super(_value, (v) => _then(v as _$_NextDepart190Wrapper));
 
   @override
-  _NextDepart190Wrapper get _value => super._value as _NextDepart190Wrapper;
+  _$_NextDepart190Wrapper get _value => super._value as _$_NextDepart190Wrapper;
 
   @override
   $Res call({
     Object? nextDepartBus = freezed,
   }) {
-    return _then(_NextDepart190Wrapper(
+    return _then(_$_NextDepart190Wrapper(
       nextDepartBus: nextDepartBus == freezed
-          ? _value.nextDepartBus
+          ? _value._nextDepartBus
           : nextDepartBus // ignore: cast_nullable_to_non_nullable
               as List<DepartBusInfo>?,
     ));
@@ -113,13 +95,20 @@ class __$NextDepart190WrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_NextDepart190Wrapper implements _NextDepart190Wrapper {
-  _$_NextDepart190Wrapper({this.nextDepartBus});
+  _$_NextDepart190Wrapper({final List<DepartBusInfo>? nextDepartBus})
+      : _nextDepartBus = nextDepartBus;
 
   factory _$_NextDepart190Wrapper.fromJson(Map<String, dynamic> json) =>
       _$$_NextDepart190WrapperFromJson(json);
 
+  final List<DepartBusInfo>? _nextDepartBus;
   @override
-  final List<DepartBusInfo>? nextDepartBus;
+  List<DepartBusInfo>? get nextDepartBus {
+    final value = _nextDepartBus;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -130,19 +119,20 @@ class _$_NextDepart190Wrapper implements _NextDepart190Wrapper {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NextDepart190Wrapper &&
+            other is _$_NextDepart190Wrapper &&
             const DeepCollectionEquality()
-                .equals(other.nextDepartBus, nextDepartBus));
+                .equals(other._nextDepartBus, _nextDepartBus));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(nextDepartBus));
 
   @JsonKey(ignore: true)
   @override
-  _$NextDepart190WrapperCopyWith<_NextDepart190Wrapper> get copyWith =>
-      __$NextDepart190WrapperCopyWithImpl<_NextDepart190Wrapper>(
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_nextDepartBus));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_NextDepart190WrapperCopyWith<_$_NextDepart190Wrapper> get copyWith =>
+      __$$_NextDepart190WrapperCopyWithImpl<_$_NextDepart190Wrapper>(
           this, _$identity);
 
   @override
@@ -152,16 +142,16 @@ class _$_NextDepart190Wrapper implements _NextDepart190Wrapper {
 }
 
 abstract class _NextDepart190Wrapper implements NextDepart190Wrapper {
-  factory _NextDepart190Wrapper({List<DepartBusInfo>? nextDepartBus}) =
+  factory _NextDepart190Wrapper({final List<DepartBusInfo>? nextDepartBus}) =
       _$_NextDepart190Wrapper;
 
   factory _NextDepart190Wrapper.fromJson(Map<String, dynamic> json) =
       _$_NextDepart190Wrapper.fromJson;
 
   @override
-  List<DepartBusInfo>? get nextDepartBus;
+  List<DepartBusInfo>? get nextDepartBus => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NextDepart190WrapperCopyWith<_NextDepart190Wrapper> get copyWith =>
+  _$$_NextDepart190WrapperCopyWith<_$_NextDepart190Wrapper> get copyWith =>
       throw _privateConstructorUsedError;
 }

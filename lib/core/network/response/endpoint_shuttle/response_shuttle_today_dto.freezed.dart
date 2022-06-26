@@ -12,30 +12,11 @@ part of 'response_shuttle_today_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ShuttleTodayWrapper _$ShuttleTodayWrapperFromJson(Map<String, dynamic> json) {
   return _ShuttleTodayWrapper.fromJson(json);
 }
-
-/// @nodoc
-class _$ShuttleTodayWrapperTearOff {
-  const _$ShuttleTodayWrapperTearOff();
-
-  _ShuttleTodayWrapper call(
-      {List<ShuttleDetailDto> data = const <ShuttleDetailDto>[]}) {
-    return _ShuttleTodayWrapper(
-      data: data,
-    );
-  }
-
-  ShuttleTodayWrapper fromJson(Map<String, Object?> json) {
-    return ShuttleTodayWrapper.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ShuttleTodayWrapper = _$ShuttleTodayWrapperTearOff();
 
 /// @nodoc
 mixin _$ShuttleTodayWrapper {
@@ -78,33 +59,33 @@ class _$ShuttleTodayWrapperCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ShuttleTodayWrapperCopyWith<$Res>
+abstract class _$$_ShuttleTodayWrapperCopyWith<$Res>
     implements $ShuttleTodayWrapperCopyWith<$Res> {
-  factory _$ShuttleTodayWrapperCopyWith(_ShuttleTodayWrapper value,
-          $Res Function(_ShuttleTodayWrapper) then) =
-      __$ShuttleTodayWrapperCopyWithImpl<$Res>;
+  factory _$$_ShuttleTodayWrapperCopyWith(_$_ShuttleTodayWrapper value,
+          $Res Function(_$_ShuttleTodayWrapper) then) =
+      __$$_ShuttleTodayWrapperCopyWithImpl<$Res>;
   @override
   $Res call({List<ShuttleDetailDto> data});
 }
 
 /// @nodoc
-class __$ShuttleTodayWrapperCopyWithImpl<$Res>
+class __$$_ShuttleTodayWrapperCopyWithImpl<$Res>
     extends _$ShuttleTodayWrapperCopyWithImpl<$Res>
-    implements _$ShuttleTodayWrapperCopyWith<$Res> {
-  __$ShuttleTodayWrapperCopyWithImpl(
-      _ShuttleTodayWrapper _value, $Res Function(_ShuttleTodayWrapper) _then)
-      : super(_value, (v) => _then(v as _ShuttleTodayWrapper));
+    implements _$$_ShuttleTodayWrapperCopyWith<$Res> {
+  __$$_ShuttleTodayWrapperCopyWithImpl(_$_ShuttleTodayWrapper _value,
+      $Res Function(_$_ShuttleTodayWrapper) _then)
+      : super(_value, (v) => _then(v as _$_ShuttleTodayWrapper));
 
   @override
-  _ShuttleTodayWrapper get _value => super._value as _ShuttleTodayWrapper;
+  _$_ShuttleTodayWrapper get _value => super._value as _$_ShuttleTodayWrapper;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_ShuttleTodayWrapper(
+    return _then(_$_ShuttleTodayWrapper(
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<ShuttleDetailDto>,
     ));
@@ -114,14 +95,20 @@ class __$ShuttleTodayWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ShuttleTodayWrapper implements _ShuttleTodayWrapper {
-  _$_ShuttleTodayWrapper({this.data = const <ShuttleDetailDto>[]});
+  _$_ShuttleTodayWrapper(
+      {final List<ShuttleDetailDto> data = const <ShuttleDetailDto>[]})
+      : _data = data;
 
   factory _$_ShuttleTodayWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_ShuttleTodayWrapperFromJson(json);
 
-  @JsonKey()
+  final List<ShuttleDetailDto> _data;
   @override
-  final List<ShuttleDetailDto> data;
+  @JsonKey()
+  List<ShuttleDetailDto> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -132,18 +119,19 @@ class _$_ShuttleTodayWrapper implements _ShuttleTodayWrapper {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ShuttleTodayWrapper &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_ShuttleTodayWrapper &&
+            const DeepCollectionEquality().equals(other._data, _data));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  _$ShuttleTodayWrapperCopyWith<_ShuttleTodayWrapper> get copyWith =>
-      __$ShuttleTodayWrapperCopyWithImpl<_ShuttleTodayWrapper>(
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ShuttleTodayWrapperCopyWith<_$_ShuttleTodayWrapper> get copyWith =>
+      __$$_ShuttleTodayWrapperCopyWithImpl<_$_ShuttleTodayWrapper>(
           this, _$identity);
 
   @override
@@ -153,16 +141,16 @@ class _$_ShuttleTodayWrapper implements _ShuttleTodayWrapper {
 }
 
 abstract class _ShuttleTodayWrapper implements ShuttleTodayWrapper {
-  factory _ShuttleTodayWrapper({List<ShuttleDetailDto> data}) =
+  factory _ShuttleTodayWrapper({final List<ShuttleDetailDto> data}) =
       _$_ShuttleTodayWrapper;
 
   factory _ShuttleTodayWrapper.fromJson(Map<String, dynamic> json) =
       _$_ShuttleTodayWrapper.fromJson;
 
   @override
-  List<ShuttleDetailDto> get data;
+  List<ShuttleDetailDto> get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ShuttleTodayWrapperCopyWith<_ShuttleTodayWrapper> get copyWith =>
+  _$$_ShuttleTodayWrapperCopyWith<_$_ShuttleTodayWrapper> get copyWith =>
       throw _privateConstructorUsedError;
 }

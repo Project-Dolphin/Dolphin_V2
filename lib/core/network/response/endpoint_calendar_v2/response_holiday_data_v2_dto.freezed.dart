@@ -12,30 +12,11 @@ part of 'response_holiday_data_v2_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 HolidayDataV2 _$HolidayDataV2FromJson(Map<String, dynamic> json) {
   return _HolidayDataV2.fromJson(json);
 }
-
-/// @nodoc
-class _$HolidayDataV2TearOff {
-  const _$HolidayDataV2TearOff();
-
-  _HolidayDataV2 call({String? term, String? content}) {
-    return _HolidayDataV2(
-      term: term,
-      content: content,
-    );
-  }
-
-  HolidayDataV2 fromJson(Map<String, Object?> json) {
-    return HolidayDataV2.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $HolidayDataV2 = _$HolidayDataV2TearOff();
 
 /// @nodoc
 mixin _$HolidayDataV2 {
@@ -84,32 +65,32 @@ class _$HolidayDataV2CopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$HolidayDataV2CopyWith<$Res>
+abstract class _$$_HolidayDataV2CopyWith<$Res>
     implements $HolidayDataV2CopyWith<$Res> {
-  factory _$HolidayDataV2CopyWith(
-          _HolidayDataV2 value, $Res Function(_HolidayDataV2) then) =
-      __$HolidayDataV2CopyWithImpl<$Res>;
+  factory _$$_HolidayDataV2CopyWith(
+          _$_HolidayDataV2 value, $Res Function(_$_HolidayDataV2) then) =
+      __$$_HolidayDataV2CopyWithImpl<$Res>;
   @override
   $Res call({String? term, String? content});
 }
 
 /// @nodoc
-class __$HolidayDataV2CopyWithImpl<$Res>
+class __$$_HolidayDataV2CopyWithImpl<$Res>
     extends _$HolidayDataV2CopyWithImpl<$Res>
-    implements _$HolidayDataV2CopyWith<$Res> {
-  __$HolidayDataV2CopyWithImpl(
-      _HolidayDataV2 _value, $Res Function(_HolidayDataV2) _then)
-      : super(_value, (v) => _then(v as _HolidayDataV2));
+    implements _$$_HolidayDataV2CopyWith<$Res> {
+  __$$_HolidayDataV2CopyWithImpl(
+      _$_HolidayDataV2 _value, $Res Function(_$_HolidayDataV2) _then)
+      : super(_value, (v) => _then(v as _$_HolidayDataV2));
 
   @override
-  _HolidayDataV2 get _value => super._value as _HolidayDataV2;
+  _$_HolidayDataV2 get _value => super._value as _$_HolidayDataV2;
 
   @override
   $Res call({
     Object? term = freezed,
     Object? content = freezed,
   }) {
-    return _then(_HolidayDataV2(
+    return _then(_$_HolidayDataV2(
       term: term == freezed
           ? _value.term
           : term // ignore: cast_nullable_to_non_nullable
@@ -144,11 +125,12 @@ class _$_HolidayDataV2 implements _HolidayDataV2 {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HolidayDataV2 &&
+            other is _$_HolidayDataV2 &&
             const DeepCollectionEquality().equals(other.term, term) &&
             const DeepCollectionEquality().equals(other.content, content));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -157,8 +139,8 @@ class _$_HolidayDataV2 implements _HolidayDataV2 {
 
   @JsonKey(ignore: true)
   @override
-  _$HolidayDataV2CopyWith<_HolidayDataV2> get copyWith =>
-      __$HolidayDataV2CopyWithImpl<_HolidayDataV2>(this, _$identity);
+  _$$_HolidayDataV2CopyWith<_$_HolidayDataV2> get copyWith =>
+      __$$_HolidayDataV2CopyWithImpl<_$_HolidayDataV2>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -167,17 +149,18 @@ class _$_HolidayDataV2 implements _HolidayDataV2 {
 }
 
 abstract class _HolidayDataV2 implements HolidayDataV2 {
-  factory _HolidayDataV2({String? term, String? content}) = _$_HolidayDataV2;
+  factory _HolidayDataV2({final String? term, final String? content}) =
+      _$_HolidayDataV2;
 
   factory _HolidayDataV2.fromJson(Map<String, dynamic> json) =
       _$_HolidayDataV2.fromJson;
 
   @override
-  String? get term;
+  String? get term => throw _privateConstructorUsedError;
   @override
-  String? get content;
+  String? get content => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$HolidayDataV2CopyWith<_HolidayDataV2> get copyWith =>
+  _$$_HolidayDataV2CopyWith<_$_HolidayDataV2> get copyWith =>
       throw _privateConstructorUsedError;
 }

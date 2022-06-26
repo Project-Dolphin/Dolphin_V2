@@ -12,33 +12,17 @@ part of 'response_diet_society_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 DietSocietyWrapper _$DietSocietyWrapperFromJson(Map<String, dynamic> json) {
   return _DietSocietyWrapper.fromJson(json);
 }
 
 /// @nodoc
-class _$DietSocietyWrapperTearOff {
-  const _$DietSocietyWrapperTearOff();
-
-  _DietSocietyWrapper call({CafeData? data}) {
-    return _DietSocietyWrapper(
-      data: data,
-    );
-  }
-
-  DietSocietyWrapper fromJson(Map<String, Object?> json) {
-    return DietSocietyWrapper.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DietSocietyWrapper = _$DietSocietyWrapperTearOff();
-
-/// @nodoc
 mixin _$DietSocietyWrapper {
-  CafeData? get data => throw _privateConstructorUsedError;
+  List<DietDetail> get student => throw _privateConstructorUsedError;
+  List<DietDetail> get snack => throw _privateConstructorUsedError;
+  List<DietDetail> get staff => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,9 +35,10 @@ abstract class $DietSocietyWrapperCopyWith<$Res> {
   factory $DietSocietyWrapperCopyWith(
           DietSocietyWrapper value, $Res Function(DietSocietyWrapper) then) =
       _$DietSocietyWrapperCopyWithImpl<$Res>;
-  $Res call({CafeData? data});
-
-  $CafeDataCopyWith<$Res>? get data;
+  $Res call(
+      {List<DietDetail> student,
+      List<DietDetail> snack,
+      List<DietDetail> staff});
 }
 
 /// @nodoc
@@ -67,61 +52,70 @@ class _$DietSocietyWrapperCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? data = freezed,
+    Object? student = freezed,
+    Object? snack = freezed,
+    Object? staff = freezed,
   }) {
     return _then(_value.copyWith(
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as CafeData?,
+      student: student == freezed
+          ? _value.student
+          : student // ignore: cast_nullable_to_non_nullable
+              as List<DietDetail>,
+      snack: snack == freezed
+          ? _value.snack
+          : snack // ignore: cast_nullable_to_non_nullable
+              as List<DietDetail>,
+      staff: staff == freezed
+          ? _value.staff
+          : staff // ignore: cast_nullable_to_non_nullable
+              as List<DietDetail>,
     ));
   }
-
-  @override
-  $CafeDataCopyWith<$Res>? get data {
-    if (_value.data == null) {
-      return null;
-    }
-
-    return $CafeDataCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$DietSocietyWrapperCopyWith<$Res>
+abstract class _$$_DietSocietyWrapperCopyWith<$Res>
     implements $DietSocietyWrapperCopyWith<$Res> {
-  factory _$DietSocietyWrapperCopyWith(
-          _DietSocietyWrapper value, $Res Function(_DietSocietyWrapper) then) =
-      __$DietSocietyWrapperCopyWithImpl<$Res>;
+  factory _$$_DietSocietyWrapperCopyWith(_$_DietSocietyWrapper value,
+          $Res Function(_$_DietSocietyWrapper) then) =
+      __$$_DietSocietyWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({CafeData? data});
-
-  @override
-  $CafeDataCopyWith<$Res>? get data;
+  $Res call(
+      {List<DietDetail> student,
+      List<DietDetail> snack,
+      List<DietDetail> staff});
 }
 
 /// @nodoc
-class __$DietSocietyWrapperCopyWithImpl<$Res>
+class __$$_DietSocietyWrapperCopyWithImpl<$Res>
     extends _$DietSocietyWrapperCopyWithImpl<$Res>
-    implements _$DietSocietyWrapperCopyWith<$Res> {
-  __$DietSocietyWrapperCopyWithImpl(
-      _DietSocietyWrapper _value, $Res Function(_DietSocietyWrapper) _then)
-      : super(_value, (v) => _then(v as _DietSocietyWrapper));
+    implements _$$_DietSocietyWrapperCopyWith<$Res> {
+  __$$_DietSocietyWrapperCopyWithImpl(
+      _$_DietSocietyWrapper _value, $Res Function(_$_DietSocietyWrapper) _then)
+      : super(_value, (v) => _then(v as _$_DietSocietyWrapper));
 
   @override
-  _DietSocietyWrapper get _value => super._value as _DietSocietyWrapper;
+  _$_DietSocietyWrapper get _value => super._value as _$_DietSocietyWrapper;
 
   @override
   $Res call({
-    Object? data = freezed,
+    Object? student = freezed,
+    Object? snack = freezed,
+    Object? staff = freezed,
   }) {
-    return _then(_DietSocietyWrapper(
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as CafeData?,
+    return _then(_$_DietSocietyWrapper(
+      student: student == freezed
+          ? _value._student
+          : student // ignore: cast_nullable_to_non_nullable
+              as List<DietDetail>,
+      snack: snack == freezed
+          ? _value._snack
+          : snack // ignore: cast_nullable_to_non_nullable
+              as List<DietDetail>,
+      staff: staff == freezed
+          ? _value._staff
+          : staff // ignore: cast_nullable_to_non_nullable
+              as List<DietDetail>,
     ));
   }
 }
@@ -129,35 +123,69 @@ class __$DietSocietyWrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DietSocietyWrapper implements _DietSocietyWrapper {
-  _$_DietSocietyWrapper({this.data});
+  _$_DietSocietyWrapper(
+      {final List<DietDetail> student = const <DietDetail>[],
+      final List<DietDetail> snack = const <DietDetail>[],
+      final List<DietDetail> staff = const <DietDetail>[]})
+      : _student = student,
+        _snack = snack,
+        _staff = staff;
 
   factory _$_DietSocietyWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_DietSocietyWrapperFromJson(json);
 
+  final List<DietDetail> _student;
   @override
-  final CafeData? data;
+  @JsonKey()
+  List<DietDetail> get student {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_student);
+  }
+
+  final List<DietDetail> _snack;
+  @override
+  @JsonKey()
+  List<DietDetail> get snack {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_snack);
+  }
+
+  final List<DietDetail> _staff;
+  @override
+  @JsonKey()
+  List<DietDetail> get staff {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_staff);
+  }
 
   @override
   String toString() {
-    return 'DietSocietyWrapper(data: $data)';
+    return 'DietSocietyWrapper(student: $student, snack: $snack, staff: $staff)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DietSocietyWrapper &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_DietSocietyWrapper &&
+            const DeepCollectionEquality().equals(other._student, _student) &&
+            const DeepCollectionEquality().equals(other._snack, _snack) &&
+            const DeepCollectionEquality().equals(other._staff, _staff));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  _$DietSocietyWrapperCopyWith<_DietSocietyWrapper> get copyWith =>
-      __$DietSocietyWrapperCopyWithImpl<_DietSocietyWrapper>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_student),
+      const DeepCollectionEquality().hash(_snack),
+      const DeepCollectionEquality().hash(_staff));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DietSocietyWrapperCopyWith<_$_DietSocietyWrapper> get copyWith =>
+      __$$_DietSocietyWrapperCopyWithImpl<_$_DietSocietyWrapper>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -166,15 +194,22 @@ class _$_DietSocietyWrapper implements _DietSocietyWrapper {
 }
 
 abstract class _DietSocietyWrapper implements DietSocietyWrapper {
-  factory _DietSocietyWrapper({CafeData? data}) = _$_DietSocietyWrapper;
+  factory _DietSocietyWrapper(
+      {final List<DietDetail> student,
+      final List<DietDetail> snack,
+      final List<DietDetail> staff}) = _$_DietSocietyWrapper;
 
   factory _DietSocietyWrapper.fromJson(Map<String, dynamic> json) =
       _$_DietSocietyWrapper.fromJson;
 
   @override
-  CafeData? get data;
+  List<DietDetail> get student => throw _privateConstructorUsedError;
+  @override
+  List<DietDetail> get snack => throw _privateConstructorUsedError;
+  @override
+  List<DietDetail> get staff => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DietSocietyWrapperCopyWith<_DietSocietyWrapper> get copyWith =>
+  _$$_DietSocietyWrapperCopyWith<_$_DietSocietyWrapper> get copyWith =>
       throw _privateConstructorUsedError;
 }

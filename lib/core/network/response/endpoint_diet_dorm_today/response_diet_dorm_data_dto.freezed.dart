@@ -12,34 +12,11 @@ part of 'response_diet_dorm_data_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 DormData _$DormDataFromJson(Map<String, dynamic> json) {
   return _DormData.fromJson(json);
 }
-
-/// @nodoc
-class _$DormDataTearOff {
-  const _$DormDataTearOff();
-
-  _DormData call(
-      {List<String> morning = const <String>[],
-      List<String> lunch = const <String>[],
-      List<String> dinner = const <String>[]}) {
-    return _DormData(
-      morning: morning,
-      lunch: lunch,
-      dinner: dinner,
-    );
-  }
-
-  DormData fromJson(Map<String, Object?> json) {
-    return DormData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DormData = _$DormDataTearOff();
 
 /// @nodoc
 mixin _$DormData {
@@ -92,21 +69,23 @@ class _$DormDataCopyWithImpl<$Res> implements $DormDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DormDataCopyWith<$Res> implements $DormDataCopyWith<$Res> {
-  factory _$DormDataCopyWith(_DormData value, $Res Function(_DormData) then) =
-      __$DormDataCopyWithImpl<$Res>;
+abstract class _$$_DormDataCopyWith<$Res> implements $DormDataCopyWith<$Res> {
+  factory _$$_DormDataCopyWith(
+          _$_DormData value, $Res Function(_$_DormData) then) =
+      __$$_DormDataCopyWithImpl<$Res>;
   @override
   $Res call({List<String> morning, List<String> lunch, List<String> dinner});
 }
 
 /// @nodoc
-class __$DormDataCopyWithImpl<$Res> extends _$DormDataCopyWithImpl<$Res>
-    implements _$DormDataCopyWith<$Res> {
-  __$DormDataCopyWithImpl(_DormData _value, $Res Function(_DormData) _then)
-      : super(_value, (v) => _then(v as _DormData));
+class __$$_DormDataCopyWithImpl<$Res> extends _$DormDataCopyWithImpl<$Res>
+    implements _$$_DormDataCopyWith<$Res> {
+  __$$_DormDataCopyWithImpl(
+      _$_DormData _value, $Res Function(_$_DormData) _then)
+      : super(_value, (v) => _then(v as _$_DormData));
 
   @override
-  _DormData get _value => super._value as _DormData;
+  _$_DormData get _value => super._value as _$_DormData;
 
   @override
   $Res call({
@@ -114,17 +93,17 @@ class __$DormDataCopyWithImpl<$Res> extends _$DormDataCopyWithImpl<$Res>
     Object? lunch = freezed,
     Object? dinner = freezed,
   }) {
-    return _then(_DormData(
+    return _then(_$_DormData(
       morning: morning == freezed
-          ? _value.morning
+          ? _value._morning
           : morning // ignore: cast_nullable_to_non_nullable
               as List<String>,
       lunch: lunch == freezed
-          ? _value.lunch
+          ? _value._lunch
           : lunch // ignore: cast_nullable_to_non_nullable
               as List<String>,
       dinner: dinner == freezed
-          ? _value.dinner
+          ? _value._dinner
           : dinner // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
@@ -135,22 +114,39 @@ class __$DormDataCopyWithImpl<$Res> extends _$DormDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_DormData implements _DormData {
   _$_DormData(
-      {this.morning = const <String>[],
-      this.lunch = const <String>[],
-      this.dinner = const <String>[]});
+      {final List<String> morning = const <String>[],
+      final List<String> lunch = const <String>[],
+      final List<String> dinner = const <String>[]})
+      : _morning = morning,
+        _lunch = lunch,
+        _dinner = dinner;
 
   factory _$_DormData.fromJson(Map<String, dynamic> json) =>
       _$$_DormDataFromJson(json);
 
-  @JsonKey()
+  final List<String> _morning;
   @override
-  final List<String> morning;
   @JsonKey()
+  List<String> get morning {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_morning);
+  }
+
+  final List<String> _lunch;
   @override
-  final List<String> lunch;
   @JsonKey()
+  List<String> get lunch {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lunch);
+  }
+
+  final List<String> _dinner;
   @override
-  final List<String> dinner;
+  @JsonKey()
+  List<String> get dinner {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dinner);
+  }
 
   @override
   String toString() {
@@ -161,23 +157,24 @@ class _$_DormData implements _DormData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DormData &&
-            const DeepCollectionEquality().equals(other.morning, morning) &&
-            const DeepCollectionEquality().equals(other.lunch, lunch) &&
-            const DeepCollectionEquality().equals(other.dinner, dinner));
+            other is _$_DormData &&
+            const DeepCollectionEquality().equals(other._morning, _morning) &&
+            const DeepCollectionEquality().equals(other._lunch, _lunch) &&
+            const DeepCollectionEquality().equals(other._dinner, _dinner));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(morning),
-      const DeepCollectionEquality().hash(lunch),
-      const DeepCollectionEquality().hash(dinner));
 
   @JsonKey(ignore: true)
   @override
-  _$DormDataCopyWith<_DormData> get copyWith =>
-      __$DormDataCopyWithImpl<_DormData>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_morning),
+      const DeepCollectionEquality().hash(_lunch),
+      const DeepCollectionEquality().hash(_dinner));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DormDataCopyWith<_$_DormData> get copyWith =>
+      __$$_DormDataCopyWithImpl<_$_DormData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -187,20 +184,20 @@ class _$_DormData implements _DormData {
 
 abstract class _DormData implements DormData {
   factory _DormData(
-      {List<String> morning,
-      List<String> lunch,
-      List<String> dinner}) = _$_DormData;
+      {final List<String> morning,
+      final List<String> lunch,
+      final List<String> dinner}) = _$_DormData;
 
   factory _DormData.fromJson(Map<String, dynamic> json) = _$_DormData.fromJson;
 
   @override
-  List<String> get morning;
+  List<String> get morning => throw _privateConstructorUsedError;
   @override
-  List<String> get lunch;
+  List<String> get lunch => throw _privateConstructorUsedError;
   @override
-  List<String> get dinner;
+  List<String> get dinner => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DormDataCopyWith<_DormData> get copyWith =>
+  _$$_DormDataCopyWith<_$_DormData> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -19,7 +19,7 @@ class EventBox extends StatelessWidget {
       child: BlocBuilder<HomeDataBloc, HomeDataState>(
         builder: ((context, state) {
           if (state is HomeDataLoaded) {
-            return EventDetail(eventList: state.event);
+            return EventDetail(eventList: state.event.calendar);
           }
 
           return const EventDetailShimmer();

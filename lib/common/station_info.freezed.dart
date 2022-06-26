@@ -12,30 +12,11 @@ part of 'station_info.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 StationInfo _$StationInfoFromJson(Map<String, dynamic> json) {
   return _StationInfo.fromJson(json);
 }
-
-/// @nodoc
-class _$StationInfoTearOff {
-  const _$StationInfoTearOff();
-
-  _StationInfo call({String nearStation = '부산역', String nodeId = '169100201'}) {
-    return _StationInfo(
-      nearStation: nearStation,
-      nodeId: nodeId,
-    );
-  }
-
-  StationInfo fromJson(Map<String, Object?> json) {
-    return StationInfo.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $StationInfo = _$StationInfoTearOff();
 
 /// @nodoc
 mixin _$StationInfo {
@@ -83,31 +64,31 @@ class _$StationInfoCopyWithImpl<$Res> implements $StationInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$StationInfoCopyWith<$Res>
+abstract class _$$_StationInfoCopyWith<$Res>
     implements $StationInfoCopyWith<$Res> {
-  factory _$StationInfoCopyWith(
-          _StationInfo value, $Res Function(_StationInfo) then) =
-      __$StationInfoCopyWithImpl<$Res>;
+  factory _$$_StationInfoCopyWith(
+          _$_StationInfo value, $Res Function(_$_StationInfo) then) =
+      __$$_StationInfoCopyWithImpl<$Res>;
   @override
   $Res call({String nearStation, String nodeId});
 }
 
 /// @nodoc
-class __$StationInfoCopyWithImpl<$Res> extends _$StationInfoCopyWithImpl<$Res>
-    implements _$StationInfoCopyWith<$Res> {
-  __$StationInfoCopyWithImpl(
-      _StationInfo _value, $Res Function(_StationInfo) _then)
-      : super(_value, (v) => _then(v as _StationInfo));
+class __$$_StationInfoCopyWithImpl<$Res> extends _$StationInfoCopyWithImpl<$Res>
+    implements _$$_StationInfoCopyWith<$Res> {
+  __$$_StationInfoCopyWithImpl(
+      _$_StationInfo _value, $Res Function(_$_StationInfo) _then)
+      : super(_value, (v) => _then(v as _$_StationInfo));
 
   @override
-  _StationInfo get _value => super._value as _StationInfo;
+  _$_StationInfo get _value => super._value as _$_StationInfo;
 
   @override
   $Res call({
     Object? nearStation = freezed,
     Object? nodeId = freezed,
   }) {
-    return _then(_StationInfo(
+    return _then(_$_StationInfo(
       nearStation: nearStation == freezed
           ? _value.nearStation
           : nearStation // ignore: cast_nullable_to_non_nullable
@@ -128,11 +109,11 @@ class _$_StationInfo implements _StationInfo {
   factory _$_StationInfo.fromJson(Map<String, dynamic> json) =>
       _$$_StationInfoFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final String nearStation;
-  @JsonKey()
   @override
+  @JsonKey()
   final String nodeId;
 
   @override
@@ -144,12 +125,13 @@ class _$_StationInfo implements _StationInfo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _StationInfo &&
+            other is _$_StationInfo &&
             const DeepCollectionEquality()
                 .equals(other.nearStation, nearStation) &&
             const DeepCollectionEquality().equals(other.nodeId, nodeId));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -158,8 +140,8 @@ class _$_StationInfo implements _StationInfo {
 
   @JsonKey(ignore: true)
   @override
-  _$StationInfoCopyWith<_StationInfo> get copyWith =>
-      __$StationInfoCopyWithImpl<_StationInfo>(this, _$identity);
+  _$$_StationInfoCopyWith<_$_StationInfo> get copyWith =>
+      __$$_StationInfoCopyWithImpl<_$_StationInfo>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -168,17 +150,18 @@ class _$_StationInfo implements _StationInfo {
 }
 
 abstract class _StationInfo implements StationInfo {
-  factory _StationInfo({String nearStation, String nodeId}) = _$_StationInfo;
+  factory _StationInfo({final String nearStation, final String nodeId}) =
+      _$_StationInfo;
 
   factory _StationInfo.fromJson(Map<String, dynamic> json) =
       _$_StationInfo.fromJson;
 
   @override
-  String get nearStation;
+  String get nearStation => throw _privateConstructorUsedError;
   @override
-  String get nodeId;
+  String get nodeId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$StationInfoCopyWith<_StationInfo> get copyWith =>
+  _$$_StationInfoCopyWith<_$_StationInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

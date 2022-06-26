@@ -12,33 +12,11 @@ part of 'response_calendar_latest_data_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LatestData _$LatestDataFromJson(Map<String, dynamic> json) {
   return _LatestData.fromJson(json);
 }
-
-/// @nodoc
-class _$LatestDataTearOff {
-  const _$LatestDataTearOff();
-
-  _LatestData call(
-      {LatestTerm? term, bool? mainPlan, String? content, int? dDay}) {
-    return _LatestData(
-      term: term,
-      mainPlan: mainPlan,
-      content: content,
-      dDay: dDay,
-    );
-  }
-
-  LatestData fromJson(Map<String, Object?> json) {
-    return LatestData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LatestData = _$LatestDataTearOff();
 
 /// @nodoc
 mixin _$LatestData {
@@ -111,10 +89,11 @@ class _$LatestDataCopyWithImpl<$Res> implements $LatestDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$LatestDataCopyWith<$Res> implements $LatestDataCopyWith<$Res> {
-  factory _$LatestDataCopyWith(
-          _LatestData value, $Res Function(_LatestData) then) =
-      __$LatestDataCopyWithImpl<$Res>;
+abstract class _$$_LatestDataCopyWith<$Res>
+    implements $LatestDataCopyWith<$Res> {
+  factory _$$_LatestDataCopyWith(
+          _$_LatestData value, $Res Function(_$_LatestData) then) =
+      __$$_LatestDataCopyWithImpl<$Res>;
   @override
   $Res call({LatestTerm? term, bool? mainPlan, String? content, int? dDay});
 
@@ -123,14 +102,14 @@ abstract class _$LatestDataCopyWith<$Res> implements $LatestDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LatestDataCopyWithImpl<$Res> extends _$LatestDataCopyWithImpl<$Res>
-    implements _$LatestDataCopyWith<$Res> {
-  __$LatestDataCopyWithImpl(
-      _LatestData _value, $Res Function(_LatestData) _then)
-      : super(_value, (v) => _then(v as _LatestData));
+class __$$_LatestDataCopyWithImpl<$Res> extends _$LatestDataCopyWithImpl<$Res>
+    implements _$$_LatestDataCopyWith<$Res> {
+  __$$_LatestDataCopyWithImpl(
+      _$_LatestData _value, $Res Function(_$_LatestData) _then)
+      : super(_value, (v) => _then(v as _$_LatestData));
 
   @override
-  _LatestData get _value => super._value as _LatestData;
+  _$_LatestData get _value => super._value as _$_LatestData;
 
   @override
   $Res call({
@@ -139,7 +118,7 @@ class __$LatestDataCopyWithImpl<$Res> extends _$LatestDataCopyWithImpl<$Res>
     Object? content = freezed,
     Object? dDay = freezed,
   }) {
-    return _then(_LatestData(
+    return _then(_$_LatestData(
       term: term == freezed
           ? _value.term
           : term // ignore: cast_nullable_to_non_nullable
@@ -186,13 +165,14 @@ class _$_LatestData implements _LatestData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LatestData &&
+            other is _$_LatestData &&
             const DeepCollectionEquality().equals(other.term, term) &&
             const DeepCollectionEquality().equals(other.mainPlan, mainPlan) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.dDay, dDay));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -203,8 +183,8 @@ class _$_LatestData implements _LatestData {
 
   @JsonKey(ignore: true)
   @override
-  _$LatestDataCopyWith<_LatestData> get copyWith =>
-      __$LatestDataCopyWithImpl<_LatestData>(this, _$identity);
+  _$$_LatestDataCopyWith<_$_LatestData> get copyWith =>
+      __$$_LatestDataCopyWithImpl<_$_LatestData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -214,24 +194,24 @@ class _$_LatestData implements _LatestData {
 
 abstract class _LatestData implements LatestData {
   factory _LatestData(
-      {LatestTerm? term,
-      bool? mainPlan,
-      String? content,
-      int? dDay}) = _$_LatestData;
+      {final LatestTerm? term,
+      final bool? mainPlan,
+      final String? content,
+      final int? dDay}) = _$_LatestData;
 
   factory _LatestData.fromJson(Map<String, dynamic> json) =
       _$_LatestData.fromJson;
 
   @override
-  LatestTerm? get term;
+  LatestTerm? get term => throw _privateConstructorUsedError;
   @override
-  bool? get mainPlan;
+  bool? get mainPlan => throw _privateConstructorUsedError;
   @override
-  String? get content;
+  String? get content => throw _privateConstructorUsedError;
   @override
-  int? get dDay;
+  int? get dDay => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LatestDataCopyWith<_LatestData> get copyWith =>
+  _$$_LatestDataCopyWith<_$_LatestData> get copyWith =>
       throw _privateConstructorUsedError;
 }

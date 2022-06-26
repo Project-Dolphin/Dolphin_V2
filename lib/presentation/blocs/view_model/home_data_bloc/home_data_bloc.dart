@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/error/failures.dart';
 import 'package:oceanview/core/network/response/endpoint_calendar_latest/response_calendar_latest_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_calendar_latest/response_calendar_latest_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:oceanview/domain/usecases/get_latest_event.dart';
@@ -22,7 +23,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
   WeatherData _weather =
       WeatherData(humidity: '', status: '', temparature: '', windSpeed: '');
   List<NoticeData> _notices = [];
-  List<LatestData> _events = [];
+  LatestWrapper _events = LatestWrapper();
 
   HomeDataBloc({
     required this.getWeatherInfo,
@@ -41,7 +42,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
     return await getNoticeList.call();
   }
 
-  Future<Either<Failure, List<LatestData>>> async3() async {
+  Future<Either<Failure, LatestWrapper>> async3() async {
     return await getLatestEvent.call();
   }
 
@@ -85,7 +86,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
           }
         },
         (success) {
-          _events = success as List<LatestData>;
+          _events = success as LatestWrapper;
         },
       );
     });

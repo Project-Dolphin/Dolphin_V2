@@ -11,7 +11,7 @@ _$_NodeInfoData _$$_NodeInfoDataFromJson(Map<String, dynamic> json) =>
       busStopName: json['busStopName'] as String?,
       min1: json['min1'] as int?,
       min2: json['min2'] as int?,
-      lineno: json['lineno'] as int?,
+      lineno: json['lineno'] as String?,
     );
 
 Map<String, dynamic> _$$_NodeInfoDataToJson(_$_NodeInfoData instance) =>

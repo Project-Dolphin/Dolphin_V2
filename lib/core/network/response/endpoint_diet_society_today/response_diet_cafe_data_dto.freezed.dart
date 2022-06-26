@@ -12,34 +12,11 @@ part of 'response_diet_cafe_data_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CafeData _$CafeDataFromJson(Map<String, dynamic> json) {
   return _CafeData.fromJson(json);
 }
-
-/// @nodoc
-class _$CafeDataTearOff {
-  const _$CafeDataTearOff();
-
-  _CafeData call(
-      {List<DietDetail> student = const <DietDetail>[],
-      List<DietDetail> snack = const <DietDetail>[],
-      List<DietDetail> staff = const <DietDetail>[]}) {
-    return _CafeData(
-      student: student,
-      snack: snack,
-      staff: staff,
-    );
-  }
-
-  CafeData fromJson(Map<String, Object?> json) {
-    return CafeData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CafeData = _$CafeDataTearOff();
 
 /// @nodoc
 mixin _$CafeData {
@@ -95,9 +72,10 @@ class _$CafeDataCopyWithImpl<$Res> implements $CafeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CafeDataCopyWith<$Res> implements $CafeDataCopyWith<$Res> {
-  factory _$CafeDataCopyWith(_CafeData value, $Res Function(_CafeData) then) =
-      __$CafeDataCopyWithImpl<$Res>;
+abstract class _$$_CafeDataCopyWith<$Res> implements $CafeDataCopyWith<$Res> {
+  factory _$$_CafeDataCopyWith(
+          _$_CafeData value, $Res Function(_$_CafeData) then) =
+      __$$_CafeDataCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<DietDetail> student,
@@ -106,13 +84,14 @@ abstract class _$CafeDataCopyWith<$Res> implements $CafeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CafeDataCopyWithImpl<$Res> extends _$CafeDataCopyWithImpl<$Res>
-    implements _$CafeDataCopyWith<$Res> {
-  __$CafeDataCopyWithImpl(_CafeData _value, $Res Function(_CafeData) _then)
-      : super(_value, (v) => _then(v as _CafeData));
+class __$$_CafeDataCopyWithImpl<$Res> extends _$CafeDataCopyWithImpl<$Res>
+    implements _$$_CafeDataCopyWith<$Res> {
+  __$$_CafeDataCopyWithImpl(
+      _$_CafeData _value, $Res Function(_$_CafeData) _then)
+      : super(_value, (v) => _then(v as _$_CafeData));
 
   @override
-  _CafeData get _value => super._value as _CafeData;
+  _$_CafeData get _value => super._value as _$_CafeData;
 
   @override
   $Res call({
@@ -120,17 +99,17 @@ class __$CafeDataCopyWithImpl<$Res> extends _$CafeDataCopyWithImpl<$Res>
     Object? snack = freezed,
     Object? staff = freezed,
   }) {
-    return _then(_CafeData(
+    return _then(_$_CafeData(
       student: student == freezed
-          ? _value.student
+          ? _value._student
           : student // ignore: cast_nullable_to_non_nullable
               as List<DietDetail>,
       snack: snack == freezed
-          ? _value.snack
+          ? _value._snack
           : snack // ignore: cast_nullable_to_non_nullable
               as List<DietDetail>,
       staff: staff == freezed
-          ? _value.staff
+          ? _value._staff
           : staff // ignore: cast_nullable_to_non_nullable
               as List<DietDetail>,
     ));
@@ -141,22 +120,39 @@ class __$CafeDataCopyWithImpl<$Res> extends _$CafeDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CafeData implements _CafeData {
   _$_CafeData(
-      {this.student = const <DietDetail>[],
-      this.snack = const <DietDetail>[],
-      this.staff = const <DietDetail>[]});
+      {final List<DietDetail> student = const <DietDetail>[],
+      final List<DietDetail> snack = const <DietDetail>[],
+      final List<DietDetail> staff = const <DietDetail>[]})
+      : _student = student,
+        _snack = snack,
+        _staff = staff;
 
   factory _$_CafeData.fromJson(Map<String, dynamic> json) =>
       _$$_CafeDataFromJson(json);
 
-  @JsonKey()
+  final List<DietDetail> _student;
   @override
-  final List<DietDetail> student;
   @JsonKey()
+  List<DietDetail> get student {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_student);
+  }
+
+  final List<DietDetail> _snack;
   @override
-  final List<DietDetail> snack;
   @JsonKey()
+  List<DietDetail> get snack {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_snack);
+  }
+
+  final List<DietDetail> _staff;
   @override
-  final List<DietDetail> staff;
+  @JsonKey()
+  List<DietDetail> get staff {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_staff);
+  }
 
   @override
   String toString() {
@@ -167,23 +163,24 @@ class _$_CafeData implements _CafeData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CafeData &&
-            const DeepCollectionEquality().equals(other.student, student) &&
-            const DeepCollectionEquality().equals(other.snack, snack) &&
-            const DeepCollectionEquality().equals(other.staff, staff));
+            other is _$_CafeData &&
+            const DeepCollectionEquality().equals(other._student, _student) &&
+            const DeepCollectionEquality().equals(other._snack, _snack) &&
+            const DeepCollectionEquality().equals(other._staff, _staff));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(student),
-      const DeepCollectionEquality().hash(snack),
-      const DeepCollectionEquality().hash(staff));
 
   @JsonKey(ignore: true)
   @override
-  _$CafeDataCopyWith<_CafeData> get copyWith =>
-      __$CafeDataCopyWithImpl<_CafeData>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_student),
+      const DeepCollectionEquality().hash(_snack),
+      const DeepCollectionEquality().hash(_staff));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CafeDataCopyWith<_$_CafeData> get copyWith =>
+      __$$_CafeDataCopyWithImpl<_$_CafeData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -193,20 +190,20 @@ class _$_CafeData implements _CafeData {
 
 abstract class _CafeData implements CafeData {
   factory _CafeData(
-      {List<DietDetail> student,
-      List<DietDetail> snack,
-      List<DietDetail> staff}) = _$_CafeData;
+      {final List<DietDetail> student,
+      final List<DietDetail> snack,
+      final List<DietDetail> staff}) = _$_CafeData;
 
   factory _CafeData.fromJson(Map<String, dynamic> json) = _$_CafeData.fromJson;
 
   @override
-  List<DietDetail> get student;
+  List<DietDetail> get student => throw _privateConstructorUsedError;
   @override
-  List<DietDetail> get snack;
+  List<DietDetail> get snack => throw _privateConstructorUsedError;
   @override
-  List<DietDetail> get staff;
+  List<DietDetail> get staff => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CafeDataCopyWith<_CafeData> get copyWith =>
+  _$$_CafeDataCopyWith<_$_CafeData> get copyWith =>
       throw _privateConstructorUsedError;
 }

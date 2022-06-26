@@ -12,33 +12,11 @@ part of 'response_businfo_data_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 BusInfoData _$BusInfoDataFromJson(Map<String, dynamic> json) {
   return _BusInfoData.fromJson(json);
 }
-
-/// @nodoc
-class _$BusInfoDataTearOff {
-  const _$BusInfoDataTearOff();
-
-  _BusInfoData call(
-      {String? bstopnm, int? roint, String? carno, int? lowplate}) {
-    return _BusInfoData(
-      bstopnm: bstopnm,
-      roint: roint,
-      carno: carno,
-      lowplate: lowplate,
-    );
-  }
-
-  BusInfoData fromJson(Map<String, Object?> json) {
-    return BusInfoData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BusInfoData = _$BusInfoDataTearOff();
 
 /// @nodoc
 mixin _$BusInfoData {
@@ -99,24 +77,24 @@ class _$BusInfoDataCopyWithImpl<$Res> implements $BusInfoDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BusInfoDataCopyWith<$Res>
+abstract class _$$_BusInfoDataCopyWith<$Res>
     implements $BusInfoDataCopyWith<$Res> {
-  factory _$BusInfoDataCopyWith(
-          _BusInfoData value, $Res Function(_BusInfoData) then) =
-      __$BusInfoDataCopyWithImpl<$Res>;
+  factory _$$_BusInfoDataCopyWith(
+          _$_BusInfoData value, $Res Function(_$_BusInfoData) then) =
+      __$$_BusInfoDataCopyWithImpl<$Res>;
   @override
   $Res call({String? bstopnm, int? roint, String? carno, int? lowplate});
 }
 
 /// @nodoc
-class __$BusInfoDataCopyWithImpl<$Res> extends _$BusInfoDataCopyWithImpl<$Res>
-    implements _$BusInfoDataCopyWith<$Res> {
-  __$BusInfoDataCopyWithImpl(
-      _BusInfoData _value, $Res Function(_BusInfoData) _then)
-      : super(_value, (v) => _then(v as _BusInfoData));
+class __$$_BusInfoDataCopyWithImpl<$Res> extends _$BusInfoDataCopyWithImpl<$Res>
+    implements _$$_BusInfoDataCopyWith<$Res> {
+  __$$_BusInfoDataCopyWithImpl(
+      _$_BusInfoData _value, $Res Function(_$_BusInfoData) _then)
+      : super(_value, (v) => _then(v as _$_BusInfoData));
 
   @override
-  _BusInfoData get _value => super._value as _BusInfoData;
+  _$_BusInfoData get _value => super._value as _$_BusInfoData;
 
   @override
   $Res call({
@@ -125,7 +103,7 @@ class __$BusInfoDataCopyWithImpl<$Res> extends _$BusInfoDataCopyWithImpl<$Res>
     Object? carno = freezed,
     Object? lowplate = freezed,
   }) {
-    return _then(_BusInfoData(
+    return _then(_$_BusInfoData(
       bstopnm: bstopnm == freezed
           ? _value.bstopnm
           : bstopnm // ignore: cast_nullable_to_non_nullable
@@ -156,11 +134,14 @@ class _$_BusInfoData implements _BusInfoData {
 
   @override
   final String? bstopnm;
-  @override // 정류장명
+// 정류장명
+  @override
   final int? roint;
-  @override // 회차 정보(0: 일반, 1: 회차 정류장) // null 이 아닐것 같긴 함
+// 회차 정보(0: 일반, 1: 회차 정류장) // null 이 아닐것 같긴 함
+  @override
   final String? carno;
-  @override // 버스 차량 번호
+// 버스 차량 번호
+  @override
   final int? lowplate;
 
   @override
@@ -172,13 +153,14 @@ class _$_BusInfoData implements _BusInfoData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BusInfoData &&
+            other is _$_BusInfoData &&
             const DeepCollectionEquality().equals(other.bstopnm, bstopnm) &&
             const DeepCollectionEquality().equals(other.roint, roint) &&
             const DeepCollectionEquality().equals(other.carno, carno) &&
             const DeepCollectionEquality().equals(other.lowplate, lowplate));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -189,8 +171,8 @@ class _$_BusInfoData implements _BusInfoData {
 
   @JsonKey(ignore: true)
   @override
-  _$BusInfoDataCopyWith<_BusInfoData> get copyWith =>
-      __$BusInfoDataCopyWithImpl<_BusInfoData>(this, _$identity);
+  _$$_BusInfoDataCopyWith<_$_BusInfoData> get copyWith =>
+      __$$_BusInfoDataCopyWithImpl<_$_BusInfoData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -200,24 +182,24 @@ class _$_BusInfoData implements _BusInfoData {
 
 abstract class _BusInfoData implements BusInfoData {
   factory _BusInfoData(
-      {String? bstopnm,
-      int? roint,
-      String? carno,
-      int? lowplate}) = _$_BusInfoData;
+      {final String? bstopnm,
+      final int? roint,
+      final String? carno,
+      final int? lowplate}) = _$_BusInfoData;
 
   factory _BusInfoData.fromJson(Map<String, dynamic> json) =
       _$_BusInfoData.fromJson;
 
   @override
-  String? get bstopnm;
+  String? get bstopnm => throw _privateConstructorUsedError;
   @override // 정류장명
-  int? get roint;
+  int? get roint => throw _privateConstructorUsedError;
   @override // 회차 정보(0: 일반, 1: 회차 정류장) // null 이 아닐것 같긴 함
-  String? get carno;
+  String? get carno => throw _privateConstructorUsedError;
   @override // 버스 차량 번호
-  int? get lowplate;
+  int? get lowplate => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BusInfoDataCopyWith<_BusInfoData> get copyWith =>
+  _$$_BusInfoDataCopyWith<_$_BusInfoData> get copyWith =>
       throw _privateConstructorUsedError;
 }

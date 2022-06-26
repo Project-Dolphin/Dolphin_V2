@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'response_shuttle_detail_dto.dart';
-
 part 'response_shuttle_data_dto.freezed.dart';
 part 'response_shuttle_data_dto.g.dart';
 

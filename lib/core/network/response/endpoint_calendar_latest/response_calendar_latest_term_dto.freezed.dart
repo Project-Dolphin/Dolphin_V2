@@ -12,30 +12,11 @@ part of 'response_calendar_latest_term_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LatestTerm _$LatestTermFromJson(Map<String, dynamic> json) {
   return _LatestTerm.fromJson(json);
 }
-
-/// @nodoc
-class _$LatestTermTearOff {
-  const _$LatestTermTearOff();
-
-  _LatestTerm call({String? startedAt, String? endedAt}) {
-    return _LatestTerm(
-      startedAt: startedAt,
-      endedAt: endedAt,
-    );
-  }
-
-  LatestTerm fromJson(Map<String, Object?> json) {
-    return LatestTerm.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LatestTerm = _$LatestTermTearOff();
 
 /// @nodoc
 mixin _$LatestTerm {
@@ -83,30 +64,31 @@ class _$LatestTermCopyWithImpl<$Res> implements $LatestTermCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$LatestTermCopyWith<$Res> implements $LatestTermCopyWith<$Res> {
-  factory _$LatestTermCopyWith(
-          _LatestTerm value, $Res Function(_LatestTerm) then) =
-      __$LatestTermCopyWithImpl<$Res>;
+abstract class _$$_LatestTermCopyWith<$Res>
+    implements $LatestTermCopyWith<$Res> {
+  factory _$$_LatestTermCopyWith(
+          _$_LatestTerm value, $Res Function(_$_LatestTerm) then) =
+      __$$_LatestTermCopyWithImpl<$Res>;
   @override
   $Res call({String? startedAt, String? endedAt});
 }
 
 /// @nodoc
-class __$LatestTermCopyWithImpl<$Res> extends _$LatestTermCopyWithImpl<$Res>
-    implements _$LatestTermCopyWith<$Res> {
-  __$LatestTermCopyWithImpl(
-      _LatestTerm _value, $Res Function(_LatestTerm) _then)
-      : super(_value, (v) => _then(v as _LatestTerm));
+class __$$_LatestTermCopyWithImpl<$Res> extends _$LatestTermCopyWithImpl<$Res>
+    implements _$$_LatestTermCopyWith<$Res> {
+  __$$_LatestTermCopyWithImpl(
+      _$_LatestTerm _value, $Res Function(_$_LatestTerm) _then)
+      : super(_value, (v) => _then(v as _$_LatestTerm));
 
   @override
-  _LatestTerm get _value => super._value as _LatestTerm;
+  _$_LatestTerm get _value => super._value as _$_LatestTerm;
 
   @override
   $Res call({
     Object? startedAt = freezed,
     Object? endedAt = freezed,
   }) {
-    return _then(_LatestTerm(
+    return _then(_$_LatestTerm(
       startedAt: startedAt == freezed
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
@@ -141,11 +123,12 @@ class _$_LatestTerm implements _LatestTerm {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LatestTerm &&
+            other is _$_LatestTerm &&
             const DeepCollectionEquality().equals(other.startedAt, startedAt) &&
             const DeepCollectionEquality().equals(other.endedAt, endedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -154,8 +137,8 @@ class _$_LatestTerm implements _LatestTerm {
 
   @JsonKey(ignore: true)
   @override
-  _$LatestTermCopyWith<_LatestTerm> get copyWith =>
-      __$LatestTermCopyWithImpl<_LatestTerm>(this, _$identity);
+  _$$_LatestTermCopyWith<_$_LatestTerm> get copyWith =>
+      __$$_LatestTermCopyWithImpl<_$_LatestTerm>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -164,17 +147,18 @@ class _$_LatestTerm implements _LatestTerm {
 }
 
 abstract class _LatestTerm implements LatestTerm {
-  factory _LatestTerm({String? startedAt, String? endedAt}) = _$_LatestTerm;
+  factory _LatestTerm({final String? startedAt, final String? endedAt}) =
+      _$_LatestTerm;
 
   factory _LatestTerm.fromJson(Map<String, dynamic> json) =
       _$_LatestTerm.fromJson;
 
   @override
-  String? get startedAt;
+  String? get startedAt => throw _privateConstructorUsedError;
   @override
-  String? get endedAt;
+  String? get endedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LatestTermCopyWith<_LatestTerm> get copyWith =>
+  _$$_LatestTermCopyWith<_$_LatestTerm> get copyWith =>
       throw _privateConstructorUsedError;
 }

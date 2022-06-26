@@ -1,17 +1,12 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/config/enum/calendar_class.dart';
 import 'package:oceanview/core/error/failures.dart';
 import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_data_dto.dart';
-import 'package:oceanview/core/network/response/endpoint_calendar_v2/response_calendar_data_v2_dto.dart';
-import 'package:oceanview/core/network/response/endpoint_calendar_v2/response_holiday_data_v2_dto.dart';
 import 'package:oceanview/domain/usecases/get_holiday_event.dart';
-import 'package:oceanview/domain/usecases/get_weekday_event.dart';
+import 'package:oceanview/domain/usecases/get_weekday_event_with_month.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/calendar_summary.dart';
 
 import 'calendar_wrapper.dart';
@@ -20,12 +15,17 @@ part 'campus_event_event.dart';
 part 'campus_event_state.dart';
 
 class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
-  final GetWeekdayEvent getWeekdayEvent;
+  final GetWeekdayEventWithMonth getWeekdayEvent;
   final GetHolidayEvent getHolidayEvent;
   late final DateTime firstDay;
   late final DateTime lastDay;
 
   final CalendarUtils calendarBase = CalendarUtils();
+
+  SpecificCalendarParam nodeParam = SpecificCalendarParam(
+    year: DateTime.now().year,
+    month: DateTime.now().month,
+  );
 
   CampusEventBloc({
     required this.getWeekdayEvent,
@@ -37,21 +37,7 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
   }
 
   Future<Either<Failure, List<WeekdayData>>> async1() async {
-    return await getWeekdayEvent.call();
-  }
-
-  Future<String> readCalendar() async {
-    final String response =
-        await rootBundle.loadString('assets/dummy_calendar.json');
-
-    return response;
-  }
-
-  Future<String> readHoliday() async {
-    final String response =
-        await rootBundle.loadString('assets/dummy_holiday.json');
-
-    return response;
+    return await getWeekdayEvent.call(nodeParam);
   }
 
   Future<void> _onAppLaunched(
@@ -63,34 +49,10 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
     firstDay = limits.first;
     lastDay = limits.last;
 
-    final String dummyCalendarResponse = await readCalendar();
-    final String dummyHolidayResponse = await readHoliday();
-    final calendarData = await json.decode(dummyCalendarResponse);
-    final holidayData = await json.decode(dummyHolidayResponse);
-
     List<CalendarSumamryWrapper> weekDayEvent =
         List<CalendarSumamryWrapper>.generate(
       32,
       (index) => CalendarSumamryWrapper(index: index, data: []),
-    );
-
-    calendarData['data'].forEach(
-      (e) {
-        int index = int.parse(e['term'].substring(6));
-        weekDayEvent[index].data.add(CalendarSumamry.fromCalendarData(
-              CalendarDataV2.fromJson(e),
-            ));
-      },
-    );
-
-    holidayData['data'].forEach(
-      (e) {
-        logger.d(e);
-        int index = int.parse(e['term'].substring(6));
-        weekDayEvent[index].data.add(CalendarSumamry.fromHolidayData(
-              HolidayDataV2.fromJson(e),
-            ));
-      },
     );
 
     await Future.wait([async1()]).then((data) {
@@ -102,16 +64,30 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
             emit(CampusEventError('NO_CONNECTION_ERROR'));
           }
         },
-        (success) {
+        (success) async* {
+          logger.d(success);
           eventList = success;
+          for (var e in eventList) {
+            final List<int> dateRange = getRange(e);
+
+            logger.d(dateRange);
+
+            dateRange.map(
+              (index) => weekDayEvent[index].data.add(
+                    CalendarSumamry.fromWeekdayData(
+                      e,
+                    ),
+                  ),
+            );
+          }
         },
       );
-    });
 
-    emit(CampusEventLoaded(
-      eventList: eventList,
-      calendarData: weekDayEvent,
-    ));
+      emit(CampusEventLoaded(
+        eventList: eventList,
+        calendarData: weekDayEvent,
+      ));
+    });
   }
 
   Future<void> _onDateChanged(
@@ -147,6 +123,24 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
       if (changedDate.isAfter(firstDay) && changedDate.isBefore(lastDay)) {
         emit(state.copyWith(selectedDay: changedDate));
       }
+    }
+  }
+
+  List<int> getRange(WeekdayData data) {
+    int startIndex = int.parse(data.term?.startedAt.split('-').last ?? '99');
+    int endIndex = int.parse(data.term?.endedAt.split('-').last ?? '99');
+
+    if (data.term != null &&
+        data.term?.startedAt.split('-')[1] !=
+            data.term?.endedAt.split('-')[1]) {
+      endIndex += CalendarUtils().endDays(DateTime.parse(data.term!.startedAt));
+    }
+
+    // null이면 일단 99로 처리할 것
+    if (startIndex != 99 && endIndex != 99) {
+      return [for (int i = startIndex; i <= endIndex; i++) i];
+    } else {
+      return [];
     }
   }
 }
