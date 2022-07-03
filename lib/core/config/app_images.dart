@@ -33,6 +33,10 @@ class AppImages {
   AppImage get icon_chevron_left =>
       const AppImage('${_iconPath}icon_chevron_left.svg');
 
+  AppImage get icon_bell => const AppImage('${_iconPath}icon_bell.svg');
+  AppImage get icon_bell_fill =>
+      const AppImage('${_iconPath}icon_bell_fill.svg');
+
   AppImage get icon_bus_selected =>
       const AppImage('${_iconPath}icon_bus_selected.svg');
   AppImage get icon_arrow_right =>

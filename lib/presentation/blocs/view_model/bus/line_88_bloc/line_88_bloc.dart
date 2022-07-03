@@ -18,6 +18,15 @@ class Line88Bloc extends Bloc<Line88Event, Line88State> {
 
   Line88Bloc({required this.getSpecificNodeBusInfo}) : super(Line88Loading()) {
     on<FetchLine88Info>(_onAppLaunched);
+    on<Refresh88Info>(_onBusInfoRefreshRequested);
+  }
+
+  Timer? _timer;
+
+  @override
+  Future<void> close() async {
+    _timer?.cancel();
+    super.close();
   }
 
   Future<void> _onAppLaunched(
@@ -26,6 +35,26 @@ class Line88Bloc extends Bloc<Line88Event, Line88State> {
   ) async {
     final result = await getSpecificNodeBusInfo.call(nodeParam);
     logger.d(result);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line88Error('SETTING_ERROR'));
+        } else {
+          emit(Line88Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        emit(Line88LoadedWithBusInfo(busInfo: success));
+      },
+    );
+  }
+
+  Future<void> _onBusInfoRefreshRequested(
+    Refresh88Info event,
+    Emitter<Line88State> emit,
+  ) async {
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
 
     result.fold(
       (failure) async* {

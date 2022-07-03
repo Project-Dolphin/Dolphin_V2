@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:oceanview/core/error/failures.dart';
-import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_all_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_month_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_holiday/response_holiday_data_dto.dart';
 import 'package:oceanview/data/datasources/event/event_local_datasource.dart';
 import 'package:oceanview/data/datasources/event/event_remote_datasource.dart';
@@ -16,9 +17,9 @@ class EventRepositoryImpl implements EventRepository {
     required this.localDataSource,
   });
   @override
-  Future<Either<Failure, List<WeekdayData>>> getWeekDayEvent() async {
+  Future<Either<Failure, CalendarAllWrapper>> getWeekDayEvent() async {
     try {
-      final List<WeekdayData> weekdayDataList =
+      final CalendarAllWrapper weekdayDataList =
           await remoteDataSource.getWeekdayCalendarData();
       try {
         await localDataSource.busLocalDummy();
@@ -50,12 +51,12 @@ class EventRepositoryImpl implements EventRepository {
   }
 
   @override
-  Future<Either<Failure, List<WeekdayData>>> getWeekDayEventWithMonth(
+  Future<Either<Failure, CalendarMonthWrapper>> getWeekDayEventWithMonth(
     int year,
     int month,
   ) async {
     try {
-      final List<WeekdayData> holidayDataList =
+      final CalendarMonthWrapper holidayDataList =
           await remoteDataSource.getWeekdayCalendarDataWithMonth(year, month);
       try {
         await localDataSource.busLocalDummy();

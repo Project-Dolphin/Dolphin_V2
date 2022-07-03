@@ -93,9 +93,9 @@ class ShuttleBusBloc extends Bloc<ShuttleBusEvent, ShuttleBusState> {
     ));
 
     // 타이머로 반복, 앱 종료 혹은 dispose 상태 시 종료
-    // _timer = Timer.periodic(Duration(seconds: 60), (timer) {
-    //   add(RefreshShuttleBusEvent());
-    // });
+    _timer = Timer.periodic(Duration(seconds: 60), (timer) {
+      add(RefreshShuttleBusEvent());
+    });
   }
 
   Future<void> _onBusInfoRefreshRequested(

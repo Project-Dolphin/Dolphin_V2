@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/common/oceanview_navigation_bar.dart';
 import 'package:oceanview/injection_container.dart';
@@ -17,8 +18,20 @@ import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data
 import 'package:oceanview/presentation/blocs/view_model/shuttle_bus_bloc/shuttle_bus_bloc.dart';
 import 'package:oceanview/presentation/page/widgets/page_view.dart';
 
-class DashBoard extends StatelessWidget {
-  const DashBoard({Key? key}) : super(key: key);
+class DashBoard extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _DashBoardState();
+  }
+}
+
+class _DashBoardState extends State<DashBoard> {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      FlutterAppBadger.removeBadge();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

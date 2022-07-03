@@ -1,18 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_month_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:retrofit/retrofit.dart';
 
 import 'response/endpoint_businfo_specific/response_businfo_specific_dto.dart';
-import 'response/endpoint_calendar/response_calendar_dto.dart';
+import 'response/endpoint_calendar/response_calendar_all_dto.dart';
 import 'response/endpoint_calendar_latest/response_calendar_latest_dto.dart';
 import 'response/endpoint_diet_dorm_today/response_diet_dorm_dto.dart';
 import 'response/endpoint_diet_society_today/response_diet_society_dto.dart';
 import 'response/endpoint_holiday/response_holiday_dto.dart';
 import 'response/endpoint_shuttle/response_shuttle_next_dto.dart';
 import 'response/endpoint_timetable_190/response_next_depart_190_dto.dart';
-import 'response/endpoint_weather_now/response_weather_now_dto.dart';
 
 part 'rest_client_service.g.dart';
 
@@ -22,10 +22,10 @@ abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   @GET('calendar')
-  Future<CalendarWrapper> getWeekdayCalendarData();
+  Future<CalendarAllWrapper> getWeekdayCalendarData();
 
   @GET('calendar')
-  Future<CalendarWrapper> getWeekdayCalendarDataWithMonth(
+  Future<CalendarMonthWrapper> getWeekdayCalendarDataWithMonth(
     @Query("year") int year,
     @Query("month") int month,
   );

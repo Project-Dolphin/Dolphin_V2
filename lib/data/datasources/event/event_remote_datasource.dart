@@ -1,12 +1,13 @@
 import 'package:oceanview/core/error/exceptions.dart';
-import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_all_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_month_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_holiday/response_holiday_data_dto.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
 
 abstract class EventRemoteDataSource {
   // TODO : Add Specific Node Api
-  Future<List<WeekdayData>> getWeekdayCalendarData();
-  Future<List<WeekdayData>> getWeekdayCalendarDataWithMonth(
+  Future<CalendarAllWrapper> getWeekdayCalendarData();
+  Future<CalendarMonthWrapper> getWeekdayCalendarDataWithMonth(
     int year,
     int month,
   );
@@ -19,13 +20,13 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   EventRemoteDataSourceImpl({required this.restClientService});
 
   @override
-  Future<List<WeekdayData>> getWeekdayCalendarData() async {
+  Future<CalendarAllWrapper> getWeekdayCalendarData() async {
     final response = await restClientService.getWeekdayCalendarData();
-    if (response.data?.isEmpty ?? true) {
-      throw ServerException();
-    }
+    // if (response.calendar.isEmpty) {
+    //   throw ServerException();
+    // }
 
-    return response.data!;
+    return response;
   }
 
   @override
@@ -39,16 +40,16 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   }
 
   @override
-  Future<List<WeekdayData>> getWeekdayCalendarDataWithMonth(
+  Future<CalendarMonthWrapper> getWeekdayCalendarDataWithMonth(
     int year,
     int month,
   ) async {
     final response =
         await restClientService.getWeekdayCalendarDataWithMonth(year, month);
-    if (response.data?.isEmpty ?? true) {
-      throw ServerException();
-    }
+    // if (response.data?.isEmpty ?? true) {
+    //   throw ServerException();
+    // }
 
-    return response.data!;
+    return response;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/core/network/response/endpoint_shuttle/response_shuttle_data_dto.dart';
 
@@ -62,7 +61,7 @@ class ShuttleBusDetail extends StatelessWidget {
                   return Row(
                     children: [
                       Text(
-                        '${remainTime(firstBus)}분',
+                        '${firstBus.remainMinutes}분',
                         style: textStyleBold(
                           Theme.of(context).colorScheme.onPrimary,
                           18,
@@ -78,9 +77,9 @@ class ShuttleBusDetail extends StatelessWidget {
                       ),
                       const SizedBox(width: 20),
                       Text(
-                        remainTime(secondBus) == 999
-                            ? '버스가 없어요'
-                            : '${remainTime(secondBus)}분',
+                        secondBus.remainMinutes != null
+                            ? '${secondBus.remainMinutes}분'
+                            : '버스가 없어요',
                         style: textStyleBold(
                           Theme.of(context).colorScheme.onPrimary,
                           18,
@@ -96,25 +95,5 @@ class ShuttleBusDetail extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  int remainTime(ShuttleDataDto busInfo) {
-    logger.d(busInfo);
-    if (busInfo.time == null) {
-      return 999;
-    }
-    final DateTime now = DateTime.now();
-    final DateTime next = DateTime(
-      now.year,
-      now.month,
-      now.day,
-      int.parse(busInfo.time?.substring(0, 2) ?? '0'),
-      int.parse(busInfo.time?.substring(3, 5) ?? '0'),
-    );
-
-    logger.d(now);
-    logger.d(next);
-
-    return next.difference(now).inMinutes;
   }
 }

@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:oceanview/core/network/interceptor.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
 import 'package:oceanview/core/utils/constants.dart';
+import 'package:oceanview/core/utils/notification_utils.dart';
 import 'package:oceanview/data/datasources/city_bus/city_bus_local_datasource.dart';
 import 'package:oceanview/data/datasources/city_bus/city_bus_remote_datasource.dart';
 import 'package:oceanview/data/datasources/diet/diet_local_datasource.dart';
@@ -73,6 +74,7 @@ Future<void> init() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
   sl.registerSingleton<SharedPreferences>(sharedPreferences);
+  await NotificationManager.init();
 
   //Blocs
 
@@ -156,6 +158,7 @@ Future<void> init() async {
     () => CampusEventBloc(
       getHolidayEvent: sl(),
       getWeekdayEvent: sl(),
+      getAllEvent: sl(),
     )..add(CampusEventInited()),
   );
 

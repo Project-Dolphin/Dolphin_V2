@@ -14,10 +14,39 @@ part 'line_8_state.dart';
 class Line8Bloc extends Bloc<Line8Event, Line8State> {
   final GetSpecificNodeBusInfo getSpecificNodeBusInfo;
   SpecificNodeParam nodeParam =
-      const SpecificNodeParam(busStop: BUS_STOP.BUSAN_STATION, busNumber: 8);
+      const SpecificNodeParam(busStop: BUS_STOP.YEONGDO_BRIDGE, busNumber: 8);
 
   Line8Bloc({required this.getSpecificNodeBusInfo}) : super(Line8Loading()) {
     on<FetchLine8Info>(_onAppLaunched);
+    on<Refresh8Info>(_onBusInfoRefreshRequested);
+  }
+
+  Timer? _timer;
+
+  @override
+  Future<void> close() async {
+    _timer?.cancel();
+    super.close();
+  }
+
+  Future<void> _onBusInfoRefreshRequested(
+    Refresh8Info event,
+    Emitter<Line8State> emit,
+  ) async {
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line8Error('SETTING_ERROR'));
+        } else {
+          emit(Line8Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        emit(Line8LoadedWithBusInfo(busInfo: success));
+      },
+    );
   }
 
   Future<void> _onAppLaunched(

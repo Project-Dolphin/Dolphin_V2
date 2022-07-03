@@ -14,10 +14,18 @@ part 'line_66_state.dart';
 class Line66Bloc extends Bloc<Line66Event, Line66State> {
   final GetSpecificNodeBusInfo getSpecificNodeBusInfo;
   SpecificNodeParam nodeParam =
-      const SpecificNodeParam(busStop: BUS_STOP.BUSAN_STATION, busNumber: 101);
+      const SpecificNodeParam(busStop: BUS_STOP.BUSAN_STATION, busNumber: 66);
+  Timer? _timer;
+
+  @override
+  Future<void> close() async {
+    _timer?.cancel();
+    super.close();
+  }
 
   Line66Bloc({required this.getSpecificNodeBusInfo}) : super(Line66Loading()) {
     on<FetchLine66Info>(_onAppLaunched);
+    on<Refresh66Info>(_onBusInfoRefreshRequested);
   }
 
   Future<void> _onAppLaunched(
@@ -26,6 +34,26 @@ class Line66Bloc extends Bloc<Line66Event, Line66State> {
   ) async {
     final result = await getSpecificNodeBusInfo.call(nodeParam);
     logger.d(result);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line66Error('SETTING_ERROR'));
+        } else {
+          emit(Line66Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        emit(Line66LoadedWithBusInfo(busInfo: success));
+      },
+    );
+  }
+
+  Future<void> _onBusInfoRefreshRequested(
+    Refresh66Info event,
+    Emitter<Line66State> emit,
+  ) async {
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
 
     result.fold(
       (failure) async* {

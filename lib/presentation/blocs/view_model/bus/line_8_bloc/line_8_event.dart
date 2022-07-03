@@ -6,3 +6,8 @@ class FetchLine8Info extends Line8Event {
   @override
   List<Object?> get props => [];
 }
+
+class Refresh8Info extends Line8Event {
+  @override
+  List<Object?> get props => [];
+}
