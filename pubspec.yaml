@@ -52,6 +52,8 @@ dependencies:
   pretty_dio_logger: ^1.2.0-beta-1
   geolocator: ^8.2.0
   shimmer: ^2.0.0
+  flutter_local_notifications: ^9.6.1
+  flutter_app_badger: ^1.4.0
 
 dev_dependencies:
   flutter_test:

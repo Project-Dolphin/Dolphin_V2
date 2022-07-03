@@ -17,10 +17,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: Colors.transparent,
         foregroundColor: Colors.transparent,
         elevation: 0,
-        title: const OceanViewTitle(),
+        title: Transform(
+          // you can forcefully translate values left side using Transform
+          transform: Matrix4.translationValues(-60.0, 0.0, 0.0),
+          child: const OceanViewTitle(),
+        ),
       ),
       extendBody: true,
       body: SingleChildScrollView(

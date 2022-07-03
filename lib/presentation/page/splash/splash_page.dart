@@ -16,7 +16,8 @@ class SplashPage extends StatelessWidget {
         child: BlocListener<SplashPageBloc, SplashPageState>(
           listener: (context, state) {
             if (state is SplashLoaded) {
-              Navigator.pushReplacementNamed(
+              Navigator.pop(context);
+              Navigator.pushNamed(
                 context,
                 AppConstants.HOME_ROUTE,
               );

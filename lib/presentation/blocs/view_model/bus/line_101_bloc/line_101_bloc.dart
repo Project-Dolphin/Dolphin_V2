@@ -19,6 +19,15 @@ class Line101Bloc extends Bloc<Line101Event, Line101State> {
   Line101Bloc({required this.getSpecificNodeBusInfo})
       : super(Line101Loading()) {
     on<FetchLine101Info>(_onAppLaunched);
+    on<Refresh101Info>(_onBusInfoRefreshRequested);
+  }
+
+  Timer? _timer;
+
+  @override
+  Future<void> close() async {
+    _timer?.cancel();
+    super.close();
   }
 
   Future<void> _onAppLaunched(
@@ -27,6 +36,26 @@ class Line101Bloc extends Bloc<Line101Event, Line101State> {
   ) async {
     final result = await getSpecificNodeBusInfo.call(nodeParam);
     logger.d(result);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line101Error('SETTING_ERROR'));
+        } else {
+          emit(Line101Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        emit(Line101LoadedWithBusInfo(busInfo: success));
+      },
+    );
+  }
+
+  Future<void> _onBusInfoRefreshRequested(
+    Refresh101Info event,
+    Emitter<Line101State> emit,
+  ) async {
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
 
     result.fold(
       (failure) async* {

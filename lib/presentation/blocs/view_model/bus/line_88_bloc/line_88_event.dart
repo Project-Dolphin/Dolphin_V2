@@ -6,3 +6,8 @@ class FetchLine88Info extends Line88Event {
   @override
   List<Object?> get props => [];
 }
+
+class Refresh88Info extends Line88Event {
+  @override
+  List<Object?> get props => [];
+}
