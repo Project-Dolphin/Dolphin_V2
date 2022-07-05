@@ -33,6 +33,9 @@ class BusBox extends StatelessWidget {
               if (state is Line190LoadedWithBusInfo) {
                 return BusDetail(
                   data: state.busInfo,
+                  selectedBusStop:
+                      context.read<Line190Bloc>().nodeParam.busStop,
+                  busStopList: [],
                 );
               }
 

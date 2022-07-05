@@ -16,6 +16,11 @@ class Line30Bloc extends Bloc<Line30Event, Line30State> {
   SpecificNodeParam nodeParam =
       const SpecificNodeParam(busStop: BUS_STOP.YEONGDO_BRIDGE, busNumber: 30);
 
+  List<BUS_STOP> paramList = [
+    BUS_STOP.KMOU_ENTRANCE,
+    BUS_STOP.YEONGDO_BRIDGE,
+  ];
+
   Timer? _timer;
 
   @override
@@ -27,6 +32,7 @@ class Line30Bloc extends Bloc<Line30Event, Line30State> {
   Line30Bloc({required this.getSpecificNodeBusInfo}) : super(Line30Loading()) {
     on<FetchLine30Info>(_onAppLaunched);
     on<Refresh30Info>(_onBusInfoRefreshRequested);
+    on<Change30Node>(_onNodeParamChangeRequested);
   }
 
   Future<void> _onAppLaunched(
@@ -45,7 +51,8 @@ class Line30Bloc extends Bloc<Line30Event, Line30State> {
         }
       },
       (success) {
-        emit(Line30LoadedWithBusInfo(busInfo: success));
+        emit(Line30LoadedWithBusInfo(
+            selectedBusStop: nodeParam.busStop, busInfo: success));
       },
     );
 
@@ -69,8 +76,43 @@ class Line30Bloc extends Bloc<Line30Event, Line30State> {
         }
       },
       (success) {
-        emit(Line30LoadedWithBusInfo(busInfo: success));
+        final state = this.state;
+        if (state is Line30LoadedWithBusInfo) {
+          emit(state.copyWith(busInfo: success));
+        }
       },
     );
+  }
+
+  Future<void> _onNodeParamChangeRequested(
+    Change30Node event,
+    Emitter<Line30State> emit,
+  ) async {
+    nodeParam = nodeParam.copyWith(busStop: event.changedNode);
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line30Error('SETTING_ERROR'));
+        } else {
+          emit(Line30Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        final state = this.state;
+        if (state is Line30LoadedWithBusInfo) {
+          emit(state.copyWith(
+            busInfo: success,
+            selectedBusStop: event.changedNode,
+          ));
+        }
+      },
+    );
+
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 60), (timer) {
+      add(Refresh30Info());
+    });
   }
 }

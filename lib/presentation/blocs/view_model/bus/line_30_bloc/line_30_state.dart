@@ -8,12 +8,26 @@ class Line30Loading extends Line30State {
 }
 
 class Line30LoadedWithBusInfo extends Line30State {
-  Line30LoadedWithBusInfo({required this.busInfo});
+  Line30LoadedWithBusInfo({
+    required this.selectedBusStop,
+    required this.busInfo,
+  });
 
   final NodeInfoData busInfo;
+  final BUS_STOP selectedBusStop;
+
+  Line30LoadedWithBusInfo copyWith({
+    BUS_STOP? selectedBusStop,
+    NodeInfoData? busInfo,
+  }) {
+    return Line30LoadedWithBusInfo(
+      selectedBusStop: selectedBusStop ?? this.selectedBusStop,
+      busInfo: busInfo ?? this.busInfo,
+    );
+  }
 
   @override
-  List<Object?> get props => [busInfo];
+  List<Object?> get props => [busInfo, selectedBusStop];
 }
 
 class Line30LoadedWithEmptyList extends Line30State {

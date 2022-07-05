@@ -16,6 +16,12 @@ class Line8Bloc extends Bloc<Line8Event, Line8State> {
   SpecificNodeParam nodeParam =
       const SpecificNodeParam(busStop: BUS_STOP.YEONGDO_BRIDGE, busNumber: 8);
 
+  // TODO : 수정해야함, 8번 용 맞춰서
+  List<BUS_STOP> paramList = [
+    BUS_STOP.KMOU_ENTRANCE,
+    BUS_STOP.YEONGDO_BRIDGE,
+  ];
+
   Line8Bloc({required this.getSpecificNodeBusInfo}) : super(Line8Loading()) {
     on<FetchLine8Info>(_onAppLaunched);
     on<Refresh8Info>(_onBusInfoRefreshRequested);

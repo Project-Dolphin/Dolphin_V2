@@ -16,6 +16,11 @@ class Line101Bloc extends Bloc<Line101Event, Line101State> {
   SpecificNodeParam nodeParam =
       const SpecificNodeParam(busStop: BUS_STOP.BUSAN_STATION, busNumber: 101);
 
+  List<BUS_STOP> paramList = [
+    BUS_STOP.KMOU_ENTRANCE,
+    BUS_STOP.BUSAN_STATION,
+  ];
+
   Line101Bloc({required this.getSpecificNodeBusInfo})
       : super(Line101Loading()) {
     on<FetchLine101Info>(_onAppLaunched);

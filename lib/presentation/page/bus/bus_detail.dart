@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:oceanview/core/config/enum/bus_stop_enum.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
+import 'package:oceanview/presentation/page/bus/bus_drop_down_button.dart';
 import 'package:oceanview/presentation/page/bus/bus_with_bell.dart';
 
 class BusDetail extends StatelessWidget {
-  const BusDetail({required this.data, Key? key}) : super(key: key);
+  const BusDetail({
+    required this.data,
+    required this.selectedBusStop,
+    required this.busStopList,
+    this.busCallBack,
+    Key? key,
+  }) : super(key: key);
 
   final NodeInfoData data;
+  final List<BUS_STOP> busStopList;
+
+  final BUS_STOP selectedBusStop;
+  final Function(BUS_STOP)? busCallBack;
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +47,10 @@ class BusDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                '학교종점',
-                style: textStyleNormal(
-                  Theme.of(context).colorScheme.onPrimary,
-                  14,
-                ),
+              BusDropDownButton(
+                selectedBusStop: selectedBusStop,
+                busStopList: busStopList,
+                busCallBack: busCallBack,
               ),
               Builder(
                 builder: (context) {

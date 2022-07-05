@@ -54,7 +54,12 @@ class BusPage extends StatelessWidget {
                     builder: ((context, state) {
                       logger.d(state);
                       if (state is Line190LoadedWithBusInfo) {
-                        return BusDetail(data: state.busInfo);
+                        return BusDetail(
+                          data: state.busInfo,
+                          selectedBusStop:
+                              context.read<Line190Bloc>().nodeParam.busStop,
+                          busStopList: [],
+                        );
                       }
 
                       return const Text('');
@@ -69,7 +74,12 @@ class BusPage extends StatelessWidget {
                         builder: ((context, state) {
                           logger.d(state);
                           if (state is Line101LoadedWithBusInfo) {
-                            return BusDetail(data: state.busInfo);
+                            return BusDetail(
+                              data: state.busInfo,
+                              selectedBusStop:
+                                  context.read<Line190Bloc>().nodeParam.busStop,
+                              busStopList: [],
+                            );
                           }
 
                           return const Text('');
@@ -80,7 +90,12 @@ class BusPage extends StatelessWidget {
                         builder: ((context, state) {
                           logger.d(state);
                           if (state is Line66LoadedWithBusInfo) {
-                            return BusDetail(data: state.busInfo);
+                            return BusDetail(
+                              data: state.busInfo,
+                              selectedBusStop:
+                                  context.read<Line190Bloc>().nodeParam.busStop,
+                              busStopList: [],
+                            );
                           }
 
                           return const Text('');
@@ -91,7 +106,12 @@ class BusPage extends StatelessWidget {
                         builder: ((context, state) {
                           logger.d(state);
                           if (state is Line88LoadedWithBusInfo) {
-                            return BusDetail(data: state.busInfo);
+                            return BusDetail(
+                              data: state.busInfo,
+                              selectedBusStop:
+                                  context.read<Line190Bloc>().nodeParam.busStop,
+                              busStopList: [],
+                            );
                           }
 
                           return const Text('');
@@ -108,7 +128,14 @@ class BusPage extends StatelessWidget {
                         builder: ((context, state) {
                           logger.d(state);
                           if (state is Line30LoadedWithBusInfo) {
-                            return BusDetail(data: state.busInfo);
+                            return BusDetail(
+                              data: state.busInfo,
+                              selectedBusStop: state.selectedBusStop,
+                              busStopList: context.read<Line30Bloc>().paramList,
+                              busCallBack: (busInfo) => context
+                                  .read<Line30Bloc>()
+                                  .add(Change30Node(busInfo)),
+                            );
                           }
 
                           return const Text('');
@@ -119,7 +146,12 @@ class BusPage extends StatelessWidget {
                         builder: ((context, state) {
                           logger.d(state);
                           if (state is Line186LoadedWithBusInfo) {
-                            return BusDetail(data: state.busInfo);
+                            return BusDetail(
+                              data: state.busInfo,
+                              selectedBusStop:
+                                  context.read<Line190Bloc>().nodeParam.busStop,
+                              busStopList: [],
+                            );
                           }
 
                           return const Text('');

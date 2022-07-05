@@ -16,6 +16,11 @@ class Line186Bloc extends Bloc<Line186Event, Line186State> {
   SpecificNodeParam nodeParam =
       const SpecificNodeParam(busStop: BUS_STOP.YEONGDO_BRIDGE, busNumber: 186);
 
+  List<BUS_STOP> paramList = [
+    BUS_STOP.KMOH_MAIN,
+    BUS_STOP.YEONGDO_BRIDGE,
+  ];
+
   Line186Bloc({required this.getSpecificNodeBusInfo})
       : super(Line186Loading()) {
     on<FetchLine186Info>(_onAppLaunched);

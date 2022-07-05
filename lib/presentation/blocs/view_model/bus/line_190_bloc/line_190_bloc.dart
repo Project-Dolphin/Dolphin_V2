@@ -15,6 +15,12 @@ class Line190Bloc extends Bloc<Line190Event, Line190State> {
   SpecificNodeParam nodeParam =
       const SpecificNodeParam(busStop: BUS_STOP.BUSAN_STATION, busNumber: 190);
 
+  List<BUS_STOP> paramList = [
+    BUS_STOP.KMOU_MAIN,
+    BUS_STOP.YEONGDO_BRIDGE,
+    BUS_STOP.BUSAN_STATION,
+  ];
+
   Line190Bloc({required this.getSpecificNodeBusInfo})
       : super(Line190Loading()) {
     on<FetchLine190Info>(_onAppLaunched);
