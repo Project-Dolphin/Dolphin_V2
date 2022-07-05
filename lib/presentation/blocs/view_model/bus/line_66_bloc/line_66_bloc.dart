@@ -15,6 +15,13 @@ class Line66Bloc extends Bloc<Line66Event, Line66State> {
   final GetSpecificNodeBusInfo getSpecificNodeBusInfo;
   SpecificNodeParam nodeParam =
       const SpecificNodeParam(busStop: BUS_STOP.BUSAN_STATION, busNumber: 66);
+
+  List<BUS_STOP> paramList = [
+    BUS_STOP.KMOU_ENTRANCE,
+    BUS_STOP.YEONGDO_BRIDGE,
+    BUS_STOP.BUSAN_STATION,
+  ];
+
   Timer? _timer;
 
   @override

@@ -16,6 +16,12 @@ class Line88Bloc extends Bloc<Line88Event, Line88State> {
   SpecificNodeParam nodeParam =
       const SpecificNodeParam(busStop: BUS_STOP.BUSAN_STATION, busNumber: 88);
 
+  List<BUS_STOP> paramList = [
+    BUS_STOP.KMOH_MAIN,
+    BUS_STOP.YEONGDO_BRIDGE,
+    BUS_STOP.BUSAN_STATION,
+  ];
+
   Line88Bloc({required this.getSpecificNodeBusInfo}) : super(Line88Loading()) {
     on<FetchLine88Info>(_onAppLaunched);
     on<Refresh88Info>(_onBusInfoRefreshRequested);

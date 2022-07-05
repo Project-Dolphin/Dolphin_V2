@@ -17,6 +17,9 @@ class AppImages {
   AppImage get logo_light => const AppImage('${_logoPath}logo_light.svg');
   AppImage get logo_dark => const AppImage('${_logoPath}logo_dark.svg');
 
+  AppImage get icon_drop_down =>
+      const AppImage('${_iconPath}icon_drop_down.svg');
+
   AppImage get icon_bus => const AppImage('${_iconPath}icon_bus.svg');
   AppImage get icon_calendar => const AppImage('${_iconPath}icon_calendar.svg');
   AppImage get icon_diet => const AppImage('${_iconPath}icon_diet.svg');
