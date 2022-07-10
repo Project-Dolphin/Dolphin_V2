@@ -70,7 +70,8 @@ class CalendarWidget extends StatelessWidget {
                           : Colors.transparent,
                       width: 1,
                     ),
-                    color: index == state.today.day
+                    color: index == DateTime.now().day &&
+                            state.selectedDay.month == DateTime.now().month
                         ? Theme.of(context).primaryColor
                         : Colors.transparent,
                     shape: BoxShape.circle,
@@ -78,7 +79,8 @@ class CalendarWidget extends StatelessWidget {
                   child: Text(
                     '$index',
                     style: textStyleNormal(
-                      index == state.today.day
+                      index == DateTime.now().day &&
+                              state.selectedDay.month == DateTime.now().month
                           ? Colors.white
                           : Theme.of(context).colorScheme.onPrimary,
                       16,
