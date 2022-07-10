@@ -21,7 +21,7 @@ class CampusEventPage extends StatelessWidget {
               pinned: true,
               delegate: CalendarHeaderSliverDelegate(
                 minHeight: 70.0,
-                maxHeight: 120.0,
+                maxHeight: 130.0,
               ),
             ),
             // SliverPersistentHeader(
