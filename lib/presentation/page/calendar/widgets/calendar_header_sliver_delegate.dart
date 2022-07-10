@@ -109,7 +109,7 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
               ),
             ),
             Builder(builder: (context) {
-              if (shrinkOffset / maxExtent < 0.17) {
+              if (shrinkOffset / maxExtent < 0.02) {
                 return Expanded(
                   child: BlocBuilder<CampusEventBloc, CampusEventState>(
                     builder: (context, state) {

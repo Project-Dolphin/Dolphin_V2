@@ -29,6 +29,9 @@ class AppImages {
       const AppImage('${_iconPath}icon_list_bullet.svg');
   AppImage get icon_magnify => const AppImage('${_iconPath}icon_magnify.svg');
 
+  AppImage get icon_noti_dialog_bell =>
+      const AppImage('${_iconPath}icon_noti_dialog_bell.svg');
+
   AppImage get icon_chevron_up =>
       const AppImage('${_iconPath}icon_chevron_up.svg');
   AppImage get icon_chevron_down =>

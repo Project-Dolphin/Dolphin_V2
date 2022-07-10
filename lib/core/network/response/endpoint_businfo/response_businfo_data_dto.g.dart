@@ -9,15 +9,15 @@ part of 'response_businfo_data_dto.dart';
 _$_BusInfoData _$$_BusInfoDataFromJson(Map<String, dynamic> json) =>
     _$_BusInfoData(
       bstopnm: json['bstopnm'] as String?,
-      roint: json['roint'] as int?,
+      rpoint: json['rpoint'] as int? ?? 0,
       carno: json['carno'] as String?,
-      lowplate: json['lowplate'] as int?,
+      lowplate: json['lowplate'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_BusInfoDataToJson(_$_BusInfoData instance) =>
     <String, dynamic>{
       'bstopnm': instance.bstopnm,
-      'roint': instance.roint,
+      'rpoint': instance.rpoint,
       'carno': instance.carno,
       'lowplate': instance.lowplate,
     };

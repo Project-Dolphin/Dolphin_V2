@@ -1,10 +1,11 @@
 import 'package:oceanview/core/error/exceptions.dart';
 import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_dto.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
 
 abstract class CityBusRemoteDataSource {
   // TODO : Add Specific Node Api
-  Future<List<NodeInfoData>> getOperationBusInfo(int busNumber);
+  Future<SpecificBusInfoWrapper> getOperationBusInfo(int busNumber);
   Future<NodeInfoData> getSpecificNodeBusInfo(
     String busStopName,
     int busNumber,
@@ -17,13 +18,13 @@ class CityBusRemoteDataSourceImpl extends CityBusRemoteDataSource {
   CityBusRemoteDataSourceImpl({required this.restClientService});
 
   @override
-  Future<List<NodeInfoData>> getOperationBusInfo(int busNumber) async {
+  Future<SpecificBusInfoWrapper> getOperationBusInfo(int busNumber) async {
     final response = await restClientService.getOperationBusInfo(busNumber);
-    if (response.data.isEmpty) {
+    if (response.busNumber == null) {
       throw ServerException();
     }
 
-    return response.data; // ?? [];
+    return response; // ?? [];
   }
 
   @override

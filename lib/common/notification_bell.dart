@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:oceanview/core/config/enum/notification_type_enum.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/core/utils/notification_utils.dart';
 
@@ -35,18 +36,24 @@ class _NotificationBellState extends State<NotificationBell> {
     return GestureDetector(
       onTap: isClicked
           ? () {
-              NotificationManager().cancelNotification(widget.id);
+              NotificationManager.cancelNotification(widget.id);
+              NotificationManager.onShowConfirmMessage(context);
 
               setState(() {
                 isClicked = !isClicked;
               });
             }
           : () {
-              NotificationManager().registerBusMessage(
+              NotificationManager.registerBusMessage(
                 id: widget.id,
                 hour: widget.hour,
                 minutes: widget.minutes,
                 message: 'message',
+              );
+
+              NotificationManager.onShowConfirmMessage(
+                context,
+                type: NOTIFICATION_TYPE.BUS,
               );
 
               setState(() {

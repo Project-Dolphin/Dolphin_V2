@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:oceanview/core/config/enum/notification_type_enum.dart';
+import 'package:oceanview/core/config/r.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -46,12 +49,12 @@ class NotificationManager {
     await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
 
-  Future<void> cancelNotificationAll() async {
+  static Future<void> cancelNotificationAll() async {
     await _flutterLocalNotificationsPlugin.cancelAll();
     messageIdList.clear();
   }
 
-  Future<void> cancelNotification(int id) async {
+  static Future<void> cancelNotification(int id) async {
     await _flutterLocalNotificationsPlugin.cancel(id);
     messageIdList.removeWhere((element) => element == id);
   }
@@ -67,7 +70,7 @@ class NotificationManager {
         );
   }
 
-  Future<void> registerBusMessage({
+  static Future<void> registerBusMessage({
     required int id,
     required int hour,
     required int minutes,
@@ -106,6 +109,50 @@ class NotificationManager {
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
+    );
+  }
+
+  static void onShowConfirmMessage(
+    BuildContext context, {
+    NOTIFICATION_TYPE type = NOTIFICATION_TYPE.CANCLE,
+  }) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return Center(
+          child: Container(
+            width: 250,
+            height: 140,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Theme.of(context).canvasColor,
+            ),
+            child: Column(
+              children: [
+                const SizedBox(height: 10),
+                R.image.icon_noti_dialog_bell.svgPictureSize(size: 40),
+                Expanded(
+                  child: Center(
+                    child: Text(type.notiMessage),
+                  ),
+                ),
+                Divider(
+                  height: 1,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: const Padding(
+                    padding: EdgeInsets.only(top: 6.5, bottom: 10),
+                    child: Text('확인'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
