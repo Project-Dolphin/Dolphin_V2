@@ -45,7 +45,7 @@ abstract class RestClient {
     @Query("busNumber") int busNumber,
   );
 
-  @GET('bus/businfo')
+  @GET('bus/info')
   Future<SpecificBusInfoWrapper> getOperationBusInfo(
     @Query("busNumber") int busNumber,
   );

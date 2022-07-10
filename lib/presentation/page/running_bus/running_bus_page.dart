@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/config/r.dart';
-import 'package:oceanview/core/utils/constants.dart';
 import 'package:oceanview/injection_container.dart';
 import 'package:oceanview/presentation/blocs/view_model/running_bus_bloc/running_bus_bloc.dart';
 import 'package:oceanview/presentation/page/running_bus/bus_info_list_view.dart';
@@ -38,85 +37,104 @@ class RunningBusPage extends StatelessWidget {
             ),
           ),
           SliverList(
-              delegate: SliverChildListDelegate([
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '190번 버스',
-                    style: textStyleBold(
-                        Theme.of(context).colorScheme.onPrimary, 24),
-                  ),
-                  const SizedBox(height: 14),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(left: 7),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            left: BorderSide(
+            delegate: SliverChildListDelegate([
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '190번 버스',
+                      style: textStyleBold(
+                          Theme.of(context).colorScheme.onPrimary, 24),
+                    ),
+                    const SizedBox(height: 14),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(left: 7),
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(
                                 color: Theme.of(context).primaryColor,
-                                width: 1),
+                                width: 1.5,
+                              ),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '운행시간',
+                                style: textStyleNormal(
+                                    Theme.of(context).colorScheme.onPrimary,
+                                    14),
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                '04:55 ~ 21:50',
+                                style: textStyle600(
+                                  Theme.of(context).colorScheme.onPrimary,
+                                  14,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '운행시간',
-                              style: textStyleNormal(
-                                  Theme.of(context).colorScheme.onPrimary, 14),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              '04:55 ~ 21:50',
-                              style: textStyle600(
-                                  Theme.of(context).colorScheme.onPrimary, 14),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 33),
-                      Container(
-                        padding: const EdgeInsets.only(left: 7),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            left: BorderSide(
+                        const SizedBox(width: 33),
+                        Container(
+                          padding: const EdgeInsets.only(left: 7),
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(
                                 color: Theme.of(context).primaryColor,
-                                width: 1),
+                                width: 1.5,
+                              ),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '배차간격',
+                                style: textStyleNormal(
+                                    Theme.of(context).colorScheme.onPrimary,
+                                    14),
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                '19분',
+                                style: textStyle600(
+                                    Theme.of(context).colorScheme.onPrimary,
+                                    14),
+                              ),
+                            ],
                           ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '배차간격',
-                              style: textStyleNormal(
-                                  Theme.of(context).colorScheme.onPrimary, 14),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              '19분',
-                              style: textStyle600(
-                                  Theme.of(context).colorScheme.onPrimary, 14),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Text(
-              AppConstants.station_190.first['nodeName'],
-              style: textStyleBold(Theme.of(context).colorScheme.onPrimary, 14),
-            ),
-            const BusInfoListView(),
-          ])),
+              BlocBuilder<RunningBusPageBloc, RunningBusPageState>(
+                builder: (context, state) {
+                  if (state is RunningBusLoaded) {
+                    return Center(
+                      child: Text(
+                        state.busInfo.busStopInfo.first.bstopnm ?? '',
+                        style: textStyleBold(
+                            Theme.of(context).colorScheme.onPrimary, 14),
+                      ),
+                    );
+                  }
+
+                  return SizedBox();
+                },
+              ),
+              const BusInfoListView(),
+            ]),
+          ),
           const SliverPadding(padding: EdgeInsets.symmetric(vertical: 20))
         ]),
       ),

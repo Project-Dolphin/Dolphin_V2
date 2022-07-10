@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/common/logger.dart';
 import 'package:oceanview/core/error/failures.dart';
 import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_dto.dart';
 import 'package:oceanview/domain/usecases/get_running_city_bus_list.dart';
 
 part 'running_bus_event.dart';
@@ -30,6 +32,7 @@ class RunningBusPageBloc
         }
       },
       (success) {
+        logger.d(success);
         emit(RunningBusLoaded(busInfo: success)); // busFilter(success)));
       },
     );

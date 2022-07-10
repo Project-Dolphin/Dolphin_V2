@@ -19,12 +19,12 @@ class RunningBusLoaded extends RunningBusPageState {
   RunningBusLoaded({
     required this.busInfo,
   });
-  final List<NodeInfoData> busInfo;
+  final SpecificBusInfoWrapper busInfo;
   @override
-  List<Object?> get props => [busInfo];
+  List<Object> get props => [busInfo];
 
   RunningBusLoaded copyWith({
-    List<NodeInfoData>? busInfo,
+    SpecificBusInfoWrapper? busInfo,
   }) {
     return RunningBusLoaded(
       busInfo: busInfo ?? this.busInfo,

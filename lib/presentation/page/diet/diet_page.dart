@@ -26,8 +26,8 @@ class DietPage extends StatelessWidget {
             SliverPersistentHeader(
               pinned: true,
               delegate: DietHeaderSliverDelegate(
-                minHeight: 40.0,
-                maxHeight: 150.0,
+                minHeight: 70.0,
+                maxHeight: 130.0,
               ),
             ),
             SliverList(

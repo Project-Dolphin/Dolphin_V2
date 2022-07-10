@@ -9,14 +9,16 @@ part of 'response_businfo_specific_dto.dart';
 _$_SpecificBusInfoWrapper _$$_SpecificBusInfoWrapperFromJson(
         Map<String, dynamic> json) =>
     _$_SpecificBusInfoWrapper(
-      data: (json['data'] as List<dynamic>?)
-              ?.map((e) => NodeInfoData.fromJson(e as Map<String, dynamic>))
+      busNumber: json['busNumber'] as String?,
+      busStopInfo: (json['busStopInfo'] as List<dynamic>?)
+              ?.map((e) => BusInfoData.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const <NodeInfoData>[],
+          const <BusInfoData>[],
     );
 
 Map<String, dynamic> _$$_SpecificBusInfoWrapperToJson(
         _$_SpecificBusInfoWrapper instance) =>
     <String, dynamic>{
-      'data': instance.data,
+      'busNumber': instance.busNumber,
+      'busStopInfo': instance.busStopInfo,
     };

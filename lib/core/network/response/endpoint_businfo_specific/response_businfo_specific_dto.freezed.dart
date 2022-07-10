@@ -21,7 +21,8 @@ SpecificBusInfoWrapper _$SpecificBusInfoWrapperFromJson(
 
 /// @nodoc
 mixin _$SpecificBusInfoWrapper {
-  List<NodeInfoData> get data => throw _privateConstructorUsedError;
+  String? get busNumber => throw _privateConstructorUsedError;
+  List<BusInfoData> get busStopInfo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $SpecificBusInfoWrapperCopyWith<$Res> {
   factory $SpecificBusInfoWrapperCopyWith(SpecificBusInfoWrapper value,
           $Res Function(SpecificBusInfoWrapper) then) =
       _$SpecificBusInfoWrapperCopyWithImpl<$Res>;
-  $Res call({List<NodeInfoData> data});
+  $Res call({String? busNumber, List<BusInfoData> busStopInfo});
 }
 
 /// @nodoc
@@ -48,13 +49,18 @@ class _$SpecificBusInfoWrapperCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? data = freezed,
+    Object? busNumber = freezed,
+    Object? busStopInfo = freezed,
   }) {
     return _then(_value.copyWith(
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<NodeInfoData>,
+      busNumber: busNumber == freezed
+          ? _value.busNumber
+          : busNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      busStopInfo: busStopInfo == freezed
+          ? _value.busStopInfo
+          : busStopInfo // ignore: cast_nullable_to_non_nullable
+              as List<BusInfoData>,
     ));
   }
 }
@@ -66,7 +72,7 @@ abstract class _$$_SpecificBusInfoWrapperCopyWith<$Res>
           $Res Function(_$_SpecificBusInfoWrapper) then) =
       __$$_SpecificBusInfoWrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<NodeInfoData> data});
+  $Res call({String? busNumber, List<BusInfoData> busStopInfo});
 }
 
 /// @nodoc
@@ -83,13 +89,18 @@ class __$$_SpecificBusInfoWrapperCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? data = freezed,
+    Object? busNumber = freezed,
+    Object? busStopInfo = freezed,
   }) {
     return _then(_$_SpecificBusInfoWrapper(
-      data: data == freezed
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<NodeInfoData>,
+      busNumber: busNumber == freezed
+          ? _value.busNumber
+          : busNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      busStopInfo: busStopInfo == freezed
+          ? _value._busStopInfo
+          : busStopInfo // ignore: cast_nullable_to_non_nullable
+              as List<BusInfoData>,
     ));
   }
 }
@@ -98,23 +109,26 @@ class __$$_SpecificBusInfoWrapperCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SpecificBusInfoWrapper implements _SpecificBusInfoWrapper {
   _$_SpecificBusInfoWrapper(
-      {final List<NodeInfoData> data = const <NodeInfoData>[]})
-      : _data = data;
+      {this.busNumber,
+      final List<BusInfoData> busStopInfo = const <BusInfoData>[]})
+      : _busStopInfo = busStopInfo;
 
   factory _$_SpecificBusInfoWrapper.fromJson(Map<String, dynamic> json) =>
       _$$_SpecificBusInfoWrapperFromJson(json);
 
-  final List<NodeInfoData> _data;
+  @override
+  final String? busNumber;
+  final List<BusInfoData> _busStopInfo;
   @override
   @JsonKey()
-  List<NodeInfoData> get data {
+  List<BusInfoData> get busStopInfo {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
+    return EqualUnmodifiableListView(_busStopInfo);
   }
 
   @override
   String toString() {
-    return 'SpecificBusInfoWrapper(data: $data)';
+    return 'SpecificBusInfoWrapper(busNumber: $busNumber, busStopInfo: $busStopInfo)';
   }
 
   @override
@@ -122,13 +136,17 @@ class _$_SpecificBusInfoWrapper implements _SpecificBusInfoWrapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SpecificBusInfoWrapper &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other.busNumber, busNumber) &&
+            const DeepCollectionEquality()
+                .equals(other._busStopInfo, _busStopInfo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(busNumber),
+      const DeepCollectionEquality().hash(_busStopInfo));
 
   @JsonKey(ignore: true)
   @override
@@ -143,14 +161,17 @@ class _$_SpecificBusInfoWrapper implements _SpecificBusInfoWrapper {
 }
 
 abstract class _SpecificBusInfoWrapper implements SpecificBusInfoWrapper {
-  factory _SpecificBusInfoWrapper({final List<NodeInfoData> data}) =
-      _$_SpecificBusInfoWrapper;
+  factory _SpecificBusInfoWrapper(
+      {final String? busNumber,
+      final List<BusInfoData> busStopInfo}) = _$_SpecificBusInfoWrapper;
 
   factory _SpecificBusInfoWrapper.fromJson(Map<String, dynamic> json) =
       _$_SpecificBusInfoWrapper.fromJson;
 
   @override
-  List<NodeInfoData> get data => throw _privateConstructorUsedError;
+  String? get busNumber => throw _privateConstructorUsedError;
+  @override
+  List<BusInfoData> get busStopInfo => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SpecificBusInfoWrapperCopyWith<_$_SpecificBusInfoWrapper> get copyWith =>
