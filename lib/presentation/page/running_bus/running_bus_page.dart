@@ -12,119 +12,115 @@ class RunningBusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (_) => sl<RunningBusPageBloc>(),
-        child: Scaffold(
-          body: CustomScrollView(slivers: <Widget>[
-            SliverAppBar(
-              pinned: true,
-              shadowColor: Colors.transparent,
-              backgroundColor: Colors.white.withOpacity(0.4),
-              iconTheme: const IconThemeData(color: Color(0xFF3199FF)),
-              leadingWidth: 44,
-              leading: GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 24,
-                    color: Color(0xFF3199FF),
-                  ),
+      create: (_) => sl<RunningBusPageBloc>(),
+      child: Scaffold(
+        body: CustomScrollView(slivers: <Widget>[
+          SliverAppBar(
+            pinned: true,
+            shadowColor: Colors.transparent,
+            backgroundColor: Colors.white.withOpacity(0.4),
+            iconTheme: const IconThemeData(color: Color(0xFF3199FF)),
+            leadingWidth: 44,
+            leading: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Icon(
+                  Icons.arrow_back_ios_new,
+                  size: 24,
+                  color: Color(0xFF3199FF),
                 ),
-              ),
-              title: Text(
-                '버스',
-                style: textStyleNormal(Theme.of(context).primaryColor, 16),
               ),
             ),
-            SliverList(
-                delegate: SliverChildListDelegate([
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '190번 버스',
-                      style: textStyleBold(
-                          Theme.of(context).colorScheme.onPrimary, 24),
-                    ),
-                    const SizedBox(height: 14),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(left: 7),
-                          decoration: BoxDecoration(
-                            border: Border(
-                              left: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 1),
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '운행시간',
-                                style: textStyleNormal(
-                                    Theme.of(context).colorScheme.onPrimary,
-                                    14),
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                '04:55 ~ 21:50',
-                                style: textStyle600(
-                                    Theme.of(context).colorScheme.onPrimary,
-                                    14),
-                              ),
-                            ],
+            title: Text(
+              '버스',
+              style: textStyleNormal(Theme.of(context).primaryColor, 16),
+            ),
+          ),
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '190번 버스',
+                    style: textStyleBold(
+                        Theme.of(context).colorScheme.onPrimary, 24),
+                  ),
+                  const SizedBox(height: 14),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(left: 7),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            left: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 1),
                           ),
                         ),
-                        const SizedBox(width: 33),
-                        Container(
-                          padding: const EdgeInsets.only(left: 7),
-                          decoration: BoxDecoration(
-                            border: Border(
-                              left: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 1),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '운행시간',
+                              style: textStyleNormal(
+                                  Theme.of(context).colorScheme.onPrimary, 14),
                             ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '배차간격',
-                                style: textStyleNormal(
-                                    Theme.of(context).colorScheme.onPrimary,
-                                    14),
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                '19분',
-                                style: textStyle600(
-                                    Theme.of(context).colorScheme.onPrimary,
-                                    14),
-                              ),
-                            ],
+                            const SizedBox(height: 2),
+                            Text(
+                              '04:55 ~ 21:50',
+                              style: textStyle600(
+                                  Theme.of(context).colorScheme.onPrimary, 14),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 33),
+                      Container(
+                        padding: const EdgeInsets.only(left: 7),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            left: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 1),
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '배차간격',
+                              style: textStyleNormal(
+                                  Theme.of(context).colorScheme.onPrimary, 14),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              '19분',
+                              style: textStyle600(
+                                  Theme.of(context).colorScheme.onPrimary, 14),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              Text(
-                AppConstants.station_190.first['nodeName'],
-                style:
-                    textStyleBold(Theme.of(context).colorScheme.onPrimary, 14),
-              ),
-              const BusInfoListView(),
-            ])),
-            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 20))
-          ]),
-        ));
+            ),
+            Text(
+              AppConstants.station_190.first['nodeName'],
+              style: textStyleBold(Theme.of(context).colorScheme.onPrimary, 14),
+            ),
+            const BusInfoListView(),
+          ])),
+          const SliverPadding(padding: EdgeInsets.symmetric(vertical: 20))
+        ]),
+      ),
+    );
   }
 
   // Widget getTextWidgets(List<String> stationList) {

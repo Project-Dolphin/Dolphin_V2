@@ -100,9 +100,7 @@ class NotificationManager {
           styleInformation: BigTextStyleInformation(message),
           icon: '@mipmap/ic_launcher',
         ),
-        iOS: const IOSNotificationDetails(
-          badgeNumber: 1,
-        ),
+        iOS: const IOSNotificationDetails(),
       ),
       androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation:

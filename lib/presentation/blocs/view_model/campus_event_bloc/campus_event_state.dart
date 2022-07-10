@@ -18,9 +18,9 @@ class CampusEventLoaded extends CampusEventState {
   final List<CalendarSumamryWrapper> calendarData;
   final List<WeekdayData> eventList;
   final DateTime selectedDay;
-  final DateTime today;
+  final DateTime? today;
   @override
-  List<Object> get props => [calendarData, eventList, selectedDay, today];
+  List<Object?> get props => [calendarData, eventList, selectedDay, today];
 
   @override
   String toString() {

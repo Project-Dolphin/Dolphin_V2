@@ -20,7 +20,7 @@ class CampusEventPage extends StatelessWidget {
             SliverPersistentHeader(
               pinned: true,
               delegate: CalendarHeaderSliverDelegate(
-                minHeight: 40.0,
+                minHeight: 70.0,
                 maxHeight: 120.0,
               ),
             ),
@@ -35,7 +35,8 @@ class CampusEventPage extends StatelessWidget {
               delegate: SliverChildListDelegate([
                 Container(
                   constraints: BoxConstraints(
-                      minHeight: MediaQuery.of(context).size.height - 150),
+                    minHeight: MediaQuery.of(context).size.height - 150,
+                  ),
                   child: Column(
                     children: const [
                       SizedBox(height: 13),

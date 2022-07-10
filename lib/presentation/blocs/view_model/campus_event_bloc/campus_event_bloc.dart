@@ -101,11 +101,7 @@ class CampusEventBloc extends Bloc<CampusEventEvent, CampusEventState> {
       nodeParam =
           nodeParam.copyWith(year: changedDate.year, month: changedDate.month);
 
-      logger.d(nodeParam);
-
       final apiResult = await requestServerData();
-
-      logger.d(apiResult.calendarData);
 
       emit(state.copyWith(
         calendarData: apiResult.calendarData,
