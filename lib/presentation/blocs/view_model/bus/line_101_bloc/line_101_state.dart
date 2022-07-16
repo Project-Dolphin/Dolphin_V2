@@ -27,7 +27,7 @@ class Line101LoadedWithBusInfo extends Line101State {
   }
 
   @override
-  List<Object?> get props => [busInfo];
+  List<Object?> get props => [busInfo, selectedBusStop];
 }
 
 class Line101LoadedWithEmptyList extends Line101State {
