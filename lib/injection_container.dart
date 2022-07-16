@@ -25,6 +25,7 @@ import 'package:oceanview/domain/repositories/diet_repository.dart';
 import 'package:oceanview/domain/repositories/event_repository.dart';
 import 'package:oceanview/domain/repositories/home_data_repository.dart';
 import 'package:oceanview/domain/repositories/shuttle_bus_repository.dart';
+import 'package:oceanview/domain/usecases/get_190_time_table.dart';
 import 'package:oceanview/domain/usecases/get_cafe_diet.dart';
 import 'package:oceanview/domain/usecases/get_dorm_diet.dart';
 import 'package:oceanview/domain/usecases/get_holiday_event.dart';
@@ -132,7 +133,7 @@ Future<void> init() async {
       ),
   );
   sl.registerFactory(
-    () => Line190Bloc(getSpecificNodeBusInfo: sl())
+    () => Line190Bloc(getSpecificNodeBusInfo: sl(), get190timeTable: sl())
       ..add(
         FetchLine190Info(),
       ),
@@ -174,6 +175,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetWeekdayEvent(repository: sl()));
   sl.registerLazySingleton(() => GetWeekdayEventWithMonth(repository: sl()));
   sl.registerLazySingleton(() => GetSpecificNodeBusInfo(repository: sl()));
+  sl.registerLazySingleton(() => Get190TimeTable(repository: sl()));
 
   //Repositories
   sl.registerLazySingleton<CityBusRepository>(() => CityBusRepositoryImpl(

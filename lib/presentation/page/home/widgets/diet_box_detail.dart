@@ -41,6 +41,7 @@ class DietBoxDetail extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: 12),
           data.menus.isNotEmpty
               ? Wrap(
                   children: [
@@ -51,11 +52,14 @@ class DietBoxDetail extends StatelessWidget {
                         )),
                   ],
                 )
-              : Text(
-                  // TODO : add Empty Menu String
-                  '식단이 없어요',
-                  style: textStyleNormal(
-                      Theme.of(context).colorScheme.onPrimary, 13),
+              : SizedBox(
+                  height: 50,
+                  child: Text(
+                    // TODO : add Empty Menu String
+                    '식단이 없어요',
+                    style: textStyleNormal(
+                        Theme.of(context).colorScheme.onPrimary, 13),
+                  ),
                 ),
         ],
       ),

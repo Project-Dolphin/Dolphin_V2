@@ -11,7 +11,7 @@ class DietBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = (MediaQuery.of(context).size.width * 0.893 - 34) / 2;
+    final width = (MediaQuery.of(context).size.width * 0.92 - 34) / 2;
 
     return DecoratedContainer(
       child: BlocBuilder<DietDataBloc, DietDataState>(

@@ -14,36 +14,31 @@ extension RootTabExt on RootTab {
   SvgPicture get icon {
     switch (this) {
       case RootTab.home:
-        return R.image.icon_home.svgPicture(
-          width: 20,
-          height: 21.61,
+        return R.image.icon_home.svgPictureSize(
+          size: 28,
           color: const Color(0xFFB7B7B7),
         );
       case RootTab.bus:
-        return R.image.icon_bus.svgPicture(
-          width: 20.31,
-          height: 21.13,
+        return R.image.icon_bus.svgPictureSize(
+          size: 28,
           color: const Color(0xFFB7B7B7),
         );
 
       case RootTab.diet:
-        return R.image.icon_diet.svgPicture(
-          width: 12.44,
-          height: 20.74,
+        return R.image.icon_diet.svgPictureSize(
+          size: 28,
           color: const Color(0xFFB7B7B7),
         );
 
       case RootTab.calendar:
-        return R.image.icon_calendar.svgPicture(
-          width: 20.37,
-          height: 18.7,
+        return R.image.icon_calendar.svgPictureSize(
+          size: 28,
           color: const Color(0xFFB7B7B7),
         );
 
       case RootTab.menu:
-        return R.image.icon_menu.svgPicture(
-          width: 18.03,
-          height: 14.02,
+        return R.image.icon_menu.svgPictureSize(
+          size: 28,
           color: const Color(0xFFB7B7B7),
         );
     }
@@ -52,34 +47,29 @@ extension RootTabExt on RootTab {
   SvgPicture get selectedIcon {
     switch (this) {
       case RootTab.home:
-        return R.image.icon_home_selected.svgPicture(
-          width: 20,
-          height: 21.61,
+        return R.image.icon_home_selected.svgPictureSize(
+          size: 28,
           color: const Color(0xFF0081FF),
         );
       case RootTab.bus:
-        return R.image.icon_bus_selected.svgPicture(
-          width: 20.31,
-          height: 21.13,
+        return R.image.icon_bus_selected.svgPictureSize(
+          size: 28,
           color: const Color(0xFF0081FF),
         );
       case RootTab.diet:
-        return R.image.icon_diet_selected.svgPicture(
-          width: 12.44,
-          height: 20.74,
+        return R.image.icon_diet_selected.svgPictureSize(
+          size: 28,
           color: const Color(0xFF0081FF),
         );
 
       case RootTab.calendar:
-        return R.image.icon_calendar_selected.svgPicture(
-          width: 20.37,
-          height: 18.7,
+        return R.image.icon_calendar_selected.svgPictureSize(
+          size: 28,
           color: const Color(0xFF0081FF),
         );
       case RootTab.menu:
-        return R.image.icon_menu_selected.svgPicture(
-          width: 18.03,
-          height: 14.02,
+        return R.image.icon_menu_selected.svgPictureSize(
+          size: 28,
           color: const Color(0xFF0081FF),
         );
     }

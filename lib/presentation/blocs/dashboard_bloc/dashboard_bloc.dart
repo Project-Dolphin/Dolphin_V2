@@ -22,7 +22,7 @@ class DashBoardBloc extends Bloc<DashBoardEvent, DashBoardState> {
   }
 
   final PageController controller =
-      PageController(initialPage: 0, viewportFraction: 0.893);
+      PageController(initialPage: 0, viewportFraction: 0.92);
 
   final ScrollController homeScrollController = ScrollController();
   final ScrollController campusEventScrollController = ScrollController();
@@ -38,12 +38,13 @@ class DashBoardBloc extends Bloc<DashBoardEvent, DashBoardState> {
     final state = this.state;
     final int index = event.selectedTab.index;
     logger.d(index);
-    controllerRefresh();
     controller.animateToPage(
       index,
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.easeOut,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.linear,
     );
+    controllerRefresh();
+
     emit(state.copyWith(selectedTab: event.selectedTab));
   }
 

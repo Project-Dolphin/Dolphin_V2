@@ -16,36 +16,51 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.transparent,
-        elevation: 0,
-        title: Transform(
-          // you can forcefully translate values left side using Transform
-          transform: Matrix4.translationValues(-60.0, 0.0, 0.0),
-          child: const OceanViewTitle(),
-        ),
-      ),
-      extendBody: true,
-      body: SingleChildScrollView(
-        controller: context.read<DashBoardBloc>().homeScrollController,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            children: [
-              GestureDetector(
-                  onTap: () => Navigator.pushNamed(
-                        context,
-                        AppConstants.RUNNING_BUS_ROUTE,
-                      ),
-                  child: const BusBox()),
-              const SizedBox(height: 12),
-              const DietBox(),
-              const SizedBox(height: 12),
-              _buildWeatherAndLatestEvent(),
-              const SizedBox(height: 12),
-              const NoticeBox(),
-            ],
-          ),
+      // appBar: AppBar(
+      //   foregroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   title: Transform(
+      //     // you can forcefully translate values left side using Transform
+      //     transform: Matrix4.translationValues(-60.0, 0.0, 0.0),
+      //     child: const OceanViewTitle(),
+      //   ),
+      // ),
+      // extendBody: true,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 70,
+              alignment: Alignment.centerLeft,
+              child: const OceanViewTitle(),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                controller: context.read<DashBoardBloc>().homeScrollController,
+                child: Column(
+                  children: [
+                    GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                              context,
+                              AppConstants.RUNNING_BUS_ROUTE,
+                            ),
+                        child: const BusBox()),
+                    const SizedBox(height: 12),
+                    const DietBox(),
+                    const SizedBox(height: 12),
+                    _buildWeatherAndLatestEvent(),
+                    const SizedBox(height: 12),
+                    const NoticeBox(),
+                  ],
+                ),
+                // child: Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 10),
+                //   child:
+                // ),
+              ),
+            ),
+          ],
         ),
       ),
     );

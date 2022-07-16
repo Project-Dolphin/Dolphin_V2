@@ -81,25 +81,29 @@ class _DashBoardState extends State<DashBoard> {
         ),
       ],
       child: Scaffold(
-        body: Column(
+        body: Stack(
           children: [
-            Expanded(
-              child: BlocBuilder<DashBoardBloc, DashBoardState>(builder: ((
-                context,
-                state,
-              ) {
-                // TODO : 대쉬보드 로딩 전에는 loadingState 보여줘도 됨
-                return BlocPageView(state.selectedTab);
-                /*
+            BlocBuilder<DashBoardBloc, DashBoardState>(builder: ((
+              context,
+              state,
+            ) {
+              // TODO : 대쉬보드 로딩 전에는 loadingState 보여줘도 됨
+              return BlocPageView(state.selectedTab);
+              /*
                 예시 : 
                 if(state is DashBoardLoaded){
                   return TabView(state.selectedTab);
                 }
                 return Loading();
                 */
-              })),
+            })),
+            const Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 30),
+                child: OceanViewNavigationBar(),
+              ),
             ),
-            const OceanViewNavigationBar(),
           ],
         ),
       ),

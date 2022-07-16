@@ -16,46 +16,44 @@ class DietPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: CustomScrollView(
-          shrinkWrap: true,
-          // controller: scrollController,
-          scrollDirection: Axis.vertical,
-          slivers: [
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: DietHeaderSliverDelegate(
-                minHeight: 70.0,
-                maxHeight: 130.0,
-              ),
+      child: CustomScrollView(
+        shrinkWrap: true,
+        // controller: scrollController,
+        scrollDirection: Axis.vertical,
+        slivers: [
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: DietHeaderSliverDelegate(
+              minHeight: 50.0,
+              maxHeight: 100.0,
             ),
-            SliverList(
-              delegate: SliverChildListDelegate([
-                Container(
-                  constraints: BoxConstraints(
-                      minHeight: MediaQuery.of(context).size.height - 150),
-                  child: BlocBuilder<DietPageBloc, DietPageState>(
-                    builder: ((context, state) {
-                      switch (state.selectedDietTab) {
-                        case DietTab.morning:
-                          return const SecondFloorPage();
-                        case DietTab.lunch:
-                          return const ThridFloorPage();
-                        case DietTab.dinner:
-                          return const FifthFloorPage();
-                        case DietTab.dorm:
-                          return const DormPage();
-                        case DietTab.navy:
-                          return const NavyPage();
-                      }
-                    }),
-                  ),
+          ),
+          SliverPadding(padding: EdgeInsets.symmetric(vertical: 16)),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Container(
+                constraints: BoxConstraints(
+                    minHeight: MediaQuery.of(context).size.height - 150),
+                child: BlocBuilder<DietPageBloc, DietPageState>(
+                  builder: ((context, state) {
+                    switch (state.selectedDietTab) {
+                      case DietTab.morning:
+                        return const SecondFloorPage();
+                      case DietTab.lunch:
+                        return const ThridFloorPage();
+                      case DietTab.dinner:
+                        return const FifthFloorPage();
+                      case DietTab.dorm:
+                        return const DormPage();
+                      case DietTab.navy:
+                        return const NavyPage();
+                    }
+                  }),
                 ),
-              ]),
-            ),
-          ],
-        ),
+              ),
+            ]),
+          ),
+        ],
       ),
     );
   }

@@ -32,27 +32,21 @@ extension MenuExt on Menu {
   SvgPicture get image {
     switch (this) {
       case Menu.website:
-        return R.image.icon_library_fill
-            .svgPictureSize(size: 28, color: R.color.black);
-      // svg 에러났음..
+        return R.image.icon_school_web_fill
+            .svgPictureSize(size: 28); // svg 에러났음..
       // return R.image.icon_school_web_fill.svgPictureSize(size: 28);
       // return R.image.icon_phone_book_fill.svgPictureSize(size: 28);
 
       case Menu.phone:
-        return R.image.icon_library_fill
-            .svgPictureSize(size: 28, color: R.color.black);
+        return R.image.icon_phone_book_fill.svgPictureSize(size: 28);
       case Menu.library:
-        return R.image.icon_library_fill
-            .svgPictureSize(size: 28, color: R.color.black);
+        return R.image.icon_library_fill.svgPictureSize(size: 28);
       case Menu.setting:
-        return R.image.icon_setting_fill
-            .svgPictureSize(size: 28, color: R.color.black);
+        return R.image.icon_setting_fill.svgPictureSize(size: 28);
       case Menu.developer:
-        return R.image.icon_developer_fill
-            .svgPictureSize(size: 28, color: R.color.black);
+        return R.image.icon_developer_fill.svgPictureSize(size: 28);
       case Menu.error:
-        return R.image.icon_error_send_fill
-            .svgPictureSize(size: 28, color: R.color.black);
+        return R.image.icon_error_send_fill.svgPictureSize(size: 28);
     }
   }
 

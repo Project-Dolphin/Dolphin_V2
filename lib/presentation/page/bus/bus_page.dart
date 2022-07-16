@@ -29,7 +29,7 @@ class BusPage extends StatelessWidget {
             SliverPersistentHeader(
               pinned: true,
               delegate: BusHeaderSliverDelegate(
-                height: 40.0,
+                height: 70.0,
               ),
             ),
             SliverList(

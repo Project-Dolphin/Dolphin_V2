@@ -98,11 +98,13 @@ class CalendarWidget extends StatelessWidget {
 
                     return Container(
                       margin: EdgeInsets.only(left: detailIndex > 0 ? 2 : 0),
-                      width: 2,
-                      height: 2,
-                      decoration: const BoxDecoration(
+                      width: 4,
+                      height: 4,
+                      decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Color(0xFFBBEBEC),
+                        color: index == state.selectedDay.day
+                            ? Theme.of(context).primaryColor
+                            : const Color(0xFFBEBEC0),
                       ),
                     );
                   }),
@@ -154,7 +156,7 @@ class CalendarWidget extends StatelessWidget {
           );
         }
 
-        return SizedBox();
+        return const SizedBox();
       },
     );
   }

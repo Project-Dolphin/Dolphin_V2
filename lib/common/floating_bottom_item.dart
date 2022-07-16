@@ -19,16 +19,17 @@ class FloatingBottomItem extends StatelessWidget {
         final bool selected = state.selectedTab == tab;
 
         return SizedBox(
-          width: 22,
+          width: 36,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               selected ? tab.selectedIcon : tab.icon,
-              const SizedBox(height: 4),
+              const SizedBox(height: 3),
               Text(
                 tab.text,
                 style: TextStyle(
-                  fontSize: 8,
+                  fontSize: 10,
                   color: selected
                       ? Theme.of(context).primaryColor
                       : const Color(0xFFB7B7B7),

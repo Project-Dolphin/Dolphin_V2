@@ -16,7 +16,7 @@ class DietGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width * 0.893 - 60;
+    final width = MediaQuery.of(context).size.width * 0.92 - 60;
 
     return Column(
       children: [

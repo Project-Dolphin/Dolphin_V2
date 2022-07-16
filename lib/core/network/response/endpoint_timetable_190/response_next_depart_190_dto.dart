@@ -8,7 +8,7 @@ part 'response_next_depart_190_dto.g.dart';
 @freezed
 class NextDepart190Wrapper with _$NextDepart190Wrapper {
   factory NextDepart190Wrapper({
-    List<DepartBusInfo>? nextDepartBus,
+    @Default(<DepartBusInfo>[]) List<DepartBusInfo> nextDepartBus,
   }) = _NextDepart190Wrapper;
 
   factory NextDepart190Wrapper.fromJson(Map<String, dynamic> json) =>

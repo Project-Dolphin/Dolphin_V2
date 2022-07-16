@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   //Change Font Family Default
-  static const fontFamily = GoogleFonts.roboto;
+  static const fontFamily = 'Pretendard';
 
   AppTheme._();
 
@@ -33,6 +32,7 @@ class AppTheme {
       onSurface: Colors.red,
     ),
     bottomAppBarColor: const Color(0xFFFFFFFF),
+    buttonColor: Color(0xFFACACAC).withOpacity(.3),
   );
 
   // ignore: todo
@@ -62,6 +62,7 @@ class AppTheme {
       onSurface: Colors.red,
     ),
     bottomAppBarColor: const Color(0xFF17171B),
+    buttonColor: Color(0xFFACACAC).withOpacity(.3),
   );
 }
 
