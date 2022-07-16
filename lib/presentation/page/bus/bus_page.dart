@@ -56,9 +56,11 @@ class BusPage extends StatelessWidget {
                       if (state is Line190LoadedWithBusInfo) {
                         return BusDetail(
                           data: state.busInfo,
-                          selectedBusStop:
-                              context.read<Line190Bloc>().nodeParam.busStop,
-                          busStopList: [],
+                          selectedBusStop: state.selectedBusStop,
+                          busStopList: context.read<Line190Bloc>().paramList,
+                          busCallBack: (busInfo) => context
+                              .read<Line190Bloc>()
+                              .add(Change190Node(busInfo)),
                         );
                       }
 
@@ -76,9 +78,12 @@ class BusPage extends StatelessWidget {
                           if (state is Line101LoadedWithBusInfo) {
                             return BusDetail(
                               data: state.busInfo,
-                              selectedBusStop:
-                                  context.read<Line190Bloc>().nodeParam.busStop,
-                              busStopList: [],
+                              selectedBusStop: state.selectedBusStop,
+                              busStopList:
+                                  context.read<Line101Bloc>().paramList,
+                              busCallBack: (busInfo) => context
+                                  .read<Line101Bloc>()
+                                  .add(Change101Node(busInfo)),
                             );
                           }
 
@@ -92,9 +97,11 @@ class BusPage extends StatelessWidget {
                           if (state is Line66LoadedWithBusInfo) {
                             return BusDetail(
                               data: state.busInfo,
-                              selectedBusStop:
-                                  context.read<Line190Bloc>().nodeParam.busStop,
-                              busStopList: [],
+                              selectedBusStop: state.selectedBusStop,
+                              busStopList: context.read<Line66Bloc>().paramList,
+                              busCallBack: (busInfo) => context
+                                  .read<Line66Bloc>()
+                                  .add(Change66Node(busInfo)),
                             );
                           }
 
@@ -108,9 +115,11 @@ class BusPage extends StatelessWidget {
                           if (state is Line88LoadedWithBusInfo) {
                             return BusDetail(
                               data: state.busInfo,
-                              selectedBusStop:
-                                  context.read<Line190Bloc>().nodeParam.busStop,
-                              busStopList: [],
+                              selectedBusStop: state.selectedBusStop,
+                              busStopList: context.read<Line88Bloc>().paramList,
+                              busCallBack: (busInfo) => context
+                                  .read<Line88Bloc>()
+                                  .add(Change88Node(busInfo)),
                             );
                           }
 
@@ -148,9 +157,12 @@ class BusPage extends StatelessWidget {
                           if (state is Line186LoadedWithBusInfo) {
                             return BusDetail(
                               data: state.busInfo,
-                              selectedBusStop:
-                                  context.read<Line190Bloc>().nodeParam.busStop,
-                              busStopList: [],
+                              selectedBusStop: state.selectedBusStop,
+                              busStopList:
+                                  context.read<Line186Bloc>().paramList,
+                              busCallBack: (busInfo) => context
+                                  .read<Line186Bloc>()
+                                  .add(Change186Node(busInfo)),
                             );
                           }
 
