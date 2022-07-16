@@ -52,7 +52,9 @@ class Line30Bloc extends Bloc<Line30Event, Line30State> {
       },
       (success) {
         emit(Line30LoadedWithBusInfo(
-            selectedBusStop: nodeParam.busStop, busInfo: success));
+          selectedBusStop: nodeParam.busStop,
+          busInfo: success,
+        ));
       },
     );
 

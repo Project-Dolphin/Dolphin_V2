@@ -8,9 +8,23 @@ class Line186Loading extends Line186State {
 }
 
 class Line186LoadedWithBusInfo extends Line186State {
-  Line186LoadedWithBusInfo({required this.busInfo});
+  Line186LoadedWithBusInfo({
+    required this.busInfo,
+    required this.selectedBusStop,
+  });
 
   final NodeInfoData busInfo;
+  final BUS_STOP selectedBusStop;
+
+  Line186LoadedWithBusInfo copyWith({
+    BUS_STOP? selectedBusStop,
+    NodeInfoData? busInfo,
+  }) {
+    return Line186LoadedWithBusInfo(
+      selectedBusStop: selectedBusStop ?? this.selectedBusStop,
+      busInfo: busInfo ?? this.busInfo,
+    );
+  }
 
   @override
   List<Object?> get props => [busInfo];

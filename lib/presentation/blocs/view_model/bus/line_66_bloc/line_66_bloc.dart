@@ -18,8 +18,6 @@ class Line66Bloc extends Bloc<Line66Event, Line66State> {
 
   List<BUS_STOP> paramList = [
     BUS_STOP.KMOU_ENTRANCE,
-    BUS_STOP.YEONGDO_BRIDGE,
-    BUS_STOP.BUSAN_STATION,
   ];
 
   Timer? _timer;
@@ -33,6 +31,7 @@ class Line66Bloc extends Bloc<Line66Event, Line66State> {
   Line66Bloc({required this.getSpecificNodeBusInfo}) : super(Line66Loading()) {
     on<FetchLine66Info>(_onAppLaunched);
     on<Refresh66Info>(_onBusInfoRefreshRequested);
+    on<Change66Node>(_onNodeParamChangeRequested);
   }
 
   Future<void> _onAppLaunched(
@@ -51,7 +50,10 @@ class Line66Bloc extends Bloc<Line66Event, Line66State> {
         }
       },
       (success) {
-        emit(Line66LoadedWithBusInfo(busInfo: success));
+        emit(Line66LoadedWithBusInfo(
+          selectedBusStop: nodeParam.busStop,
+          busInfo: success,
+        ));
       },
     );
   }
@@ -71,8 +73,43 @@ class Line66Bloc extends Bloc<Line66Event, Line66State> {
         }
       },
       (success) {
-        emit(Line66LoadedWithBusInfo(busInfo: success));
+        final state = this.state;
+        if (state is Line66LoadedWithBusInfo) {
+          emit(state.copyWith(busInfo: success));
+        }
       },
     );
+  }
+
+  Future<void> _onNodeParamChangeRequested(
+    Change66Node event,
+    Emitter<Line66State> emit,
+  ) async {
+    nodeParam = nodeParam.copyWith(busStop: event.changedNode);
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line66Error('SETTING_ERROR'));
+        } else {
+          emit(Line66Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        final state = this.state;
+        if (state is Line66LoadedWithBusInfo) {
+          emit(state.copyWith(
+            busInfo: success,
+            selectedBusStop: event.changedNode,
+          ));
+        }
+      },
+    );
+
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 60), (timer) {
+      add(Refresh66Info());
+    });
   }
 }

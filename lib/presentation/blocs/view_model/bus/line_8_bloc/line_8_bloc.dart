@@ -25,6 +25,7 @@ class Line8Bloc extends Bloc<Line8Event, Line8State> {
   Line8Bloc({required this.getSpecificNodeBusInfo}) : super(Line8Loading()) {
     on<FetchLine8Info>(_onAppLaunched);
     on<Refresh8Info>(_onBusInfoRefreshRequested);
+    on<Change8Node>(_onNodeParamChangeRequested);
   }
 
   Timer? _timer;
@@ -50,7 +51,10 @@ class Line8Bloc extends Bloc<Line8Event, Line8State> {
         }
       },
       (success) {
-        emit(Line8LoadedWithBusInfo(busInfo: success));
+        emit(Line8LoadedWithBusInfo(
+          busInfo: success,
+          selectedBusStop: nodeParam.busStop,
+        ));
       },
     );
   }
@@ -71,8 +75,43 @@ class Line8Bloc extends Bloc<Line8Event, Line8State> {
         }
       },
       (success) {
-        emit(Line8LoadedWithBusInfo(busInfo: success));
+        final state = this.state;
+        if (state is Line8LoadedWithBusInfo) {
+          emit(state.copyWith(busInfo: success));
+        }
       },
     );
+  }
+
+  Future<void> _onNodeParamChangeRequested(
+    Change8Node event,
+    Emitter<Line8State> emit,
+  ) async {
+    nodeParam = nodeParam.copyWith(busStop: event.changedNode);
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line8Error('SETTING_ERROR'));
+        } else {
+          emit(Line8Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        final state = this.state;
+        if (state is Line8LoadedWithBusInfo) {
+          emit(state.copyWith(
+            busInfo: success,
+            selectedBusStop: event.changedNode,
+          ));
+        }
+      },
+    );
+
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 60), (timer) {
+      add(Refresh8Info());
+    });
   }
 }

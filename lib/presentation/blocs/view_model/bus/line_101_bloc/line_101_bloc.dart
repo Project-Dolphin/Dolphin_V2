@@ -25,6 +25,7 @@ class Line101Bloc extends Bloc<Line101Event, Line101State> {
       : super(Line101Loading()) {
     on<FetchLine101Info>(_onAppLaunched);
     on<Refresh101Info>(_onBusInfoRefreshRequested);
+    on<Change101Node>(_onNodeParamChangeRequested);
   }
 
   Timer? _timer;
@@ -51,7 +52,10 @@ class Line101Bloc extends Bloc<Line101Event, Line101State> {
         }
       },
       (success) {
-        emit(Line101LoadedWithBusInfo(busInfo: success));
+        emit(Line101LoadedWithBusInfo(
+          selectedBusStop: nodeParam.busStop,
+          busInfo: success,
+        ));
       },
     );
   }
@@ -71,8 +75,43 @@ class Line101Bloc extends Bloc<Line101Event, Line101State> {
         }
       },
       (success) {
-        emit(Line101LoadedWithBusInfo(busInfo: success));
+        final state = this.state;
+        if (state is Line101LoadedWithBusInfo) {
+          emit(state.copyWith(busInfo: success));
+        }
       },
     );
+  }
+
+  Future<void> _onNodeParamChangeRequested(
+    Change101Node event,
+    Emitter<Line101State> emit,
+  ) async {
+    nodeParam = nodeParam.copyWith(busStop: event.changedNode);
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line101Error('SETTING_ERROR'));
+        } else {
+          emit(Line101Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        final state = this.state;
+        if (state is Line101LoadedWithBusInfo) {
+          emit(state.copyWith(
+            busInfo: success,
+            selectedBusStop: event.changedNode,
+          ));
+        }
+      },
+    );
+
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 60), (timer) {
+      add(Refresh101Info());
+    });
   }
 }

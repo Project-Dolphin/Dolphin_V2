@@ -17,7 +17,7 @@ class Line88Bloc extends Bloc<Line88Event, Line88State> {
       const SpecificNodeParam(busStop: BUS_STOP.BUSAN_STATION, busNumber: 88);
 
   List<BUS_STOP> paramList = [
-    BUS_STOP.KMOH_MAIN,
+    BUS_STOP.KMOH_KMOH,
     BUS_STOP.YEONGDO_BRIDGE,
     BUS_STOP.BUSAN_STATION,
   ];
@@ -25,6 +25,7 @@ class Line88Bloc extends Bloc<Line88Event, Line88State> {
   Line88Bloc({required this.getSpecificNodeBusInfo}) : super(Line88Loading()) {
     on<FetchLine88Info>(_onAppLaunched);
     on<Refresh88Info>(_onBusInfoRefreshRequested);
+    on<Change88Node>(_onNodeParamChangeRequested);
   }
 
   Timer? _timer;
@@ -51,7 +52,10 @@ class Line88Bloc extends Bloc<Line88Event, Line88State> {
         }
       },
       (success) {
-        emit(Line88LoadedWithBusInfo(busInfo: success));
+        emit(Line88LoadedWithBusInfo(
+          selectedBusStop: nodeParam.busStop,
+          busInfo: success,
+        ));
       },
     );
   }
@@ -71,8 +75,43 @@ class Line88Bloc extends Bloc<Line88Event, Line88State> {
         }
       },
       (success) {
-        emit(Line88LoadedWithBusInfo(busInfo: success));
+        final state = this.state;
+        if (state is Line88LoadedWithBusInfo) {
+          emit(state.copyWith(busInfo: success));
+        }
       },
     );
+  }
+
+  Future<void> _onNodeParamChangeRequested(
+    Change88Node event,
+    Emitter<Line88State> emit,
+  ) async {
+    nodeParam = nodeParam.copyWith(busStop: event.changedNode);
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line88Error('SETTING_ERROR'));
+        } else {
+          emit(Line88Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        final state = this.state;
+        if (state is Line88LoadedWithBusInfo) {
+          emit(state.copyWith(
+            busInfo: success,
+            selectedBusStop: event.changedNode,
+          ));
+        }
+      },
+    );
+
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 60), (timer) {
+      add(Refresh88Info());
+    });
   }
 }

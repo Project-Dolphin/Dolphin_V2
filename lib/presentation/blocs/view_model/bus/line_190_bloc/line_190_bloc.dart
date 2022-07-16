@@ -16,7 +16,7 @@ class Line190Bloc extends Bloc<Line190Event, Line190State> {
       const SpecificNodeParam(busStop: BUS_STOP.BUSAN_STATION, busNumber: 190);
 
   List<BUS_STOP> paramList = [
-    BUS_STOP.KMOU_MAIN,
+    BUS_STOP.KMOU_ENTRANCE,
     BUS_STOP.YEONGDO_BRIDGE,
     BUS_STOP.BUSAN_STATION,
   ];
@@ -25,6 +25,7 @@ class Line190Bloc extends Bloc<Line190Event, Line190State> {
       : super(Line190Loading()) {
     on<FetchLine190Info>(_onAppLaunched);
     on<Refresh190Info>(_onBusInfoRefreshRequested);
+    on<Change190Node>(_onNodeParamChangeRequested);
   }
 
   Timer? _timer;
@@ -50,7 +51,10 @@ class Line190Bloc extends Bloc<Line190Event, Line190State> {
         }
       },
       (success) {
-        emit(Line190LoadedWithBusInfo(busInfo: success));
+        emit(Line190LoadedWithBusInfo(
+          busInfo: success,
+          selectedBusStop: nodeParam.busStop,
+        ));
       },
     );
   }
@@ -70,8 +74,43 @@ class Line190Bloc extends Bloc<Line190Event, Line190State> {
         }
       },
       (success) {
-        emit(Line190LoadedWithBusInfo(busInfo: success));
+        final state = this.state;
+        if (state is Line190LoadedWithBusInfo) {
+          emit(state.copyWith(busInfo: success));
+        }
       },
     );
+  }
+
+  Future<void> _onNodeParamChangeRequested(
+    Change190Node event,
+    Emitter<Line190State> emit,
+  ) async {
+    nodeParam = nodeParam.copyWith(busStop: event.changedNode);
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line190Error('SETTING_ERROR'));
+        } else {
+          emit(Line190Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        final state = this.state;
+        if (state is Line190LoadedWithBusInfo) {
+          emit(state.copyWith(
+            busInfo: success,
+            selectedBusStop: event.changedNode,
+          ));
+        }
+      },
+    );
+
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 60), (timer) {
+      add(Refresh190Info());
+    });
   }
 }

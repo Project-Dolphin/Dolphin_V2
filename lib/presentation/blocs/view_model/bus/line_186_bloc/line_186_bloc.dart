@@ -17,7 +17,7 @@ class Line186Bloc extends Bloc<Line186Event, Line186State> {
       const SpecificNodeParam(busStop: BUS_STOP.YEONGDO_BRIDGE, busNumber: 186);
 
   List<BUS_STOP> paramList = [
-    BUS_STOP.KMOH_MAIN,
+    BUS_STOP.KMOH_KMOH,
     BUS_STOP.YEONGDO_BRIDGE,
   ];
 
@@ -25,6 +25,7 @@ class Line186Bloc extends Bloc<Line186Event, Line186State> {
       : super(Line186Loading()) {
     on<FetchLine186Info>(_onAppLaunched);
     on<Refresh186Info>(_onBusInfoRefreshRequested);
+    on<Change186Node>(_onNodeParamChangeRequested);
   }
 
   Timer? _timer;
@@ -51,7 +52,10 @@ class Line186Bloc extends Bloc<Line186Event, Line186State> {
         }
       },
       (success) {
-        emit(Line186LoadedWithBusInfo(busInfo: success));
+        emit(Line186LoadedWithBusInfo(
+          busInfo: success,
+          selectedBusStop: nodeParam.busStop,
+        ));
       },
     );
   }
@@ -71,8 +75,43 @@ class Line186Bloc extends Bloc<Line186Event, Line186State> {
         }
       },
       (success) {
-        emit(Line186LoadedWithBusInfo(busInfo: success));
+        final state = this.state;
+        if (state is Line186LoadedWithBusInfo) {
+          emit(state.copyWith(busInfo: success));
+        }
       },
     );
+  }
+
+  Future<void> _onNodeParamChangeRequested(
+    Change186Node event,
+    Emitter<Line186State> emit,
+  ) async {
+    nodeParam = nodeParam.copyWith(busStop: event.changedNode);
+    final result = await getSpecificNodeBusInfo.call(nodeParam);
+
+    result.fold(
+      (failure) async* {
+        if (failure is CacheFailure) {
+          emit(Line186Error('SETTING_ERROR'));
+        } else {
+          emit(Line186Error('NO_CONNECTION_ERROR'));
+        }
+      },
+      (success) {
+        final state = this.state;
+        if (state is Line186LoadedWithBusInfo) {
+          emit(state.copyWith(
+            busInfo: success,
+            selectedBusStop: event.changedNode,
+          ));
+        }
+      },
+    );
+
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 60), (timer) {
+      add(Refresh186Info());
+    });
   }
 }
