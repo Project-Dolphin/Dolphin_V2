@@ -3,6 +3,7 @@ import 'package:oceanview/core/network/response/endpoint_businfo_specific/respon
 import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_month_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_dorm/response_diet_data.dart';
 import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_root/response_home_data.dart';
 import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -23,7 +24,7 @@ abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   @GET('')
-  Future<CalendarAllWrapper> getMainData();
+  Future<HomeData> getMainData();
 
   @GET('calendar')
   Future<CalendarAllWrapper> getWeekdayCalendarData();

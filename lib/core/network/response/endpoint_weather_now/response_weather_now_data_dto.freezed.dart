@@ -20,10 +20,10 @@ WeatherData _$WeatherDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeatherData {
-  String? get status => throw _privateConstructorUsedError;
-  String? get temparature => throw _privateConstructorUsedError;
-  String? get windSpeed => throw _privateConstructorUsedError;
-  String? get humidity => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  String get temparature => throw _privateConstructorUsedError;
+  String get windSpeed => throw _privateConstructorUsedError;
+  String get humidity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,10 +37,7 @@ abstract class $WeatherDataCopyWith<$Res> {
           WeatherData value, $Res Function(WeatherData) then) =
       _$WeatherDataCopyWithImpl<$Res>;
   $Res call(
-      {String? status,
-      String? temparature,
-      String? windSpeed,
-      String? humidity});
+      {String status, String temparature, String windSpeed, String humidity});
 }
 
 /// @nodoc
@@ -62,19 +59,19 @@ class _$WeatherDataCopyWithImpl<$Res> implements $WeatherDataCopyWith<$Res> {
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       temparature: temparature == freezed
           ? _value.temparature
           : temparature // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       windSpeed: windSpeed == freezed
           ? _value.windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       humidity: humidity == freezed
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -87,10 +84,7 @@ abstract class _$$_WeatherDataCopyWith<$Res>
       __$$_WeatherDataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? status,
-      String? temparature,
-      String? windSpeed,
-      String? humidity});
+      {String status, String temparature, String windSpeed, String humidity});
 }
 
 /// @nodoc
@@ -114,19 +108,19 @@ class __$$_WeatherDataCopyWithImpl<$Res> extends _$WeatherDataCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       temparature: temparature == freezed
           ? _value.temparature
           : temparature // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       windSpeed: windSpeed == freezed
           ? _value.windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       humidity: humidity == freezed
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -135,19 +129,26 @@ class __$$_WeatherDataCopyWithImpl<$Res> extends _$WeatherDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_WeatherData implements _WeatherData {
   _$_WeatherData(
-      {this.status, this.temparature, this.windSpeed, this.humidity});
+      {this.status = '',
+      this.temparature = '',
+      this.windSpeed = '',
+      this.humidity = ''});
 
   factory _$_WeatherData.fromJson(Map<String, dynamic> json) =>
       _$$_WeatherDataFromJson(json);
 
   @override
-  final String? status;
+  @JsonKey()
+  final String status;
   @override
-  final String? temparature;
+  @JsonKey()
+  final String temparature;
   @override
-  final String? windSpeed;
+  @JsonKey()
+  final String windSpeed;
   @override
-  final String? humidity;
+  @JsonKey()
+  final String humidity;
 
   @override
   String toString() {
@@ -188,22 +189,22 @@ class _$_WeatherData implements _WeatherData {
 
 abstract class _WeatherData implements WeatherData {
   factory _WeatherData(
-      {final String? status,
-      final String? temparature,
-      final String? windSpeed,
-      final String? humidity}) = _$_WeatherData;
+      {final String status,
+      final String temparature,
+      final String windSpeed,
+      final String humidity}) = _$_WeatherData;
 
   factory _WeatherData.fromJson(Map<String, dynamic> json) =
       _$_WeatherData.fromJson;
 
   @override
-  String? get status => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   @override
-  String? get temparature => throw _privateConstructorUsedError;
+  String get temparature => throw _privateConstructorUsedError;
   @override
-  String? get windSpeed => throw _privateConstructorUsedError;
+  String get windSpeed => throw _privateConstructorUsedError;
   @override
-  String? get humidity => throw _privateConstructorUsedError;
+  String get humidity => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_WeatherDataCopyWith<_$_WeatherData> get copyWith =>
