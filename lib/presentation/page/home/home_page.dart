@@ -52,6 +52,7 @@ class HomePage extends StatelessWidget {
                     _buildWeatherAndLatestEvent(),
                     const SizedBox(height: 12),
                     const NoticeBox(),
+                    const SizedBox(height: 90),
                   ],
                 ),
                 // child: Padding(

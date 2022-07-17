@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_month_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_dorm/response_diet_data.dart';
 import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:retrofit/retrofit.dart';
@@ -21,6 +22,9 @@ part 'rest_client_service.g.dart';
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
+  @GET('')
+  Future<CalendarAllWrapper> getMainData();
+
   @GET('calendar')
   Future<CalendarAllWrapper> getWeekdayCalendarData();
 
@@ -38,6 +42,12 @@ abstract class RestClient {
 
   @GET('notices')
   Future<List<NoticeData>> getNotices();
+
+  @GET('diet')
+  Future<List<DietData>> getDietData(
+    @Query("at") String dietTime,
+    @Query("where") String dietType,
+  );
 
   @GET('bus/time')
   Future<NodeInfoData> getSpecificNodeBusInfo(

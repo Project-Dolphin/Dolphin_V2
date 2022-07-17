@@ -34,6 +34,7 @@ class DietHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
               height: minExtent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
                     width: (MediaQuery.of(context).size.width * 0.92) / 2,
@@ -103,7 +104,7 @@ class DietHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
               ),
             ),
             Builder(builder: (context) {
-              if (shrinkOffset / maxExtent < 0.02) {
+              if (shrinkOffset / maxExtent < 0.1) {
                 return Expanded(
                   child: Row(
                     children: [

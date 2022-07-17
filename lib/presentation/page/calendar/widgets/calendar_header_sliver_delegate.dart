@@ -29,30 +29,36 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
 
     return SizedBox.expand(
       child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         color: Theme.of(context).scaffoldBackgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: minExtent,
-              alignment: Alignment.centerLeft,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width * 0.92) / 2,
                     child: AnimatedContainer(
-                      height: minExtent,
                       duration: const Duration(milliseconds: 100),
-                      padding: EdgeInsets.lerp(
-                        const EdgeInsets.symmetric(horizontal: 6),
-                        const EdgeInsets.all(1),
-                        maxScroll > 0.4 ? 1 : maxScroll,
-                      ),
                       alignment: Alignment.lerp(
                         Alignment.centerLeft,
-                        Alignment.center,
-                        maxScroll > 0.4 ? 1 : maxScroll,
+                        Alignment.centerRight,
+                        maxScroll > 0.15 ? 1 : maxScroll,
                       ),
+                      padding: EdgeInsets.lerp(
+                        const EdgeInsets.symmetric(horizontal: 6),
+                        const EdgeInsets.all(0),
+                        maxScroll > 0.15 ? 1 : maxScroll,
+                      ),
+                      // padding: EdgeInsets.lerp(
+                      //   const EdgeInsets.symmetric(horizontal: 6),
+                      //   const EdgeInsets.all(1),
+                      //   maxScroll > 0.4 ? 1 : maxScroll,
+                      // ),
                       child: Text(
                         '일정',
                         style: TextStyle.lerp(
@@ -69,42 +75,35 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                       ),
                     ),
                   ),
-                  Builder(builder: (context) {
-                    if (shrinkOffset / maxExtent < 0.4) {
-                      return Row(
-                        children: [
-                          Text(
-                            DateFormat('M.d EEEE', 'ko_KR')
-                                .format(DateTime.now()),
-                            style: textStyleNormal(
-                              Theme.of(context).colorScheme.onPrimary,
-                              12,
-                            ),
+                  Row(
+                    children: [
+                      Text(
+                        DateFormat('M.d EEEE', 'ko_KR').format(DateTime.now()),
+                        style: textStyleNormal(
+                          Theme.of(context).colorScheme.onPrimary,
+                          12,
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 2,
+                          horizontal: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: Theme.of(context).canvasColor,
+                        ),
+                        child: Text(
+                          '사라져야함',
+                          style: textStyleNormal(
+                            Theme.of(context).colorScheme.primary,
+                            11,
                           ),
-                          const SizedBox(width: 6),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 2,
-                              horizontal: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: Theme.of(context).canvasColor,
-                            ),
-                            child: Text(
-                              '사라져야함',
-                              style: textStyleNormal(
-                                Theme.of(context).colorScheme.primary,
-                                11,
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    }
-
-                    return const SizedBox();
-                  }),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

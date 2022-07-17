@@ -29,7 +29,7 @@ class BusPage extends StatelessWidget {
             SliverPersistentHeader(
               pinned: true,
               delegate: BusHeaderSliverDelegate(
-                height: 70.0,
+                height: 50.0,
               ),
             ),
             SliverList(
@@ -48,7 +48,7 @@ class BusPage extends StatelessWidget {
                     }),
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 DecoratedContainer(
                   child: BlocBuilder<Line190Bloc, Line190State>(
                     builder: ((context, state) {
@@ -68,7 +68,7 @@ class BusPage extends StatelessWidget {
                     }),
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 DecoratedContainer(
                   child: Column(
                     children: [
@@ -90,7 +90,7 @@ class BusPage extends StatelessWidget {
                           return const Text('');
                         }),
                       ),
-                      SizedBox(height: 34),
+                      const SizedBox(height: 34),
                       BlocBuilder<Line66Bloc, Line66State>(
                         builder: ((context, state) {
                           logger.d(state);
@@ -108,7 +108,7 @@ class BusPage extends StatelessWidget {
                           return const Text('');
                         }),
                       ),
-                      SizedBox(height: 34),
+                      const SizedBox(height: 34),
                       BlocBuilder<Line88Bloc, Line88State>(
                         builder: ((context, state) {
                           logger.d(state);
@@ -129,7 +129,7 @@ class BusPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 DecoratedContainer(
                   child: Column(
                     children: [
@@ -150,7 +150,7 @@ class BusPage extends StatelessWidget {
                           return const Text('');
                         }),
                       ),
-                      SizedBox(height: 34),
+                      const SizedBox(height: 34),
                       BlocBuilder<Line186Bloc, Line186State>(
                         builder: ((context, state) {
                           logger.d(state);
@@ -172,6 +172,7 @@ class BusPage extends StatelessWidget {
                     ],
                   ),
                 ),
+                const SizedBox(height: 90),
               ]),
             ),
           ],

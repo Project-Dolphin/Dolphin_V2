@@ -24,6 +24,19 @@ extension DietTabExt on DietTab {
     }
   }
 
+  String get param {
+    switch (this) {
+      case DietTab.morning:
+        return 'morning';
+      case DietTab.lunch:
+        return 'lunch';
+      case DietTab.dinner:
+        return 'dinner';
+      default:
+        return '';
+    }
+  }
+
   String get time {
     switch (this) {
       case DietTab.morning:

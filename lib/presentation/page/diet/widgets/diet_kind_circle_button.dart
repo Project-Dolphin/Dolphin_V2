@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/core/config/enum/diet_tab_enum.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/presentation/blocs/diet_page_bloc/diet_page_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 
 class DietKindCircleButton extends StatelessWidget {
   const DietKindCircleButton({
@@ -14,9 +15,10 @@ class DietKindCircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context
-          .read<DietPageBloc>()
-          .add(DietTabSelected(selectedTab: dietTab)),
+      onTap: () {
+        context.read<DietPageBloc>().add(DietTabSelected(selectedTab: dietTab));
+        context.read<DietDataBloc>().add(DormTabChanged(dietTab));
+      },
       child: BlocBuilder<DietPageBloc, DietPageState>(
         builder: ((context, state) {
           return Container(
