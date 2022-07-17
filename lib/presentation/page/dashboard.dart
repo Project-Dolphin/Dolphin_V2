@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/common/oceanview_navigation_bar.dart';
+import 'package:oceanview/core/utils/text_utils.dart';
 import 'package:oceanview/injection_container.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 import 'package:oceanview/presentation/blocs/diet_page_bloc/diet_page_bloc.dart';

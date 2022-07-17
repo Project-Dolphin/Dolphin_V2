@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:oceanview/core/config/enum/bus_stop_enum.dart';
 import 'package:oceanview/core/config/r.dart';
-import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_timetable_190/response_depart_bus_info_dto.dart';
 import 'package:oceanview/presentation/page/bus/bus_drop_down_button.dart';
 import 'package:oceanview/presentation/page/bus/bus_with_bell.dart';
 
-class BusDetail extends StatelessWidget {
-  const BusDetail({
+class BusDetailWithDepartInfo extends StatelessWidget {
+  const BusDetailWithDepartInfo({
     required this.data,
     required this.selectedBusStop,
     required this.busStopList,
@@ -14,7 +14,7 @@ class BusDetail extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final NodeInfoData data;
+  final List<DepartBusInfo> data;
   final List<BUS_STOP> busStopList;
 
   final BUS_STOP selectedBusStop;
@@ -44,7 +44,7 @@ class BusDetail extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: Text(
-            data.lineno ?? '0',
+            '190',
             style: textStyleBold(Theme.of(context).primaryColor, 17),
           ),
         ),
@@ -62,7 +62,7 @@ class BusDetail extends StatelessWidget {
               ),
               Builder(
                 builder: (context) {
-                  if (data.min1 == null && data.min2 == null) {
+                  if (data.isEmpty) {
                     return Text(
                       '버스가 없어요',
                       style: textStyleBold(
@@ -73,32 +73,16 @@ class BusDetail extends StatelessWidget {
                     );
                   }
 
-                  if (data.min1 != null && data.min2 == null) {
-                    final int id = int.parse('${data.lineno}0');
-
-                    return BusWithBell(
-                      minutes: data.min1!,
-                      id: id,
-                    );
-                  }
-
                   return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BusWithBell(
-                        minutes: data.min1!,
-                        id: int.parse('${data.lineno}0'),
-                      ),
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: Divider(
-                          color: Theme.of(context).primaryColor,
-                          thickness: 1,
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      BusWithBell(
-                        minutes: data.min2!,
-                        id: int.parse('${data.lineno}1'),
+                      ...data.sublist(0, 3).map(
+                        (e) {
+                          return BusWithBell(
+                            minutes: e.remainMinutes ?? 0,
+                            id: 190 * 10000 + data.indexOf(e),
+                          );
+                        },
                       ),
                     ],
                   );

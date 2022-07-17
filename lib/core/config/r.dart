@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:oceanview/core/config/app_colors.dart';
 import 'package:oceanview/core/config/app_images.dart';
 import 'package:oceanview/core/config/app_text.dart';
+import 'package:oceanview/core/utils/text_utils.dart';
 
 class R {
   static AppColors get color => AppColors();
@@ -34,10 +35,11 @@ class AppFontWeight {
 TextStyle textStyleLight(Color color, double size, {double? height}) =>
     TextStyle(
       color: color,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.light,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleLightCancelLine(
@@ -47,28 +49,31 @@ TextStyle textStyleLightCancelLine(
 }) =>
     TextStyle(
       color: color,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.light,
       decoration: TextDecoration.lineThrough,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleNormal(Color color, double size, {double? height}) =>
     TextStyle(
       color: color,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.normal,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleMedium(Color color, double size, {double? height}) =>
     TextStyle(
       color: color,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.medium,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleMediumUnderLine(
@@ -78,105 +83,118 @@ TextStyle textStyleMediumUnderLine(
 }) =>
     TextStyle(
       color: color,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.medium,
       decoration: TextDecoration.underline,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyle600(Color color, double size, {double? height}) => TextStyle(
       color: color,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.fontWeight600,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBold(Color color, double size, {double? height}) =>
     TextStyle(
       color: color,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.bold,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlackLight(double size, {double? height}) => TextStyle(
       color: R.color.black,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.light,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlackNormal(double size, {double? height}) => TextStyle(
       color: R.color.black,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.normal,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlackMedium(double size, {double? height}) => TextStyle(
       color: R.color.black,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.medium,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlack600(double size, {double? height}) => TextStyle(
       color: R.color.black,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.fontWeight600,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlackBold(double size, {double? height}) => TextStyle(
       color: R.color.black,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.bold,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhiteLight(double size, {double? height}) => TextStyle(
       color: R.color.white,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.light,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhiteNormal(double size, {double? height}) => TextStyle(
       color: R.color.white,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.normal,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhiteMedium(double size, {double? height}) => TextStyle(
       color: R.color.white,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.medium,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhite600(double size, {double? height}) => TextStyle(
       color: R.color.white,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.fontWeight600,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhiteBold(double size, {double? height}) => TextStyle(
       color: R.color.white,
-      fontSize: size,
+      fontSize: TextUtils.fontSize(size),
       fontWeight: R.fontWeight.bold,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
