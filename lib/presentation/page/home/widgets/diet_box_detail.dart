@@ -32,11 +32,14 @@ class DietBoxDetail extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 6),
-              Text(
-                data.type,
-                style: textStyleNormal(
-                  Theme.of(context).primaryColor,
-                  14,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  data.type,
+                  style: textStyleNormal(
+                    Theme.of(context).primaryColor,
+                    14,
+                  ),
                 ),
               ),
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/common/date_type_row.dart';
 import 'package:oceanview/core/utils/constants.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 import 'package:oceanview/presentation/page/home/widgets/ocean_view_title.dart';
@@ -30,10 +31,16 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 70,
-              alignment: Alignment.centerLeft,
-              child: const OceanViewTitle(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 70,
+                  alignment: Alignment.centerLeft,
+                  child: const OceanViewTitle(),
+                ),
+                const DateTypeRow(),
+              ],
             ),
             Expanded(
               child: SingleChildScrollView(

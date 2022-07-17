@@ -16,18 +16,18 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<CalendarAllWrapper> getMainData() async {
+  Future<HomeData> getMainData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<CalendarAllWrapper>(
+        _setStreamType<HomeData>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CalendarAllWrapper.fromJson(_result.data!);
+    final value = HomeData.fromJson(_result.data!);
     return value;
   }
 

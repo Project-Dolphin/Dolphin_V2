@@ -30,6 +30,7 @@ import 'package:oceanview/domain/usecases/get_cafe_diet.dart';
 import 'package:oceanview/domain/usecases/get_diet_data.dart';
 import 'package:oceanview/domain/usecases/get_dorm_diet.dart';
 import 'package:oceanview/domain/usecases/get_holiday_event.dart';
+import 'package:oceanview/domain/usecases/get_home_data.dart';
 import 'package:oceanview/domain/usecases/get_latest_event.dart';
 import 'package:oceanview/domain/usecases/get_next_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_notice_list.dart';
@@ -145,9 +146,7 @@ Future<void> init() async {
   );
   sl.registerFactory(
     () => HomeDataBloc(
-      getWeatherInfo: sl(),
-      getNoticeList: sl(),
-      getLatestEvent: sl(),
+      getHomeData: sl(),
     )..add(HomeDataInited()),
   );
   sl.registerFactory(
@@ -167,9 +166,7 @@ Future<void> init() async {
   //Use cases
   sl.registerLazySingleton(() => GetOperationCityBusList(repository: sl()));
   sl.registerLazySingleton(() => GetNextShuttleInfo(repository: sl()));
-  sl.registerLazySingleton(() => GetNoticeList(repository: sl()));
-  sl.registerLazySingleton(() => GetLatestEvent(repository: sl()));
-  sl.registerLazySingleton(() => GetWeatherInfo(repository: sl()));
+  sl.registerLazySingleton(() => GetHomeData(repository: sl()));
   sl.registerLazySingleton(() => GetDormDiet(repository: sl()));
   sl.registerLazySingleton(() => GetDietData(repository: sl()));
   sl.registerLazySingleton(() => GetHolidayEvent(repository: sl()));

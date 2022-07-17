@@ -3,6 +3,7 @@ import 'package:oceanview/core/error/exceptions.dart';
 import 'package:oceanview/core/error/failures.dart';
 import 'package:oceanview/core/network/response/endpoint_calendar_latest/response_calendar_latest_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_root/response_home_data.dart';
 import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:oceanview/data/datasources/home_data/home_data_local_datasource.dart';
 import 'package:oceanview/data/datasources/home_data/home_data_remote_datasource.dart';
@@ -51,6 +52,20 @@ class HomeDataRepositoryImpl implements HomeDataRepository {
     try {
       final LatestWrapper latestEventsInfo =
           await remoteDataSource.getLatestEvents();
+      try {
+        return Right(latestEventsInfo);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, HomeData>> getMainData() async {
+    try {
+      final HomeData latestEventsInfo = await remoteDataSource.getMainData();
       try {
         return Right(latestEventsInfo);
       } on CacheException {

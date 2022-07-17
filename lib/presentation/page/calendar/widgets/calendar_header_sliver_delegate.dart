@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:oceanview/common/date_type_row.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
 import 'package:oceanview/presentation/page/calendar/dialog/calendar_dialog.dart';
@@ -75,35 +76,7 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                       ),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        DateFormat('M.d EEEE', 'ko_KR').format(DateTime.now()),
-                        style: textStyleNormal(
-                          Theme.of(context).colorScheme.onPrimary,
-                          12,
-                        ),
-                      ),
-                      const SizedBox(width: 6),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 2,
-                          horizontal: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Theme.of(context).canvasColor,
-                        ),
-                        child: Text(
-                          '사라져야함',
-                          style: textStyleNormal(
-                            Theme.of(context).colorScheme.primary,
-                            11,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  const DateTypeRow(),
                 ],
               ),
             ),

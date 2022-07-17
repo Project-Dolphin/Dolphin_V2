@@ -8,10 +8,10 @@ part of 'response_weather_now_data_dto.dart';
 
 _$_WeatherData _$$_WeatherDataFromJson(Map<String, dynamic> json) =>
     _$_WeatherData(
-      status: json['status'] as String?,
-      temparature: json['temparature'] as String?,
-      windSpeed: json['windSpeed'] as String?,
-      humidity: json['humidity'] as String?,
+      status: json['status'] as String? ?? '',
+      temparature: json['temparature'] as String? ?? '',
+      windSpeed: json['windSpeed'] as String? ?? '',
+      humidity: json['humidity'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_WeatherDataToJson(_$_WeatherData instance) =>
