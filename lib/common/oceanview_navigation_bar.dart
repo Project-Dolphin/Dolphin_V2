@@ -13,7 +13,6 @@ class OceanViewNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width - 24,
-      margin: const EdgeInsets.fromLTRB(12, 0, 12, 20),
       padding: const EdgeInsets.only(bottom: 5, top: 0, left: 22, right: 22),
       height: 57,
       alignment: Alignment.center,

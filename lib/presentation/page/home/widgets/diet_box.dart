@@ -20,17 +20,17 @@ class DietBox extends StatelessWidget {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                DietBoxDetail(
-                  type: '3층',
-                  data: state.cafeData.snack[1],
-                  width: width - 20,
-                ),
-                const SizedBox(width: 12),
-                DietBoxDetail(
-                  type: '2층',
-                  data: state.cafeData.student.first,
-                  width: width - 20,
-                ),
+                // DietBoxDetail(
+                //   type: '3층',
+                //   data: state.cafeData.snack[1],
+                //   width: width - 20,
+                // ),
+                // const SizedBox(width: 12),
+                // DietBoxDetail(
+                //   type: '2층',
+                //   data: state.cafeData.student.first,
+                //   width: width - 20,
+                // ),
               ],
             );
           }

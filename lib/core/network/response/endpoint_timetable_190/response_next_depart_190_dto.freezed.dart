@@ -20,7 +20,7 @@ NextDepart190Wrapper _$NextDepart190WrapperFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NextDepart190Wrapper {
-  List<DepartBusInfo>? get nextDepartBus => throw _privateConstructorUsedError;
+  List<DepartBusInfo> get nextDepartBus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $NextDepart190WrapperCopyWith<$Res> {
   factory $NextDepart190WrapperCopyWith(NextDepart190Wrapper value,
           $Res Function(NextDepart190Wrapper) then) =
       _$NextDepart190WrapperCopyWithImpl<$Res>;
-  $Res call({List<DepartBusInfo>? nextDepartBus});
+  $Res call({List<DepartBusInfo> nextDepartBus});
 }
 
 /// @nodoc
@@ -53,7 +53,7 @@ class _$NextDepart190WrapperCopyWithImpl<$Res>
       nextDepartBus: nextDepartBus == freezed
           ? _value.nextDepartBus
           : nextDepartBus // ignore: cast_nullable_to_non_nullable
-              as List<DepartBusInfo>?,
+              as List<DepartBusInfo>,
     ));
   }
 }
@@ -65,7 +65,7 @@ abstract class _$$_NextDepart190WrapperCopyWith<$Res>
           $Res Function(_$_NextDepart190Wrapper) then) =
       __$$_NextDepart190WrapperCopyWithImpl<$Res>;
   @override
-  $Res call({List<DepartBusInfo>? nextDepartBus});
+  $Res call({List<DepartBusInfo> nextDepartBus});
 }
 
 /// @nodoc
@@ -87,7 +87,7 @@ class __$$_NextDepart190WrapperCopyWithImpl<$Res>
       nextDepartBus: nextDepartBus == freezed
           ? _value._nextDepartBus
           : nextDepartBus // ignore: cast_nullable_to_non_nullable
-              as List<DepartBusInfo>?,
+              as List<DepartBusInfo>,
     ));
   }
 }
@@ -95,19 +95,19 @@ class __$$_NextDepart190WrapperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_NextDepart190Wrapper implements _NextDepart190Wrapper {
-  _$_NextDepart190Wrapper({final List<DepartBusInfo>? nextDepartBus})
+  _$_NextDepart190Wrapper(
+      {final List<DepartBusInfo> nextDepartBus = const <DepartBusInfo>[]})
       : _nextDepartBus = nextDepartBus;
 
   factory _$_NextDepart190Wrapper.fromJson(Map<String, dynamic> json) =>
       _$$_NextDepart190WrapperFromJson(json);
 
-  final List<DepartBusInfo>? _nextDepartBus;
+  final List<DepartBusInfo> _nextDepartBus;
   @override
-  List<DepartBusInfo>? get nextDepartBus {
-    final value = _nextDepartBus;
-    if (value == null) return null;
+  @JsonKey()
+  List<DepartBusInfo> get nextDepartBus {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_nextDepartBus);
   }
 
   @override
@@ -142,14 +142,14 @@ class _$_NextDepart190Wrapper implements _NextDepart190Wrapper {
 }
 
 abstract class _NextDepart190Wrapper implements NextDepart190Wrapper {
-  factory _NextDepart190Wrapper({final List<DepartBusInfo>? nextDepartBus}) =
+  factory _NextDepart190Wrapper({final List<DepartBusInfo> nextDepartBus}) =
       _$_NextDepart190Wrapper;
 
   factory _NextDepart190Wrapper.fromJson(Map<String, dynamic> json) =
       _$_NextDepart190Wrapper.fromJson;
 
   @override
-  List<DepartBusInfo>? get nextDepartBus => throw _privateConstructorUsedError;
+  List<DepartBusInfo> get nextDepartBus => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_NextDepart190WrapperCopyWith<_$_NextDepart190Wrapper> get copyWith =>

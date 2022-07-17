@@ -16,13 +16,13 @@ class MenuPage extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 70,
+            height: 50,
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '식단',
+                    '설정',
                     style: textStyleBold(
                       Theme.of(context).colorScheme.onPrimary,
                       24,
