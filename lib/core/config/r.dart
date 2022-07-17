@@ -38,6 +38,7 @@ TextStyle textStyleLight(Color color, double size, {double? height}) =>
       fontWeight: R.fontWeight.light,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleLightCancelLine(
@@ -51,6 +52,7 @@ TextStyle textStyleLightCancelLine(
       fontWeight: R.fontWeight.light,
       decoration: TextDecoration.lineThrough,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleNormal(Color color, double size, {double? height}) =>
@@ -60,6 +62,7 @@ TextStyle textStyleNormal(Color color, double size, {double? height}) =>
       fontWeight: R.fontWeight.normal,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleMedium(Color color, double size, {double? height}) =>
@@ -69,6 +72,7 @@ TextStyle textStyleMedium(Color color, double size, {double? height}) =>
       fontWeight: R.fontWeight.medium,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleMediumUnderLine(
@@ -82,6 +86,7 @@ TextStyle textStyleMediumUnderLine(
       fontWeight: R.fontWeight.medium,
       decoration: TextDecoration.underline,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyle600(Color color, double size, {double? height}) => TextStyle(
@@ -90,6 +95,7 @@ TextStyle textStyle600(Color color, double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.fontWeight600,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBold(Color color, double size, {double? height}) =>
@@ -99,6 +105,7 @@ TextStyle textStyleBold(Color color, double size, {double? height}) =>
       fontWeight: R.fontWeight.bold,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlackLight(double size, {double? height}) => TextStyle(
@@ -107,6 +114,7 @@ TextStyle textStyleBlackLight(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.light,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlackNormal(double size, {double? height}) => TextStyle(
@@ -115,6 +123,7 @@ TextStyle textStyleBlackNormal(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.normal,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlackMedium(double size, {double? height}) => TextStyle(
@@ -123,6 +132,7 @@ TextStyle textStyleBlackMedium(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.medium,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlack600(double size, {double? height}) => TextStyle(
@@ -131,6 +141,7 @@ TextStyle textStyleBlack600(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.fontWeight600,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleBlackBold(double size, {double? height}) => TextStyle(
@@ -139,6 +150,7 @@ TextStyle textStyleBlackBold(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.bold,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhiteLight(double size, {double? height}) => TextStyle(
@@ -147,6 +159,7 @@ TextStyle textStyleWhiteLight(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.light,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhiteNormal(double size, {double? height}) => TextStyle(
@@ -155,6 +168,7 @@ TextStyle textStyleWhiteNormal(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.normal,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhiteMedium(double size, {double? height}) => TextStyle(
@@ -163,6 +177,7 @@ TextStyle textStyleWhiteMedium(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.medium,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhite600(double size, {double? height}) => TextStyle(
@@ -171,6 +186,7 @@ TextStyle textStyleWhite600(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.fontWeight600,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
 
 TextStyle textStyleWhiteBold(double size, {double? height}) => TextStyle(
@@ -179,4 +195,5 @@ TextStyle textStyleWhiteBold(double size, {double? height}) => TextStyle(
       fontWeight: R.fontWeight.bold,
       decoration: TextDecoration.none,
       height: height,
+      fontFamily: 'Pretendard',
     );
