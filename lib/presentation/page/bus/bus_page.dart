@@ -10,6 +10,7 @@ import 'package:oceanview/presentation/blocs/view_model/bus/line_66_bloc/line_66
 import 'package:oceanview/presentation/blocs/view_model/bus/line_88_bloc/line_88_bloc.dart';
 import 'package:oceanview/presentation/blocs/view_model/shuttle_bus_bloc/shuttle_bus_bloc.dart';
 import 'package:oceanview/presentation/page/bus/bus_detail.dart';
+import 'package:oceanview/presentation/page/bus/bus_detail_with_depart_info.dart';
 import 'package:oceanview/presentation/page/bus/bus_header_sliver_delegate.dart';
 import 'package:oceanview/presentation/page/bus/bus_shuttle_detail.dart';
 
@@ -55,6 +56,17 @@ class BusPage extends StatelessWidget {
                       logger.d(state);
                       if (state is Line190LoadedWithBusInfo) {
                         return BusDetail(
+                          data: state.busInfo,
+                          selectedBusStop: state.selectedBusStop,
+                          busStopList: context.read<Line190Bloc>().paramList,
+                          busCallBack: (busInfo) => context
+                              .read<Line190Bloc>()
+                              .add(Change190Node(busInfo)),
+                        );
+                      }
+
+                      if (state is Line190LoadedWithDepartInfo) {
+                        return BusDetailWithDepartInfo(
                           data: state.busInfo,
                           selectedBusStop: state.selectedBusStop,
                           busStopList: context.read<Line190Bloc>().paramList,
