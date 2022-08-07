@@ -26,10 +26,9 @@ import 'package:oceanview/domain/repositories/event_repository.dart';
 import 'package:oceanview/domain/repositories/home_data_repository.dart';
 import 'package:oceanview/domain/repositories/shuttle_bus_repository.dart';
 import 'package:oceanview/domain/usecases/get_190_time_table.dart';
-import 'package:oceanview/domain/usecases/get_cafe_diet.dart';
+import 'package:oceanview/domain/usecases/get_diet_data.dart';
 import 'package:oceanview/domain/usecases/get_dorm_diet.dart';
 import 'package:oceanview/domain/usecases/get_holiday_event.dart';
-import 'package:oceanview/domain/usecases/get_init_data.dart';
 import 'package:oceanview/domain/usecases/get_latest_event.dart';
 import 'package:oceanview/domain/usecases/get_next_shuttle_info.dart';
 import 'package:oceanview/domain/usecases/get_notice_list.dart';
@@ -145,16 +144,16 @@ Future<void> init() async {
   );
   sl.registerFactory(
     () => HomeDataBloc(
-      getWeatherInfo: sl(),
-      getNoticeList: sl(),
-      getLatestEvent: sl(),
       getInitData: sl(),
+      getLatestEvent: sl(),
+      getNoticeList: sl(),
+      getWeatherInfo: sl(),
     )..add(HomeDataInited()),
   );
   sl.registerFactory(
     () => DietDataBloc(
       getDormDiet: sl(),
-      getCafeDiet: sl(),
+      getDietData: sl(),
     )..add(DormDataInited()),
   );
   sl.registerFactory(
@@ -170,10 +169,9 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetNextShuttleInfo(repository: sl()));
   sl.registerLazySingleton(() => GetNoticeList(repository: sl()));
   sl.registerLazySingleton(() => GetLatestEvent(repository: sl()));
-  sl.registerLazySingleton(() => GetInitData(repository: sl()));
   sl.registerLazySingleton(() => GetWeatherInfo(repository: sl()));
   sl.registerLazySingleton(() => GetDormDiet(repository: sl()));
-  sl.registerLazySingleton(() => GetCafeDiet(repository: sl()));
+  sl.registerLazySingleton(() => GetDietData(repository: sl()));
   sl.registerLazySingleton(() => GetHolidayEvent(repository: sl()));
   sl.registerLazySingleton(() => GetWeekdayEvent(repository: sl()));
   sl.registerLazySingleton(() => GetWeekdayEventWithMonth(repository: sl()));

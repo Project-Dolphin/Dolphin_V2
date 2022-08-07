@@ -19,17 +19,17 @@ class DormPage extends StatelessWidget {
             children: [
               DietGridView(
                 type: '기숙사 아침',
-                dietData: state.dormData.morning,
+                dietData: state.dorm?.morning ?? [],
                 timeLimit: '08:00 ~ 09:00',
               ),
               DietGridView(
                 type: '기숙사 점심',
-                dietData: state.dormData.lunch,
+                dietData: state.dorm?.lunch ?? [],
                 timeLimit: '11:40 ~ 13:30',
               ),
               DietGridView(
                 type: '기숙사 저녁',
-                dietData: state.dormData.dinner,
+                dietData: state.dorm?.dinner ?? [],
                 timeLimit: '17:00 ~ 18:30',
               ),
             ],

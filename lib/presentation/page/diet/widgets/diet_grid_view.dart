@@ -66,7 +66,7 @@ class DietGridView extends StatelessWidget {
                       const SizedBox(width: 3),
                       R.image.icon_arrow_right.svgPicture(width: 4, height: 7),
                     ],
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 14),
@@ -92,7 +92,7 @@ class DietGridView extends StatelessWidget {
                         Theme.of(context).colorScheme.onPrimary,
                         14,
                       ),
-                    )
+                    ),
             ],
           ),
         ),

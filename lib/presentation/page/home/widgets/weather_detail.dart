@@ -25,7 +25,7 @@ class WeatherDetail extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              weatherData.temparature ?? '',
+              weatherData.temparature,
               style: textStyleNormal(
                 Theme.of(context).primaryColor,
                 36,
@@ -38,7 +38,7 @@ class WeatherDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              weatherData.status ?? '',
+              weatherData.status,
               style: textStyleNormal(
                 Theme.of(context).colorScheme.onPrimary,
                 14,
@@ -47,7 +47,7 @@ class WeatherDetail extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              weatherData.windSpeed ?? '0m/s',
+              weatherData.windSpeed,
               style: textStyleBold(
                 Theme.of(context).colorScheme.onPrimary,
                 12,

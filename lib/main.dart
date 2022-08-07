@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:oceanview/core/config/enum/theme_enum.dart';
 import 'package:oceanview/core/setting_bloc/setting_bloc.dart';
 import 'package:oceanview/core/utils/router.dart';
+import 'package:oceanview/core/utils/text_utils.dart';
 
 import 'injection_container.dart' as di;
 import 'injection_container.dart';
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
           locale: const Locale('ko', 'KR'),
           navigatorKey: _navigatorKey,
           builder: (context, child) {
+            TextUtils.init(context);
+
             return ScrollConfiguration(
               behavior: MyBehavior(),
               child: MediaQuery(

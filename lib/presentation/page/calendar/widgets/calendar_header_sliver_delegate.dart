@@ -30,6 +30,7 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
 
     return SizedBox.expand(
       child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         color: Theme.of(context).scaffoldBackgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -38,6 +39,7 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
               height: minExtent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
                     width: (MediaQuery.of(context).size.width * 0.92) / 2,
@@ -53,11 +55,6 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                         const EdgeInsets.all(0),
                         maxScroll > 0.15 ? 1 : maxScroll,
                       ),
-                      // padding: EdgeInsets.lerp(
-                      //   const EdgeInsets.symmetric(horizontal: 6),
-                      //   const EdgeInsets.all(1),
-                      //   maxScroll > 0.4 ? 1 : maxScroll,
-                      // ),
                       child: Text(
                         '일정',
                         style: TextStyle.lerp(

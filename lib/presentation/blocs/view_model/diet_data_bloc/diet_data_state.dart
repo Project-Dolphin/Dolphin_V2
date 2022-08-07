@@ -8,11 +8,33 @@ class DietLoading extends DietDataState {
 }
 
 class DietLoaded extends DietDataState {
-  DietLoaded({required this.cafeData, required this.dormData});
-  final DietSocietyWrapper cafeData;
-  final DormData dormData;
+  DietLoaded({
+    this.morning = const <DietData>[],
+    this.lunch = const <DietData>[],
+    this.dinner = const <DietData>[],
+    this.dorm,
+  });
+  final List<DietData> morning;
+  final List<DietData> lunch;
+  final List<DietData> dinner;
+  final DietDormWrapper? dorm;
+
+  DietLoaded copyWith({
+    List<DietData>? morning,
+    List<DietData>? lunch,
+    List<DietData>? dinner,
+    DietDormWrapper? dorm,
+  }) {
+    return DietLoaded(
+      morning: morning ?? this.morning,
+      lunch: lunch ?? this.lunch,
+      dinner: dinner ?? this.dinner,
+      dorm: dorm ?? this.dorm,
+    );
+  }
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [morning, lunch, dinner, dorm];
 }
 
 class DietError extends DietDataState {

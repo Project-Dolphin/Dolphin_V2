@@ -9,7 +9,7 @@ class BusHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
   @override
   double get minExtent => height;
   @override
-  double get maxExtent => height + 20;
+  double get maxExtent => height;
   @override
   Widget build(
     BuildContext context,
@@ -23,16 +23,21 @@ class BusHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
         color: Theme.of(context).scaffoldBackgroundColor,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
-          padding: EdgeInsets.lerp(
-            const EdgeInsets.symmetric(horizontal: 6),
-            const EdgeInsets.all(1),
-            maxScroll > 0.4 ? 1 : maxScroll,
-          ),
           alignment: Alignment.lerp(
             Alignment.centerLeft,
             Alignment.center,
-            maxScroll > 0.4 ? 1 : maxScroll,
+            maxScroll > 0.15 ? 1 : maxScroll,
           ),
+          padding: EdgeInsets.lerp(
+            const EdgeInsets.symmetric(horizontal: 6),
+            const EdgeInsets.all(0),
+            maxScroll > 0.15 ? 1 : maxScroll,
+          ),
+          // padding: EdgeInsets.lerp(
+          //   const EdgeInsets.symmetric(horizontal: 6),
+          //   const EdgeInsets.all(1),
+          //   maxScroll > 0.4 ? 1 : maxScroll,
+          // ),
           child: Text(
             '버스',
             style: TextStyle.lerp(
@@ -44,7 +49,7 @@ class BusHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                 Theme.of(context).colorScheme.onPrimary,
                 16,
               ),
-              maxScroll > 0.4 ? 1 : maxScroll,
+              maxScroll > 0.15 ? 1 : maxScroll,
             ),
           ),
         ),

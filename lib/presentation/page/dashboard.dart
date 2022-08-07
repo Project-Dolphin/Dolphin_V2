@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/common/oceanview_navigation_bar.dart';
+import 'package:oceanview/core/utils/text_utils.dart';
 import 'package:oceanview/injection_container.dart';
 import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 import 'package:oceanview/presentation/blocs/diet_page_bloc/diet_page_bloc.dart';
@@ -81,30 +82,32 @@ class _DashBoardState extends State<DashBoard> {
         ),
       ],
       child: Scaffold(
-        body: Stack(
-          children: [
-            BlocBuilder<DashBoardBloc, DashBoardState>(builder: ((
-              context,
-              state,
-            ) {
-              // TODO : 대쉬보드 로딩 전에는 loadingState 보여줘도 됨
-              return BlocPageView(state.selectedTab);
-              /*
-                예시 : 
-                if(state is DashBoardLoaded){
-                  return TabView(state.selectedTab);
-                }
-                return Loading();
-                */
-            })),
-            const Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 30),
-                child: OceanViewNavigationBar(),
+        body: SafeArea(
+          child: Stack(
+            children: [
+              BlocBuilder<DashBoardBloc, DashBoardState>(builder: ((
+                context,
+                state,
+              ) {
+                // TODO : 대쉬보드 로딩 전에는 loadingState 보여줘도 됨
+                return BlocPageView(state.selectedTab);
+                /*
+                  예시 : 
+                  if(state is DashBoardLoaded){
+                    return TabView(state.selectedTab);
+                  }
+                  return Loading();
+                  */
+              })),
+              const Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 30),
+                  child: OceanViewNavigationBar(),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

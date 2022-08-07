@@ -13,46 +13,51 @@ class CalendarDetailWidget extends StatelessWidget {
       builder: ((context, state) {
         if (state is CampusEventLoaded &&
             state.calendarData[state.selectedDay.day].data.isNotEmpty) {
-          return DecoratedContainer(
-            // ignore: avoid-returning-widgets
-            child: Column(
-              children: [
-                ...state.calendarData[state.selectedDay.day].data.map((detail) {
-                  bool isFirst = state.calendarData[state.selectedDay.day].data
-                          .indexOf(detail) ==
-                      0;
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: DecoratedContainer(
+              // ignore: avoid-returning-widgets
+              child: Column(
+                children: [
+                  ...state.calendarData[state.selectedDay.day].data
+                      .map((detail) {
+                    bool isFirst = state
+                            .calendarData[state.selectedDay.day].data
+                            .indexOf(detail) ==
+                        0;
 
-                  return Padding(
-                    padding: EdgeInsets.only(top: isFirst ? 0 : 20),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 1),
-                          width: 3,
-                          height: 3,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xFFBBEBEC),
-                          ),
-                        ),
-                        const SizedBox(width: 11),
-                        Expanded(
-                          child: Text(
-                            detail.content,
-                            overflow: TextOverflow.ellipsis,
-                            style: textStyleBold(
-                              detail.holiday
-                                  ? Colors.red
-                                  : Theme.of(context).colorScheme.onPrimary,
-                              14,
+                    return Padding(
+                      padding: EdgeInsets.only(top: isFirst ? 0 : 20),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 1),
+                            width: 3,
+                            height: 3,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xFFBBEBEC),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  );
-                }),
-              ],
+                          const SizedBox(width: 11),
+                          Expanded(
+                            child: Text(
+                              detail.content,
+                              overflow: TextOverflow.ellipsis,
+                              style: textStyleBold(
+                                detail.holiday
+                                    ? Colors.red
+                                    : Theme.of(context).colorScheme.onPrimary,
+                                14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+                ],
+              ),
             ),
           );
           // return Padding(

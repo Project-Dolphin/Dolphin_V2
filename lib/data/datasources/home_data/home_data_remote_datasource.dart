@@ -54,7 +54,6 @@ class HomeDataRemoteDataSourceImpl extends HomeDataRemoteDataSource {
     // if (response.data == null) {
     //   throw ServerException();
     // }
-
     return response;
   }
 }

@@ -4,8 +4,8 @@ import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart'
 import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
 import 'package:oceanview/presentation/page/diet/widgets/diet_grid_view.dart';
 
-class SecondFloorPage extends StatelessWidget {
-  const SecondFloorPage({Key? key}) : super(key: key);
+class MorningDietPage extends StatelessWidget {
+  const MorningDietPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +16,9 @@ class SecondFloorPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              ...state.cafeData.student.map(
+              ...state.morning.map(
                 (diet) => DietGridView(
-                  type: diet.type,
+                  type: diet.title,
                   dietData: diet.menus,
                 ),
               ),

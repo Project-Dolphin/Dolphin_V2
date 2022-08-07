@@ -16,6 +16,22 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
+  Future<HomeData> getMainData() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HomeData>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = HomeData.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<CalendarAllWrapper> getWeekdayCalendarData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -94,6 +110,27 @@ class _RestClient implements RestClient {
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
         .map((dynamic i) => NoticeData.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<DietData>> getDietData(dietTime, dietType) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'at': dietTime,
+      r'where': dietType
+    };
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<DietData>>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'diet',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => DietData.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }
