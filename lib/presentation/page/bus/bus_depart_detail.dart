@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:oceanview/core/config/enum/bus_stop_enum.dart';
 import 'package:oceanview/core/config/r.dart';
-import 'package:oceanview/core/network/response/endpoint_shuttle/response_shuttle_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_timetable_190/response_depart_bus_info_dto.dart';
+import 'package:oceanview/presentation/page/bus/bus_drop_down_button.dart';
 import 'package:oceanview/presentation/page/bus/bus_with_bell.dart';
 
-class ShuttleBusDetail extends StatelessWidget {
-  const ShuttleBusDetail({required this.data, Key? key}) : super(key: key);
+class BusDepartDetail extends StatelessWidget {
+  const BusDepartDetail({
+    required this.data,
+    required this.selectedBusStop,
+    required this.busStopList,
+    this.busCallBack,
+    Key? key,
+  }) : super(key: key);
 
-  final List<ShuttleDataDto> data;
+  final List<DepartBusInfo> data;
+  final List<BUS_STOP> busStopList;
+
+  final BUS_STOP selectedBusStop;
+  final Function(BUS_STOP)? busCallBack;
 
   @override
   Widget build(BuildContext context) {
-    ShuttleDataDto firstBus = data.isEmpty ? ShuttleDataDto() : data[0];
-    // TODO : 막차여서 데이터가 없을 경우도 생각해야함
-    ShuttleDataDto secondBus = data.length < 2 ? ShuttleDataDto() : data[1];
-
     return Row(
       children: [
         Container(
@@ -36,7 +44,7 @@ class ShuttleBusDetail extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: Text(
-            '셔틀',
+            '190',
             style: textStyleBold(Theme.of(context).primaryColor, 17),
           ),
         ),
@@ -47,12 +55,10 @@ class ShuttleBusDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                '학교종점',
-                style: textStyleNormal(
-                  Theme.of(context).colorScheme.onPrimary,
-                  14,
-                ),
+              BusDropDownButton(
+                selectedBusStop: selectedBusStop,
+                busStopList: busStopList,
+                busCallBack: busCallBack,
               ),
               Builder(
                 builder: (context) {
@@ -67,13 +73,20 @@ class ShuttleBusDetail extends StatelessWidget {
                     );
                   }
 
+                  if (data.length == 1) {
+                    final int id = int.parse('19001');
+
+                    return BusWithBell(
+                      minutes: data.first.remainMinutes ?? 0,
+                      id: id,
+                    );
+                  }
+
                   return Row(
                     children: [
                       BusWithBell(
-                        minutes: firstBus.remainMinutes ?? 0,
-                        id: int.parse(
-                          '9990',
-                        ),
+                        minutes: data.first.remainMinutes ?? 0,
+                        id: int.parse('19001'),
                       ),
                       const SizedBox(width: 20),
                       Expanded(
@@ -83,22 +96,10 @@ class ShuttleBusDetail extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 20),
-                      if (secondBus.remainMinutes != null)
-                        BusWithBell(
-                          minutes: secondBus.remainMinutes ?? 0,
-                          id: int.parse(
-                            '9991',
-                          ),
-                        ),
-                      if (secondBus.remainMinutes == null)
-                        Text(
-                          '버스가 없어요',
-                          style: textStyleBold(
-                            Theme.of(context).colorScheme.onPrimary,
-                            18,
-                          ),
-                          softWrap: true,
-                        ),
+                      BusWithBell(
+                        minutes: data.last.remainMinutes ?? 0,
+                        id: int.parse('19011'),
+                      ),
                     ],
                   );
                 },

@@ -12,22 +12,25 @@ class BusWithBell extends StatelessWidget {
   Widget build(BuildContext context) {
     final notiDate = getDateTimeWithRemainMinutes(minutes);
 
-    return Row(children: [
-      Text(
-        '$minutes분',
-        style: textStyleBold(
-          Theme.of(context).colorScheme.onPrimary,
-          18,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          '$minutes분',
+          style: textStyleBold(
+            Theme.of(context).colorScheme.onPrimary,
+            18,
+          ),
+          softWrap: true,
         ),
-        softWrap: true,
-      ),
-      SizedBox(width: 6),
-      NotificationBell(
-        id: id,
-        hour: notiDate.hour,
-        minutes: notiDate.minute,
-      ),
-    ]);
+        const SizedBox(width: 6),
+        NotificationBell(
+          id: id,
+          hour: notiDate.hour,
+          minutes: notiDate.minute,
+        ),
+      ],
+    );
   }
 
   DateTime getDateTimeWithRemainMinutes(int remainMinutes) {

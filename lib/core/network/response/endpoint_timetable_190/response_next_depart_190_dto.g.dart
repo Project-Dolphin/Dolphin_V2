@@ -10,8 +10,9 @@ _$_NextDepart190Wrapper _$$_NextDepart190WrapperFromJson(
         Map<String, dynamic> json) =>
     _$_NextDepart190Wrapper(
       nextDepartBus: (json['nextDepartBus'] as List<dynamic>?)
-          ?.map((e) => DepartBusInfo.fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) => DepartBusInfo.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <DepartBusInfo>[],
     );
 
 Map<String, dynamic> _$$_NextDepart190WrapperToJson(

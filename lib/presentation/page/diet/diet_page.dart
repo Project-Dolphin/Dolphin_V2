@@ -28,12 +28,13 @@ class DietPage extends StatelessWidget {
               maxHeight: 100.0,
             ),
           ),
-          SliverPadding(padding: EdgeInsets.symmetric(vertical: 16)),
+          const SliverPadding(padding: EdgeInsets.symmetric(vertical: 16)),
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
                 constraints: BoxConstraints(
-                    minHeight: MediaQuery.of(context).size.height - 150),
+                  minHeight: MediaQuery.of(context).size.height - 100,
+                ),
                 child: BlocBuilder<DietPageBloc, DietPageState>(
                   builder: ((context, state) {
                     switch (state.selectedDietTab) {

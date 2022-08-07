@@ -33,6 +33,7 @@ class AppFontWeight {
 
 TextStyle textStyleLight(Color color, double size, {double? height}) =>
     TextStyle(
+      fontFamily: 'Pretendard',
       color: color,
       fontSize: size,
       fontWeight: R.fontWeight.light,
@@ -46,6 +47,7 @@ TextStyle textStyleLightCancelLine(
   double? height,
 }) =>
     TextStyle(
+      fontFamily: 'Pretendard',
       color: color,
       fontSize: size,
       fontWeight: R.fontWeight.light,
@@ -55,6 +57,7 @@ TextStyle textStyleLightCancelLine(
 
 TextStyle textStyleNormal(Color color, double size, {double? height}) =>
     TextStyle(
+      fontFamily: 'Pretendard',
       color: color,
       fontSize: size,
       fontWeight: R.fontWeight.normal,
@@ -64,6 +67,7 @@ TextStyle textStyleNormal(Color color, double size, {double? height}) =>
 
 TextStyle textStyleMedium(Color color, double size, {double? height}) =>
     TextStyle(
+      fontFamily: 'Pretendard',
       color: color,
       fontSize: size,
       fontWeight: R.fontWeight.medium,
@@ -77,6 +81,7 @@ TextStyle textStyleMediumUnderLine(
   double? height,
 }) =>
     TextStyle(
+      fontFamily: 'Pretendard',
       color: color,
       fontSize: size,
       fontWeight: R.fontWeight.medium,
@@ -85,6 +90,7 @@ TextStyle textStyleMediumUnderLine(
     );
 
 TextStyle textStyle600(Color color, double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: color,
       fontSize: size,
       fontWeight: R.fontWeight.fontWeight600,
@@ -94,6 +100,7 @@ TextStyle textStyle600(Color color, double size, {double? height}) => TextStyle(
 
 TextStyle textStyleBold(Color color, double size, {double? height}) =>
     TextStyle(
+      fontFamily: 'Pretendard',
       color: color,
       fontSize: size,
       fontWeight: R.fontWeight.bold,
@@ -102,6 +109,7 @@ TextStyle textStyleBold(Color color, double size, {double? height}) =>
     );
 
 TextStyle textStyleBlackLight(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.black,
       fontSize: size,
       fontWeight: R.fontWeight.light,
@@ -110,6 +118,7 @@ TextStyle textStyleBlackLight(double size, {double? height}) => TextStyle(
     );
 
 TextStyle textStyleBlackNormal(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.black,
       fontSize: size,
       fontWeight: R.fontWeight.normal,
@@ -118,6 +127,7 @@ TextStyle textStyleBlackNormal(double size, {double? height}) => TextStyle(
     );
 
 TextStyle textStyleBlackMedium(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.black,
       fontSize: size,
       fontWeight: R.fontWeight.medium,
@@ -126,6 +136,7 @@ TextStyle textStyleBlackMedium(double size, {double? height}) => TextStyle(
     );
 
 TextStyle textStyleBlack600(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.black,
       fontSize: size,
       fontWeight: R.fontWeight.fontWeight600,
@@ -134,6 +145,7 @@ TextStyle textStyleBlack600(double size, {double? height}) => TextStyle(
     );
 
 TextStyle textStyleBlackBold(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.black,
       fontSize: size,
       fontWeight: R.fontWeight.bold,
@@ -142,6 +154,7 @@ TextStyle textStyleBlackBold(double size, {double? height}) => TextStyle(
     );
 
 TextStyle textStyleWhiteLight(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.white,
       fontSize: size,
       fontWeight: R.fontWeight.light,
@@ -150,6 +163,7 @@ TextStyle textStyleWhiteLight(double size, {double? height}) => TextStyle(
     );
 
 TextStyle textStyleWhiteNormal(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.white,
       fontSize: size,
       fontWeight: R.fontWeight.normal,
@@ -158,6 +172,7 @@ TextStyle textStyleWhiteNormal(double size, {double? height}) => TextStyle(
     );
 
 TextStyle textStyleWhiteMedium(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.white,
       fontSize: size,
       fontWeight: R.fontWeight.medium,
@@ -166,6 +181,7 @@ TextStyle textStyleWhiteMedium(double size, {double? height}) => TextStyle(
     );
 
 TextStyle textStyleWhite600(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.white,
       fontSize: size,
       fontWeight: R.fontWeight.fontWeight600,
@@ -174,6 +190,7 @@ TextStyle textStyleWhite600(double size, {double? height}) => TextStyle(
     );
 
 TextStyle textStyleWhiteBold(double size, {double? height}) => TextStyle(
+      fontFamily: 'Pretendard',
       color: R.color.white,
       fontSize: size,
       fontWeight: R.fontWeight.bold,

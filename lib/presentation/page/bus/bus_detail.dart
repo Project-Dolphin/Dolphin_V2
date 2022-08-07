@@ -44,7 +44,7 @@ class BusDetail extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: Text(
-            data.lineno ?? '0',
+            '${data.lineno ?? 0}',
             style: textStyleBold(Theme.of(context).primaryColor, 17),
           ),
         ),
@@ -84,21 +84,32 @@ class BusDetail extends StatelessWidget {
 
                   return Row(
                     children: [
-                      BusWithBell(
-                        minutes: data.min1!,
-                        id: int.parse('${data.lineno}0'),
-                      ),
-                      const SizedBox(width: 20),
                       Expanded(
-                        child: Divider(
-                          color: Theme.of(context).primaryColor,
-                          thickness: 1,
+                        // flex: 4,
+                        child: BusWithBell(
+                          minutes: data.min1!,
+                          id: int.parse('${data.lineno}0'),
                         ),
                       ),
-                      const SizedBox(width: 20),
-                      BusWithBell(
-                        minutes: data.min2!,
-                        id: int.parse('${data.lineno}0'),
+                      Expanded(
+                        // flex: 2,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: Divider(
+                            color: Theme.of(context).primaryColor,
+                            thickness: 1,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        // flex: 4,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: BusWithBell(
+                            minutes: data.min2!,
+                            id: int.parse('${data.lineno}1'),
+                          ),
+                        ),
                       ),
                     ],
                   );

@@ -1,5 +1,6 @@
 import 'package:oceanview/core/network/response/endpoint_calendar_latest/response_calendar_latest_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_root/response_init_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:oceanview/core/network/rest_client_service.dart';
 
@@ -7,6 +8,7 @@ abstract class HomeDataRemoteDataSource {
   Future<WeatherData> getWeatherInfo();
   Future<List<NoticeData>> getNotices();
   Future<LatestWrapper> getLatestEvents();
+  Future<InitData> getInitData();
 }
 
 class HomeDataRemoteDataSourceImpl extends HomeDataRemoteDataSource {
@@ -37,6 +39,17 @@ class HomeDataRemoteDataSourceImpl extends HomeDataRemoteDataSource {
   @override
   Future<LatestWrapper> getLatestEvents() async {
     final response = await restClientService.getLatestEvents();
+
+    // if (response.data == null) {
+    //   throw ServerException();
+    // }
+
+    return response;
+  }
+
+  @override
+  Future<InitData> getInitData() async {
+    final response = await restClientService.getInitInfo();
 
     // if (response.data == null) {
     //   throw ServerException();

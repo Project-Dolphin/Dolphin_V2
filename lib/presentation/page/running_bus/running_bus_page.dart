@@ -6,7 +6,7 @@ import 'package:oceanview/presentation/blocs/view_model/running_bus_bloc/running
 import 'package:oceanview/presentation/page/running_bus/bus_info_list_view.dart';
 
 class RunningBusPage extends StatelessWidget {
-  RunningBusPage({Key? key}) : super(key: key);
+  const RunningBusPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

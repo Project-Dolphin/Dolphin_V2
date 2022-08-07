@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oceanview/common/decorated_container.dart';
-import 'package:oceanview/presentation/blocs/view_model/diet_data_bloc/diet_data_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 
 import '../shimmer/diet_box_detail_shimmer.dart';
 import 'diet_box_detail.dart';
@@ -11,12 +11,12 @@ class DietBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = (MediaQuery.of(context).size.width * 0.92 - 34) / 2;
+    final width = (MediaQuery.of(context).size.width * 0.92 - 12) / 2;
 
     return DecoratedContainer(
-      child: BlocBuilder<DietDataBloc, DietDataState>(
+      child: BlocBuilder<HomeDataBloc, HomeDataState>(
         builder: ((context, state) {
-          if (state is DietLoaded) {
+          if (state is HomeDataLoaded) {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

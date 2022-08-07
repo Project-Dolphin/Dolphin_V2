@@ -17,10 +17,18 @@ class BusPageShuttleDetail extends StatelessWidget {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
+            color: Theme.of(context).canvasColor,
             border: Border.all(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               width: 2,
             ),
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).colorScheme.primary.withOpacity(.15),
+                blurRadius: 8,
+                offset: const Offset(0, 4.3),
+              ),
+            ],
             shape: BoxShape.circle,
           ),
           child: Text(

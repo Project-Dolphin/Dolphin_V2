@@ -38,21 +38,27 @@ class HomePage extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 controller: context.read<DashBoardBloc>().homeScrollController,
-                child: Column(
-                  children: [
-                    GestureDetector(
+                child: Container(
+                  constraints: BoxConstraints(
+                    minHeight: MediaQuery.of(context).size.height + 80,
+                  ),
+                  child: Column(
+                    children: [
+                      GestureDetector(
                         onTap: () => Navigator.pushNamed(
-                              context,
-                              AppConstants.RUNNING_BUS_ROUTE,
-                            ),
-                        child: const BusBox()),
-                    const SizedBox(height: 12),
-                    const DietBox(),
-                    const SizedBox(height: 12),
-                    _buildWeatherAndLatestEvent(),
-                    const SizedBox(height: 12),
-                    const NoticeBox(),
-                  ],
+                          context,
+                          AppConstants.RUNNING_BUS_ROUTE,
+                        ),
+                        child: const BusBox(),
+                      ),
+                      const SizedBox(height: 12),
+                      const DietBox(),
+                      const SizedBox(height: 12),
+                      _buildWeatherAndLatestEvent(),
+                      const SizedBox(height: 12),
+                      const NoticeBox(),
+                    ],
+                  ),
                 ),
                 // child: Padding(
                 //   padding: const EdgeInsets.symmetric(horizontal: 10),

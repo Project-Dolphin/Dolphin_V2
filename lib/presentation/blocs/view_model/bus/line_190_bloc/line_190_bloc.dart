@@ -69,23 +69,40 @@ class Line190Bloc extends Bloc<Line190Event, Line190State> {
     Refresh190Info event,
     Emitter<Line190State> emit,
   ) async {
-    final result = await getSpecificNodeBusInfo.call(nodeParam);
+    final state = this.state;
+    if (state is Line190LoadedWithBusInfo) {
+      final result = await getSpecificNodeBusInfo.call(nodeParam);
 
-    result.fold(
-      (failure) async* {
-        if (failure is CacheFailure) {
-          emit(Line190Error('SETTING_ERROR'));
-        } else {
-          emit(Line190Error('NO_CONNECTION_ERROR'));
-        }
-      },
-      (success) {
-        final state = this.state;
-        if (state is Line190LoadedWithBusInfo) {
+      result.fold(
+        (failure) async* {
+          if (failure is CacheFailure) {
+            emit(Line190Error('SETTING_ERROR'));
+          } else {
+            emit(Line190Error('NO_CONNECTION_ERROR'));
+          }
+        },
+        (success) {
           emit(state.copyWith(busInfo: success));
-        }
-      },
-    );
+        },
+      );
+    } else if (state is Line190LoadedWithDepartInfo) {
+      final result = await get190timeTable.call();
+
+      result.fold(
+        (failure) async* {
+          if (failure is CacheFailure) {
+            emit(Line190Error('SETTING_ERROR'));
+          } else {
+            emit(Line190Error('NO_CONNECTION_ERROR'));
+          }
+        },
+        (success) {
+          emit(state.copyWith(
+            busInfo: success.nextDepartBus,
+          ));
+        },
+      );
+    }
   }
 
   Future<void> _onNodeParamChangeRequested(
@@ -111,6 +128,13 @@ class Line190Bloc extends Bloc<Line190Event, Line190State> {
               busInfo: success,
               selectedBusStop: event.changedNode,
             ));
+          } else {
+            emit(
+              Line190LoadedWithBusInfo(
+                busInfo: success,
+                selectedBusStop: event.changedNode,
+              ),
+            );
           }
         },
       );
@@ -131,13 +155,10 @@ class Line190Bloc extends Bloc<Line190Event, Line190State> {
           }
         },
         (success) {
-          final state = this.state;
-          if (state is Line190LoadedWithDepartInfo) {
-            emit(state.copyWith(
-              busInfo: success.nextDepartBus,
-              selectedBusStop: event.changedNode,
-            ));
-          }
+          emit(Line190LoadedWithDepartInfo(
+            busInfo: success.nextDepartBus,
+            selectedBusStop: event.changedNode,
+          ));
         },
       );
 

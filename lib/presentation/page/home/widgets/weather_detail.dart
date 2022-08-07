@@ -41,8 +41,9 @@ class WeatherDetail extends StatelessWidget {
               weatherData.status ?? '',
               style: textStyleNormal(
                 Theme.of(context).colorScheme.onPrimary,
-                16,
+                14,
               ),
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 6),
             Text(

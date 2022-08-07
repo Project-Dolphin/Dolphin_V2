@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:oceanview/core/config/enum/menu_enum.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/core/utils/constants.dart';
+import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 
 import 'custom_divider.dart';
 import 'gradient_icon.dart';
@@ -22,7 +24,7 @@ class MenuPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '식단',
+                    '설정',
                     style: textStyleBold(
                       Theme.of(context).colorScheme.onPrimary,
                       24,
@@ -47,12 +49,19 @@ class MenuPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4),
                           color: Theme.of(context).canvasColor,
                         ),
-                        child: Text(
-                          '사라져야함',
-                          style: textStyleNormal(
-                            Theme.of(context).colorScheme.primary,
-                            11,
-                          ),
+                        child: BlocBuilder<HomeDataBloc, HomeDataState>(
+                          builder: (context, state) {
+                            final String displayText =
+                                state is HomeDataLoaded ? state.dateType : '평일';
+
+                            return Text(
+                              displayText,
+                              style: textStyleNormal(
+                                Theme.of(context).colorScheme.primary,
+                                11,
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],

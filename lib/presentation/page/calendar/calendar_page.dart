@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oceanview/presentation/blocs/dashboard_bloc/dashboard_bloc.dart';
 
 import 'widgets/calendar.dart';
 import 'widgets/calendar_detail.dart';
@@ -14,14 +16,14 @@ class CampusEventPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: CustomScrollView(
           shrinkWrap: true,
-          // controller: scrollController,
+          controller: context.read<DashBoardBloc>().campusEventScrollController,
           scrollDirection: Axis.vertical,
           slivers: [
             SliverPersistentHeader(
               pinned: true,
               delegate: CalendarHeaderSliverDelegate(
-                minHeight: 70.0,
-                maxHeight: 130.0,
+                minHeight: 50.0,
+                maxHeight: 116.0,
               ),
             ),
             // SliverPersistentHeader(
@@ -35,7 +37,7 @@ class CampusEventPage extends StatelessWidget {
               delegate: SliverChildListDelegate([
                 Container(
                   constraints: BoxConstraints(
-                    minHeight: MediaQuery.of(context).size.height - 150,
+                    minHeight: MediaQuery.of(context).size.height - 70,
                   ),
                   child: Column(
                     children: const [

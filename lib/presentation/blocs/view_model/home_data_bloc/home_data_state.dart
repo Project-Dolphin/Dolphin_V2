@@ -9,26 +9,34 @@ class LoadingState extends HomeDataState {
 
 class HomeDataLoaded extends HomeDataState {
   HomeDataLoaded({
+    required this.dateType,
     required this.weather,
     required this.notice,
     required this.event,
+    required this.cafeData,
   });
+  final String dateType;
   final WeatherData weather;
   final List<NoticeData> notice;
   final LatestWrapper event;
+  final CafeData cafeData;
 
   @override
   List<Object?> get props => [];
 
   HomeDataLoaded copyWith({
+    String? dateType,
     WeatherData? weather,
     List<NoticeData>? notice,
     LatestWrapper? event,
+    CafeData? cafeData,
   }) {
     return HomeDataLoaded(
+      dateType: dateType ?? this.dateType,
       weather: weather ?? this.weather,
       notice: notice ?? this.notice,
       event: event ?? this.event,
+      cafeData: cafeData ?? this.cafeData,
     );
   }
 }

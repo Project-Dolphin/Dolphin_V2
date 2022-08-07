@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:oceanview/core/network/response/endpoint_businfo_specific/response_businfo_specific_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_calendar/response_calendar_month_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_notices/response_notice_data_dto.dart';
+import 'package:oceanview/core/network/response/endpoint_root/response_init_data_dto.dart';
 import 'package:oceanview/core/network/response/endpoint_weather_now/response_weather_now_data_dto.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -66,8 +67,8 @@ abstract class RestClient {
   @GET('diet/v2/society/today')
   Future<DietSocietyWrapper> getCafeDiet();
 
-  // @GET('diet/naval/today')
-  // Future<List<MealData>> getNavalDiet();
+  @GET('')
+  Future<InitData> getInitInfo();
 
   @GET('diet/dorm/today')
   Future<DietDormWrapper> getDormDiet();

@@ -7,7 +7,8 @@ import 'package:timezone/timezone.dart' as tz;
 
 class NotificationManager {
   static final NotificationManager _instance = NotificationManager._internal();
-  static List<int> messageIdList = [];
+
+  static final NotificationController messageIdList = NotificationController();
 
   factory NotificationManager() => _instance;
 
@@ -51,12 +52,12 @@ class NotificationManager {
 
   static Future<void> cancelNotificationAll() async {
     await _flutterLocalNotificationsPlugin.cancelAll();
-    messageIdList.clear();
+    messageIdList.removeAll();
   }
 
   static Future<void> cancelNotification(int id) async {
     await _flutterLocalNotificationsPlugin.cancel(id);
-    messageIdList.removeWhere((element) => element == id);
+    messageIdList.removeId(id);
   }
 
   static Future<void> _requestPermissions() async {
@@ -76,7 +77,7 @@ class NotificationManager {
     required int minutes,
     required message,
   }) async {
-    messageIdList.add(id);
+    messageIdList.addId(id);
 
     final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
     tz.TZDateTime scheduledDate = tz.TZDateTime(
@@ -154,5 +155,21 @@ class NotificationManager {
         );
       },
     );
+  }
+}
+
+class NotificationController extends ValueNotifier<List<int>> {
+  NotificationController() : super([]);
+
+  void addId(int idx) {
+    value = [...value, idx];
+  }
+
+  void removeId(idx) {
+    value = [...value.where((element) => element != idx)];
+  }
+
+  void removeAll() {
+    value = [];
   }
 }

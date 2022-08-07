@@ -14,7 +14,7 @@ class ShadedDecoratedContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 5),
+      margin: const EdgeInsets.only(top: 5, left: 5, right: 5),
       padding: const EdgeInsets.symmetric(
         vertical: 16,
         horizontal: 20,
@@ -25,7 +25,7 @@ class ShadedDecoratedContainer extends StatelessWidget {
         shape: BoxShape.rectangle,
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF3E9EF6).withOpacity(.4), blurRadius: 8,
+            color: const Color(0xFF3E9EF6).withOpacity(.2), blurRadius: 8,
             // offset: const Offset(5, 5),
           ),
         ],

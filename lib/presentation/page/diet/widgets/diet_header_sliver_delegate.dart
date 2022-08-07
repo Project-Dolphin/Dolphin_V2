@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:oceanview/core/config/enum/diet_tab_enum.dart';
 import 'package:oceanview/core/config/r.dart';
+import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 
 import 'diet_kind_circle_button.dart';
 import 'diet_kind_circle_text.dart';
@@ -89,12 +91,19 @@ class DietHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                           borderRadius: BorderRadius.circular(4),
                           color: Theme.of(context).canvasColor,
                         ),
-                        child: Text(
-                          '사라져야함',
-                          style: textStyleNormal(
-                            Theme.of(context).colorScheme.primary,
-                            11,
-                          ),
+                        child: BlocBuilder<HomeDataBloc, HomeDataState>(
+                          builder: (context, state) {
+                            final String displayText =
+                                state is HomeDataLoaded ? state.dateType : '평일';
+
+                            return Text(
+                              displayText,
+                              style: textStyleNormal(
+                                Theme.of(context).colorScheme.primary,
+                                11,
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],

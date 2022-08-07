@@ -25,6 +25,12 @@ class AppImages {
   AppImage get icon_diet => const AppImage('${_iconPath}icon_diet.svg');
   AppImage get icon_home => const AppImage('${_iconPath}icon_home.svg');
   AppImage get icon_menu => const AppImage('${_iconPath}icon_menu.svg');
+
+  AppImage get icon_arrow_single =>
+      const AppImage('${_iconPath}icon_arrow_single.svg');
+  AppImage get icon_arrow_double =>
+      const AppImage('${_iconPath}icon_arrow_double.svg');
+
   AppImage get icon_list_bullet =>
       const AppImage('${_iconPath}icon_list_bullet.svg');
   AppImage get icon_magnify => const AppImage('${_iconPath}icon_magnify.svg');

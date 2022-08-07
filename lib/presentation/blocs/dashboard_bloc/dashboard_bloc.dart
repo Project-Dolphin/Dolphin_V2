@@ -25,6 +25,7 @@ class DashBoardBloc extends Bloc<DashBoardEvent, DashBoardState> {
       PageController(initialPage: 0, viewportFraction: 0.92);
 
   final ScrollController homeScrollController = ScrollController();
+  final ScrollController busPageScrollController = ScrollController();
   final ScrollController campusEventScrollController = ScrollController();
   final ScrollController morningDietScrollController = ScrollController();
   final ScrollController lunchDietScrollController = ScrollController();
@@ -52,27 +53,40 @@ class DashBoardBloc extends Bloc<DashBoardEvent, DashBoardState> {
     PageSlided event,
     Emitter<DashBoardState> emit,
   ) {
+    logger.d('slide');
     final state = this.state;
     controllerRefresh();
     emit(state.copyWith(selectedTab: RootTabExt.from(event.selectedPage)));
   }
 
   void controllerRefresh() {
-    campusEventScrollController.hasClients
-        ? campusEventScrollController.jumpTo(0)
-        : {};
-    morningDietScrollController.hasClients
-        ? morningDietScrollController.jumpTo(0)
-        : {};
-    lunchDietScrollController.hasClients
-        ? lunchDietScrollController.jumpTo(0)
-        : {};
-    dinnerDietScrollController.hasClients
-        ? dinnerDietScrollController.jumpTo(0)
-        : {};
-    dormDietScrollController.hasClients
-        ? dormDietScrollController.jumpTo(0)
-        : {};
+    if (homeScrollController.hasClients) {
+      homeScrollController.jumpTo(0);
+    }
+
+    if (campusEventScrollController.hasClients) {
+      campusEventScrollController.jumpTo(0);
+    }
+
+    if (busPageScrollController.hasClients) {
+      busPageScrollController.jumpTo(0);
+    }
+
+    if (morningDietScrollController.hasClients) {
+      morningDietScrollController.jumpTo(0);
+    }
+
+    if (lunchDietScrollController.hasClients) {
+      lunchDietScrollController.jumpTo(0);
+    }
+
+    if (dinnerDietScrollController.hasClients) {
+      dinnerDietScrollController.jumpTo(0);
+    }
+
+    if (dormDietScrollController.hasClients) {
+      dormDietScrollController.jumpTo(0);
+    }
   }
 }
 

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:oceanview/core/config/r.dart';
 import 'package:oceanview/presentation/blocs/view_model/campus_event_bloc/campus_event_bloc.dart';
+import 'package:oceanview/presentation/blocs/view_model/home_data_bloc/home_data_bloc.dart';
 import 'package:oceanview/presentation/page/calendar/dialog/calendar_dialog.dart';
 
 class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
@@ -33,26 +34,30 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: minExtent,
-              alignment: Alignment.centerLeft,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width * 0.92) / 2,
                     child: AnimatedContainer(
-                      height: minExtent,
                       duration: const Duration(milliseconds: 100),
-                      padding: EdgeInsets.lerp(
-                        const EdgeInsets.symmetric(horizontal: 6),
-                        const EdgeInsets.all(1),
-                        maxScroll > 0.4 ? 1 : maxScroll,
-                      ),
                       alignment: Alignment.lerp(
                         Alignment.centerLeft,
-                        Alignment.center,
-                        maxScroll > 0.4 ? 1 : maxScroll,
+                        Alignment.centerRight,
+                        maxScroll > 0.15 ? 1 : maxScroll,
                       ),
+                      padding: EdgeInsets.lerp(
+                        const EdgeInsets.symmetric(horizontal: 6),
+                        const EdgeInsets.all(0),
+                        maxScroll > 0.15 ? 1 : maxScroll,
+                      ),
+                      // padding: EdgeInsets.lerp(
+                      //   const EdgeInsets.symmetric(horizontal: 6),
+                      //   const EdgeInsets.all(1),
+                      //   maxScroll > 0.4 ? 1 : maxScroll,
+                      // ),
                       child: Text(
                         '일정',
                         style: TextStyle.lerp(
@@ -64,47 +69,47 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                             Theme.of(context).colorScheme.onPrimary,
                             16,
                           ),
-                          shrinkOffset / maxExtent,
+                          maxScroll > 0.15 ? 1 : maxScroll,
                         ),
                       ),
                     ),
                   ),
-                  Builder(builder: (context) {
-                    if (shrinkOffset / maxExtent < 0.4) {
-                      return Row(
-                        children: [
-                          Text(
-                            DateFormat('M.d EEEE', 'ko_KR')
-                                .format(DateTime.now()),
-                            style: textStyleNormal(
-                              Theme.of(context).colorScheme.onPrimary,
-                              12,
-                            ),
-                          ),
-                          const SizedBox(width: 6),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 2,
-                              horizontal: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: Theme.of(context).canvasColor,
-                            ),
-                            child: Text(
-                              '사라져야함',
+                  Row(
+                    children: [
+                      Text(
+                        DateFormat('M.d EEEE', 'ko_KR').format(DateTime.now()),
+                        style: textStyleNormal(
+                          Theme.of(context).colorScheme.onPrimary,
+                          12,
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 2,
+                          horizontal: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: Theme.of(context).canvasColor,
+                        ),
+                        child: BlocBuilder<HomeDataBloc, HomeDataState>(
+                          builder: (context, state) {
+                            final String displayText =
+                                state is HomeDataLoaded ? state.dateType : '평일';
+
+                            return Text(
+                              displayText,
                               style: textStyleNormal(
                                 Theme.of(context).colorScheme.primary,
                                 11,
                               ),
-                            ),
-                          ),
-                        ],
-                      );
-                    }
-
-                    return const SizedBox();
-                  }),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -139,12 +144,15 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                                     onTap: () => context
                                         .read<CampusEventBloc>()
                                         .add(MonthChanged(month: -1)),
-                                    child: R.image.icon_chevron_up
-                                        .svgPicture(width: 10, height: 5),
+                                    child: Container(
+                                      padding: EdgeInsets.all(4),
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      child: R.image.icon_chevron_up
+                                          .svgPicture(width: 10, height: 5),
+                                    ),
                                   ),
                                   Container(
-                                    margin:
-                                        const EdgeInsets.symmetric(vertical: 4),
                                     alignment: Alignment.center,
                                     width: 40,
                                     height: 40,
@@ -166,8 +174,13 @@ class CalendarHeaderSliverDelegate extends SliverPersistentHeaderDelegate {
                                     onTap: () => context
                                         .read<CampusEventBloc>()
                                         .add(MonthChanged(month: 1)),
-                                    child: R.image.icon_chevron_down
-                                        .svgPicture(width: 10, height: 5),
+                                    child: Container(
+                                      padding: EdgeInsets.all(4),
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      child: R.image.icon_chevron_down
+                                          .svgPicture(width: 10, height: 5),
+                                    ),
                                   ),
                                 ],
                               ),
