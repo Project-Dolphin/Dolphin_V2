@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TextUtils {
   static final TextUtils _instance = TextUtils._internal();
   static List<int> messageIdList = [];
-  static late final BuildContext context;
+  static BuildContext? context;
 
   factory TextUtils() => _instance;
 
@@ -14,6 +14,6 @@ class TextUtils {
   }
 
   static double fontSize(double size) {
-    return size * (MediaQuery.of(context).size.height / 800);
+    return size * (MediaQuery.of(context!).size.height / 800);
   }
 }
